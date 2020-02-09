@@ -4,16 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-fastapi = "*"
-uvicorn = "*"
 
 [dev-packages]
+fastapi = "*"
+uvicorn = "*"
+uvicorn = "*"
 black = "*"
 pylint = "*"
 flake8 = "*"
 pydocstyle = "*"
 pytest = "*"
-
+PyGithub = "*"
 
 [requires]
 python_version = "3.7"
