@@ -60,16 +60,16 @@ def get_repo_info(repo_index):
     return branches_names
 
 
-def main_method():
-    # pylint: disable=input-builtin
-    """Use to call previous functions in case of running through terminal."""
-    userToken = str(input("Please enter your GitHub token: "))
-    print(create_user(userToken))
-    get_repo_list()
-    repoIndex = int(input("Please enter an index number to show information:"))
-    print(get_repo_info(repoIndex))
-
-
-choice = input("call main? (y = yes/ n = no)")
-if choice == "y":
-    main_method()
+# def main_method():
+#     # pylint: disable=input-builtin
+#     """Use to call previous functions in case of running through terminal."""
+#     userToken = str(input("Please enter your GitHub token: "))
+#     print(create_user(userToken))
+#     get_repo_list()
+#     repoIndex = int(input("Please enter an index number to show information:"))
+#     print(get_repo_info(repoIndex))
+#
+#
+# choice = input("call main? (y = yes/ n = no)")
+# if choice == "y":
+#     main_method()
