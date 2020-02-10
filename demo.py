@@ -46,8 +46,13 @@ def get_repo_info(repo_index):
     print("This user has " + str(count) + " branches in the " + current_repo.name + " repository")
     return branches_names
 
-userToken = str(input("Please enter your GitHub token: "))
-print(create_user(userToken))
-get_repo_list()
-repoIndex = int(input("Please enter an index number to show information:"))
-print(get_repo_info(repoIndex))
+def main_method():
+    userToken = str(input("Please enter your GitHub token: "))
+    print(create_user(userToken))
+    get_repo_list()
+    repoIndex = int(input("Please enter an index number to show information:"))
+    print(get_repo_info(repoIndex))
+
+choice = input("call main?")
+if choice == "y":
+    main_method()
