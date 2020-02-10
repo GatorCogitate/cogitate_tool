@@ -53,6 +53,6 @@ def main_method():
     repoIndex = int(input("Please enter an index number to show information:"))
     print(get_repo_info(repoIndex))
 
-choice = input("call main?")
+choice = input("call main? (y = yes/ n = no)")
 if choice == "y":
     main_method()
