@@ -24,11 +24,11 @@ def get_repo_list():
     count = 0
     global current_user_account
     for repo in current_user_account.get_user().get_repos():
-        # print(repo.name)
+        print("[" + str(count) + "]" + repo.name)
         count = count + 1
         repo_list.append(repo.name)
-    statement = "This user has " + str(count) + " repos"
-    return (repo_list, statement)
+    print("This user has " + str(count) + " repos")
+    return repo_list
 
 @app.get("/branches_list")
 def get_repo_info(repo_index):
@@ -40,8 +40,14 @@ def get_repo_info(repo_index):
     branches_names = []
     count = 0
     for branch in branches_list:
-        print(branch.name)
+        # print(branch.name)
         count = count + 1
         branches_names.append(branch.name)
     print("This user has " + str(count) + " branches in the " + current_repo.name + " repository")
     return branches_names
+
+userToken = str(input("Please enter your GitHub token: "))
+print(create_user(userToken))
+get_repo_list()
+repoIndex = int(input("Please enter an index number to show information:"))
+print(get_repo_info(repoIndex))
