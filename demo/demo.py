@@ -11,8 +11,10 @@ current_user_account = Github()
 @app.get("/create_user")
 def create_user(user_token):
     """Take token input from user and creates global GitHub object."""
+    # pylint: disable=global-statement
     global current_user_token
     current_user_token = user_token
+    # pylint: disable=global-statement
     global current_user_account
     current_user_account = Github(user_token)
     user = current_user_account.get_user()
@@ -27,6 +29,7 @@ def get_repo_list():
     # g = Github(user_token)
     repo_list = []
     count = 0
+    # pylint: disable=global-statement
     global current_user_account
     for repo in current_user_account.get_user().get_repos():
         print("[" + str(count) + "]" + repo.name)
@@ -39,6 +42,7 @@ def get_repo_list():
 @app.get("/branches_list")
 def get_repo_info(repo_index):
     """Please enter the repository number to show information."""
+    # pylint: disable=global-statement
     global current_user_account
     current_repo = current_user_account.get_user().get_repos()[int(repo_index)]
     # branches_list = current_repo.get_branches()
