@@ -38,7 +38,7 @@ def get_repo_list():
 
 @app.get("/branches_list")
 def get_repo_info(repo_index):
-    """Please enter the number of the repository from the previous list to show information."""
+    """Please enter the repository number to show information."""
     global current_user_account
     current_repo = current_user_account.get_user().get_repos()[int(repo_index)]
     # branches_list = current_repo.get_branches()
