@@ -31,9 +31,10 @@ def get_repo_list():
     return (repo_list, statement)
 
 @app.get("/branches_list")
-def get_repo_info(repo_name):
+def get_repo_info(repo_index):
+    """ Please enter the number of the repository from the previous list to show information"""
     global current_user_account
-    current_repo = current_user_account.get_repo(repo_name, lazy = False)
+    current_repo = current_user_account.get_user().get_repos()[int(repo_index)]
     # branches_list = current_repo.get_branches()
     branches_list = current_repo.get_branches()
     branches_names = []
@@ -42,5 +43,5 @@ def get_repo_info(repo_name):
         print(branch.name)
         count = count + 1
         branches_names.append(branch.name)
-    statement = "This user has " + str(count) + " branches in the " + current_repo.name + " repository"
-    return statement
+    print("This user has " + str(count) + " branches in the " + current_repo.name + " repository")
+    return branches_names
