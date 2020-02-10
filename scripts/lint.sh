@@ -17,11 +17,11 @@ OS="$(uname)"
 
 # collect the files on MacOS and Linux
 if [[ "$OS" == "Darwin" ]]; then
-    FILES=$(find -E . -type f -regex '\./(termfrequency|tests)/.*.py')
+    FILES=$(find -E . -type f -regex '\./(demo|tests)/.*.py')
 else
     FILES=$(find . -type f -regextype posix-extended -regex '\./(demo|tests)/.*.py')
 fi
-/../demo.
+
 # Notes about the linters run on Linux and MacOS:
 # - black checks and fixes Python code formatting
 # - pylint and flake8 check Python code
