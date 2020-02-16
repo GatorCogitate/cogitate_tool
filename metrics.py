@@ -22,19 +22,27 @@ removed_overall_score = 0
 
 def standard_deviations():
     """Function to calculate the standard_deviations of commits, lines added, and lines removed"""
+    # Beginning of the code for finding the standard deviation of commits.
     commits_counter = 0
     global github_data
     global commits_list
     list_length = len(github_data)
+    # while loop that finds the commit totals for each individual team member in
+    # github_data and adds it to the commits_list
     while commits_counter <= list_length - 1:
         # print(github_data[commits_counter][1])
         commits_list.append(github_data[commits_counter][1])
         commits_counter += 1
+    # Prints the total number of commits in the commits_list for the entire team,
+    # and then calculates the standard deviation using NumPy's std() Function
     print("")
     print("The total number of commits is: ", sum(commits_list))
     print("Standard deviation of the commits is: ", np.std(commits_list))
     print("")
+    # global variable to store standard deviations of commits, lines added, and
+    # lines removed
     global standard_deviations_list
+    # adds the standard deviation of commits to the standard_deviations_list
     standard_deviations_list.append(np.std(commits_list))
     # Beginning code for lines added
     lines_added_counter = 0
