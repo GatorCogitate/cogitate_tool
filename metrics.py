@@ -3,13 +3,13 @@
 import numpy as np
 
 # github_data is a list containing sample data for our demo
-# github_data uses the pattern ["username", commit_total, lines_added, lines_deleted, issues_opened]
+# github_data uses the pattern ["username", commit_total, lines_added, lines_deleted]
 github_data = [
-    ["cassidyt2", 28, 355, 76, 2],
-    ["johnSmith", 22, 349, 50, 4],
-    ["janeDoe", 23, 375, 30, 3],
-    ["edgarAllenPoe", 27, 315, 75, 7],
-    ["georgeWashington", 25, 360, 65, 10],
+    ["cassidyt2", 28, 355, 76],
+    ["johnSmith", 22, 349, 50],
+    ["janeDoe", 23, 375, 30],
+    ["edgarAllenPoe", 27, 315, 75],
+    ["georgeWashington", 25, 360, 65],
 ]
 standard_deviations_list = []
 commits_list = []
@@ -78,6 +78,7 @@ def commits_calculator():
     global commits_list
     print("Commits average is: ", np.average(commits_list))
     print("Commits standard deviation is: ", np.std(commits_list))
+    print("")
     # Standard deviation of commits
     commits_sd = standard_deviations_list[0]
     commit_scores = []
@@ -86,7 +87,7 @@ def commits_calculator():
     # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
         # sd_check_counter = 0.5
-        print("Checking GitHub user: ",github_data[username_accesser][0])
+        print("Checking GitHub user: ", github_data[username_accesser][0])
         if github_data[username_accesser][1] <= np.average(commits_list) + (
             commits_sd * 0.5
         ) and github_data[username_accesser][1] >= np.average(commits_list) - (
@@ -143,6 +144,7 @@ def commits_calculator():
         "/ 5] for teamwork on commits.",
     )
     print("")
+    print("")
 
 
 def added_calculator():
@@ -151,14 +153,14 @@ def added_calculator():
     global added_list
     print("Lines added average is: ", np.average(added_list))
     print("Lines added standard deviation is: ", np.std(added_list))
+    print("")
     # Standard deviation of lines added
     added_sd = standard_deviations_list[1]
     added_scores = []
     username_accesser = 0
     list_length = len(github_data)
-    # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
-        print("Checking GitHub user: ",github_data[username_accesser][0])
+        print("Checking GitHub user: ", github_data[username_accesser][0])
         if github_data[username_accesser][2] <= np.average(added_list) + (
             added_sd * 0.5
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
@@ -215,6 +217,7 @@ def added_calculator():
         "/ 5] for teamwork on lines added.",
     )
     print("")
+    print("")
 
 
 def removed_calculator():
@@ -223,6 +226,7 @@ def removed_calculator():
     global removed_list
     print("Lines removed average is: ", np.average(removed_list))
     print("Lines removed standard deviation is: ", np.std(removed_list))
+    print("")
     # Standard deviation of lines removed
     removed_sd = standard_deviations_list[2]
     # max_sd_multiplier = 2.5
@@ -231,7 +235,7 @@ def removed_calculator():
     list_length = len(github_data)
     # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
-        print("Checking GitHub user: ",github_data[username_accesser][0])
+        print("Checking GitHub user: ", github_data[username_accesser][0])
         if github_data[username_accesser][3] <= np.average(removed_list) + (
             removed_sd * 0.5
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
@@ -287,6 +291,7 @@ def removed_calculator():
         np.average(removed_scores),
         "/ 5] for teamwork on lines removed.",
     )
+    print("")
     print("")
 
 
