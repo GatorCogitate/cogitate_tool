@@ -136,6 +136,7 @@ def commits_calculator():
         "/ 5] for teamwork on commits.",
     )
     print("")
+    print("")
 
 
 def added_calculator():
@@ -208,6 +209,7 @@ def added_calculator():
         np.average(added_scores),
         "/ 5] for teamwork on lines added.",
     )
+    print("")
     print("")
 
 
@@ -282,6 +284,7 @@ def removed_calculator():
         np.average(removed_scores),
         "/ 5] for teamwork on lines removed.",
     )
+    print("")
     print("")
 
 
