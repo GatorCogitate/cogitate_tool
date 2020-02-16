@@ -70,6 +70,7 @@ def commits_calculator():
     global commits_list
     print("Commits average is: ", np.average(commits_list))
     print("Commits standard deviation is: ", np.std(commits_list))
+    print("")
     # Standard deviation of commits
     commits_sd = standard_deviations_list[0]
     commit_scores = []
@@ -143,6 +144,7 @@ def added_calculator():
     global added_list
     print("Lines added average is: ", np.average(added_list))
     print("Lines added standard deviation is: ", np.std(added_list))
+    print("")
     # Standard deviation of lines added
     added_sd = standard_deviations_list[1]
     added_scores = []
@@ -215,6 +217,7 @@ def removed_calculator():
     global removed_list
     print("Lines removed average is: ", np.average(removed_list))
     print("Lines removed standard deviation is: ", np.std(removed_list))
+    print("")
     # Standard deviation of lines removed
     removed_sd = standard_deviations_list[2]
     # max_sd_multiplier = 2.5
