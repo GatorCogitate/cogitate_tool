@@ -151,7 +151,6 @@ def added_calculator():
     added_scores = []
     username_accesser = 0
     list_length = len(github_data)
-    # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
         print("Checking GitHub user: ", github_data[username_accesser][0])
         if github_data[username_accesser][2] <= np.average(added_list) + (
