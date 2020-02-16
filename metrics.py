@@ -3,13 +3,13 @@
 import numpy as np
 
 # github_data is a list containing sample data for our demo
-# github_data uses the pattern ["username", commit_total, lines_added, lines_deleted]
+# github_data uses the pattern ["username", commit_total, lines_added, lines_deleted, issues_opened]
 github_data = [
-    ["cassidyt2", 28, 355, 76],
-    ["johnSmith", 22, 349, 50],
-    ["janeDoe", 23, 375, 30],
-    ["edgarAllenPoe", 27, 315, 75],
-    ["georgeWashington", 25, 360, 65],
+    ["cassidyt2", 28, 355, 76, 2],
+    ["johnSmith", 22, 349, 50, 4],
+    ["janeDoe", 23, 375, 30, 3],
+    ["edgarAllenPoe", 27, 315, 75, 7],
+    ["georgeWashington", 25, 360, 65, 10],
 ]
 standard_deviations_list = []
 commits_list = []
@@ -27,26 +27,27 @@ def standard_deviations():
     global github_data
     global commits_list
     list_length = len(github_data)
-    # while loop that finds the commit totals for each individual team member in
-    # github_data and adds it to the commits_list
+    # While loop that finds the commit totals for each individual team member in
+    # github_data and adds it to the commits_list.
     while commits_counter <= list_length - 1:
-        # print(github_data[commits_counter][1])
         commits_list.append(github_data[commits_counter][1])
         commits_counter += 1
     # Prints the total number of commits in the commits_list for the entire team,
-    # and then calculates the standard deviation using NumPy's std() Function
+    # and then calculates the standard deviation using NumPy's std() Function.
     print("")
     print("The total number of commits is: ", sum(commits_list))
     print("Standard deviation of the commits is: ", np.std(commits_list))
     print("")
-    # global variable to store standard deviations of commits, lines added, and
-    # lines removed
+    # Global variable to store standard deviations of commits, lines added, and
+    # lines removed.
     global standard_deviations_list
-    # adds the standard deviation of commits to the standard_deviations_list
+    # Adds the standard deviation of commits to the standard_deviations_list.
     standard_deviations_list.append(np.std(commits_list))
     # Beginning code for lines added
-    lines_added_counter = 0
     global added_list
+    lines_added_counter = 0
+    # While loop that finds the total lines added for each individual team member
+    # in github_data and adds it to the added_list.
     while lines_added_counter <= list_length - 1:
         added_list.append(github_data[lines_added_counter][2])
         lines_added_counter += 1
@@ -78,7 +79,6 @@ def commits_calculator():
     global commits_list
     print("Commits average is: ", np.average(commits_list))
     print("Commits standard deviation is: ", np.std(commits_list))
-    print("")
     # Standard deviation of commits
     commits_sd = standard_deviations_list[0]
     commit_scores = []
@@ -87,7 +87,7 @@ def commits_calculator():
     # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
         # sd_check_counter = 0.5
-        print("Checking GitHub user: ", github_data[username_accesser][0])
+        print("Checking GitHub user: ",github_data[username_accesser][0])
         if github_data[username_accesser][1] <= np.average(commits_list) + (
             commits_sd * 0.5
         ) and github_data[username_accesser][1] >= np.average(commits_list) - (
@@ -144,7 +144,6 @@ def commits_calculator():
         "/ 5] for teamwork on commits.",
     )
     print("")
-    print("")
 
 
 def added_calculator():
@@ -153,14 +152,14 @@ def added_calculator():
     global added_list
     print("Lines added average is: ", np.average(added_list))
     print("Lines added standard deviation is: ", np.std(added_list))
-    print("")
     # Standard deviation of lines added
     added_sd = standard_deviations_list[1]
     added_scores = []
     username_accesser = 0
     list_length = len(github_data)
+    # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
-        print("Checking GitHub user: ", github_data[username_accesser][0])
+        print("Checking GitHub user: ",github_data[username_accesser][0])
         if github_data[username_accesser][2] <= np.average(added_list) + (
             added_sd * 0.5
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
@@ -217,7 +216,6 @@ def added_calculator():
         "/ 5] for teamwork on lines added.",
     )
     print("")
-    print("")
 
 
 def removed_calculator():
@@ -226,7 +224,6 @@ def removed_calculator():
     global removed_list
     print("Lines removed average is: ", np.average(removed_list))
     print("Lines removed standard deviation is: ", np.std(removed_list))
-    print("")
     # Standard deviation of lines removed
     removed_sd = standard_deviations_list[2]
     # max_sd_multiplier = 2.5
@@ -235,7 +232,7 @@ def removed_calculator():
     list_length = len(github_data)
     # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
-        print("Checking GitHub user: ", github_data[username_accesser][0])
+        print("Checking GitHub user: ",github_data[username_accesser][0])
         if github_data[username_accesser][3] <= np.average(removed_list) + (
             removed_sd * 0.5
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
@@ -292,7 +289,6 @@ def removed_calculator():
         "/ 5] for teamwork on lines removed.",
     )
     print("")
-    print("")
 
 
 def total_team_score_calculator():
@@ -303,8 +299,10 @@ def total_team_score_calculator():
     total_team_score = (
         commits_overall_score + added_overall_score + removed_overall_score
     )
+    # total_team_score = round(total_team_score_calculator, 2)
     print("Altogether, across these three metrics, the team earned a total score of:")
     print("[", total_team_score, "/ 15]")
+    # total_team_score_calculator = str(round(total_team_score_calculator, 2))
     total_team_percent = total_team_score / 15
     total_team_percent = np.around(total_team_percent, decimals=4)
     print("{:.2%}".format(total_team_percent))
