@@ -79,7 +79,7 @@ def commits_calculator():
     # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
         # sd_check_counter = 0.5
-        print("Checking GitHub user: ",github_data[username_accesser][0])
+        print("Checking GitHub user: ", github_data[username_accesser][0])
         if github_data[username_accesser][1] <= np.average(commits_list) + (
             commits_sd * 0.5
         ) and github_data[username_accesser][1] >= np.average(commits_list) - (
@@ -153,7 +153,7 @@ def added_calculator():
     list_length = len(github_data)
     # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
-        print("Checking GitHub user: ",github_data[username_accesser][0])
+        print("Checking GitHub user: ", github_data[username_accesser][0])
         if github_data[username_accesser][2] <= np.average(added_list) + (
             added_sd * 0.5
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
@@ -228,7 +228,7 @@ def removed_calculator():
     list_length = len(github_data)
     # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
-        print("Checking GitHub user: ",github_data[username_accesser][0])
+        print("Checking GitHub user: ", github_data[username_accesser][0])
         if github_data[username_accesser][3] <= np.average(removed_list) + (
             removed_sd * 0.5
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
