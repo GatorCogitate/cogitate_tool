@@ -11,7 +11,7 @@ for commit in RepositoryMining(path).traverse_commits():
             " added to {}".format(m.filename),
             "lines of code {}".format(m.added)
         )
-        
+
 print("")
 
 for commit in RepositoryMining(path).traverse_commits():
