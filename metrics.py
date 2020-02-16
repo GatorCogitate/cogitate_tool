@@ -69,7 +69,7 @@ def commits_calculator():
     global standard_deviations_list
     global commits_list
     print("Commits average is: ", np.average(commits_list))
-    print("Commits SD is: ", np.std(commits_list))
+    print("Commits standard deviation is: ", np.std(commits_list))
     # Standard deviation of commits
     commits_sd = standard_deviations_list[0]
     commit_scores = []
@@ -78,13 +78,7 @@ def commits_calculator():
     # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
         # sd_check_counter = 0.5
-        # print("Checking GitHub user: ",github_data[username_accesser][0])
-        # print("Commits average is: ",np.average(commits_list))
-        # print("GitHub user ", github_data[username_accesser][0], " made ", github_data[username_accesser][1], " commits.")
-        # print("Average + 2.0 SD's is: ", np.average(commits_list)+(commits_sd*2.0))
-        # print("Average - 2.0 SD's is: ", np.average(commits_list)-(commits_sd*2.0))
-        # print("")
-        # print("")
+        print("Checking GitHub user: ",github_data[username_accesser][0])
         if github_data[username_accesser][1] <= np.average(commits_list) + (
             commits_sd * 0.5
         ) and github_data[username_accesser][1] >= np.average(commits_list) - (
@@ -148,27 +142,15 @@ def added_calculator():
     global standard_deviations_list
     global added_list
     print("Lines added average is: ", np.average(added_list))
-    print("Commits SD is: ", np.std(added_list))
-    # Standard deviation of commits
-    added_sd = standard_deviations_list[0]
+    print("Lines added standard deviation is: ", np.std(added_list))
     # Standard deviation of lines added
     added_sd = standard_deviations_list[1]
-    # Standard deviation of lines removed
-    removed_sd = standard_deviations_list[2]
-    # max_sd_multiplier = 2.5
     added_scores = []
     username_accesser = 0
     list_length = len(github_data)
     # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
-        # sd_check_counter = 0.5
-        # print("Checking GitHub user: ",github_data[username_accesser][0])
-        # print("Lines added average is: ",np.average(added_list))
-        # print("GitHub user ", github_data[username_accesser][0], " made ", github_data[username_accesser][2], " additions.")
-        # print("Average + 2.0 SD's is: ", np.average(added_list)+(added_sd*2.0))
-        # print("Average - 2.0 SD's is: ", np.average(added_list)-(added_sd*2.0))
-        # print("")
-        # print("")
+        print("Checking GitHub user: ",github_data[username_accesser][0])
         if github_data[username_accesser][2] <= np.average(added_list) + (
             added_sd * 0.5
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
@@ -232,7 +214,7 @@ def removed_calculator():
     global standard_deviations_list
     global removed_list
     print("Lines removed average is: ", np.average(removed_list))
-    print("Lines removed SD is: ", np.std(removed_list))
+    print("Lines removed standard deviation is: ", np.std(removed_list))
     # Standard deviation of lines removed
     removed_sd = standard_deviations_list[2]
     # max_sd_multiplier = 2.5
@@ -241,14 +223,7 @@ def removed_calculator():
     list_length = len(github_data)
     # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
-        # sd_check_counter = 0.5
-        # print("Checking GitHub user: ",github_data[username_accesser][0])
-        # print("Lines added average is: ",np.average(removed_list))
-        # print("GitHub user ", github_data[username_accesser][0], " made ", github_data[username_accesser][2], " additions.")
-        # print("Average + 2.0 SD's is: ", np.average(removed_list)+(removed_sd*2.0))
-        # print("Average - 2.0 SD's is: ", np.average(removed_list)-(removed_sd*2.0))
-        # print("")
-        # print("")
+        print("Checking GitHub user: ",github_data[username_accesser][0])
         if github_data[username_accesser][3] <= np.average(removed_list) + (
             removed_sd * 0.5
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
