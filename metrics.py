@@ -2,7 +2,8 @@
 
 import numpy as np
 
-# Uses the patter ["username", commit_total, lines_added, lines_deleted, issues_opened]
+# github_data is a list containing sample data for our demo
+# github_data uses the pattern ["username", commit_total, lines_added, lines_deleted, issues_opened]
 github_data = [
     ["cassidyt2", 28, 355, 76, 2],
     ["johnSmith", 22, 349, 50, 4],
@@ -20,6 +21,7 @@ removed_overall_score = 0
 
 
 def standard_deviations():
+    """Function to calculate the standard_deviations of commits, lines added, and lines removed"""
     commits_counter = 0
     global github_data
     global commits_list
