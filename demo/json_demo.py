@@ -6,14 +6,11 @@ import os
 def main():
     """Pull data from a provided json, and write it back to the json."""
     user_data_dict = get_dict_from_json_file("demofile")
-    print("Dictionary:")
+    print("Dictionary:\n")
     for username in user_data_dict:
-        print(username + ":", user_data_dict[username])
-    print()
+        print(username + ":", user_data_dict[username], "\n")
     json_format_string = write_dict_to_json_file(user_data_dict, "demofile")
-    print("Json-formatted string:")
-    print(json_format_string)
-    print()
+    print("Json-formatted string:", "\n", json_format_string, "\n")
 
 
 def get_dict_from_json_file(json_file_name):
@@ -42,7 +39,7 @@ def write_dict_to_json_file(user_data_dict, json_file_name):
 
 def append_user_to_json(user_data_dict, to_add, json_file_name):
     """Append data to the dictionary and write it to json"""
-    dict.append(to_add)
+    user_data_dict.append(to_add)
     return write_dict_to_json_file(user_data_dict, json_file_name)
 
 
