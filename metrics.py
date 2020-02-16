@@ -3,13 +3,13 @@
 import numpy as np
 
 # github_data is a list containing sample data for our demo
-# github_data uses the pattern ["username", commit_total, lines_added, lines_deleted, issues_opened]
+# github_data uses the pattern ["username", commit_total, lines_added, lines_deleted]
 github_data = [
-    ["cassidyt2", 28, 355, 76, 2],
-    ["johnSmith", 22, 349, 50, 4],
-    ["janeDoe", 23, 375, 30, 3],
-    ["edgarAllenPoe", 27, 315, 75, 7],
-    ["georgeWashington", 25, 360, 65, 10],
+    ["cassidyt2", 28, 355, 76],
+    ["johnSmith", 22, 349, 50],
+    ["janeDoe", 23, 375, 30],
+    ["edgarAllenPoe", 27, 315, 75],
+    ["georgeWashington", 25, 360, 65],
 ]
 standard_deviations_list = []
 commits_list = []
