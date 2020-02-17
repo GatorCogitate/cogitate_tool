@@ -13,6 +13,6 @@ for commit in RepositoryMining("https://github.com/lussierc/simplePerformanceExp
     print("--- Commit Date: ", commit.author_date)
 
     for modified_file in commit.modifications:
-        print("--- File Modified: ", modified_file.filename)
+        print("--- File Modified: ", modified_file.new_path)
     # for modified_file in commit.modifications:
     #     print(commit.has + "Modified file" + modified_file.filename)
