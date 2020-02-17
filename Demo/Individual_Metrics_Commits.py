@@ -16,10 +16,15 @@ all_branches = repo.get_branches()
 for branch in all_branches:
     print(branch)
     all_commits = repo.get_commits()
+    all_comments = repo.get_comments()
     for commit in all_commits:
         print(commit.commit.author)
+        print(commit.commit.author.date)
+        print(commit.files)
+        print(commit.commit.message)
         print("")
         print("")
+
 
 
 def get_repo_commits():
