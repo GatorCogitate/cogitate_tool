@@ -6,6 +6,7 @@ from fastapi import FastAPI
 
 
 def get_repo_commits_py_github():
+    """Method to get commit information using pygithub"""
     user_token = input("Enter User Token: ")
     user = Github(user_token)
     print(user.get_user().login)
