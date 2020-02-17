@@ -1,24 +1,16 @@
 """FastAPI Demo designed to accept user credentials and display GitHub info."""
 from github import Github
-from git import Repo
 from pydriller import RepositoryMining, GitRepository
 from pydriller.domain.commit import ModificationType
 from fastapi import FastAPI
-from github import Github
 
 # First create a Github instance using an access token
 
 user_token = input("Enter User Token: ")
-print(user_token)
 user = Github(user_token)
-print(user)
 print(user.get_user().login)
 username = user.get_user().login
-repo_name = input("What is the repo name?")
 repo = user.get_repo("GatorCogitate/cogitate_tool")
-open_issues = repo.get_issues(state="open")
-# for issue in open_issues:
-#     print(issue)
 allcommits = repo.get_commits()
 for commit in allcommits:
     print(commit.author)
