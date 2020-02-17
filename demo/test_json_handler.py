@@ -5,9 +5,7 @@ import os
 def test_write_dict_to_json():
     """Ensure a dictionary is written to a specified file."""
     test_dictionary = {"username": "test_data"}
-    json_string = json_handler.write_dict_to_json_file(test_dictionary, "testfile")
-    for key in test_dictionary.keys():
-        assert key in json_string  # every expected user is in output
+    json_handler.write_dict_to_json_file(test_dictionary, "testfile")
     assert "testfile.json" in os.listdir("./data/")  # file is created
     with open("./data/testfile.json") as file:
         file_contents = file.read()
