@@ -33,7 +33,7 @@ def CL_interface():
             		}
 			],
 			'validate': lambda answer: 'You must choose at least one.' \
-            	if len(answer) == 0 else True
+            			if len(answer) == 0 else True
     	},
 		{
 			'type': 'password',
