@@ -2,44 +2,38 @@ from git import Repo
 from pydriller import RepositoryMining, GitRepository
 from pydriller.domain.commit import ModificationType
 
+
+def print_in_table(dictionary):
+    # print headings
+    print("Username", "\t +", "\t -", "\t Total")
+    # prints hashmap content
+    for key in dictionary:
+        print(key, "\t", dictionary[key][0], "\t", dictionary[key][1], "\t", dictionary[key][2],)
+
+
+def get_commit_lines(repo_path):
+    # creates a hashmap where the key is the authors username
+    data_list = {}
+    # goes through all the commits in the current branch of the repo
+    for commit in RepositoryMining(repo_path).traverse_commits():
+        author = commit.author.name
+        # goes through the files in the current commit
+        for m in commit.modifications:
+            added_lines = m.added
+            removed_lines = m.removed
+            total_lines = added_lines - removed_lines
+            # checks if the author is already in the list
+            if author in data_list:
+                # adds the current information to the existing ones
+                data_list[author][0] += added_lines
+                data_list[author][1] += removed_lines
+                data_list[author][2] += total_lines
+            else:
+                # creates a new kay and add the data
+                data_list[author] = [added_lines, removed_lines, total_lines]
+    return data_list
+
+# takes input for the repository local path NOT URL
 path = input("Enter the path to the repo : ")
-data_list = {"keys":["+", "-", "Total"]}
-# print(data_list)
-# appended_list = ["Noor", 7, 9, 10]
-# data_list.append(appended_list)
-# appended_list = ["Elian", 10, 16, 22]
-# data_list.append(appended_list)
-# # print(data_list)
-# # print(len(data_list))
-# for i in range(len(data_list)):
-#     for j in range(len(data_list[0])):
-#         print(data_list[i][j], "\t", end="", flush=True)
-#     print("")
-
-
-
-for commit in RepositoryMining(path).traverse_commits():
-    author = commit.author.name
-    print(author)
-    for m in commit.modifications:
-        added_lines = m.added
-        removed_lines = m.removed
-        total_lines = added_lines - removed_lines
-        if author in data_list:
-        # "Author {}".format(commit.author.name),
-        # " added to {}".format(m.filename),
-            data_list[author][0] += added_lines
-            data_list[author][1] += removed_lines
-            data_list[author][2] += total_lines
-        else:
-            data_list[author] = [added_lines, removed_lines, total_lines]
-print(data_list)
-# print("")
-
-# for commit in RepositoryMining(path).traverse_commits():
-#     for m in commit.modifications:
-#         print(
-#             "Author {}".format(commit.author.name),
-#             " removed from {}".format(m.filename),
-#             "lines of code {}".format(m.removed)
-#         )
+data = get_commit_lines(path)
+print_in_table(data)
