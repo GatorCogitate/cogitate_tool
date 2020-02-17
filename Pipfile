@@ -4,8 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-prompt-toolkit = "==1.0.14"
-pyinquirer = "*"
 
 [dev-packages]
 black = "*"
@@ -15,6 +13,8 @@ pydocstyle = "*"
 pytest = "*"
 pytest-cov = "*"
 pydriller = "*"
+prompt-toolkit = "==1.0.14"
+pyinquirer = "*"
 
 [requires]
 python_version = "3.7"
