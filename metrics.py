@@ -319,10 +319,8 @@ def total_team_score_calculator():
     total_team_score = (
         commits_overall_score + added_overall_score + removed_overall_score
     )
-    # total_team_score = round(total_team_score_calculator, 2)
     print("Altogether, across these three metrics, the team earned a total score of:")
     print("[", total_team_score, "/ 15]")
-    # total_team_score_calculator = str(round(total_team_score_calculator, 2))
     total_team_percent = total_team_score / 15
     total_team_percent = np.around(total_team_percent, decimals=4)
     print("{:.2%}".format(total_team_percent))
