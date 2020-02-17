@@ -244,11 +244,9 @@ def removed_calculator():
     print("Lines removed standard deviation is: ", np.std(removed_list))
     # Standard deviation of lines removed
     removed_sd = standard_deviations_list[2]
-    # max_sd_multiplier = 2.5
     removed_scores = []
     username_accesser = 0
     list_length = len(github_data)
-    # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
         print("Checking GitHub user: ", github_data[username_accesser][0])
         # This if/else calculates the amount of code removed to the,
