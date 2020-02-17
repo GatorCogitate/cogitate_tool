@@ -1,8 +1,10 @@
-"""FastAPI Demo designed to accept user cedentials and display GitHub info."""
+"""FastAPI Demo designed to accept user credentials and display GitHub info."""
 from github import Github
 from git import Repo
 from pydriller import RepositoryMining, GitRepository
 from pydriller.domain.commit import ModificationType
+from fastapi import FastAPI
+from github import Github
 
 # First create a Github instance using an access token
 
@@ -21,9 +23,6 @@ allcommits = repo.get_commits()
 for commit in allcommits:
     print(commit.author)
 
-"""FastAPI Demo designed to accept user cedentials and display GitHub info."""
-from fastapi import FastAPI
-from github import Github
 
 # First create a Github instance using an access token
 app = FastAPI()
@@ -84,6 +83,7 @@ def get_repo_info(repo_index):
 
 
 def get_repo_commits():
+    """ """
     path = input("Enter the path to the repo : ")
 
     for commit in RepositoryMining(path).traverse_commits():
