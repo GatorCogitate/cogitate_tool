@@ -99,9 +99,7 @@ def commits_calculator():
     commit_scores = []
     username_accesser = 0
     list_length = len(github_data)
-    # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
-        # sd_check_counter = 0.5
         print("Checking GitHub user: ", github_data[username_accesser][0])
         if github_data[username_accesser][1] <= np.average(commits_list) + (
             commits_sd * 0.5
@@ -159,6 +157,7 @@ def commits_calculator():
         "/ 5] for teamwork on commits.",
     )
     print("")
+    return commit_scores
 
 
 def added_calculator():
