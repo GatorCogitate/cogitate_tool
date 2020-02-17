@@ -12,7 +12,7 @@ github_data = [
     ["George_Washington", 25, 360, 65, 10],
     ["Alexander_Hamilton", 41, 530, 100, 230],
     ["Karl_Marx", 0, 0, 0, 400],
-    ["Julius_Caesar", 25, 310, 68, 1]
+    ["Julius_Caesar", 25, 310, 68, 1],
 ]
 standard_deviations_list = []
 commits_list = []
@@ -21,7 +21,6 @@ removed_list = []
 commits_overall_score = 0
 added_overall_score = 0
 removed_overall_score = 0
-total_team_score = 0
 
 
 def standard_deviations():
@@ -173,7 +172,7 @@ def added_calculator():
     username_accesser = 0
     list_length = len(github_data)
     # for ab in range(len(github_data)):
-    for ab in range(len(github_data)):
+    for cd in range(len(github_data)):
         print("Checking GitHub user: ", github_data[username_accesser][0])
         # This if/else calculates the amount added to the standard deviation,
         # in order to grade the team.
@@ -245,12 +244,10 @@ def removed_calculator():
     print("Lines removed standard deviation is: ", np.std(removed_list))
     # Standard deviation of lines removed
     removed_sd = standard_deviations_list[2]
-    # max_sd_multiplier = 2.5
     removed_scores = []
     username_accesser = 0
     list_length = len(github_data)
-    # for ab in range(len(github_data)):
-    for ab in range(len(github_data)):
+    for ef in range(len(github_data)):
         print("Checking GitHub user: ", github_data[username_accesser][0])
         # This if/else calculates the amount of code removed to the,
         # standard deviation in order to grade the team.
@@ -322,10 +319,27 @@ def total_team_score_calculator():
     global removed_overall_score
     # Performs a calculation to determine how the team performed
     # as a whole across the three metrics
-    global total_team_score
     total_team_score = (
         commits_overall_score + added_overall_score + removed_overall_score
     )
+    # This calculates whether the team is deserving of a bonus point.
+    # Understanding that commit's may not be entirely indicative
+    # of individual contribution, this measure is meant to
+    # incentivize keeping the ratio of commits:lines_added
+    # no more than 1:2.
+    bonus_point = 0
+    division_counter = 0
+    global github_data
+    for gh in range(len(github_data)):
+        if github_data[division_counter][1] == 0:
+            division_counter += 1
+        elif github_data[division_counter][1] / github_data[division_counter][2] <= 0.5:
+            bonus_point += 1
+            division_counter += 1
+    if bonus_point >= len(github_data) - 1:
+        total_team_score = total_team_score + 1
+    else:
+        pass
     # The following five lines of code provide the scoring information
     # output to the user.
     print("Altogether, across these three metrics, the team earned a total score of:")
