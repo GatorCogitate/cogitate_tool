@@ -29,7 +29,7 @@ def get_commit_lines(repo_path):
                 data_list[author][1] += removed_lines
                 data_list[author][2] += total_lines
             else:
-                # creates a new kay and add the data
+                # creates a new key and add the data
                 data_list[author] = [added_lines, removed_lines, total_lines]
     return data_list
 
