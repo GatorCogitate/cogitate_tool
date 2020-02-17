@@ -326,7 +326,11 @@ def total_team_score_calculator():
     # Understanding that commit's may not be entirely indicative
     # of individual contribution, this measure is meant to
     # incentivize keeping the ratio of commits:lines_added
-    # no more than 1:2.
+    # no more than 1:2. This also allows for one team member
+    # to have contributed nothing, or have a higher ratio, and for
+    # the team to still receive the bonus point. This is to
+    # understand that teams may have members that do not contribute,
+    # at no fault to teamwork dynamics.
     bonus_point = 0
     division_counter = 0
     global github_data
