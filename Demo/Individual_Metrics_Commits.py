@@ -17,7 +17,7 @@ for branch in all_branches:
     print(branch)
     all_commits = repo.get_commits()
     for commit in all_commits:
-        print(commit.author)
+        print(commit.commit.author)
         print("")
         print("")
 
