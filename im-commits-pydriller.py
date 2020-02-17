@@ -30,7 +30,6 @@ def main_method():
     # pylint: disable=input-builtin
     """Use to call previous functions in case of running through terminal."""
 
-    get_repo_commits_py_github()
     get_repo_commits_py_driller()
 
 
