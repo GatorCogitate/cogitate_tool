@@ -313,12 +313,17 @@ def removed_calculator():
 
 def total_team_score_calculator():
     """This will provide the overall score for how the team worked together"""
+    # Adding the needed global variables for this function
     global commits_overall_score
     global added_overall_score
     global removed_overall_score
+    # Performs a calculation to determine how the team performed
+    # as a whole across the three metrics
     total_team_score = (
         commits_overall_score + added_overall_score + removed_overall_score
     )
+    # The following five lines of code provide the scoring information
+    # output to the user.
     print("Altogether, across these three metrics, the team earned a total score of:")
     print("[", total_team_score, "/ 15]")
     total_team_percent = total_team_score / 15
@@ -327,6 +332,10 @@ def total_team_score_calculator():
 
 
 if __name__ == "__main__":
+    """This main method brings all the functions together"""
+    # Sequential calls of the functions declared above to perform
+    # the necessary calculations and provide the user with an overall
+    # team evaluation.
     standard_deviations()
     commits_calculator()
     added_calculator()
