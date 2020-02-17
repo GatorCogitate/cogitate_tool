@@ -1,6 +1,6 @@
 """Tests to ensure that the functions in the demonstration work."""
 
-from demo import individual_metrics_commits
+from Demo import individual_metrics_commits
 
 
 def test_1():

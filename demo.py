@@ -1,33 +1,11 @@
-"""FastAPI Demo designed to accept user credentials and display GitHub info."""
+"""Demo designed to show information about Github repositories using PyDriller."""
 from github import Github
 from pydriller import RepositoryMining, GitRepository
 from pydriller.domain.commit import ModificationType
 from fastapi import FastAPI
 
-# First create a Github instance using an access token
 
-user_token = input("Enter User Token: ")
-user = Github(user_token)
-print(user.get_user().login)
-username = user.get_user().login
-repo = user.get_repo("GatorCogitate/cogitate_tool")
-allcommits = repo.get_commits()
-all_branches = repo.get_branches()
-for branch in all_branches:
-    print(branch)
-    all_commits = repo.get_commits()
-    all_comments = repo.get_comments()
-    for commit in all_commits:
-        print(commit.commit.author)
-        print(commit.commit.author.date)
-        print(commit.files)
-        print(commit.commit.message)
-        print("")
-        print("")
-
-
-
-def get_repo_commits():
+def get_repo_commits_py_driller():
     """Function to get repository commits information."""
     path = input("Enter the path to the repo : ")
 
@@ -52,11 +30,8 @@ def main_method():
     # pylint: disable=input-builtin
     """Use to call previous functions in case of running through terminal."""
 
-    # get_repo_list()
-    repoIndex = int(input("Please enter an index number to show information:"))
-    # print(get_repo_info(repoIndex))
-
-    get_repo_commits()
+    get_repo_commits_py_github()
+    get_repo_commits_py_driller()
 
 
 main_method()
