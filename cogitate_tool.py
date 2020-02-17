@@ -16,25 +16,25 @@ def CL_interface():
 
 	# Prompt for user
 	questions = [
-    	{
+    		{
 			'type': 'checkbox',
 			'message': 'Informative messages',
 			'name': 'name_of_the_dictionary',
 			'choices': [
-				Separator('= Question 1 ='),
-            		{
-                		'name': 'Option1'
-            		},
-            		{
-                		'name': 'Option2'
-            		},
-            		{
-                		'name': 'Option3'
-            		}
+					Separator('= Question 1 ='),
+            			{
+                			'name': 'Option1'
+            			},
+            			{
+                			'name': 'Option2'
+            			},
+            			{
+                			'name': 'Option3'
+            			}
 			],
 			'validate': lambda answer: 'You must choose at least one.' \
             			if len(answer) == 0 else True
-    	},
+    		},
 		{
 			'type': 'password',
 			'message': 'Please enter your password',
