@@ -15,24 +15,27 @@ def test_standard_deviations():
 
 def test_commits_calculator():
     """Test the commits calc. function"""
+    assert metrics.commits_overall_score == 0
     metrics.commits_calculator()
-    assert metrics.commits_sd > 0
-    assert len(metrics.commit_scores) >= 0
+    # assert metrics.commits_sd > 0
+    assert metrics.commits_overall_score >= 0
 
 def test_added_calculator():
     """Tests the lines added calculator"""
+    assert metrics.added_overall_score == 0
     metrics.added_calculator()
-    assert metrics.added_sd > 0
-    assert len(metrics.added_scores) >= 0
+    # assert metrics.added_sd > 0
+    assert metrics.added_overall_score >= 0
 
 def test_removed_calculator():
     """Tests the lines removed calculator"""
+    assert metrics.removed_overall_score == 0
     metrics.removed_calculator()
-    assert metrics.removed_sd > 0
-    assert len(metrics.removed_scores) >= 0
+    # assert metrics.removed_sd > 0
+    assert metrics.removed_overall_score >= 0
 
 def test_total_team_score_calculator():
     """Tests the total team calculator"""
-    metrics.test_total_team_score_calculator()
+    assert metrics.total_team_score == 0
+    metrics.total_team_score_calculator()
     assert metrics.total_team_score >= 0
-    assert metrics.total_team_percent >= 0
