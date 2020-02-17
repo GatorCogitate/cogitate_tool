@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+numpy = "*"
+
+[dev-packages]
+black = "*"
+pylint = "*"
+flake8 = "*"
+pydocstyle = "*"
+pytest = "*"
+pytest-cov = "*"
+
+[requires]
+python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
+
+[scripts]
+cover = "./scripts/cover.sh"
+lint = "./scripts/lint.sh"
+test = "./scripts/test.sh"
