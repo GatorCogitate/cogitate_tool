@@ -32,5 +32,10 @@
             "PR 2 to which koscinskic contributed",
             "PR 3 to which koscinskic contributed"
         ]
+    },
+    "testuser": {
+        "commits": [],
+        "issues": [],
+        "pull_requests": []
     }
 }

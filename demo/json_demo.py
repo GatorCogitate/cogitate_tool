@@ -11,6 +11,11 @@ def main():
         print(username + ":", user_data_dict[username], "\n")
     json_format_string = write_dict_to_json_file(user_data_dict, "demofile")
     print("Json-formatted string:", "\n", json_format_string, "\n")
+    new_user = {"testuser": {"commits": [], "issues": [], "pull_requests": []}}
+    json_format_string = add_user_to_json(
+        user_data_dict, new_user, "testuser", "demofile"
+    )
+    print("Json-formatted string:", "\n", json_format_string, "\n")
 
 
 def get_dict_from_json_file(json_file_name):
@@ -37,9 +42,9 @@ def write_dict_to_json_file(user_data_dict, json_file_name):
     return json_string
 
 
-def append_user_to_json(user_data_dict, to_add, json_file_name):
+def add_user_to_json(user_data_dict, to_add, key_to_add, json_file_name):
     """Append data to the dictionary and write it to json"""
-    user_data_dict.append(to_add)
+    user_data_dict[key_to_add] = to_add[key_to_add]
     return write_dict_to_json_file(user_data_dict, json_file_name)
 
 
