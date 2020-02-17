@@ -172,6 +172,8 @@ def added_calculator():
     # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
         print("Checking GitHub user: ",github_data[username_accesser][0])
+        # This if/else calculates the amount added to the standard deviation,
+        # in order to grade the team.
         if github_data[username_accesser][2] <= np.average(added_list) + (
             added_sd * 0.5
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
@@ -218,6 +220,8 @@ def added_calculator():
             username_accesser += 1
     global added_overall_score
     added_overall_score = np.average(added_scores)
+        # These print statments print out the scores for the amount of code the team,
+        # added
     print("")
     print("Each users scores are listed below: ")
     print(added_scores)
@@ -245,6 +249,8 @@ def removed_calculator():
     # for ab in range(len(github_data)):
     for ab in range(len(github_data)):
         print("Checking GitHub user: ",github_data[username_accesser][0])
+                # This if/else calculates the amount of code removed to the,
+                # standard deviation in order to grade the team.
         if github_data[username_accesser][3] <= np.average(removed_list) + (
             removed_sd * 0.5
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
@@ -291,6 +297,8 @@ def removed_calculator():
             username_accesser += 1
     global removed_overall_score
     removed_overall_score = np.average(removed_scores)
+    # These print statments print out the scores for the amount of code the team,
+    # removed.
     print("")
     print("Each users scores are listed below: ")
     print(removed_scores)
