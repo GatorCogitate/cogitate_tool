@@ -10,9 +10,6 @@ github_data = [
     ["janeDoe", 23, 375, 30, 3],
     ["edgarAllenPoe", 27, 315, 75, 7],
     ["georgeWashington", 25, 360, 65, 10],
-    ["alexanderHamilton", 41, 530, 100, 230],
-    ["karlMarx", 0, 0, 0, 400],
-    ["juliusCaesar", 25, 310, 68, 1]
 ]
 standard_deviations_list = []
 commits_list = []
