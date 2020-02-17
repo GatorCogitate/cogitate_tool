@@ -136,9 +136,9 @@ def commits_calculator():
             commit_scores.append(2)
             username_accesser += 1
         elif github_data[username_accesser][1] <= np.average(commits_list) + (
-            commits_sd * 2.5
+            commits_sd * 2.25
         ) and github_data[username_accesser][1] >= np.average(commits_list) - (
-            commits_sd * 2.5
+            commits_sd * 2.25
         ):
             print("appending 1 to commit_scores list")
             commit_scores.append(1)
@@ -210,9 +210,9 @@ def added_calculator():
             added_scores.append(2)
             username_accesser += 1
         elif github_data[username_accesser][2] <= np.average(added_list) + (
-            added_sd * 2.5
+            added_sd * 2.25
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
-            added_sd * 2.5
+            added_sd * 2.25
         ):
             print("appending 1 to added_scores list")
             added_scores.append(1)
@@ -287,9 +287,9 @@ def removed_calculator():
             removed_scores.append(2)
             username_accesser += 1
         elif github_data[username_accesser][3] <= np.average(removed_list) + (
-            removed_sd * 2.5
+            removed_sd * 2.25
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
-            removed_sd * 2.5
+            removed_sd * 2.25
         ):
             print("appending 1 to removed_scores list")
             removed_scores.append(1)
