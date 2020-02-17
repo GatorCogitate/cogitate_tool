@@ -33,7 +33,7 @@ def get_commit_lines(repo_path):
                 data_list[author] = [added_lines, removed_lines, total_lines]
     return data_list
 
-# takes input for the repository local path NOT URL
+# takes input for the repository local path OR URL
 path = input("Enter the path to the repo : ")
 data = get_commit_lines(path)
 print_in_table(data)
