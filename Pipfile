@@ -25,5 +25,3 @@ python_version = "3.7"
 allow_prereleases = true
 
 [scripts]
-lint = "./scripts/lint.sh"
-test = "./scripts/test.sh"
