@@ -17,7 +17,7 @@ for commit in allcommits:
 
 
 def get_repo_commits():
-    """ """
+    """Function to get repository commits information."""
     path = input("Enter the path to the repo : ")
 
     for commit in RepositoryMining(path).traverse_commits():
@@ -25,7 +25,6 @@ def get_repo_commits():
             print(
                 "Author {}".format(commit.author.name),
                 " added to {}".format(m.filename),
-                "lines of code {}".format(m.added),
             )
 
     print("")
@@ -35,7 +34,6 @@ def get_repo_commits():
             print(
                 "Author {}".format(commit.author.name),
                 " removed from {}".format(m.filename),
-                "lines of code {}".format(m.removed),
             )
 
 
@@ -50,6 +48,4 @@ def main_method():
     get_repo_commits()
 
 
-choice = input("call main? (y = yes/ n = no)")
-if choice == "y":
-    main_method()
+main_method()
