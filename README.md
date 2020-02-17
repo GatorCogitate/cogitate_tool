@@ -4,7 +4,7 @@
 
 After pulling the repo, use `pipenv shell` in `cogitate_tool/` to enter the virtual
 environment. Use `exit` to exit. Under the virtual environment, use
-`pipenv install package_name` to install new packages.
+`pipenv install <package_name> --dev` to install new packages.
 
 ### 1. File Structure
 
@@ -31,4 +31,4 @@ The [homepage](https://github.com/CITGuru/PyInquirer) for `PyInquirer`. And a
 
 The available attributes can be found at their homepage.
 
-### PyDriller
+### 3. PyDriller
