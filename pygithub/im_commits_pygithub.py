@@ -1,26 +1,27 @@
 """Demo designed to find and store information about PyGithub."""
 from github import Github
+import pprint
 
 test_dict = {}
 
 
 def print_dictionary(dictionary):
-    """Method to print out the hash map."""
+    """Method to print out the dictionary."""
     # print headings
-    print("Branch", "\t Author", "\t Time", "\t Files", "\t Message")
-    # prints hashmap content
+    # print("Branch", "\t Author", "\t Time", "\t Files", "\t Message")
+    # prints dictionary content
     # for key in dictionary:
-
+    pp = pprint.PrettyPrinter(depth=9)
     for key, _ in dictionary.items():
-        print(key)
+        pp.pprint(key)
         for items in dictionary[key]:
             for item in items:
-                print("\t" + str(item) + "\t")
+                pp.pprint(str(item))
             # print("\t" + str(item))
 
 
 def get_repo_commits_pygithub(user):
-    """Method to get commit information using pygithub"""
+    """Method to get commit information using pygithub."""
 
     username = user.get_user().login
     print(username)
@@ -31,7 +32,7 @@ def get_repo_commits_pygithub(user):
 
     for branch in all_branches:
         # Create an empty list.
-        data_list = list()
+        data_list = []
         all_commits = repo.get_commits()
         all_comments = repo.get_comments()
         print(branch)
@@ -54,4 +55,4 @@ if __name__ == "__main__":
     user = Github(user_token)
 
     dictionary = get_repo_commits_pygithub(user)
-    output_hash_map(dictionary)
+    print_dictionary(dictionary)
