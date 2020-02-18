@@ -5,6 +5,6 @@ from find_tests import commits_to_testing
 def test_read_file_populates_data_0():
     """Checks that the size of the input variable is correct."""
     commit_author_list = []
-    assert len(test_commits.commit_author_list) != 0
-    test_commits.main()
-    assert len(test_commits.commit_author_list) != 0
+    assert len(commits_to_testing.commit_author_list) != 0
+    commits_to_testing.main()
+    assert len(commits_to_testing.commit_author_list) != 0
