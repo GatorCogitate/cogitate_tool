@@ -32,7 +32,7 @@ def create_user(user_token):
 
 @app.get("/repo_list")
 def get_repo_list():
-    """Initializes list the users repositories' names and counts them."""
+    """Initialize list the users repositories' names and counts them."""
     # pylint: disable=global-statement
     print("Creating list of the user's repositories...")
     repo_list = []
@@ -50,10 +50,12 @@ def get_repo_list():
 
 @app.get("/org_repo_list")
 def get_org_repo_list(repo_index):
-    """Initializes list the users repositories' names and counts the number of them."""
+    """Initialize list the users repositories' \
+    names and counts their number."""
     # pylint: disable=global-statement
     global current_user_account
-    # current_repo = current_user_account.get_user().get_repos()[int(repo_index)]
+    # current_repo = current_user_account.get_user()
+    #               .get_repos()[int(repo_index)]
     # commit_list = []
     # count = 0
     # Iterates through the user's repositories and populates them into a list
@@ -73,9 +75,13 @@ def get_org_repo_list(repo_index):
 
 @app.get("/branches_list")
 def get_repo_info(repo_index):
-    """Please enter the number of the repository from the previous list to show information."""
+    """Please enter the number of the repository from\
+    the previous list to show information."""
     # pylint: disable=global-statement
-    print("Finding the number of branches in the repository and their names...")
+    print(
+        "Finding the branches in the repository \
+    and their names..."
+    )
     global current_user_account
     # isolates a single repo in the user's Github to find the branches
     current_repo = current_user_account.get_user().get_repos()[int(repo_index)]
@@ -83,7 +89,8 @@ def get_repo_info(repo_index):
     branches_list = current_repo.get_branches()
     branches_names = []
     count = 0
-    # counts the number of branches in the repo, adds each branch name to a list
+    # counts the number of branches in the repo
+    # adds each branch name to a list
     for branch in branches_list:
         # print(branch.name)
         count = count + 1
@@ -111,7 +118,10 @@ def main_method():
     get_repo_list()
     repoIndex = int(input("Please enter an index number to show information:"))
     print("Accessing repository index based on user-provided value...")
-    print("Printing the repository information based on the user-provided value...")
+    print(
+        "Printing the repository information based on \
+        the user-provided value..."
+    )
     print(get_repo_info(repoIndex))
 
 

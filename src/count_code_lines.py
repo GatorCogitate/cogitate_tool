@@ -24,7 +24,8 @@ def print_in_table(dictionary):
 
 
 def get_commit_lines(repo_path):
-    """Method to obtain the number of lines that were added or deleted."""
+    """Return the number of lines that were added or deleted\
+    as a dictionary."""
     data_list = {}
     # creates a hashmap where the key is the authors username
     # goes through all the commits in the current branch of the repo
@@ -48,10 +49,12 @@ def get_commit_lines(repo_path):
 
 
 def main():
+    """Call other functions in this module asking for user input."""
     # takes input for the repository local path OR URL
     PATH_REPO = input("Enter the path to the repo : ")
     DATA_LINES = get_commit_lines(PATH_REPO)
     print_in_table(DATA_LINES)
+
 
 if __name__ == "__main__":
     main()
