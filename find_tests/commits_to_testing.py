@@ -1,4 +1,3 @@
-
 # Class Roster: Caden Hinckley, Devin Spitalny, Tyler Pham, Cory Wiard,
 # Jordan Wilson, Anthony Baldeosingh, Caden Koscinski, Christopher Stephenson
 # Danny Reid, Jordan Byrne, Madelyn Kapfhammer, Megan Munzek, Pedro Carmo,
