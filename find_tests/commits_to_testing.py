@@ -11,7 +11,9 @@ from pydriller import RepositoryMining, GitRepository
 # accesses users
 commit_author_list = []
 # accesses github repo to calculate users commits
-for commit in RepositoryMining("https://github.com/lussierc/simplePerformanceExperimentsJava").traverse_commits():
+for commit in RepositoryMining(
+    "https://github.com/lussierc/simplePerformanceExperimentsJava"
+).traverse_commits():
     if commit.author.name not in commit_author_list:
         commit_author_list.append(commit.author.name)
         print("Adding author,", commit.author.name)
@@ -23,7 +25,9 @@ for author_name in commit_author_list:
     author_commit_count = 0
     total_commit_count = 0
     total_test_commit_count = 0
-    for commit in RepositoryMining("https://github.com/lussierc/simplePerformanceExperimentsJava").traverse_commits():
+    for commit in RepositoryMining(
+        "https://github.com/lussierc/simplePerformanceExperimentsJava"
+    ).traverse_commits():
         count = 0
         # Connects the author name to the amount of commits made by user the
         # clear path to the repo
@@ -34,9 +38,13 @@ for author_name in commit_author_list:
                 if count is 0:
                     if file_path:
                         if "test" in file_path:
-                            print("Found someone who modified tests in file",
-                            # will calculate the modifications to the test
-                            commit.author.name, file_path, commit.hash)
+                            print(
+                                "Found someone who modified tests in file",
+                                # will calculate the modifications to the test
+                                commit.author.name,
+                                file_path,
+                                commit.hash,
+                            )
                             total_test_commit_count += 1
                             count = 1
                         else:
