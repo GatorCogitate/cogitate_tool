@@ -21,6 +21,7 @@ removed_list = []
 commits_overall_score = 0
 added_overall_score = 0
 removed_overall_score = 0
+total_team_score = 0
 
 
 def standard_deviations():
@@ -331,6 +332,7 @@ def total_team_score_calculator():
     global commits_overall_score
     global added_overall_score
     global removed_overall_score
+    global total_team_score
     # Performs a calculation to determine how the team performed
     # as a whole across the three metrics
     total_team_score = (
