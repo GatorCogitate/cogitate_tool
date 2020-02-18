@@ -57,10 +57,15 @@ def get_org_repo_list(repo_index):
     # commit_list = []
     # count = 0
     # Iterates through the user's repositories and populates them into a list
-    my_commit = current_user_account.get_user().get_repos()[int(repo_index)].get_branch("master").commit.sha
-        # print("[" + str(count) + "]" + commits.sha)
-        # count = count + 1
-        # commit_list.append(commits.sha)
+    my_commit = (
+        current_user_account.get_user()
+        .get_repos()[int(repo_index)]
+        .get_branch("master")
+        .commit.sha
+    )
+    # print("[" + str(count) + "]" + commits.sha)
+    # count = count + 1
+    # commit_list.append(commits.sha)
     # Display's the number of repositories in the user's GitHub account
     # print("This user has " + str(count) + " repos")
     return my_commit
