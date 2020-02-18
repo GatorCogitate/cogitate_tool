@@ -158,3 +158,7 @@ password, we can hash it first, then use the match method.
 
 
 ### 3. PyDriller
+
+The [homepage](https://github.com/ishepard/pydriller) and [documentation](https://pydriller.readthedocs.io/en/latest/intro.html) for `PyDriller`. 
+
+The available attributes can be found at their homepage.
