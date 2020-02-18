@@ -1,4 +1,4 @@
-# cogitate_tool
+# cogitate_tool_lines
 
 #### Steps to run `count_code_lines.py`
 
