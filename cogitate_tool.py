@@ -1,8 +1,12 @@
+""" Command Line Interface for interacting with Github repository info. """
 from __future__ import print_function, unicode_literals
 from PyInquirer import style_from_dict, Token, prompt, Separator
+from data_collection import collect_commits
+from driller import find_repositories
 
 
 def CL_interface():
+    """ Command Line Interface using methods from other classes. """
     # Define the style of the interface
     style = style_from_dict(
         {
@@ -17,6 +21,7 @@ def CL_interface():
     )
 
     # Prompt for user
+
     questions = [
         {
             "type": "checkbox",
