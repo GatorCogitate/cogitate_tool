@@ -57,9 +57,7 @@ notifications:
 script:
   - pipenv run cover
   - pipenv run lint --check
-  - mdl README.md
-  - mdl CONTRIBUTING.md
-  - mdl CODE_OF_CONDUCT.md    
+  - mdl README.md  
 
 # deploy to GitHub Releases on PR merge
 deploy:
