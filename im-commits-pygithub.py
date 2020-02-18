@@ -5,7 +5,7 @@ from pydriller.domain.commit import ModificationType
 from fastapi import FastAPI
 
 
-def output_hash_map():
+def output_hash_map(dictionary):
     """Method to print out the hash map."""
 
 
@@ -33,7 +33,7 @@ def get_repo_commits_py_github():
             print(commit.commit.message)
             print("")
 
-            data_list[commit] = [
+            data_list[branch] = [
                 branch.name,
                 commit.commit.author,
                 commit.commit.author.date,
@@ -41,11 +41,11 @@ def get_repo_commits_py_github():
                 commit.commit.message,
             ]
 
-            data_list[commit][0] += branch.name
-            data_list[commit][1] += commit.commit.author
-            data_list[commit][2] += commit.commit.author.date
-            data_list[commit][3] += commit.files
-            data_list[commit][4] += commit.commit.message
+            data_list[branch][0] = branch.name
+            data_list[branch][1] = commit.commit.author
+            data_list[branch][2] = commit.commit.author.date
+            data_list[branch][3] = commit.files
+            data_list[branch][4] = commit.commit.message
 
     return data_list
 
@@ -54,8 +54,9 @@ def main_method():
     # pylint: disable=input-builtin
     """Use to call previous functions in case of running through terminal."""
 
-    get_repo_commits_py_github()
-    print(data_list)
+    dictionary = get_repo_commits_py_github()
+
+    output_hash_map(dictionary)
 
 
 main_method()
