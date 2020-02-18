@@ -1,11 +1,13 @@
 """Tests to ensure that the functions in the demonstration work."""
 
-from Demo import individual_metrics_commits
+from pygithub import im_commits_pygithub
 
 
 def test_1():
     """Test 1."""
-
+    dictionary = get_repo_commits_py_github()
+    dictionary2 = {}
+    assert dictionary != dictionary2
 
 def test_2():
     """Test 2."""

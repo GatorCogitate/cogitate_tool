@@ -11,25 +11,13 @@ def output_hash_map(dictionary):
     print("Branch", "\t Author", "\t Time", "\t Files", "\t Message")
     # prints hashmap content
     # for key in dictionary:
-    #     print(
-    #         key,
-    #         "\t",
-    #         dictionary[key][0],
-    #         "\t",
-    #         dictionary[key][1],
-    #         "\t",
-    #         dictionary[key][2],
-    #         "\t",
-    #         dictionary[key][3],
-    #         "\t",
-    #         dictionary[key][4],
-    #     )
+
 
     for key, _ in dictionary.items():
         print(key)
         for item in dictionary[key]:
-            print("\t" + str(item))
-
+            # print("\t" + str(item))
+            print("\t" + str(item) + "\t")
 
 def get_repo_commits_py_github():
     """Method to get commit information using pygithub"""
@@ -50,13 +38,7 @@ def get_repo_commits_py_github():
         all_comments = repo.get_comments()
         print(branch)
         for commit in all_commits:
-            commit_info = ()
-            # print(commit.commit.author)
-            # print(commit.commit.author.date)
-            # print(commit.files)
-            # print(commit.commit.message)
-            # print("")
-
+            # commit_info = ()
             commit_info = (
                 branch.name,
                 commit.commit.author,
@@ -65,12 +47,6 @@ def get_repo_commits_py_github():
                 commit.commit.message,
             )
             data_list.append(commit_info)
-
-            # data_list[branch][0] = branch.name
-            # data_list[branch][1] = commit.commit.author
-            # data_list[branch][2] = commit.commit.author.date
-            # data_list[branch][3] = commit.files
-            # data_list[branch][4] = commit.commit.message
 
         branches[branch.name] = data_list
     return branches
