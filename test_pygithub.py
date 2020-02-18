@@ -24,7 +24,7 @@ def create_user(user_token):
     current_user_account = Github(user_token)
     # Sets the variable user equal to current_user_account
     user = current_user_account.get_user()
-    # Creates a statement to be thrown indicating the succesful creation of a user_token
+    # Creates a statement to be thrown indicating the creation of a user_token
     statement = user.login + " created successfully!"
     print("User token added!")
     return statement
@@ -32,7 +32,7 @@ def create_user(user_token):
 
 @app.get("/repo_list")
 def get_repo_list():
-    """Initializes list the users repositories' names and counts the number of them."""
+    """Initializes list the users repositories' names and counts them."""
     # pylint: disable=global-statement
     print("Creating list of the user's repositories...")
     repo_list = []

@@ -1,4 +1,4 @@
-"""Program to count the number of lines added and deleted by an indvividual"""
+"""Program to count the number of lines added and deleted by an indvividual."""
 
 # from git import Repo
 from pydriller import RepositoryMining
@@ -7,7 +7,7 @@ from pydriller import RepositoryMining
 
 
 def print_in_table(dictionary):
-    """Create the table"""
+    """Create the table."""
     # print headings
     print("Username", "\t +", "\t -", "\t Total")
     # prints hashmap content
@@ -24,7 +24,7 @@ def print_in_table(dictionary):
 
 
 def get_commit_lines(repo_path):
-    """method to obtain the number of lines that were added or deleted"""
+    """Method to obtain the number of lines that were added or deleted."""
     data_list = {}
     # creates a hashmap where the key is the authors username
     # goes through all the commits in the current branch of the repo
