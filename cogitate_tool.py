@@ -53,6 +53,14 @@ def CL_interface():
             if len(name) == 0
             else True,
         },
+        {
+            "type": "input",
+            "message": "Please enter your repository URL: ",
+            "name": "user_repo",
+            "validate": lambda url: "You must enter a repositroy URL."
+            if len(url) == 0
+            else True,
+        },
     ]
     answers = prompt(questions, style=style)
     # inspect output
@@ -61,4 +69,6 @@ def CL_interface():
 
 
 if __name__ == "__main__":
-    CL_interface()
+    answers_dict = CL_interface()
+    print(collect_commits())
+    print(find_repositories(answers_dict["user_repo"]))
