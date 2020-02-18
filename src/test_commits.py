@@ -39,6 +39,8 @@ for i in commit_author_list:
 
     print(i, b)
     print("-- Testing commits by", i, d)
+    e = (d / b) * 100
+    print("-- Percentage of Commits Going to Testing:", e)
 
 print()
 print("total commits: ", c)
