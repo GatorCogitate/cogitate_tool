@@ -15,31 +15,31 @@ for commit in RepositoryMining("https://github.com/lussierc/simplePerformanceExp
     else:
         pass
 
-for i in commit_author_list:
-    b = 0
-    c = 0
-    d = 0
+for author_name in commit_author_list:
+    author_commit_count = 0
+    total_commit_count = 0
+    total_test_commit_count = 0
     for commit in RepositoryMining("https://github.com/lussierc/simplePerformanceExperimentsJava").traverse_commits():
         count = 0
-        if commit.author.name in i:
-            b = b + 1
+        if commit.author.name in author_name:
+            author_commit_count = author_commit_count + 1
             for modified_file in commit.modifications:
                 file_path = modified_file.new_path
                 if count is 0:
                     if file_path:
                         if "test" in file_path:
                             print("Found someone who modified tests in file", commit.author.name, file_path, commit.hash)
-                            d += 1
+                            total_test_commit_count += 1
                             count = 1
                         else:
                             pass
         if commit.author.name in commit_author_list:
-            c = c + 1
+            total_commit_count = total_commit_count + 1
 
-    print(i, "'s Total commits: ", b)
-    print("-- Testing commits by", i, d)
-    e = (d / b) * 100
-    print("-- Percentage of Commits Going to Testing:", e)
+    print(author_name, "'s Total commits: ", author_commit_count)
+    print("-- Testing commits by", author_name, total_test_commit_count)
+    percentage_covered = (total_test_commit_count / author_commit_count) * 100
+    print("-- Percentage of Commits Going to Testing:", percentage_covered)
 
 print()
-print("total commits: ", c)
+print("total commits: ", total_commit_count)
