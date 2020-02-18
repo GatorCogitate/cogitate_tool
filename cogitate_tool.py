@@ -34,7 +34,7 @@ def CL_interface():
         },
         {
             "type": "password",
-            "message": "Please enter your password ",
+            "message": "Please enter your password",
             "name": "user_pswd",
             "validate": lambda pswd: "You must enter a pasword."
             if len(pswd) == 0
