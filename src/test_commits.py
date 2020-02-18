@@ -1,6 +1,10 @@
+
 # Class Roster: Caden Hinckley, Devin Spitalny, Tyler Pham, Cory Wiard,
 # Jordan Wilson, Anthony Baldeosingh, Caden Koscinski, Christopher Stephenson
-# Danny Reid, Jordan Byrne, Madelyn Kapfhammer, Megan Munzek,
+# Danny Reid, Jordan Byrne, Madelyn Kapfhammer, Megan Munzek, Pedro Carmo,
+# Hannah Schultz, Xingbang Liu, Devin Ho, Spencer Huang, Christian Lussier,
+# Jacob Stringer, Marisol Santa Cruz, Thomas Cassidy, Wonjoon Cho,
+# Teona Bagashvili, Claire Johns, Collin McNulty
 
 from datetime import datetime
 from pydriller import RepositoryMining, GitRepository
