@@ -4,7 +4,7 @@ from pydriller import RepositoryMining
 import pprint
 
 
-def collect_data():
+def collect_commits():
     """ Creates a dictionary of commit objects for a single user. """
     # holds email of repo members as keys, contents of commit object as values
     author_dict = {}
