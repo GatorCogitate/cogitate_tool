@@ -2,6 +2,7 @@
 
 from find_tests import commits_to_testing
 
+# Test case that checks if the size of the input variabe is correct.
 def test_read_file_populates_data_0():
     """Checks that the size of the input variable is correct."""
     commit_author_list = []
