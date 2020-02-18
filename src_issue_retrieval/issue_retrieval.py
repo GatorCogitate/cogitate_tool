@@ -1,12 +1,18 @@
 # Use the following command for demonstration purposes:
-# python src/issue_retrieval.py --repo "REPO HERE" --state "STATE HERE" --token "TOKEN HERE"
+# python src_issue_retrieval/issue_retrieval.py --repo "REPO HERE" --state "STATE HERE" --token "TOKEN HERE"
+
+import os
+import sys
+
+sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)) + "/../")
 
 import argparse
 # This branch is currently experiencing issues with python path insertion, and
 # json_demo cannot be accessed in the demo folder
 # Please leave json_demo_alt under src until this is resolved
-import json_demo_alt as json_handler
+from demo import json_handler
 from github import Github
+
 
 def main():
     """Retrieve contributor list and populate conversation fields."""
@@ -95,10 +101,10 @@ def retrieve_issue_data(issues, issues_contribution):
         if (issue.pull_request == None):
             for comment in issue.get_comments():
                 if comment.user.login in issues_contribution.keys():
-                    issues_contribution[comment.user.login].append(issue.id)
+                    issues_contribution[comment.user.login].append(issue.number)
             # We are counting the issuer of the issue as being involved in the conversation
             if issue.user.login in issues_contribution.keys():
-                issues_contribution[issue.user.login].append(issue.id)
+                issues_contribution[issue.user.login].append(issue.number)
 
     return issues_contribution
 
@@ -111,10 +117,10 @@ def retrieve_pr_data(issues, pr_contribution):
         if (issue.pull_request != None):
             for comment in issue.get_comments():
                 if comment.user.login in pr_contribution.keys():
-                    pr_contribution[comment.user.login].append(issue.id)
+                    pr_contribution[comment.user.login].append(issue.number)
             # We are counting the issuer of the pr as being involved in the conversation
             if issue.user.login in pr_contribution.keys():
-                pr_contribution[issue.user.login].append(issue.id)
+                pr_contribution[issue.user.login].append(issue.number)
 
     return pr_contribution
 
