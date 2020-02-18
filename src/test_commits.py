@@ -1,9 +1,11 @@
+# Class Roster: Caden Hinckley, Devin Spitalny, Tyler Pham, Cory Wiard,
+# Jordan Wilson, Anthony Baldeosingh, Caden Koscinski, Christopher Stephenson
+# Danny Reid, Jordan Byrne, Madelyn Kapfhammer, Megan Munzek,
+
 from datetime import datetime
 from pydriller import RepositoryMining, GitRepository
 from array import *
-#from pydriller.domain.commit import ModificationType
 
-commit_list = []
 commit_author_list = []
 
 for commit in RepositoryMining("https://github.com/lussierc/simplePerformanceExperimentsJava").traverse_commits():
@@ -13,9 +15,6 @@ for commit in RepositoryMining("https://github.com/lussierc/simplePerformanceExp
     else:
         pass
 
-# Class Roster: Caden Hinckley, Devin Spitalny, Tyler Pham, Cory Wiard,
-# Jordan Wilson, Anthony Baldeosingh, Caden Koscinski, Christopher Stephenson
-# Danny Reid, Jordan Byrne, Madelyn Kapfhammer, Megan Munzek,
 for i in commit_author_list:
     b = 0
     c = 0
@@ -37,7 +36,7 @@ for i in commit_author_list:
         if commit.author.name in commit_author_list:
             c = c + 1
 
-    print(i, "total commits: ", b)
+    print(i, "'s Total commits: ", b)
     print("-- Testing commits by", i, d)
     e = (d / b) * 100
     print("-- Percentage of Commits Going to Testing:", e)
