@@ -4,7 +4,7 @@ from pydriller import RepositoryMining, GitRepository
 from pydriller.domain.commit import ModificationType
 from fastapi import FastAPI
 
-
+test_dict = {}
 def output_hash_map(dictionary):
     """Method to print out the hash map."""
     # print headings
@@ -15,9 +15,10 @@ def output_hash_map(dictionary):
 
     for key, _ in dictionary.items():
         print(key)
-        for item in dictionary[key]:
+        for items in dictionary[key]:
+            for item in items:
+                print("\t" + str(item) + "\t")
             # print("\t" + str(item))
-            print("\t" + str(item) + "\t")
 
 def get_repo_commits_py_github():
     """Method to get commit information using pygithub"""
@@ -57,8 +58,9 @@ def main_method():
     """Use to call previous functions in case of running through terminal."""
 
     dictionary = get_repo_commits_py_github()
+    test_dict = dictionary
 
     output_hash_map(dictionary)
 
-
-main_method()
+if __name__ == "__main__":
+    main_method()
