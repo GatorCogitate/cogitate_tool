@@ -7,6 +7,23 @@ from fastapi import FastAPI
 
 def output_hash_map(dictionary):
     """Method to print out the hash map."""
+    # print headings
+    print("Branch", "\t Author", "\t Time", "\t Files", "\t Message")
+    # prints hashmap content
+    for key in dictionary:
+        print(
+            key,
+            "\t",
+            dictionary[key][0],
+            "\t",
+            dictionary[key][1],
+            "\t",
+            dictionary[key][2],
+            "\t",
+            dictionary[key][3],
+            "\t",
+            dictionary[key][4],
+        )
 
 
 def get_repo_commits_py_github():
@@ -27,11 +44,11 @@ def get_repo_commits_py_github():
         print(branch)
 
         for commit in all_commits:
-            print(commit.commit.author)
-            print(commit.commit.author.date)
-            print(commit.files)
-            print(commit.commit.message)
-            print("")
+            # print(commit.commit.author)
+            # print(commit.commit.author.date)
+            # print(commit.files)
+            # print(commit.commit.message)
+            # print("")
 
             data_list[branch] = [
                 branch.name,
