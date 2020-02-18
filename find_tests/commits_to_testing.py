@@ -31,7 +31,7 @@ for author_name in commit_author_list:
     total_commit_count = 0
     total_test_commit_count = 0
     for commit in RepositoryMining(
-        "https://github.com/lussierc/simplePerformanceExperimentsJava"
+        user_repo
     ).traverse_commits():
         count = 0
         # Connects the author name to the amount of commits made by user the
@@ -44,7 +44,7 @@ for author_name in commit_author_list:
                     if file_path:
                         if "test" in file_path:
                             print(
-                                "Found someone who modified tests in file: ",
+                                "Found someone who modified tests: ",
                                 # will calculate the modifications to the test
                                 commit.author.name,
                                 file_path,
@@ -59,7 +59,10 @@ for author_name in commit_author_list:
     # Print statements that release the calculations of the declared variables
     print(author_name, "'s Total commits: ", author_commit_count)
     print("-- Testing commits by", author_name, ":", total_test_commit_count)
-    percentage_covered = (total_test_commit_count / author_commit_count) * 100
+    try:
+        percentage_covered = (total_test_commit_count / author_commit_count) * 100
+    except:
+        percentage_covered = 0
     print("-- Percentage of Commits Going to Testing:", percentage_covered, "%")
     print("\n\n")
 
