@@ -5,6 +5,7 @@ import pprint
 
 
 def collect_commits():
+    # TODO: edit the method to take in the URL for the repo
     """ Creates a dictionary of commit objects for a single user. """
     # holds email of repo members as keys, contents of commit object as values
     author_dict = {}
