@@ -40,6 +40,14 @@ def CL_interface():
             if len(pswd) == 0
             else True,
         },
+        {
+            "type": "input",
+            "message": "Please enter your name: ",
+            "name": "user_name",
+            "validate": lambda name: "You must enter a name."
+            if len(name) == 0
+            else True,
+        },
     ]
     answers = prompt(questions, style=style)
     # inspect output
