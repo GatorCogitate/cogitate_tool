@@ -1,8 +1,9 @@
-from cogitate_tool import CL_interface
+import cogitate_tool
 
 
 def test_answers_dict():
     """ Checks that the answers_dict populates with user input. """
-    assert len(CL_interface.answers) == 0
-    congitate_tool.CL_interface()
-    assert len(CL_interface.answers) < 0
+    t_answers_dict = []
+    assert len(t_answers_dict) == 0
+    t_answers_dict = cogitate_tool.CL_interface()
+    assert len(t_answers_dict) != 0
