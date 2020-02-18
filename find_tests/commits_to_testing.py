@@ -1,4 +1,3 @@
-
 # Class Roster: Caden Hinckley, Devin Spitalny, Tyler Pham, Cory Wiard,
 # Jordan Wilson, Anthony Baldeosingh, Caden Koscinski, Christopher Stephenson
 # Danny Reid, Jordan Byrne, Madelyn Kapfhammer, Megan Munzek, Pedro Carmo,
@@ -8,7 +7,6 @@
 
 from datetime import datetime
 from pydriller import RepositoryMining, GitRepository
-from array import *
 
 commit_author_list = []
 
