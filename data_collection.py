@@ -19,3 +19,4 @@ def collect_data():
             author_dict[commit.author.email] = [commit]
         else:
             author_dict[commit.author.email].append(commit)
+    return author_dict
