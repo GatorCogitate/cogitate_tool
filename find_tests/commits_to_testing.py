@@ -12,9 +12,10 @@ from array import *
 
 commit_author_list = []
 
-def main():
+def find_testing_commits():
     global commit_author_list
-    
+    global total_commit_count
+
     for commit in RepositoryMining("https://github.com/lussierc/simplePerformanceExperimentsJava").traverse_commits():
         if commit.author.name not in commit_author_list:
             commit_author_list.append(commit.author.name)
@@ -51,4 +52,6 @@ def main():
     print()
     print("total commits: ", total_commit_count)
 
-main()
+
+if __name__ == "__main__":
+    find_testing_commits()
