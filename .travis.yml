@@ -32,6 +32,7 @@ env:
 before_install:
   - wget https://github.com/praekeltfoundation/travis-pyenv/releases/latest/download/setup-pyenv.sh
   - source setup-pyenv.sh
+  
 
 # run commands to install dependencies (from Pipfile, not Pipfile.lock)
 # cannot use locked dependencies because of possible version changes
@@ -56,6 +57,17 @@ script:
   - pipenv run cover
   - pipenv run lint --check
   - mdl README.md  
+
+# report information to CodeCov and Codacy and tag the release of a pull request:
+# --> Report coverage to CodeCov, which ensures that coverages does not drop by more than a threshold
+# --> Report coverage to Codacy, which reports changes at various levels of granularity
+# --> Automatically apply a release tag to the pull request using pr-tag-release
+after_success:
+  - pipenv run codecov
+  - pipenv run python-codacy-coverage -r coverage.xml
+  - test "$PYENV_VERSION" = "3.7.3" && test "$TRAVIS_OS_NAME" = "linux" &&
+    wget https://github.com/Michionlion/pr-tag-release/releases/latest/download/pr_tag_release.sh &&
+    source pr_tag_release.sh  
 
 # deploy to GitHub Releases on PR merge
 deploy:
