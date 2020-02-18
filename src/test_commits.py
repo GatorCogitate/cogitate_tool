@@ -37,7 +37,7 @@ for i in commit_author_list:
         if commit.author.name in commit_author_list:
             c = c + 1
 
-    print(i, b)
+    print(i, "total commits: ", b)
     print("-- Testing commits by", i, d)
     e = (d / b) * 100
     print("-- Percentage of Commits Going to Testing:", e)
