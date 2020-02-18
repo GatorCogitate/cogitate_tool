@@ -48,6 +48,19 @@ notifications:
     on_success: change
     on_failure: always
 
+# perform testing:
+# --> run the test suite and generate coverage with Pipfile script
+# --> lint the code with Pipfile script
+# --> lint the README documentation with mdl
+# --> lint the CONTRIBUTING guidelines with mdl
+# --> lint the CODE_OF_CONDUCT with mdl
+script:
+  - pipenv run cover
+  - pipenv run lint --check
+  - mdl README.md
+  - mdl CONTRIBUTING.md
+  - mdl CODE_OF_CONDUCT.md    
+
 # deploy to GitHub Releases on PR merge
 deploy:
   provider: releases
