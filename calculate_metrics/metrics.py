@@ -180,6 +180,7 @@ def added_calculator():
         print("Checking GitHub user: ", github_data[username_accesser][0])
         # This if/else calculates the amount added to the standard deviation,
         # in order to grade the team.
+        # This if statment will end if the user was within 0.5 of the standard deviation.
         if github_data[username_accesser][2] <= np.average(added_list) + (
             added_sd * 0.5
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
@@ -188,6 +189,7 @@ def added_calculator():
             print("appending 5 to added_scores list")
             added_scores.append(5)
             username_accesser += 1
+        # This if statment will end if the user was within 1.0 of the standard deviation.
         elif github_data[username_accesser][2] <= np.average(added_list) + (
             added_sd * 1.0
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
@@ -196,6 +198,7 @@ def added_calculator():
             print("appending 4 to added_scores list")
             added_scores.append(4)
             username_accesser += 1
+        # This if statment will end if the user was within 1.5 of the standard deviation.
         elif github_data[username_accesser][2] <= np.average(added_list) + (
             added_sd * 1.5
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
@@ -204,6 +207,7 @@ def added_calculator():
             print("appending 3 to added_scores list")
             added_scores.append(3)
             username_accesser += 1
+        # This if statment will end if the user was within 2.0 of the standard deviation.
         elif github_data[username_accesser][2] <= np.average(added_list) + (
             added_sd * 2.0
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
@@ -212,6 +216,7 @@ def added_calculator():
             print("appending 2 to added_scores list")
             added_scores.append(2)
             username_accesser += 1
+        # This if statment will end if the user was within 2.5 of the standard deviation.
         elif github_data[username_accesser][2] <= np.average(added_list) + (
             added_sd * 2.25
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
@@ -255,6 +260,7 @@ def removed_calculator():
         print("Checking GitHub user: ", github_data[username_accesser][0])
         # This if/else calculates the amount of code removed to the,
         # standard deviation in order to grade the team.
+        #Ths if statment will end if the user was within 0.5 of the standard deviation.
         if github_data[username_accesser][3] <= np.average(removed_list) + (
             removed_sd * 0.5
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
