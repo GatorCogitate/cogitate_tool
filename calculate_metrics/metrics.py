@@ -100,6 +100,8 @@ def commits_calculator():
     username_accesser = 0
     list_length = len(github_data)
     for ab in range(len(github_data)):
+        # This if/else calculates the commits added to the standard deviation,
+        # in order to grade the team.
         print("Checking GitHub user: ", github_data[username_accesser][0])
         if github_data[username_accesser][1] <= np.average(commits_list) + (
             commits_sd * 0.5
@@ -147,6 +149,8 @@ def commits_calculator():
             username_accesser += 1
     global commits_overall_score
     commits_overall_score = np.average(commit_scores)
+    # These print statments print out the scores for the amount of commits the team
+    # added
     print("")
     print("Each users scores are listed below: ")
     print(commit_scores)
