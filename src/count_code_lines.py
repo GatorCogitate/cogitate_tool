@@ -51,9 +51,9 @@ def get_commit_lines(repo_path):
 def main():
     """Call other functions in this module asking for user input."""
     # takes input for the repository local path OR URL
-    PATH_REPO = input("Enter the path to the repo : ")
-    DATA_LINES = get_commit_lines(PATH_REPO)
-    print_in_table(DATA_LINES)
+    path_repo = input("Enter the path to the repo : ")
+    data_lines = get_commit_lines(path_repo)
+    print_in_table(data_lines)
 
 
 if __name__ == "__main__":
