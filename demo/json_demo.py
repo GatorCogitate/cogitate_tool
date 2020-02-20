@@ -8,6 +8,8 @@ def main():
     user_data_dict = get_dict_from_json_file("demofile")
     print("Dictionary:\n")
     for username in user_data_dict:
+        # Loops through all values in user_data_dict and converts it to JSON
+        # string
         print(username + ":", user_data_dict[username], "\n")
     json_format_string = write_dict_to_json_file(user_data_dict, "demofile")
     print("Json-formatted string:", "\n", json_format_string, "\n")
