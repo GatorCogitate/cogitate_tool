@@ -3,6 +3,7 @@ from __future__ import print_function, unicode_literals
 from PyInquirer import style_from_dict, Token, prompt, Separator
 from data_collection import collect_commits
 from driller import find_repositories
+from pprint import pprint
 
 
 def CL_interface():
@@ -70,5 +71,6 @@ def CL_interface():
 
 if __name__ == "__main__":
     answers_dict = CL_interface()
-    print(collect_commits())
-    print(find_repositories(answers_dict["user_repo"]))
+    pprint(collect_commits())
+    print()
+    pprint(find_repositories(answers_dict["user_repo"]))

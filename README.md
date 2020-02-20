@@ -10,17 +10,18 @@ environment. Use `exit` to exit. Under the virtual environment, use
 
 ```bash
 .
-├── cogitate_tool.py ------------- *main function*
-├── driller.py ------------------- *PyDriller*
-├── Pipfile ---------------------- *Package file*
-├── Pipfile.lock ----------------- *Package version lock file*
-├── pyinquirer ------------------- *CLI demo*
-│   ├── hello.py ----------------- *Demo Hello World*
-│   ├── img ---------------------- *Images for markdown*
-│   │   ├── interactive.png
-│   │   └── result.png
-│   └── intactv.py --------------- *Examples for choices question*
-└── README.md
+├── Pipfile
+├── Pipfile.lock
+├── README.md
+├── scripts
+│   └── cogitate.sh
+├── src
+│   ├── cogitate_tool.py
+│   ├── data_collection.py
+│   ├── demo.py
+│   └── driller.py
+└── tests
+    └── test_cogitate_tool.py
 ```
 
 ### 2. CLI
@@ -159,6 +160,6 @@ password, we can hash it first, then use the match method.
 
 ### 3. PyDriller
 
-The [homepage](https://github.com/ishepard/pydriller) and [documentation](https://pydriller.readthedocs.io/en/latest/intro.html) for `PyDriller`. 
+The [homepage](https://github.com/ishepard/pydriller) and [documentation](https://pydriller.readthedocs.io/en/latest/intro.html) for `PyDriller`.
 
 The available attributes can be found at their homepage.
