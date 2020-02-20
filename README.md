@@ -2,10 +2,6 @@
 
 ## Development Doc
 
-After pulling the repo, use `pipenv shell` in `cogitate_tool/` to enter the virtual
-environment. Use `exit` to exit. Under the virtual environment, use
-`pipenv install <package_name> --dev` to install new packages.
-
 ### 1. File Structure
 
 ```bash
@@ -20,145 +16,43 @@ environment. Use `exit` to exit. Under the virtual environment, use
 │   ├── data_collection.py
 │   ├── demo.py
 │   └── driller.py
-└── tests
-    └── test_cogitate_tool.py
+├── tests
+│   └── test_cogitate_tool.py
+└── TODO.md
 ```
 
-### 2. CLI
+### 2. How to Use
 
-The [homepage](https://github.com/CITGuru/PyInquirer) for `PyInquirer`. And a
-[helpful site](https://codeburst.io/building-beautiful-command-line-interfaces-with-python-26c7e1bb54df).
+#### 2.1 How To Install Packages
 
-The available attributes can be found at their homepage.
+After pulling the repo, use `pipenv shell` in `cogitate_tool/` to enter the virtual
+environment. Use `exit` to exit. Under the virtual environment, use
+`pipenv install <package_name> --dev` to install new packages for development.
 
-#### 2.1 Hello World
+Here is a good [tutorial](https://realpython.com/pipenv-guide/) on how to use `pipenv`.
 
-Basic example:
+When under development, always install the virtual environment first by using
+`pipenv install --dev`, then run the developing program by using
+`pipenv run python program_name`.
 
-```python
-from __future__ import print_function, unicode_literals
-from PyInquirer import prompt
-"""pprint print data structures in a beautiful way"""
-from pprint import pprint
+#### 2.2 How to setup scripts
 
-"""The question for users"""
-questions = [
-    {
-        'type': 'input',
-        'name': 'first_name',
-        'message': 'What\'s your first name',
-     }
-]
+The purpose of script is to automate the running or testing process. To make the
+scripts take effect, add the following code to the `Pipfile`:
 
-"""Create objects for answers"""
-answers = prompt(questions)
-"""print the answer we got, the dictionary look data can be used for future use"""
-pprint(answers)
+```
+[scripts]
+command_name = "./scripts/script_name.sh"
 ```
 
-**Output:**
+Here the `command_name` is the command you want to use when running the project.
+For example, if the `command_name` is `cogitate`, the we can use `pipenv run cogitate`.
 
-```bash
-pipenv run python hello.py
-? What's your first name  Sheldon
-{'first_name': 'Sheldon'}
-```
-
-#### 2.2 Interactive
-
-```python
-from __future__ import print_function, unicode_literals
-from PyInquirer import style_from_dict, Token, prompt, Separator
-from pprint import pprint
-
-"""Style for pretty interface"""
-style = style_from_dict({
-    Token.Separator: '#cc5454',
-    Token.QuestionMark: '#673ab7 bold',
-    Token.Selected: '#cc5454',  # default
-    Token.Pointer: '#673ab7 bold',
-    Token.Instruction: '',  # default
-    Token.Answer: '#f44336 bold',
-    Token.Question: '',
-})
-
-"""question set up"""
-questions = [
-    {
-        'type': 'checkbox',
-        'message': 'Select toppings',
-        'name': 'toppings',
-        'choices': [
-            Separator('= The Meats ='),
-            {
-                'name': 'Ham'
-            },
-            {
-                'name': 'Ground Meat'
-            },
-            {
-                'name': 'Bacon'
-            },
-            Separator('= The Cheeses ='),
-            {
-                'name': 'Mozzarella',
-                'checked': True
-            },
-            {
-                'name': 'Cheddar'
-            },
-            {
-                'name': 'Parmesan'
-            },
-            Separator('= The usual ='),
-            {
-                'name': 'Mushroom'
-            },
-            {
-                'name': 'Tomato'
-            },
-            {
-                'name': 'Pepperoni'
-            },
-            Separator('= The extras ='),
-            {
-                'name': 'Pineapple'
-            },
-            {
-                'name': 'Olives',
-                'disabled': 'out of stock'
-            },
-            {
-                'name': 'Extra cheese'
-            }
-        ],
-        'validate': lambda answer: 'You must choose at least one topping.' \
-            if len(answer) == 0 else True
-    }
-]
-
-answers = prompt(questions, style=style)
-pprint(answers)
-```
-
-**Outputs:**
-
-![Interface](pyinquirer/img/interactive.png)
-
-![After selection](pyinquirer/img/result.png)
-
-#### 2.3 Summary
-
-Let's see the data type of answer:
-
-If we run `type(answers)`, we get `<class 'dict'>`.
-
-So, one possible approach is that we provide possible options for user to choose.
-And we use the dictionary for later access. If we do end up need to get user
-password, we can hash it first, then use the match method.
+### 3. CLI
 
 
-### 3. PyDriller
+
+### 4. PyDriller
 
 The [homepage](https://github.com/ishepard/pydriller) and [documentation](https://pydriller.readthedocs.io/en/latest/intro.html) for `PyDriller`.
 
