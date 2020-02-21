@@ -41,6 +41,7 @@ def collect_commits_hash(repo):
     methods: list of methods of the file.
 
     """
+
     commit_list = []
 
     for commit in RepositoryMining(repo).traverse_commits():
@@ -61,25 +62,25 @@ def collect_commits_hash(repo):
             if item.complexity is not None:
                 complexity += item.complexity
 
-
             for method in item.methods:
                 methods.append(method.name)
             filename.append(item.filename)
 
         single_commit_dict = {
-        "hash":commit.hash,
-        "author_msg":commit.msg,
-        "author_name":commit.author.name,
-        "author_email":commit.author.email,
-        "author_date":commit.author_date.date(),
-        "merge":commit.merge,
-        "line_added":line_added,
-        "line_removed":line_removed,
-        "lines_of_code":line_of_code,
-        "complexity":complexity,
-        "methods":methods,
-        "filename":filename
+            "hash":commit.hash,
+            "author_msg":commit.msg,
+            "author_name":commit.author.name,
+            "author_email":commit.author.email,
+            "author_date":commit.author_date.date(),
+            "merge":commit.merge,
+            "line_added":line_added,
+            "line_removed":line_removed,
+            "lines_of_code":line_of_code,
+            "complexity":complexity,
+            "methods":methods,
+            "filename":filename
         }
+
         commit_list.append(single_commit_dict)
 
     return commit_list
