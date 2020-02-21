@@ -11,14 +11,10 @@ from pydriller import RepositoryMining, GitRepository
 user_repo = input("Enter the link to your chosen GitHub repository: ")
 
 
-
-
 # accesses users
 commit_author_list = []
 # accesses github repo to calculate users commits
-for commit in RepositoryMining(
-    user_repo
-).traverse_commits():
+for commit in RepositoryMining(user_repo).traverse_commits():
     if commit.author.name not in commit_author_list:
         commit_author_list.append(commit.author.name)
         print("Adding author,", commit.author.name)
@@ -29,18 +25,19 @@ print("-- Repo Authors:")
 for author_name in commit_author_list:
     print(author_name)
 
-user_author_choice = int(input("-- Would you like to look at (1) all authors or a (2) specific author?: "))
+user_author_choice = int(
+    input("-- Would you like to look at (1) all authors or a (2) specific author?: ")
+)
 if user_author_choice == 1:
     pass
 elif user_author_choice == 2:
-    #Looks for specific author contributions
-    #RepositoryMining('path/to/the/repo', only_authors=['Username!']).traverse_commits()
+    # Looks for specific author contributions
+    # RepositoryMining('path/to/the/repo', only_authors=['Username!']).traverse_commits()
     specific_author = input("-- Enter author name:")
     if specific_author in commit_author_list:
         commit_author_list = [specific_author]
 else:
     print("Invalid choice!")
-
 
 
 # Calculates the total commits like author, test and general and connecting
