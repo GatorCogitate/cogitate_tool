@@ -32,11 +32,18 @@ def collect_commits_hash(repo):
 
         line_added = 0
         line_removed = 0
+        line_of_code = 0
+        complexity = 0
         filename = []
 
         for item in commit.modifications:
+
             line_added += item.added
             line_removed += item.removed
+            if item.nloc is not None:
+                line_of_code += item.nloc
+            if item.complexity is not None:
+                complexity += item.complexity
             filename.append(item.filename)
 
         single_commit_dict = {
@@ -48,6 +55,8 @@ def collect_commits_hash(repo):
         "merge":commit.merge,
         "line_added":line_added,
         "line_removed":line_removed,
+        "lines_of_code":line_of_code,
+        "complexity":complexity,
         "filename":filename
         # "change_type":commit.modifications,
         # "added":commit.modifications.added,
@@ -61,7 +70,6 @@ def collect_commits_hash(repo):
 
 
         print(commit_list)
-        break
 
 
 collect_commits_hash(repo_path)
