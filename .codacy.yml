@@ -3,14 +3,14 @@ engines:
   duplication:
     enabled: true
     exclude_paths:
-      - 'test/**'
-      - 'gator/checks/**'
+      - 'data/**'
+      - 'json_interaction/**'
       - '.github/**'
       - '.github/**/*'
       - 'README.md'
 exclude_paths:
-  - 'tests/**'
+  - 'data/**'
+  - 'json_interaction/**'
   - '.github/**'
   - '.github/**/*'
   - 'README.md'
-
