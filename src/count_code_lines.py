@@ -2,27 +2,20 @@
 
 # from git import Repo
 from pydriller import RepositoryMining
+from prettytable import PrettyTable
 
 # from pydriller.domain.commit import ModificationType
 
 
 def print_in_table(dictionary):
-    """Create the table."""
-    # print headings
-    print("Username", "   commits", "\t +", "\t -", "\t Total")
-    # prints hashmap content
+    """Create and print the table using prettytable."""
+    data_table = PrettyTable()
+    # headings = ["Username", "Commits", "+", "-" "Total"]
+    data_table.field_names = ["Username", "Commits", "+", "-", "Total"]
     for key in dictionary:
-        print(
-            key,
-            "\t",
-            dictionary[key][0],
-            "\t",
-            dictionary[key][1],
-            "\t",
-            dictionary[key][2],
-            "\t",
-            dictionary[key][3]
-        )
+        data_table.add_row([key, dictionary[key][0], dictionary[key][1],
+                            dictionary[key][2], dictionary[key][3]])
+    print(data_table)
 
 
 def get_commit_lines(repo_path):
