@@ -32,8 +32,8 @@ def collect_commits_hash(repo):
 
 
         # print(commit)
-        commit_list.append(
-        {"hash":commit.hash,
+        commit_list.append({
+        "hash":commit.hash,
         "author_msg":commit.msg,
         "author_name":commit.author.name,
         "author_email":commit.author.email,
@@ -47,16 +47,35 @@ def collect_commits_hash(repo):
         # "methods":commit.modifications.methods,
         })
 
+        line_added = 0
+        line_removed = 0
+        filename = []
+
+        for item in commit.modifications:
+            line_added += item.added
+            line_removed += item.removed
+            filename.append(item.filename)
+        commit_list.append({
+        "line_added":line_added,
+        "line_removed":line_removed,
+        "filename":filename
+        })
+
+        print(commit_list)
+        break
+
+
+collect_commits_hash(repo_path)
 #     return commit_list
 #
 # pprint.pprint(collect_commits_hash(repo_path))
-
-def new_f(repo):
-    for commit in RepositoryMining(repo).traverse_commits():
+#
+# def new_f(repo):
+#     for commit in RepositoryMining(repo).traverse_commits():
         # print(commit.modifications)
-        print(' '.join([str(elem) for elem in commit.modifications]))
+        #print(' '.join([str(elem) for elem in commit.modifications]))
         # print("----------------------------")
         # for item in commit.modifications:
         #     print(item.nloc)
 
-new_f(repo_path)
+# new_f(repo_path)
