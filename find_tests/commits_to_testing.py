@@ -28,12 +28,19 @@ for commit in RepositoryMining(
 print("-- Repo Authors:")
 for author_name in commit_author_list:
     print(author_name)
-#Looks for specific author contributions
-#RepositoryMining('path/to/the/repo', only_authors=['Username!']).traverse_commits()
-specific_author = input("-- Enter author name:")
-if specific_author in commit_author_list:
-    commit_author_list = [specific_author]
-    print(commit_author_list)
+
+user_author_choice = int(input("-- Would you like to look at (1) all authors or a (2) specific author?: "))
+if user_author_choice == 1:
+    pass
+elif user_author_choice == 2:
+    #Looks for specific author contributions
+    #RepositoryMining('path/to/the/repo', only_authors=['Username!']).traverse_commits()
+    specific_author = input("-- Enter author name:")
+    if specific_author in commit_author_list:
+        commit_author_list = [specific_author]
+else:
+    print("Invalid choice!")
+
 
 
 # Calculates the total commits like author, test and general and connecting
@@ -77,9 +84,3 @@ for author_name in commit_author_list:
         percentage_covered = 0
     print("-- Percentage of Commits Going to Testing:", percentage_covered, "%")
     print("\n\n")
-
-
-
-
-print()
-print("Total commits in repository: ", total_commit_count)
