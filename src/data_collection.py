@@ -67,18 +67,18 @@ def collect_commits_hash(repo):
             filename.append(item.filename)
 
         single_commit_dict = {
-            "hash":commit.hash,
-            "author_msg":commit.msg,
-            "author_name":commit.author.name,
-            "author_email":commit.author.email,
-            "author_date":commit.author_date.date(),
-            "merge":commit.merge,
-            "line_added":line_added,
-            "line_removed":line_removed,
-            "lines_of_code":line_of_code,
-            "complexity":complexity,
-            "methods":methods,
-            "filename":filename
+            "hash": commit.hash,
+            "author_msg": commit.msg,
+            "author_name": commit.author.name,
+            "author_email": commit.author.email,
+            "author_date": commit.author_date.date(),
+            "merge": commit.merge,
+            "line_added": line_added,
+            "line_removed": line_removed,
+            "lines_of_code": line_of_code,
+            "complexity": complexity,
+            "methods": methods,
+            "filename": filename
         }
 
         commit_list.append(single_commit_dict)
