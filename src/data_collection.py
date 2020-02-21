@@ -30,23 +30,6 @@ def collect_commits_hash(repo):
 
     for commit in RepositoryMining(repo).traverse_commits():
 
-
-        # print(commit)
-        commit_list.append({
-        "hash":commit.hash,
-        "author_msg":commit.msg,
-        "author_name":commit.author.name,
-        "author_email":commit.author.email,
-        "author_date":commit.author_date,
-        "merge":commit.merge,
-        # "change_type":commit.modifications,
-        # "added":commit.modifications.added,
-        # "removed":commit.modifications.removed,
-        # "nloc":commit.modifications.nloc,
-        # "complexity":commit.modifications.complexity,
-        # "methods":commit.modifications.methods,
-        })
-
         line_added = 0
         line_removed = 0
         filename = []
@@ -55,11 +38,27 @@ def collect_commits_hash(repo):
             line_added += item.added
             line_removed += item.removed
             filename.append(item.filename)
-        commit_list.append({
+
+        single_commit_dict = {
+        "hash":commit.hash,
+        "author_msg":commit.msg,
+        "author_name":commit.author.name,
+        "author_email":commit.author.email,
+        "author_date":commit.author_date,
+        "merge":commit.merge,
         "line_added":line_added,
         "line_removed":line_removed,
         "filename":filename
-        })
+        # "change_type":commit.modifications,
+        # "added":commit.modifications.added,
+        # "removed":commit.modifications.removed,
+        # "nloc":commit.modifications.nloc,
+        # "complexity":commit.modifications.complexity,
+        # "methods":commit.modifications.methods,
+        }
+        commit_list.append(single_commit_dict)
+
+
 
         print(commit_list)
         break
