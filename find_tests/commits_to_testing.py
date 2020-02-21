@@ -10,6 +10,9 @@ from pydriller import RepositoryMining, GitRepository
 
 user_repo = input("Enter the link to your chosen GitHub repository: ")
 
+
+
+
 # accesses users
 commit_author_list = []
 # accesses github repo to calculate users commits
@@ -22,8 +25,17 @@ for commit in RepositoryMining(
     else:
         pass
 
+print("-- Repo Authors:")
+for author_name in commit_author_list:
+    print(author_name)
+#Looks for specific author contributions
+#RepositoryMining('path/to/the/repo', only_authors=['Username!']).traverse_commits()
+specific_author = input("-- Enter author name:")
+if specific_author in commit_author_list:
+    commit_author_list = [specific_author]
+    print(commit_author_list)
 
-print()
+
 # Calculates the total commits like author, test and general and connecting
 # to the chosen repo
 for author_name in commit_author_list:
@@ -31,7 +43,7 @@ for author_name in commit_author_list:
     total_commit_count = 0
     total_test_commit_count = 0
     for commit in RepositoryMining(
-        user_repo
+        user_repo, only_authors=commit_author_list
     ).traverse_commits():
         count = 0
         # Connects the author name to the amount of commits made by user the
@@ -43,13 +55,13 @@ for author_name in commit_author_list:
                 if count is 0:
                     if file_path:
                         if "test" in file_path:
-                            print(
-                                "Found someone who modified tests: ",
-                                # will calculate the modifications to the test
-                                commit.author.name,
-                                file_path,
-                                commit.hash,
-                            )
+                            # print(
+                            #     "Found someone who modified tests: ",
+                            #     # will calculate the modifications to the test
+                            #     commit.author.name,
+                            #     file_path,
+                            #     commit.hash,
+                            # )
                             total_test_commit_count += 1
                             count = 1
                         else:
@@ -65,6 +77,9 @@ for author_name in commit_author_list:
         percentage_covered = 0
     print("-- Percentage of Commits Going to Testing:", percentage_covered, "%")
     print("\n\n")
+
+
+
 
 print()
 print("Total commits in repository: ", total_commit_count)
