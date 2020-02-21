@@ -3,7 +3,8 @@
 import numpy as np
 
 # github_data is a list containing sample data for our demo
-# github_data uses the pattern ["username", commit_total, lines_added, lines_deleted, issues_opened]
+# github_data uses the pattern ["username", commit_total, lines_added,
+# lines_deleted, issues_opened]
 github_data = [
     ["cassidyt2", 28, 355, 76, 2],
     ["johnSmith", 22, 349, 50, 4],
@@ -25,19 +26,21 @@ total_team_score = 0
 
 
 def standard_deviations():
-    """Function to calculate the standard_deviations of commits, lines added, and lines removed"""
+    """Function to calculate the standard_deviations of commits, lines added,
+    and lines removed"""
     # Beginning of the code for finding the standard deviation of commits.
     commits_counter = 0
     global github_data
     global commits_list
     list_length = len(github_data)
-    # While loop that finds the commit totals for each individual team member in
+    # While loop that finds the commit totals for each team member in
     # github_data and adds it to the commits_list.
     while commits_counter <= list_length - 1:
         commits_list.append(github_data[commits_counter][1])
         commits_counter += 1
-    # Prints the total number of commits in the commits_list for the entire team,
-    # and then calculates the standard deviation using NumPy's std() Function.
+    # Prints the total number of commits in the commits_list for the entire
+    # team,and then calculates the standard deviation using NumPy's std()
+    # Function.
     print("")
     print("The total number of commits is: ", sum(commits_list))
     print("Standard deviation of the commits is: ", np.std(commits_list))
@@ -50,13 +53,14 @@ def standard_deviations():
     # Beginning of the code for finding the standard deviation of lines added.
     global added_list
     lines_added_counter = 0
-    # While loop that finds the total lines added for each individual team member
-    # in github_data and adds it to the added_list.
+    # While loop that finds the total lines added for each individual team
+    # member in github_data and adds it to the added_list.
     while lines_added_counter <= list_length - 1:
         added_list.append(github_data[lines_added_counter][2])
         lines_added_counter += 1
-    # Prints the total number of lines added in the added_list for the entire team,
-    # and then calculates the standard deviation using NumPy's std() Function.
+    # Prints the total number of commits in the commits_list for the entire
+    # team,and then calculates the standard deviation using NumPy's std()
+    # Function.
     print("")
     print("The total number of lines added is: ", sum(added_list))
     print("Standard deviation of lines added is: ", np.std(added_list))
@@ -64,16 +68,18 @@ def standard_deviations():
     # Adds the standard deviations from added_list to the collective
     # standard_deviations_list.
     standard_deviations_list.append(np.std(added_list))
-    # Beginning of the code for finding the standard deviation of the lines removed.
+    # Beginning of the code for finding the standard deviation of the lines
+    # removed.
     lines_removed_counter = 0
     global removed_list
-    # While loop that finds the total lines removed for each individual team member
+    # While loop that finds the total lines removed for each team member
     # in github_data and adds it to the removed_list.
     while lines_removed_counter <= list_length - 1:
         removed_list.append(github_data[lines_removed_counter][3])
         lines_removed_counter += 1
-    # Prints the total number of lines removed in the removed_list for the entire team,
-    # and then calculates the standard deviation using NumPy's std() Function.
+    # Prints the total number of commits in the commits_list for the entire
+    # team,and then calculates the standard deviation using NumPy's std()
+    # Function.
     print("")
     print("The total number of lines removed is: ", sum(removed_list))
     print("Standard deviation of lines removed is: ", np.std(removed_list))
@@ -90,7 +96,8 @@ def standard_deviations():
 
 
 def commits_calculator():
-    """This will determine how well the team worked together by analyzing the spread of commits"""
+    """This will determine how well the team worked together by analyzing the
+    spread of commits"""
     global standard_deviations_list
     global commits_list
     print("Commits average is: ", np.average(commits_list))
@@ -150,8 +157,8 @@ def commits_calculator():
             username_accesser += 1
     global commits_overall_score
     commits_overall_score = np.average(commit_scores)
-    # These print statments print out the scores for the amount of commits the team
-    # added
+    # These print statments print out the scores for the amount of commits the
+    # team added
     print("")
     print("Each users scores are listed below: ")
     print(commit_scores)
@@ -166,7 +173,8 @@ def commits_calculator():
 
 
 def added_calculator():
-    """This will determine how well the team worked together by analyzing the spread of lines of code added"""
+    """This will determine how well the team worked together by analyzing the
+    spread of lines of code added"""
     global standard_deviations_list
     global added_list
     print("Lines added average is: ", np.average(added_list))
@@ -181,7 +189,8 @@ def added_calculator():
         print("Checking GitHub user: ", github_data[username_accesser][0])
         # This if/else calculates the amount added to the standard deviation,
         # in order to grade the team.
-        # This if statment will end if the user was within 0.5 of the standard deviation.
+        # This if statment will end if the user was within 0.5 of the standard
+        # deviation.
         if github_data[username_accesser][2] <= np.average(added_list) + (
             added_sd * 0.5
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
@@ -190,7 +199,8 @@ def added_calculator():
             print("appending 5 to added_scores list")
             added_scores.append(5)
             username_accesser += 1
-        # This if statment will end if the user was within 1.0 of the standard deviation.
+        # This if statment will end if the user was within 1.0 of the standard
+        #  deviation.
         elif github_data[username_accesser][2] <= np.average(added_list) + (
             added_sd * 1.0
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
@@ -199,7 +209,8 @@ def added_calculator():
             print("appending 4 to added_scores list")
             added_scores.append(4)
             username_accesser += 1
-        # This if statment will end if the user was within 1.5 of the standard deviation.
+        # This if statment will end if the user was within 1.5 of the standard
+        # deviation.
         elif github_data[username_accesser][2] <= np.average(added_list) + (
             added_sd * 1.5
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
@@ -208,7 +219,8 @@ def added_calculator():
             print("appending 3 to added_scores list")
             added_scores.append(3)
             username_accesser += 1
-        # This if statment will end if the user was within 2.0 of the standard deviation.
+        # This if statment will end if the user was within 2.0 of the standard
+        # deviation.
         elif github_data[username_accesser][2] <= np.average(added_list) + (
             added_sd * 2.0
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
@@ -217,7 +229,8 @@ def added_calculator():
             print("appending 2 to added_scores list")
             added_scores.append(2)
             username_accesser += 1
-        # This if statment will end if the user was within 2.25 of the standard deviation.
+        # This if statment will end if the user was within 2.25 of the standard
+        # deviation.
         elif github_data[username_accesser][2] <= np.average(added_list) + (
             added_sd * 2.25
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
@@ -232,8 +245,8 @@ def added_calculator():
             username_accesser += 1
     global added_overall_score
     added_overall_score = np.average(added_scores)
-    # These print statments print out the scores for the amount of code the team,
-    # added
+    # These print statments print out the scores for the amount of code the
+    # team added
     print("")
     print("Each users scores are listed below: ")
     print(added_scores)
@@ -247,7 +260,8 @@ def added_calculator():
 
 
 def removed_calculator():
-    """This will determine how well the team worked together by analyzing the spread of lines of code removed"""
+    """This will determine how well the team worked together by analyzing the
+    spread of lines of code removed"""
     global standard_deviations_list
     global removed_list
     print("Lines removed average is: ", np.average(removed_list))
@@ -261,7 +275,8 @@ def removed_calculator():
         print("Checking GitHub user: ", github_data[username_accesser][0])
         # This if/else calculates the amount of code removed to the,
         # standard deviation in order to grade the team.
-        #Ths if statment will end if the user was within 0.5 of the standard deviation.
+        # Ths if statment will end if the user was within 0.5 of the standard
+        # deviation.
         if github_data[username_accesser][3] <= np.average(removed_list) + (
             removed_sd * 0.5
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
@@ -270,7 +285,8 @@ def removed_calculator():
             print("appending 5 to removed_scores list")
             removed_scores.append(5)
             username_accesser += 1
-        # This if statment will end if the user was within 1.0 of the standard deviation.
+        # This if statment will end if the user was within 1.0 of the standard
+        # deviation.
         elif github_data[username_accesser][3] <= np.average(removed_list) + (
             removed_sd * 1.0
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
@@ -279,7 +295,8 @@ def removed_calculator():
             print("appending 4 to removed_scores list")
             removed_scores.append(4)
             username_accesser += 1
-        # This if statment will end if the user was within 1.5 of the standard deviation.
+        # This if statment will end if the user was within 1.5 of the standard
+        # deviation.
         elif github_data[username_accesser][3] <= np.average(removed_list) + (
             removed_sd * 1.5
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
@@ -288,7 +305,8 @@ def removed_calculator():
             print("appending 3 to removed_scores list")
             removed_scores.append(3)
             username_accesser += 1
-        # This if statment will end if the user was within 2.0 of the standard deviation.
+        # This if statment will end if the user was within 2.0 of the standard
+        # deviation.
         elif github_data[username_accesser][3] <= np.average(removed_list) + (
             removed_sd * 2.0
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
@@ -297,7 +315,8 @@ def removed_calculator():
             print("appending 2 to removed_scores list")
             removed_scores.append(2)
             username_accesser += 1
-        # This if statment will end if the user was within 2.25 of the standard deviation.
+        # This if statment will end if the user was within 2.25 of the standard
+        # deviation.
         elif github_data[username_accesser][3] <= np.average(removed_list) + (
             removed_sd * 2.25
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
@@ -312,8 +331,8 @@ def removed_calculator():
             username_accesser += 1
     global removed_overall_score
     removed_overall_score = np.average(removed_scores)
-    # These print statments print out the scores for the amount of code the team,
-    # removed.
+    # These print statments print out the scores for the amount of code the
+    # team removed.
     print("")
     print("Each users scores are listed below: ")
     print(removed_scores)
@@ -353,7 +372,9 @@ def total_team_score_calculator():
     for gh in range(len(github_data)):
         if github_data[division_counter][1] == 0:
             division_counter += 1
-        elif github_data[division_counter][1] / github_data[division_counter][2] <= 0.5:
+        elif (
+            github_data[division_counter][1] / github_data[division_counter][2]
+        ) <= 0.5:
             bonus_point += 1
             division_counter += 1
     if bonus_point >= len(github_data) - 1:
@@ -362,7 +383,7 @@ def total_team_score_calculator():
         pass
     # The following five lines of code provide the scoring information
     # output to the user.
-    print("Altogether, across these three metrics, the team earned a total score of:")
+    print("Across these three metrics, the team earned a total score of:")
     print("[", total_team_score, "/ 15]")
     total_team_percent = total_team_score / 15
     total_team_percent = np.around(total_team_percent, decimals=4)
