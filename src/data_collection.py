@@ -25,7 +25,22 @@ def collect_commits_user_email_key(repo):
 
 
 def collect_commits_hash(repo):
+    """
+    Creates a list of dictionaries that contains commit info.
 
+    hash (str): hash of the commit
+    msg (str): commit message
+    author (Developer): commit author (name, email)
+    author_date (datetime): authored date
+    merge (Bool): True if the commit is a merge commit
+    change_type: type of the change: can be Added, Deleted, Modified, or Renamed.
+    added: number of lines added
+    removed: number of lines removed
+    nloc: Lines Of Code (LOC) of the file
+    complexity: Cyclomatic Complexity of the file
+    methods: list of methods of the file.
+
+    """
     commit_list = []
 
     for commit in RepositoryMining(repo).traverse_commits():
