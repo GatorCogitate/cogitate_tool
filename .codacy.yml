@@ -5,12 +5,8 @@ engines:
     exclude_paths:
       - 'data/**'
       - 'json_interaction/**'
-      - '.github/**'
-      - '.github/**/*'
       - 'README.md'
 exclude_paths:
   - 'data/**'
   - 'json_interaction/**'
-  - '.github/**'
-  - '.github/**/*'
   - 'README.md'
