@@ -32,7 +32,7 @@ def get_commit_lines(repo_path):
     # creates a hashmap where the key is the authors username
     # goes through all the commits in the current branch of the repo
     for commit in RepositoryMining(repo_path).traverse_commits():
-        author = commit.committer.name
+        author = commit.author.name
         if author in data_list:
             data_list[author][0] += 1
         else:
