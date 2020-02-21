@@ -4,42 +4,42 @@ from github import Github
 
 print("Welcome to the FastAPI Demo!")
 # First create a Github instance using an access token
-app = FastAPI()
-current_user_token = "Error Not Available"
-current_user_account = Github()
+APP = FastAPI()
+CURRENT_USER_TOKEN = "Error Not Available"
+CURRENT_USER_ACCOUNT = Github()
 
 
-@app.get("/create_user")
+@APP.get("/create_user")
 def create_user(user_token):
     """Take token input from user and creates global GitHub object."""
     # pylint: disable=global-statement
     print("Creating a Github object from the user token...")
     # Establishes the current_user_token variable as a global variable
-    global current_user_token
+    global CURRENT_USER_TOKEN
     # Sets the user token to the value passed to the method
-    current_user_token = user_token
+    CURRENT_USER_TOKEN = user_token
     # Establishes user account as a global variable
-    global current_user_account
+    global CURRENT_USER_ACCOUNT
     # Sets the current user account to the value passed to GitHub()
-    current_user_account = Github(user_token)
+    CURRENT_USER_ACCOUNT = Github(user_token)
     # Sets the variable user equal to current_user_account
-    user = current_user_account.get_user()
+    user = CURRENT_USER_ACCOUNT.get_user()
     # Creates a statement to be thrown indicating the creation of a user_token
     statement = user.login + " created successfully!"
     print("User token added!")
     return statement
 
 
-@app.get("/repo_list")
+@APP.get("/repo_list")
 def get_repo_list():
     """Initialize list the users repositories' names and counts them."""
     # pylint: disable=global-statement
     print("Creating list of the user's repositories...")
     repo_list = []
     count = 0
-    global current_user_account
+    global CURRENT_USER_ACCOUNT
     # Iterates through the user's repositories and populates them into a list
-    for repo in current_user_account.get_user().get_repos():
+    for repo in CURRENT_USER_ACCOUNT.get_user().get_repos():
         print("[" + str(count) + "]" + repo.name)
         count = count + 1
         repo_list.append(repo.name)
@@ -48,19 +48,19 @@ def get_repo_list():
     return repo_list
 
 
-@app.get("/org_repo_list")
+@APP.get("/org_repo_list")
 def get_org_repo_list(repo_index):
     """Initialize list the users repositories' \
     names and counts their number."""
     # pylint: disable=global-statement
-    global current_user_account
+    global CURRENT_USER_ACCOUNT
     # current_repo = current_user_account.get_user()
     #               .get_repos()[int(repo_index)]
     # commit_list = []
     # count = 0
     # Iterates through the user's repositories and populates them into a list
     my_commit = (
-        current_user_account.get_user()
+        CURRENT_USER_ACCOUNT.get_user()
         .get_repos()[int(repo_index)]
         .get_branch("master")
         .commit.sha
@@ -73,7 +73,7 @@ def get_org_repo_list(repo_index):
     return my_commit
 
 
-@app.get("/branches_list")
+@APP.get("/branches_list")
 def get_repo_info(repo_index):
     """Please enter the number of the repository from\
     the previous list to show information."""
@@ -82,9 +82,9 @@ def get_repo_info(repo_index):
         "Finding the branches in the repository \
     and their names..."
     )
-    global current_user_account
+    global CURRENT_USER_ACCOUNT
     # isolates a single repo in the user's Github to find the branches
-    current_repo = current_user_account.get_user().get_repos()[int(repo_index)]
+    current_repo = CURRENT_USER_ACCOUNT.get_user().get_repos()[int(repo_index)]
     # adds all of the branches in the repo to a list
     branches_list = current_repo.get_branches()
     branches_names = []
@@ -111,21 +111,22 @@ def main_method():
     """Use to call previous functions in case of running through terminal."""
     # pylint: disable=input-builtin
     print("Running the main method...")
-    userToken = str(input("Please enter your GitHub token: "))
+    user_token = str(input("Please enter your GitHub token: "))
     print("Creating a user token based on user-entered credentials...")
-    print(create_user(userToken))
+    print(create_user(user_token))
     print("Getting the list of repositories from GitHub...")
     get_repo_list()
-    repoIndex = int(input("Please enter an index number to show information:"))
+    rep_index = int(input("Please enter an index number to show information:"))
     print("Accessing repository index based on user-provided value...")
     print(
         "Printing the repository information based on \
         the user-provided value..."
     )
-    print(get_repo_info(repoIndex))
+    print(get_repo_info(rep_index))
 
 
-# pylint: disable=input-builtin
-choice = input("call main? (y = yes/ n = no)")
-if choice == "y":
-    main_method()
+if __name__ == "__main__":
+    # pylint: disable=input-builtin
+    CHOICE = input("call main? (y = yes/ n = no)")
+    if CHOICE == "y":
+        main_method()

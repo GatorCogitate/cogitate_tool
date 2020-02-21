@@ -13,8 +13,15 @@ def print_in_table(dictionary):
     # headings = ["Username", "Commits", "+", "-" "Total"]
     data_table.field_names = ["Username", "Commits", "+", "-", "Total"]
     for key in dictionary:
-        data_table.add_row([key, dictionary[key][0], dictionary[key][1],
-                            dictionary[key][2], dictionary[key][3]])
+        data_table.add_row(
+            [
+                key,
+                dictionary[key][0],
+                dictionary[key][1],
+                dictionary[key][2],
+                dictionary[key][3],
+            ]
+        )
     print(data_table)
 
 
