@@ -45,7 +45,7 @@ def collect_commits_hash(repo):
                 line_of_code += item.nloc
             if item.complexity is not None:
                 complexity += item.complexity
-            # methods.append([method.name for method in item.methods])
+
 
             for method in item.methods:
                 methods.append(method.name)
@@ -67,22 +67,4 @@ def collect_commits_hash(repo):
         }
         commit_list.append(single_commit_dict)
 
-
-
-        print(commit_list)
-
-
-collect_commits_hash(repo_path)
-#     return commit_list
-#
-# pprint.pprint(collect_commits_hash(repo_path))
-#
-# def new_f(repo):
-#     for commit in RepositoryMining(repo).traverse_commits():
-        # print(commit.modifications)
-        #print(' '.join([str(elem) for elem in commit.modifications]))
-        # print("----------------------------")
-        # for item in commit.modifications:
-        #     print(item.nloc)
-
-# new_f(repo_path)
+    return commit_list
