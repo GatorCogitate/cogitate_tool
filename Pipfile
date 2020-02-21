@@ -13,8 +13,7 @@ pydocstyle = "*"
 pytest = "*"
 pytest-cov = "*"
 pydriller = "*"
-prompt-toolkit = "==1.0.14"
-pyinquirer = "*"
+click = "*"
 
 [requires]
 python_version = "3.7"
