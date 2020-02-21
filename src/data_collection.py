@@ -54,7 +54,7 @@ def collect_commits_hash(repo):
         filename = []
 
         for item in commit.modifications:
-
+            # modifications is a list of files and its changes
             line_added += item.added
             line_removed += item.removed
             if item.nloc is not None:
