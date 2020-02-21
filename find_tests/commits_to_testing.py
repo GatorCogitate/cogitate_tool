@@ -2,15 +2,14 @@
 
 from pydriller import RepositoryMining, GitRepository  # import necessary libraries
 
+
 def get_repo_authors(user_repo):
     """Accesses the remote repo and puts author names in a list."""
 
     # accesses users
     commit_author_list = []
     # accesses github repo to calculate users commits
-    for commit in RepositoryMining(
-        user_repo
-    ).traverse_commits():
+    for commit in RepositoryMining(user_repo).traverse_commits():
         if commit.author.name not in commit_author_list:
             commit_author_list.append(commit.author.name)
             print("Adding author,", commit.author.name)
@@ -23,14 +22,19 @@ def get_repo_authors(user_repo):
 
     return commit_author_list
 
+
 def single_multi_author_choice(commit_author_list):
     """Offers user the choice of looking at all or one specific author(s)."""
-    user_author_choice = int(input("-- Would you like to look at (1) all authors or a (2) specific author?: "))
+    
+    user_author_choice = int(
+        input(
+            "-- Would you like to look at (1) all authors or a (2) specific author?: "
+        )
+    )
     if user_author_choice == 1:
         pass
     elif user_author_choice == 2:
-        #Looks for specific author contributions
-        #RepositoryMining('path/to/the/repo', only_authors=['Username!']).traverse_commits()
+        # Looks for specific author contributions
         specific_author = input("-- Enter author name:")
         if specific_author in commit_author_list:
             commit_author_list = [specific_author]
@@ -38,6 +42,7 @@ def single_multi_author_choice(commit_author_list):
         print("Invalid choice!")
 
     return commit_author_list
+
 
 def get_commit_info(commit_author_list, user_repo):
     """Retrieves information from the repostory relating to commits to testing."""
@@ -60,7 +65,7 @@ def get_commit_info(commit_author_list, user_repo):
                     file_path = modified_file.new_path
                     if count is 0:
                         if file_path:
-                            if "test" in file_path:
+                            if "test" in file_path:  # sees if the commit was to testing
                                 # print(
                                 #     "Found someone who modified tests: ",
                                 #     # will calculate the modifications to the test
@@ -84,11 +89,14 @@ def get_commit_info(commit_author_list, user_repo):
         print("-- Percentage of Commits Going to Testing:", percentage_covered, "%")
         print("\n\n")
 
+
 def main():
     """Driver function. Runs all other necessary functions."""
+
     user_repo = input("Enter the link to your chosen GitHub repository: ")
     commit_author_list = get_repo_authors(user_repo)
     commit_author_list = single_multi_author_choice(commit_author_list)
     get_commit_info(commit_author_list, user_repo)
+
 
 main()  # call the main function; run the program
