@@ -30,16 +30,16 @@ def collect_commits_hash(repo):
 
     hash (str): hash of the commit
     msg (str): commit message
-    author (Developer): commit author (name, email)
+    author_name (str): commit author name
+    author_email (str): commit author email
     author_date (datetime): authored date
     merge (Bool): True if the commit is a merge commit
-    change_type: type of the change: can be Added, Deleted, Modified, or Renamed.
     added: number of lines added
     removed: number of lines removed
     nloc: Lines Of Code (LOC) of the file
     complexity: Cyclomatic Complexity of the file
     methods: list of methods of the file.
-
+    filename: files modified by commit.
     """
 
     commit_list = []
