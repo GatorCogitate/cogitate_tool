@@ -34,6 +34,7 @@ def collect_commits_hash(repo):
         line_removed = 0
         line_of_code = 0
         complexity = 0
+        methods = []
         filename = []
 
         for item in commit.modifications:
@@ -44,6 +45,10 @@ def collect_commits_hash(repo):
                 line_of_code += item.nloc
             if item.complexity is not None:
                 complexity += item.complexity
+            # methods.append([method.name for method in item.methods])
+
+            for method in item.methods:
+                methods.append(method.name)
             filename.append(item.filename)
 
         single_commit_dict = {
@@ -51,19 +56,14 @@ def collect_commits_hash(repo):
         "author_msg":commit.msg,
         "author_name":commit.author.name,
         "author_email":commit.author.email,
-        "author_date":commit.author_date,
+        "author_date":commit.author_date.date(),
         "merge":commit.merge,
         "line_added":line_added,
         "line_removed":line_removed,
         "lines_of_code":line_of_code,
         "complexity":complexity,
+        "methods":methods,
         "filename":filename
-        # "change_type":commit.modifications,
-        # "added":commit.modifications.added,
-        # "removed":commit.modifications.removed,
-        # "nloc":commit.modifications.nloc,
-        # "complexity":commit.modifications.complexity,
-        # "methods":commit.modifications.methods,
         }
         commit_list.append(single_commit_dict)
 
