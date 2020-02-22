@@ -391,7 +391,6 @@ def total_team_score_calculator():
 
 
 if __name__ == "__main__":
-    """This main method brings all the functions together"""
     # Sequential calls of the functions declared above to perform
     # the necessary calculations and provide the user with an overall
     # team evaluation.
