@@ -22,7 +22,7 @@ def test_retrieve_issue_data_retrieves_issues():
     global contributor_data
     ghub = Github(token)
     repository = ghub.get_repo(repository_name)
-    issues = repository.get_issues(state = "all")
+    issues = repository.get_issues(state="all")
 
     contributor_data = issue_retrieval.retrieve_issue_data(issues, contributor_data)
 
@@ -31,27 +31,27 @@ def test_retrieve_issue_data_retrieves_issues():
     for username in contributor_data:
 
         for issueID in contributor_data[username]["issues_opened"]:
-            assert repository.get_issue(number = issueID).pull_request == None
-            assert repository.get_issue(number = issueID).user.login == username
+            assert repository.get_issue(number=issueID).pull_request == None
+            assert repository.get_issue(number=issueID).user.login == username
 
         for issueID in contributor_data[username]["issues_commented"]:
-            assert repository.get_issue(number = issueID).pull_request == None
+            assert repository.get_issue(number=issueID).pull_request == None
             contributor_found = False
             while contributor_found is False:
-                for comment in repository.get_issue(number = issueID).get_comments():
+                for comment in repository.get_issue(number=issueID).get_comments():
                     if comment.user.login == username:
                         contributor_found = True
             assert contributor_found is True
 
         for issueID in contributor_data[username]["pull_requests_opened"]:
-            assert repository.get_issue(number = issueID).pull_request != None
-            assert repository.get_issue(number = issueID).user.login == username
+            assert repository.get_issue(number=issueID).pull_request != None
+            assert repository.get_issue(number=issueID).user.login == username
 
         for issueID in contributor_data[username]["pull_requests_commented"]:
-            assert repository.get_issue(number = issueID).pull_request != None
+            assert repository.get_issue(number=issueID).pull_request != None
             contributor_found = False
             while contributor_found is False:
-                for comment in repository.get_issue(number = issueID).get_comments():
+                for comment in repository.get_issue(number=issueID).get_comments():
                     if comment.user.login == username:
                         contributor_found = True
             assert contributor_found is True

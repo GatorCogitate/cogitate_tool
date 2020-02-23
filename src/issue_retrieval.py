@@ -4,7 +4,7 @@
 import os
 import sys
 
-sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)) + "/../")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + "/../")
 
 import argparse
 from json_interaction import json_handler
@@ -20,7 +20,7 @@ def main():
     # Github data retrieval
     ghub = Github(args["token"])
     repository = ghub.get_repo(args["repo"])
-    issues = repository.get_issues(state = args["state"])
+    issues = repository.get_issues(state=args["state"])
 
     # Data structure setup
     contributor_data = json_handler.get_dict_from_json_file("contributor_data")
@@ -36,9 +36,9 @@ def retrieve_arguments():
     """Retrieve the arguments based upon the format listed in this file."""
 
     ap = argparse.ArgumentParser()
-    ap.add_argument("-t", "--token", required = True, type = str, help = "Github User Token")
-    ap.add_argument("-r", "--repo", required = True, type = str, help = "User's Repository")
-    ap.add_argument("-s", "--state", required = True, type = str, help = "State of the Issue")
+    ap.add_argument("-t", "--token", required=True, type=str, help="Github User Token")
+    ap.add_argument("-r", "--repo", required=True, type=str, help="User's Repository")
+    ap.add_argument("-s", "--state", required=True, type=str, help="State of the Issue")
     args = vars(ap.parse_args())
     return args
 
@@ -49,15 +49,21 @@ def retrieve_issue_data(issues, contributor_data):
     for issue in issues:
         for comment in issue.get_comments():
             if comment.user.login in contributor_data.keys():
-                if (issue.pull_request == None):
-                    contributor_data[comment.user.login]["issues_commented"].append(issue.number)
+                if issue.pull_request == None:
+                    contributor_data[comment.user.login]["issues_commented"].append(
+                        issue.number
+                    )
                 else:
-                    contributor_data[comment.user.login]["pull_requests_commented"].append(issue.number)
+                    contributor_data[comment.user.login][
+                        "pull_requests_commented"
+                    ].append(issue.number)
         if issue.user.login in contributor_data.keys():
-            if (issue.pull_request == None):
+            if issue.pull_request == None:
                 contributor_data[issue.user.login]["issues_opened"].append(issue.number)
             else:
-                contributor_data[issue.user.login]["pull_requests_opened"].append(issue.number)
+                contributor_data[issue.user.login]["pull_requests_opened"].append(
+                    issue.number
+                )
 
     return contributor_data
 
