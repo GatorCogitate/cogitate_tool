@@ -15,19 +15,19 @@ PASSED=true
 
 OS="$(uname)"
 
-# collect the files on MacOS
-# if [[ "$OS" == "Darwin" ]]; then
-    # FILES=$(find -E . -type f -regex '\./(gator|tests)/.*.py')
-# else
-  #  FILES=$(find . -type f -regextype posix-extended -regex '\./(gator|tests)/.*.py')
-# fi
+ collect the files on MacOS
+ if [[ "$OS" == "Darwin" ]]; then
+     FILES=$(find -E . -type f -regex '\./(gator|tests)/.*.py')
+ else
+    FILES=$(find . -type f -regextype posix-extended -regex '\./(gator|tests)/.*.py')
+ fi
 
 # lint all of the Python source code files
-# FILES="$FILES *.py"
+ FILES="$FILES *.py"
 
 # xenon cannot accept a lists of files or directories,
 # so give the directory of the main module instead
-# MODULE="gator"
+ MODULE="gator"
 
 # Notes about the linters run on Linux and MacOS:
 # - black checks and fixes Python code formatting
