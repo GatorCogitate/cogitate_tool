@@ -20,6 +20,7 @@ uvicorn = "*"
 codacy-coverage = "*"
 radon = "*"
 bandit = "*"
+xenon = "*"
 
 [requires]
 python_version = "3.7"
