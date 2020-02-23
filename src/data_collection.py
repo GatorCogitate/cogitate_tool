@@ -1,12 +1,7 @@
 """ Collects commit data for a single user. """
 from pydriller import RepositoryMining
-
 import pprint
 
-try:
-    import git
-except:
-    pass
 
 # indicate path for repository by pluggin in the URL of repo (must be public)
 repo_path = "https://github.com/GatorCogitate/cogitate_tool"
@@ -17,7 +12,6 @@ def collect_commits_user_email_key(repo):
     """ Creates a dictionary of commit objects for a single user. """
     # holds email of repo members as keys, contents of commit object as values
     author_dict = {}
-
 
     # loop to turn the each Commits object into the values of the dictionary `author_dict`
     for commit in RepositoryMining(repo).traverse_commits():
@@ -32,10 +26,10 @@ def collect_commits_hash(repo):
 
     commit_list = []
 
-    for commit in RepositoryMining(repo).traverse_commits():
+    for commit in RepositoryMining("..").traverse_commits():
 
         # print(commit)
-        # print(commit.in_main_branch)
+        print(commit.in_main_branch)
         # commit_list.append(
         # {"hash":commit.hash,
         # "author_msg":commit.msg,
@@ -54,4 +48,5 @@ def collect_commits_hash(repo):
 
     return commit_list
 
-print (collect_commits_hash(repo_path))
+
+print(collect_commits_hash(repo_path))
