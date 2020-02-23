@@ -50,7 +50,8 @@ def get_repo_list():
 
 @APP.get("/org_repo_list")
 def get_org_repo_list(repo_index):
-    """Initialize list the users repositories' \
+    """Initialize list the users repositories'
+    
     names and counts their number."""
     # pylint: disable=global-statement
     global CURRENT_USER_ACCOUNT
@@ -75,7 +76,8 @@ def get_org_repo_list(repo_index):
 
 @APP.get("/branches_list")
 def get_repo_info(repo_index):
-    """Please enter the number of the repository from\
+    """Please enter the number of the repository from
+
     the previous list to show information."""
     # pylint: disable=global-statement
     print(
