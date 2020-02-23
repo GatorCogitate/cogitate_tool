@@ -1,5 +1,8 @@
+"""Contains the feature for collecting issue and pull request information."""
+
 # Use the following command for demonstration purposes:
-# python src/issue_retrieval.py --repo "REPO HERE" --state "STATE HERE" --token "TOKEN HERE"
+# python src/issue_retrieval.py --repo "REPO HERE" --state "STATE HERE" --token
+# "TOKEN HERE"
 
 import os
 import sys
@@ -35,11 +38,17 @@ def main():
 def retrieve_arguments():
     """Retrieve the arguments based upon the format listed in this file."""
 
-    ap = argparse.ArgumentParser()
-    ap.add_argument("-t", "--token", required=True, type=str, help="Github User Token")
-    ap.add_argument("-r", "--repo", required=True, type=str, help="User's Repository")
-    ap.add_argument("-s", "--state", required=True, type=str, help="State of the Issue")
-    args = vars(ap.parse_args())
+    a_parse = argparse.ArgumentParser()
+    a_parse.add_argument(
+        "-t", "--token", required=True, type=str, help="Github User Token"
+    )
+    a_parse.add_argument(
+        "-r", "--repo", required=True, type=str, help="User's Repository"
+    )
+    a_parse.add_argument(
+        "-s", "--state", required=True, type=str, help="State of the Issue"
+    )
+    args = vars(a_parse.parse_args())
     return args
 
 
@@ -49,7 +58,7 @@ def retrieve_issue_data(issues, contributor_data):
     for issue in issues:
         for comment in issue.get_comments():
             if comment.user.login in contributor_data.keys():
-                if issue.pull_request == None:
+                if issue.pull_request is None:
                     contributor_data[comment.user.login]["issues_commented"].append(
                         issue.number
                     )
@@ -58,7 +67,7 @@ def retrieve_issue_data(issues, contributor_data):
                         "pull_requests_commented"
                     ].append(issue.number)
         if issue.user.login in contributor_data.keys():
-            if issue.pull_request == None:
+            if issue.pull_request is None:
                 contributor_data[issue.user.login]["issues_opened"].append(issue.number)
             else:
                 contributor_data[issue.user.login]["pull_requests_opened"].append(
