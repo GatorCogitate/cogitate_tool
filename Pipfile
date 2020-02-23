@@ -13,7 +13,12 @@ pydocstyle = "*"
 pytest = "*"
 pytest-cov = "*"
 pydriller = "*"
-click = "*"
+PyGithub= "*"
+streamlit = "*"
+numpy = "*"
+pandas = "*"
+fastapi = "*"
+uvicorn = "*"
 
 [requires]
 python_version = "3.7"
@@ -25,3 +30,4 @@ allow_prereleases = true
 cover = "./scripts/cover.sh"
 lint = "./scripts/lint.sh"
 test = "./scripts/test.sh"
+cogitate = "./scripts/cogitate.sh"
