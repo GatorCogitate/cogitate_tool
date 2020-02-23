@@ -50,10 +50,11 @@ For example, if the `command_name` is `cogitate`, the we can use `pipenv run cog
 
 ### 3. CLI
 
-
+The [homepage](https://docs.python.org/3/howto/argparse.html) for `argparse`.
 
 ### 4. PyDriller
 
-The [homepage](https://github.com/ishepard/pydriller) and [documentation](https://pydriller.readthedocs.io/en/latest/intro.html) for `PyDriller`.
+The [homepage](https://github.com/ishepard/pydriller) and [documentation](https://pydriller.readthedocs.io/en/latest/intro.html)
+for `PyDriller`.
 
 The available attributes can be found at their homepage.
