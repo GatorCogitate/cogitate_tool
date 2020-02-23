@@ -18,6 +18,8 @@ pandas = "*"
 fastapi = "*"
 uvicorn = "*"
 codacy-coverage = "*"
+radon = "*"
+bandit = "*"
 
 [requires]
 python_version = "3.7"
