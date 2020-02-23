@@ -10,14 +10,18 @@
 ├── Pipfile.lock
 ├── README.md
 ├── scripts
-│   └── cogitate.sh
+│   ├── cogitate.sh
+│   └── test.sh
 ├── src
-│   ├── cogitate_tool.py
+│   ├── cogitate.py
 │   ├── data_collection.py
 │   ├── demo.py
-│   └── driller.py
+│   ├── driller.py
+│   └── __init__.py
 ├── tests
-│   └── test_cogitate_tool.py
+│   ├── conftest.py
+│   ├── __init__.py
+│   └── test_driller.py
 └── TODO.md
 ```
 
