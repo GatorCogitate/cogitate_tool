@@ -65,9 +65,8 @@ def get_commit_average(dictionary):
         dictionary[key].append(average)
     return data
 
-
-def get_commit_lines(repo_path):
-    """Return the number of lines that were changed as a dictionary."""
+def iterate_commits(repo_path):
+    """Iterate through commits of a GitHub repository."""
     data_list = {}
     # creates a hashmap where the key is the authors username
     # goes through all the commits in the current branch of the repo
@@ -80,15 +79,20 @@ def get_commit_lines(repo_path):
             # creates a new key and add the data
             data_list[author] = [email, 1, 0, 0, 0, 0]
         # goes through the files in the current commit
-        for file in commit.modifications:
-            added_lines = file.added
-            removed_lines = file.removed
 
-            total_lines = added_lines - removed_lines
-            data_list[author][2] += added_lines
-            data_list[author][3] += removed_lines
-            data_list[author][4] += total_lines
-            data_list[author][5] += added_lines + removed_lines
+
+def get_commit_lines(pathway):
+    """Return the number of lines that were changed as a dictionary."""
+    iterate_commits(pathway)
+    for file in commit.modifications:
+        added_lines = file.added
+        removed_lines = file.removed
+
+        total_lines = added_lines - removed_lines
+        data_list[author][2] += added_lines
+        data_list[author][3] += removed_lines
+        data_list[author][4] += total_lines
+        data_list[author][5] += added_lines + removed_lines
     return data_list
 
 def get_file_types(repo_path):
@@ -103,6 +107,8 @@ def get_file_types(repo_path):
             
             print("files: " + files_changed + " author: " + author)
     return data_list
+
+# def commit_distribution(repo_path):
 
 
 
