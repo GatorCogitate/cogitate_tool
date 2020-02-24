@@ -40,9 +40,9 @@ def main():
     """Call other functions in this module asking for user input."""
     # takes input for the repository local path OR URL
     path_repo = input("Enter the path to the repo : ")
-    data = count_code_lines.get_commit_lines(path_repo)
-    data = count_code_lines.get_commit_average(data)
-    # data = count_code_lines.get_file_types(path_repo)
+    # data = count_code_lines.get_commit_lines(path_repo)
+    # data = count_code_lines.get_commit_average(data)
+    data = count_code_lines.get_file_types(path_repo)
     # print("data before checking")
     print_in_table(data)
     # print("data after checking")

@@ -91,7 +91,6 @@ def get_commit_lines(repo_path):
             data_list[author][5] += added_lines + removed_lines
     return data_list
 
-
 def get_file_types(repo_path):
     data_list = {}
     files_changed = []
@@ -104,6 +103,7 @@ def get_file_types(repo_path):
             
             print("files: " + files_changed + " author: " + author)
     return data_list
+
 
 
 # NOTE: for printing the data please use the file pint_table.py
