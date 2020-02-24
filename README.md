@@ -3,7 +3,7 @@
 #### Steps to run `count_code_lines.py`
 
 - Must be in the `src` folder
-- Run the python file using `pipenv run python count_code_lines.py`
+- Run the python file using `pipenv run python print_table.py`
 - Paste the URL or local path of the repository
 - If the current repository is meant to be selected, enter `../` as the path. This will cause the program to take the directory right outside of the `src` folder
 - __NOTE__: the program only displays statistics for the default master branch of the repository if run using repository URL. However, it would display the checked out branch statistics if the local path was provided. This is a current limitation of pydriller

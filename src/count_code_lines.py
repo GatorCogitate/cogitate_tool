@@ -58,7 +58,7 @@ def check_emails(data):
 
 
 def get_commit_average(dictionary):
-    """ Add number of commits and rounds up the number."""
+    """Add number of commits and rounds up the number."""
     data = dictionary
     for key in data:
         average = (int)((dictionary[key][2] + dictionary[key][3]) / dictionary[key][1])
@@ -67,10 +67,7 @@ def get_commit_average(dictionary):
 
 
 def get_commit_lines(repo_path):
-    """Return the number of lines that were added or deleted.
-
-    as a dictionary.
-    """
+    """Return the number of lines that were changed as a dictionary."""
     data_list = {}
     # creates a hashmap where the key is the authors username
     # goes through all the commits in the current branch of the repo
