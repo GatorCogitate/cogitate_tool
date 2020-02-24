@@ -58,7 +58,7 @@ def standard_deviations():
     standard_deviations_list = []
     standard_deviation_counter = 0
     while standard_deviation_counter <= len(values_list) - 1:
-        standard_deviations_list.append(np.std(values_list[0]))
+        standard_deviations_list.append(np.std(values_list[standard_deviation_counter]))
         standard_deviation_counter += 1
 
 
