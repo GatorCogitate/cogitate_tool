@@ -5,6 +5,7 @@ engines:
     exclude_paths:
       - 'data/**'
       - 'json_interaction/**'
+      - 'test/**'
       - 'README.md'
 exclude_paths:
   - 'data/**'
