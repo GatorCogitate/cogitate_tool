@@ -6,6 +6,8 @@ from pydriller import RepositoryMining, GitRepository  # import necessary librar
 def get_repo_authors(user_repo):
     """Accesses the remote repo and puts author names in a list."""
 
+    # Will we want to recreate all this like function 1 or call those functions
+    # in
     # accesses users
     commit_author_list = []
     # accesses github repo to calculate users commits
@@ -28,5 +30,6 @@ def main():
     """Driver function. Runs all other necessary functions."""
 
     user_repo = input("Enter the link to your chosen GitHub repository: ")
+    commit_author_list = get_repo_authors(user_repo)
 
 main()  # call the main function; run the program
