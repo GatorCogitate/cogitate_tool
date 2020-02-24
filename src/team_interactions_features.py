@@ -1,7 +1,7 @@
 """ Features to measure code hoarding and common collaborations in branches. """
 
 # Definition of shared dictionary
-repo_name = "cogitate"
+repo_name = "Cogitate"
 branch_1 = ["user1", "user2", "user3", "user4"]
 branch_2 = ["user1", "user2", "user4"]
 branch_3 = ["user4"]
@@ -18,7 +18,7 @@ branch_dict = {
 
 def code_hoarders():
     """ Method to determine code hoarders. """
-    code_hoarder_list = []
+    code_hoarder_list = ["Repo: " + repo_name]
     for branch_name, user_list in branch_dict.items():
         if len(user_list) == 1:
             code_hoarder_list.append(
