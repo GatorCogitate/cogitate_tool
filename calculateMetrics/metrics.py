@@ -16,9 +16,10 @@ github_data = [
     ["Julius_Caesar", 25, 310, 68, 1],
 ]
 standard_deviations_list = []
-commits_list = []
-added_list = []
-removed_list = []
+values_list = []
+# commits_list = []
+# added_list = []
+# removed_list = []
 commits_overall_score = 0
 added_overall_score = 0
 removed_overall_score = 0
@@ -26,85 +27,56 @@ total_team_score = 0
 
 
 def standard_deviations():
-    """Function to calculate the standard_deviations of commits, lines added, and lines removed."""
-    # Beginning of the code for finding the standard deviation of commits.
-    commits_counter = 0
+    """Function to calculate the standard_deviations of commits, lines added,
+    and lines removed"""
+    new_counter = 1
+    holder_list = []
+    global values_list
+    github_data_counter = 0
+    values_list_loop_terminator = 0
     global github_data
-    global commits_list
-    list_length = len(github_data)
-    # While loop that finds the commit totals for each team member in
-    # github_data and adds it to the commits_list.
-    while commits_counter <= list_length - 1:
-        commits_list.append(github_data[commits_counter][1])
-        commits_counter += 1
-    # Prints the total number of commits in the commits_list for the entire
-    # team,and then calculates the standard deviation using NumPy's std()
-    # Function.
-    print("")
-    print("The total number of commits is: ", sum(commits_list))
-    print("Standard deviation of the commits is: ", np.std(commits_list))
-    print("")
-    # Global variable to store standard deviations of commits, lines added, and
-    # lines removed.
+    # Finds the length of the sublist
+    for x in github_data:
+        values_list_loop_terminator_max = len(x)
+        print(values_list_loop_terminator_max)
+        break
+    while github_data_counter <= len(github_data):
+        if github_data_counter == len(github_data):
+            values_list.append(holder_list)
+            print(values_list)
+            # Resets the first index count and the holder_list
+            holder_list = []
+            github_data_counter = 0
+            values_list_loop_terminator += 1
+        if values_list_loop_terminator == values_list_loop_terminator_max:
+            # return values_list
+            break
+        holder_list.append(github_data[github_data_counter][new_counter])
+        github_data_counter += 1
+        values_list_loop_terminator += 1
+        if github_data_counter == len(github_data):
+            new_counter += 1
     global standard_deviations_list
-    # Adds the standard deviation of commits to the standard_deviations_list.
-    standard_deviations_list.append(np.std(commits_list))
-    # Beginning of the code for finding the standard deviation of lines added.
-    global added_list
-    lines_added_counter = 0
-    # While loop that finds the total lines added for each individual team
-    # member in github_data and adds it to the added_list.
-    while lines_added_counter <= list_length - 1:
-        added_list.append(github_data[lines_added_counter][2])
-        lines_added_counter += 1
-    # Prints the total number of commits in the commits_list for the entire
-    # team,and then calculates the standard deviation using NumPy's std()
-    # Function.
-    print("")
-    print("The total number of lines added is: ", sum(added_list))
-    print("Standard deviation of lines added is: ", np.std(added_list))
-    print("")
-    # Adds the standard deviations from added_list to the collective
-    # standard_deviations_list.
-    standard_deviations_list.append(np.std(added_list))
-    # Beginning of the code for finding the standard deviation of the lines
-    # removed.
-    lines_removed_counter = 0
-    global removed_list
-    # While loop that finds the total lines removed for each team member
-    # in github_data and adds it to the removed_list.
-    while lines_removed_counter <= list_length - 1:
-        removed_list.append(github_data[lines_removed_counter][3])
-        lines_removed_counter += 1
-    # Prints the total number of commits in the commits_list for the entire
-    # team,and then calculates the standard deviation using NumPy's std()
-    # Function.
-    print("")
-    print("The total number of lines removed is: ", sum(removed_list))
-    print("Standard deviation of lines removed is: ", np.std(removed_list))
-    print("")
-    # Adds the standard deviations from removed_list to the collective
-    # standard_deviations_list.
-    standard_deviations_list.append(np.std(removed_list))
-    print("")
-    # Prints out a list of the standard deviation for commits, lines added, and
-    # lines removed.
-    print("List of each standard deviation: ")
-    print(standard_deviations_list)
-    print("")
+    standard_deviations_list = []
+    standard_deviation_counter = 0
+    while standard_deviation_counter <= len(values_list) - 1:
+        standard_deviations_list.append(np.std(values_list[0]))
+        standard_deviation_counter += 1
 
 
 def commits_calculator():
-    """This will determine how well the team worked together by analyzing the spread of commits."""
+    """This will determine how well the team worked together by analyzing the
+    spread of commits"""
     global standard_deviations_list
-    global commits_list
-    print("Commits average is: ", np.average(commits_list))
-    print("Commits standard deviation is: ", np.std(commits_list))
+    global values_list
+    # global commits_list
+    commits_list = values_list[0]
+    # print("Commits average is: ", np.average(values_list[0]))
+    # print("Commits standard deviation is: ", np.std(standard_deviations_list[0]))
     # Standard deviation of commits
     commits_sd = standard_deviations_list[0]
     commit_scores = []
     username_accesser = 0
-    list_length = len(github_data)
     for ab in range(len(github_data)):
         # This if/else calculates the commits added to the standard deviation,
         # in order to grade the team.
@@ -171,11 +143,12 @@ def commits_calculator():
 
 
 def added_calculator():
-    """This will determine how well the team worked together by analyzing the spread of lines of code added."""
+    """This will determine how well the team worked together by analyzing the
+    spread of lines of code added"""
     global standard_deviations_list
-    global added_list
-    print("Lines added average is: ", np.average(added_list))
-    print("Lines added standard deviation is: ", np.std(added_list))
+    global values_list
+    # global added_list
+    added_list = values_list[1]
     # Standard deviation of lines added
     added_sd = standard_deviations_list[1]
     added_scores = []
@@ -257,9 +230,12 @@ def added_calculator():
 
 
 def removed_calculator():
-    """This will determine how well the team worked together by analyzing the spread of lines of code removed."""
+    """This will determine how well the team worked together by analyzing the
+    spread of lines of code removed"""
     global standard_deviations_list
+    global values_list
     global removed_list
+    removed_list = values_list[2]
     print("Lines removed average is: ", np.average(removed_list))
     print("Lines removed standard deviation is: ", np.std(removed_list))
     # Standard deviation of lines removed
@@ -342,7 +318,7 @@ def removed_calculator():
 
 
 def total_team_score_calculator():
-    """This will provide the overall score for how the team worked together."""
+    """This will provide the overall score for how the team worked together"""
     # Adding the needed global variables for this function
     global commits_overall_score
     global added_overall_score
@@ -387,11 +363,21 @@ def total_team_score_calculator():
 
 
 if __name__ == "__main__":
-    # Sequential calls of the functions declared above to perform
-    # the necessary calculations and provide the user with an overall
-    # team evaluation.
+    # Getting user input
     standard_deviations()
-    commits_calculator()
-    added_calculator()
-    removed_calculator()
-    total_team_score_calculator()
+    print("Please enter what scores you would like to see.")
+    score_wanted = input("The options are: 'all', 'commits', 'added', and 'removed'.\n---\n")
+    if score_wanted == "all":
+        # Sequential calls of the functions declared above to perform
+        # the necessary calculations and provide the user with an overall
+        # team evaluation.
+        commits_calculator()
+        added_calculator()
+        removed_calculator()
+        total_team_score_calculator()
+    if score_wanted == "commits":
+        commits_calculator()
+    if score_wanted == "added":
+        added_calculator()
+    if score_wanted == "removed":
+        removed_calculator()
