@@ -329,7 +329,7 @@ def total_team_score_calculator():
     total_team_percent = total_team_score / 15
     total_team_percent = np.around(total_team_percent, decimals=4)
     print(
-        "Across these three metrics, the team earned a total score of: [",
+        "\nAcross these three metrics, the team earned a total score of: [",
         total_team_score,
         "/ 15], or: ",
         "{:.2%}".format(total_team_percent),
