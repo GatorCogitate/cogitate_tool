@@ -95,20 +95,17 @@ def get_commit_lines(pathway):
         data_list[author][5] += added_lines + removed_lines
     return data_list
 
-def get_file_types(repo_path):
-    data_list = {}
+def get_file_types(pathway):
     files_changed = []
-    for commit in RepositoryMining(repo_path).traverse_commits():
-        author = commit.author.name
-        email = commit.author.email
-
-        for file in commit.modifications:
-            files_changed = file.filename
-            
-            print("files: " + files_changed + " author: " + author)
+    iterate_commits(pathway)
+    for file in commit.modifications:
+        files_changed = file.filename
+        print("files: " + files_changed + " author: " + author)
     return data_list
 
-# def commit_distribution(repo_path):
+def commit_distribution([pathway]):
+    iterate_commits(pathway)
+
 
 
 
