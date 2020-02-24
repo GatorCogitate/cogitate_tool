@@ -42,7 +42,7 @@ def collect_commits_hash(repo):
 
     commit_list = []
 
-    for commit in RepositoryMining("..").traverse_commits():
+    for commit in RepositoryMining(repo).traverse_commits():
 
         line_added = 0
         line_removed = 0
