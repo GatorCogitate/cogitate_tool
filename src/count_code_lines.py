@@ -2,9 +2,9 @@
 
 # from git import Repo
 from pydriller import RepositoryMining
-from prettytable import PrettyTable
 
 # from pydriller.domain.commit import ModificationType
+
 
 def delete_duplicates(data, keys_to_delete):
     """Delete keys from dictionary, keys are sent in a list."""
@@ -93,5 +93,6 @@ def get_commit_lines(repo_path):
             data_list[author][4] += total_lines
             data_list[author][5] += added_lines + removed_lines
     return data_list
+
 
 # NOTE: for printing the data please use the file pint_table.py

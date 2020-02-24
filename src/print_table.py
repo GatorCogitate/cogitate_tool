@@ -1,5 +1,8 @@
-import count_code_lines
+"""This program takes the path to the repo and prints the data table."""
+
 from prettytable import PrettyTable
+import count_code_lines
+
 
 def print_in_table(dictionary):
     """Create and print the table using prettytable."""
@@ -29,7 +32,6 @@ def print_in_table(dictionary):
             ]
         )
     print(data_table)
-
 
 
 def main():
