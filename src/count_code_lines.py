@@ -10,7 +10,7 @@ from prettytable import PrettyTable
 def print_in_table(dictionary):
     """Create and print the table using prettytable."""
     data_table = PrettyTable()
-    headings = ["Username", "Email", "Commits", "+", "-", "Total"]
+    headings = ["Username", "Email", "Commits", "+", "-", "Total", "Lines/Commit"]
     data_table.field_names = headings
     for key in dictionary:
         data_table.add_row(
@@ -21,6 +21,7 @@ def print_in_table(dictionary):
                 dictionary[key][2],
                 dictionary[key][3],
                 dictionary[key][4],
+                dictionary[key][5]
             ]
         )
     print(data_table)
@@ -76,6 +77,12 @@ def check_emails(data):
     dictionary = delete_duplicates(dictionary, keys_to_delete)
     return dictionary
 
+def get_commit_average(dictionary):
+    data = dictionary
+    for key in data:
+        average = (dictionary[key][2] + dictionary[key][3]) / dictionary[key][1]
+        dictionary[key].append(average)
+    return data
 
 def get_commit_lines(repo_path):
     """Return the number of lines that were added or deleted.
@@ -109,6 +116,7 @@ def main():
     # takes input for the repository local path OR URL
     path_repo = input("Enter the path to the repo : ")
     data = get_commit_lines(path_repo)
+    data = get_commit_average(data)
     # print("data before checking")
     print_in_table(data)
     # print("data after checking")
