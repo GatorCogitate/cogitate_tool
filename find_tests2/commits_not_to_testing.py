@@ -84,12 +84,13 @@ def get_commit_info(commit_author_list, user_repo):
                 total_commit_count = total_commit_count + 1
         # Print statements that release the calculations of the declared variables
         print(author_name, "'s Total commits: ", author_commit_count)
-        print("-- Testing commits by", author_name, ":", total_test_commit_count)
+        non_test_commit_count = total_commit_count - total_test_commit_count
+        print("-- Non Testing commits by", author_name, ":", non_test_commit_count)
         try:
-            percentage_covered = (total_test_commit_count / author_commit_count) * 100
+            percentage_covered = (non_test_commit_count / author_commit_count) * 100
         except:
             percentage_covered = 0
-        print("-- Percentage of Commits Going to Testing:", percentage_covered, "%")
+        print("-- Percentage of Commits not going to Testing:", percentage_covered, "%")
         print("\n\n")
 
 
