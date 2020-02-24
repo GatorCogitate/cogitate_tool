@@ -37,7 +37,9 @@ def standard_deviations():
     global github_data
     # Finds the length of the 1st sublist (index[0]) in github_data
     for x in github_data:
-        values_list_loop_terminator_max = len(x) - 1 # This is because new_counter always starts at index 1 of each sublist
+        values_list_loop_terminator_max = (
+            len(x) - 1
+        )  # This is because new_counter always starts at index 1 of each sublist
         # print(values_list_loop_terminator_max)
         break
     while github_data_counter <= len(github_data):
@@ -46,7 +48,9 @@ def standard_deviations():
             # Resets the first index count and the holder_list
             holder_list = []
             github_data_counter = 0
-        if values_list_loop_terminator == values_list_loop_terminator_max * len(github_data):
+        if values_list_loop_terminator == values_list_loop_terminator_max * len(
+            github_data
+        ):
             # return values_list
             break
         holder_list.append(github_data[github_data_counter][new_counter])
@@ -125,20 +129,16 @@ def commits_calculator():
             username_accesser += 1
     global commits_overall_score
     commits_overall_score = np.average(commit_scores)
-    # These print statments print out the scores for the amount of commits the
-    # team added
-    # print("")
-    # print("Each users scores are listed below: ")
-    # print(commit_scores)
-    # print("The average of these scores is: ", np.average(commit_scores))
-    print("")
+    # The "''...'_percent" variables calculate the percentage score the team received for this category. These print statments print out the scores for the amount of commits the team added
+    commits_percent = commits_overall_score / 5
+    commits_percent = np.around(commits_percent, decimals=2)
     print(
-        "The team earned a score of: [",
+        "\nThe team earned a score of: [",
         np.average(commit_scores),
-        "/ 5] for teamwork on commits.",
+        "/ 5] for teamwork on lines removed, or: ",
+        "{:.2%}".format(commits_percent),
+        "\n",
     )
-    print("")
-    return commit_scores
 
 
 def added_calculator():
@@ -214,19 +214,16 @@ def added_calculator():
             username_accesser += 1
     global added_overall_score
     added_overall_score = np.average(added_scores)
-    # These print statments print out the scores for the amount of code the
-    # team added
-    # print("")
-    # print("Each users scores are listed below: ")
-    # print(added_scores)
-    # print("The average of these scores is: ", np.average(added_scores))
-    print("")
+    # The "''...'_percent" variables calculate the percentage score the team received for this category. These print statments print out the scores for the amount of code the team added
+    added_percent = added_overall_score / 5
+    added_percent = np.around(added_percent, decimals=2)
     print(
-        "The team earned a score of: [",
+        "\nThe team earned a score of: [",
         np.average(added_scores),
-        "/ 5] for teamwork on lines added.",
+        "/ 5] for teamwork on lines removed, or: ",
+        "{:.2%}".format(added_percent),
+        "\n",
     )
-    print("")
 
 
 def removed_calculator():
@@ -302,16 +299,15 @@ def removed_calculator():
             username_accesser += 1
     global removed_overall_score
     removed_overall_score = np.average(removed_scores)
-    # These print statments print out the scores for the amount of code the
-    # team removed.
-    # print("")
-    # print("Each users scores are listed below: ")
-    # print(removed_scores)
-    # print("The average of these scores is: ", np.average(removed_scores))
+    # The "''...'_percent" variables calculate the percentage score the team received for this category. These print statments print out the numeric and percentage scores for the amount of code the team removed.
+    removed_percent = removed_overall_score / 5
+    removed_percent = np.around(removed_percent, decimals=2)
     print(
         "\nThe team earned a score of: [",
         np.average(removed_scores),
-        "/ 5] for teamwork on lines removed.\n",
+        "/ 5] for teamwork on lines removed, or: ",
+        "{:.2%}".format(removed_percent),
+        "\n",
     )
 
 
@@ -353,18 +349,24 @@ def total_team_score_calculator():
         pass
     # The following five lines of code provide the scoring information
     # output to the user.
-    print("Across these three metrics, the team earned a total score of:")
-    print("[", total_team_score, "/ 15]")
+    # print("Across these three metrics, the team earned a total score of: [", total_team_score, "/ 15]")
     total_team_percent = total_team_score / 15
     total_team_percent = np.around(total_team_percent, decimals=4)
-    print("{:.2%}".format(total_team_percent))
+    print(
+        "Across these three metrics, the team earned a total score of: [",
+        total_team_score,
+        "/ 15], or: ",
+        "{:.2%}".format(total_team_percent),
+    )
 
 
 if __name__ == "__main__":
     # Getting user input
     standard_deviations()
     print("Please enter what scores you would like to see.")
-    score_wanted = input("The options are: 'all', 'commits', 'added', and 'removed'.\n---\n")
+    score_wanted = input(
+        "The options are: 'all', 'commits', 'added', and 'removed'.\n---\n"
+    )
     if score_wanted == "all":
         # Sequential calls of the functions declared above to perform
         # the necessary calculations and provide the user with an overall
