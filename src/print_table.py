@@ -40,6 +40,7 @@ def main():
     path_repo = input("Enter the path to the repo : ")
     data = count_code_lines.get_commit_lines(path_repo)
     data = count_code_lines.get_commit_average(data)
+    data = count_code_lines.get_file_types(path_repo)
     # print("data before checking")
     print_in_table(data)
     # print("data after checking")
