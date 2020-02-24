@@ -78,9 +78,10 @@ def check_emails(data):
     return dictionary
 
 def get_commit_average(dictionary):
+    """ Add number of commits and rounds up the number."""
     data = dictionary
     for key in data:
-        average = (dictionary[key][2] + dictionary[key][3]) / dictionary[key][1]
+        average = (int)((dictionary[key][2] + dictionary[key][3]) / dictionary[key][1])
         dictionary[key].append(average)
     return data
 
