@@ -14,6 +14,7 @@ github_data = [
     ["Alexander_Hamilton", 41, 530, 100, 230],
     ["Karl_Marx", 0, 0, 0, 400],
     ["Julius_Caesar", 25, 310, 68, 1],
+    ["Napoleon_Bonaparte", 29, 360, 70, 3],
 ]
 standard_deviations_list = []
 values_list = []
@@ -123,7 +124,7 @@ def commits_calculator():
     print(
         "\nThe team earned a score of: [",
         np.average(commit_scores),
-        "/ 5] for teamwork on lines removed, or: ",
+        "/ 5] for teamwork on lines committed, or: ",
         "{:.2%}".format(commits_percent),
         "\n",
     )
@@ -202,7 +203,7 @@ def added_calculator():
     print(
         "\nThe team earned a score of: [",
         np.average(added_scores),
-        "/ 5] for teamwork on lines removed, or: ",
+        "/ 5] for teamwork on lines added, or: ",
         "{:.2%}".format(added_percent),
         "\n",
     )
