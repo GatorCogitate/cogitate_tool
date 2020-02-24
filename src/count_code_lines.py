@@ -10,7 +10,16 @@ from prettytable import PrettyTable
 def print_in_table(dictionary):
     """Create and print the table using prettytable."""
     data_table = PrettyTable()
-    headings = ["Username", "Email", "Commits", "+", "-", "Total", "Lines/Commit"]
+    headings = [
+        "Username",
+        "Email",
+        "Commits",
+        "+",
+        "-",
+        "Total",
+        "Lines/Commit",
+        "Changed_Lines",
+    ]
     data_table.field_names = headings
     for key in dictionary:
         data_table.add_row(
@@ -21,7 +30,8 @@ def print_in_table(dictionary):
                 dictionary[key][2],
                 dictionary[key][3],
                 dictionary[key][4],
-                dictionary[key][5]
+                dictionary[key][5],
+                dictionary[key][6],
             ]
         )
     print(data_table)
@@ -77,6 +87,7 @@ def check_emails(data):
     dictionary = delete_duplicates(dictionary, keys_to_delete)
     return dictionary
 
+
 def get_commit_average(dictionary):
     """ Add number of commits and rounds up the number."""
     data = dictionary
@@ -84,6 +95,7 @@ def get_commit_average(dictionary):
         average = (int)((dictionary[key][2] + dictionary[key][3]) / dictionary[key][1])
         dictionary[key].append(average)
     return data
+
 
 def get_commit_lines(repo_path):
     """Return the number of lines that were added or deleted.
@@ -100,15 +112,17 @@ def get_commit_lines(repo_path):
             data_list[author][1] += 1
         else:
             # creates a new key and add the data
-            data_list[author] = [email, 1, 0, 0, 0]
+            data_list[author] = [email, 1, 0, 0, 0, 0]
         # goes through the files in the current commit
         for file in commit.modifications:
             added_lines = file.added
             removed_lines = file.removed
+
             total_lines = added_lines - removed_lines
             data_list[author][2] += added_lines
             data_list[author][3] += removed_lines
             data_list[author][4] += total_lines
+            data_list[author][5] += added_lines + removed_lines
     return data_list
 
 
