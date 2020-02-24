@@ -103,7 +103,7 @@ def get_file_types(pathway):
         print("files: " + files_changed + " author: " + author)
     return data_list
 
-def commit_distribution([pathway]):
+def commit_distribution(pathway):
     iterate_commits(pathway)
 
 
