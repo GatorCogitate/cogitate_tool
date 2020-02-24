@@ -48,7 +48,8 @@ def standard_deviations():
             holder_list = []
             github_data_counter = 0
             values_list_loop_terminator += 1
-        if values_list_loop_terminator == values_list_loop_terminator_max:
+            print(values_list_loop_terminator)
+        if values_list_loop_terminator == 36: # values_list_loop_terminator_max:
             # return values_list
             break
         holder_list.append(github_data[github_data_counter][new_counter])
