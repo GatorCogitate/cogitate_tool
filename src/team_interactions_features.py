@@ -44,4 +44,4 @@ def collaborators():
     col_max = 5
     for branch_name, user_list in branch_dict.items():
         if len(user_list) > 1:
-            collaborator_list.append(user_list[0])
+            collaborator_list.append(branch_name)
