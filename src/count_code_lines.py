@@ -78,20 +78,23 @@ def get_commit_lines(repo_path):
             data_list[author][1] += 1
         else:
             # creates a new key and add the data
-            data_list[author] = [email, 1, 0, 0, 0, 0]
+            data_list[author] = [email, 1, 0, 0, 0, 0, ""]
         # goes through the files in the current commit
         for file in commit.modifications:
             added_lines = file.added
             removed_lines = file.removed
+            files_changed = file.filename
 
             total_lines = added_lines - removed_lines
             data_list[author][2] += added_lines
             data_list[author][3] += removed_lines
             data_list[author][4] += total_lines
             data_list[author][5] += added_lines + removed_lines
+            data_list[author][6] = data_list[author][6] + files_changed + "\n"
     return data_list
 
 
+<<<<<<< HEAD
 def get_file_types(repo_path):
     data_list = {}
 
@@ -107,6 +110,20 @@ def get_file_types(repo_path):
 
             print("files: " + files_changed + " author: " + author)
     return data_list
+=======
+# def get_file_types(repo_path):
+#     data_list = {}
+#     files_changed = []
+#     for commit in RepositoryMining(repo_path).traverse_commits():
+#         author = commit.author.name
+#         email = commit.author.email
+#
+#         for file in commit.modifications:
+#             files_changed = file.filename
+#
+#             print("files: " + files_changed + " author: " + author)
+#     return data_list
+>>>>>>> 752cd5036203d41b0da94ef3601a6c36ad830cce
 
 
 # NOTE: for printing the data please use the file pint_table.py
