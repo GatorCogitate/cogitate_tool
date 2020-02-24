@@ -78,13 +78,13 @@ def commits_calculator():
     for ab in range(len(github_data)):
         # This if/else calculates the commits added to the standard deviation,
         # in order to grade the team.
-        print("Checking GitHub user: ", github_data[username_accesser][0])
+        # print("Checking GitHub user: ", github_data[username_accesser][0])
         if github_data[username_accesser][1] <= np.average(commits_list) + (
             commits_sd * 0.5
         ) and github_data[username_accesser][1] >= np.average(commits_list) - (
             commits_sd * 0.5
         ):
-            print("appending 5 to commit_scores list")
+            # print("appending 5 to commit_scores list")
             commit_scores.append(5)
             username_accesser += 1
         elif github_data[username_accesser][1] <= np.average(commits_list) + (
@@ -92,7 +92,7 @@ def commits_calculator():
         ) and github_data[username_accesser][1] >= np.average(commits_list) - (
             commits_sd * 1.0
         ):
-            print("appending 4 to commit_scores list")
+            # print("appending 4 to commit_scores list")
             commit_scores.append(4)
             username_accesser += 1
         elif github_data[username_accesser][1] <= np.average(commits_list) + (
@@ -100,7 +100,7 @@ def commits_calculator():
         ) and github_data[username_accesser][1] >= np.average(commits_list) - (
             commits_sd * 1.5
         ):
-            print("appending 3 to commit_scores list")
+            # print("appending 3 to commit_scores list")
             commit_scores.append(3)
             username_accesser += 1
         elif github_data[username_accesser][1] <= np.average(commits_list) + (
@@ -108,7 +108,7 @@ def commits_calculator():
         ) and github_data[username_accesser][1] >= np.average(commits_list) - (
             commits_sd * 2.0
         ):
-            print("appending 2 to commit_scores list")
+            # print("appending 2 to commit_scores list")
             commit_scores.append(2)
             username_accesser += 1
         elif github_data[username_accesser][1] <= np.average(commits_list) + (
@@ -116,21 +116,22 @@ def commits_calculator():
         ) and github_data[username_accesser][1] >= np.average(commits_list) - (
             commits_sd * 2.25
         ):
-            print("appending 1 to commit_scores list")
+            # print("appending 1 to commit_scores list")
             commit_scores.append(1)
             username_accesser += 1
         else:
-            print("Appending 0 to commit_scores list")
+            # print("appending 0 to commit_scores list")
             commit_scores.append(0)
             username_accesser += 1
     global commits_overall_score
     commits_overall_score = np.average(commit_scores)
     # These print statments print out the scores for the amount of commits the
     # team added
+    # print("")
+    # print("Each users scores are listed below: ")
+    # print(commit_scores)
+    # print("The average of these scores is: ", np.average(commit_scores))
     print("")
-    print("Each users scores are listed below: ")
-    print(commit_scores)
-    print("The average of these scores is: ", np.average(commit_scores))
     print(
         "The team earned a score of: [",
         np.average(commit_scores),
@@ -154,7 +155,7 @@ def added_calculator():
     list_length = len(github_data)
     # for ab in range(len(github_data)):
     for cd in range(len(github_data)):
-        print("Checking GitHub user: ", github_data[username_accesser][0])
+        # print("Checking GitHub user: ", github_data[username_accesser][0])
         # This if/else calculates the amount added to the standard deviation,
         # in order to grade the team.
         # This if statment will end if the user was within 0.5 of the standard
@@ -164,7 +165,7 @@ def added_calculator():
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
             added_sd * 0.5
         ):
-            print("appending 5 to added_scores list")
+            # print("appending 5 to added_scores list")
             added_scores.append(5)
             username_accesser += 1
         # This if statment will end if the user was within 1.0 of the standard
@@ -174,7 +175,7 @@ def added_calculator():
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
             added_sd * 1.0
         ):
-            print("appending 4 to added_scores list")
+            # print("appending 4 to added_scores list")
             added_scores.append(4)
             username_accesser += 1
         # This if statment will end if the user was within 1.5 of the standard
@@ -184,7 +185,7 @@ def added_calculator():
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
             added_sd * 1.5
         ):
-            print("appending 3 to added_scores list")
+            # print("appending 3 to added_scores list")
             added_scores.append(3)
             username_accesser += 1
         # This if statment will end if the user was within 2.0 of the standard
@@ -194,7 +195,7 @@ def added_calculator():
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
             added_sd * 2.0
         ):
-            print("appending 2 to added_scores list")
+            # print("appending 2 to added_scores list")
             added_scores.append(2)
             username_accesser += 1
         # This if statment will end if the user was within 2.25 of the standard
@@ -204,21 +205,22 @@ def added_calculator():
         ) and github_data[username_accesser][2] >= np.average(added_list) - (
             added_sd * 2.25
         ):
-            print("appending 1 to added_scores list")
+            # print("appending 1 to added_scores list")
             added_scores.append(1)
             username_accesser += 1
         else:
-            print("Appending 0 to added_scores list")
+            # print("appending 0 to added_scores list")
             added_scores.append(0)
             username_accesser += 1
     global added_overall_score
     added_overall_score = np.average(added_scores)
     # These print statments print out the scores for the amount of code the
     # team added
+    # print("")
+    # print("Each users scores are listed below: ")
+    # print(added_scores)
+    # print("The average of these scores is: ", np.average(added_scores))
     print("")
-    print("Each users scores are listed below: ")
-    print(added_scores)
-    print("The average of these scores is: ", np.average(added_scores))
     print(
         "The team earned a score of: [",
         np.average(added_scores),
@@ -232,17 +234,16 @@ def removed_calculator():
     spread of lines of code removed"""
     global standard_deviations_list
     global values_list
-    global removed_list
     removed_list = values_list[2]
-    print("Lines removed average is: ", np.average(removed_list))
-    print("Lines removed standard deviation is: ", np.std(removed_list))
+    # print("Lines removed average is: ", np.average(removed_list))
+    # print("Lines removed standard deviation is: ", np.std(removed_list))
     # Standard deviation of lines removed
     removed_sd = standard_deviations_list[2]
     removed_scores = []
     username_accesser = 0
     list_length = len(github_data)
     for ef in range(len(github_data)):
-        print("Checking GitHub user: ", github_data[username_accesser][0])
+        # print("Checking GitHub user: ", github_data[username_accesser][0])
         # This if/else calculates the amount of code removed to the,
         # standard deviation in order to grade the team.
         # Ths if statment will end if the user was within 0.5 of the standard
@@ -252,7 +253,7 @@ def removed_calculator():
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
             removed_sd * 0.5
         ):
-            print("appending 5 to removed_scores list")
+            # print("appending 5 to removed_scores list")
             removed_scores.append(5)
             username_accesser += 1
         # This if statment will end if the user was within 1.0 of the standard
@@ -262,7 +263,7 @@ def removed_calculator():
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
             removed_sd * 1.0
         ):
-            print("appending 4 to removed_scores list")
+            # print("appending 4 to removed_scores list")
             removed_scores.append(4)
             username_accesser += 1
         # This if statment will end if the user was within 1.5 of the standard
@@ -272,7 +273,7 @@ def removed_calculator():
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
             removed_sd * 1.5
         ):
-            print("appending 3 to removed_scores list")
+            # print("appending 3 to removed_scores list")
             removed_scores.append(3)
             username_accesser += 1
         # This if statment will end if the user was within 2.0 of the standard
@@ -282,7 +283,7 @@ def removed_calculator():
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
             removed_sd * 2.0
         ):
-            print("appending 2 to removed_scores list")
+            # print("appending 2 to removed_scores list")
             removed_scores.append(2)
             username_accesser += 1
         # This if statment will end if the user was within 2.25 of the standard
@@ -292,27 +293,26 @@ def removed_calculator():
         ) and github_data[username_accesser][3] >= np.average(removed_list) - (
             removed_sd * 2.25
         ):
-            print("appending 1 to removed_scores list")
+            # print("appending 1 to removed_scores list")
             removed_scores.append(1)
             username_accesser += 1
         else:
-            print("Appending 0 to removed_scores list")
+            # print("appending 0 to removed_scores list")
             removed_scores.append(0)
             username_accesser += 1
     global removed_overall_score
     removed_overall_score = np.average(removed_scores)
     # These print statments print out the scores for the amount of code the
     # team removed.
-    print("")
-    print("Each users scores are listed below: ")
-    print(removed_scores)
-    print("The average of these scores is: ", np.average(removed_scores))
+    # print("")
+    # print("Each users scores are listed below: ")
+    # print(removed_scores)
+    # print("The average of these scores is: ", np.average(removed_scores))
     print(
-        "The team earned a score of: [",
+        "\nThe team earned a score of: [",
         np.average(removed_scores),
-        "/ 5] for teamwork on lines removed.",
+        "/ 5] for teamwork on lines removed.\n",
     )
-    print("")
 
 
 def total_team_score_calculator():
@@ -373,9 +373,13 @@ if __name__ == "__main__":
         added_calculator()
         removed_calculator()
         total_team_score_calculator()
+        print("\n---\n")
     if score_wanted == "commits":
         commits_calculator()
+        print("---\n")
     if score_wanted == "added":
         added_calculator()
+        print("---\n")
     if score_wanted == "removed":
         removed_calculator()
+        print("---\n")
