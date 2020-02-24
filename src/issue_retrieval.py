@@ -1,17 +1,19 @@
 """Contains the feature for collecting issue and pull request information."""
 
 # Use the following command for demonstration purposes:
-# python src/issue_retrieval.py --repo "REPO HERE" --state "STATE HERE" --token
+# python3 src/issue_retrieval.py --repo "REPO HERE" --state "STATE HERE" --token
 # "TOKEN HERE"
 
 import os
 import sys
+import argparse
+from github import Github
 
+# __init__.py requires correction and does not add module folders to the path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + "/../")
 
-import argparse
+# pylint: disable=wrong-import-position
 from json_interaction import json_handler
-from github import Github
 
 
 def main():
@@ -26,7 +28,7 @@ def main():
     issues = repository.get_issues(state=args["state"])
 
     # Data structure setup
-    contributor_data = json_handler.get_dict_from_json_file("contributor_data")
+    contributor_data = json_handler.get_dict_from_json_file("contributor_data_template")
 
     # Data collection
     contributor_data = retrieve_issue_data(issues, contributor_data)

@@ -1,1 +1,1 @@
-"""Standard __init__.py file."""
+"""Standard __init__.py file"""

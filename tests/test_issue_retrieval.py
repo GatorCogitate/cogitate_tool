@@ -8,7 +8,7 @@ from github import Github
 # collaboration provided an alternative test procedure is possible
 #
 # Remove your token from this file after demonstration
-token = "9fd3989585322606a5107412bb9c2ffa82ad25ee"
+token = "REDACTED"
 repository_name = "GatorCogitate/cogitate_tool"
 contributor_data = json_handler.get_dict_from_json_file("contributor_data")
 

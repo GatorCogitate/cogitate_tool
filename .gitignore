@@ -610,6 +610,8 @@ gradle-app.setting
 **/build/
 
 .DS_Store
+data/*.json
+!data/contributor_data_template.json
 
 # End of https://www.gitignore.io/api/visualstudiocode,linux,dm,git,gradle,latex,macos,pydev,python,test,venv,vim,virtualenv,windows
 
