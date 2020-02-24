@@ -48,23 +48,29 @@ def single_multi_author_choice(commit_author_list):
     return commit_author_list
 
 if __name__ == "__main__":
-    user_repo = "~/cs203s2020/labs/cogitate_tool"
+    user_repo = input("Specify your local repo: ")
+    #user_repo = "~/cs203s2020/labs/cogitate_tool"
     authors = get_repo_authors(user_repo)
     commit_author_list = single_multi_author_choice(authors)
     # assume that all of the checks run correctly and prove otherwise
     exit_code = 0
     # defines the command that will call the check_compute_tf_monolith.py
-    author_name = commit_author_list[0]
-    base_command = 'dml gstats authorchurnmeta --author '
-    command = base_command + author_name
-
-    # tokenize this command so that subprocess can accept each of its parts
-    tokenized_command = shlex.split(command)
-    print("Tokenized command to execute: " + str(tokenized_command))
-    print()
-    # run the tokenized command and display the output as a byte string
-    result = subprocess.run(tokenized_command, stdout=subprocess.PIPE, check=True)
-    # Display the standard output variable inside of the result from the subprocess
-    # decode the byte string using UTF-8
-    decoded_stdout = str(result.stdout.decode("utf-8"))
-    print("Decoded output of executed command: \n" + decoded_stdout)
+    for author in commit_author_list:
+        print("AUTHOR", author)
+        author_name = author
+        base_command = 'dml gstats authorchurnmeta --author '
+        quote = '"'
+        command = base_command + quote + author_name + quote
+        try:
+            # tokenize this command so that subprocess can accept each of its parts
+            tokenized_command = shlex.split(command)
+            print("Tokenized command to execute: " + str(tokenized_command))
+            print()
+            # run the tokenized command and display the output as a byte string
+            result = subprocess.run(tokenized_command, stdout=subprocess.PIPE, check=True)
+            # Display the standard output variable inside of the result from the subprocess
+            # decode the byte string using UTF-8
+            decoded_stdout = str(result.stdout.decode("utf-8"))
+            print("Decoded output of executed command: \n" + decoded_stdout)
+        except:
+            print("Invalid author")
