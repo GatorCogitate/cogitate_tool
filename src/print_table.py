@@ -16,7 +16,6 @@ def print_in_table(dictionary):
         "Total",
         "Change Lines",
         "Lines per Commit"
-        # "Files Changed",
     ]
     data_table.field_names = headings
     for key in dictionary:
@@ -30,7 +29,6 @@ def print_in_table(dictionary):
                 dictionary[key][4],
                 dictionary[key][5],
                 dictionary[key][6],
-                # dictionary[key][7],
             ]
         )
     print(data_table)
@@ -42,7 +40,7 @@ def main():
     path_repo = input("Enter the path to the repo : ")
     data = count_code_lines.get_commit_lines(path_repo)
     data = count_code_lines.get_commit_average(data)
-    # data = count_code_lines.get_file_types(path_repo)
+    data = count_code_lines.get_file_types(path_repo)
     # print("data before checking")
     print_in_table(data)
     # print("data after checking")
