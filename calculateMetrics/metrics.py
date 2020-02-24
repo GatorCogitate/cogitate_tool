@@ -35,7 +35,7 @@ def standard_deviations():
     github_data_counter = 0
     values_list_loop_terminator = 0
     global github_data
-    # Finds the length of the sublist
+    # Finds the length of the 1st sublist (index[0]) in github_data
     for x in github_data:
         values_list_loop_terminator_max = len(x) - 1 # This is because new_counter always starts at index 1 of each sublist
         # print(values_list_loop_terminator_max)
