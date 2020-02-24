@@ -16,6 +16,7 @@ def print_in_table(dictionary):
         "Total",
         "Lines/Commit",
         "Changed_Lines",
+        "Files Changed",
     ]
     data_table.field_names = headings
     for key in dictionary:
@@ -29,6 +30,7 @@ def print_in_table(dictionary):
                 dictionary[key][4],
                 dictionary[key][5],
                 dictionary[key][6],
+                dictionary[key][7],
             ]
         )
     print(data_table)
