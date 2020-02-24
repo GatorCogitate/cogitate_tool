@@ -100,8 +100,8 @@ def get_file_types(repo_path):
         
         for file in commit.modifications:
             files_changed = file.filename
-
-            data_list[author][2] += files_changed
+            # print("files changed: " + files_changed)
+            # data_list[author][2].append(files_changed)
     return data_list
 
 
