@@ -6,9 +6,9 @@ Tool to analyze contributions when working in a team.
 
 The Feature 1 tool was built with the purpose of trying to determine if there
 was a student within the group who was only writing test cases. The tool pydriller
-to retrieve information regarding commits from any repository and the program will
-scan through looking for the word "test". The program will display the following
-information.
+was used to retrieve information regarding commits from any repository and the
+program will scan through looking for the word "test". The program will display
+the following information.
 
 - Authors within the repository
 - List the various commits by an individual
