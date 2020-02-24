@@ -26,8 +26,7 @@ total_team_score = 0
 
 
 def standard_deviations():
-    """Function to calculate the standard_deviations of commits, lines added,
-    and lines removed"""
+    """Function to calculate the standard_deviations of commits, lines added, and lines removed."""
     # Beginning of the code for finding the standard deviation of commits.
     commits_counter = 0
     global github_data
@@ -96,8 +95,7 @@ def standard_deviations():
 
 
 def commits_calculator():
-    """This will determine how well the team worked together by analyzing the
-    spread of commits"""
+    """This will determine how well the team worked together by analyzing the spread of commits."""
     global standard_deviations_list
     global commits_list
     print("Commits average is: ", np.average(commits_list))
@@ -173,8 +171,7 @@ def commits_calculator():
 
 
 def added_calculator():
-    """This will determine how well the team worked together by analyzing the
-    spread of lines of code added"""
+    """This will determine how well the team worked together by analyzing the spread of lines of code added."""
     global standard_deviations_list
     global added_list
     print("Lines added average is: ", np.average(added_list))
@@ -260,8 +257,7 @@ def added_calculator():
 
 
 def removed_calculator():
-    """This will determine how well the team worked together by analyzing the
-    spread of lines of code removed"""
+    """This will determine how well the team worked together by analyzing the spread of lines of code removed."""
     global standard_deviations_list
     global removed_list
     print("Lines removed average is: ", np.average(removed_list))
@@ -346,7 +342,7 @@ def removed_calculator():
 
 
 def total_team_score_calculator():
-    """This will provide the overall score for how the team worked together"""
+    """This will provide the overall score for how the team worked together."""
     # Adding the needed global variables for this function
     global commits_overall_score
     global added_overall_score
