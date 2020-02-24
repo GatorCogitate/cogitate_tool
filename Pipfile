@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+
+[dev-packages]
+black = "*"
+pylint = "*"
+flake8 = "*"
+pydocstyle = "*"
+pytest = "*"
+PyGithub= "*"
+streamlit = "*"
+numpy = "*"
+pandas = "*"
+fastapi = "*"
+uvicorn = "*"
+
+[requires]
+python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
+
+[scripts]
