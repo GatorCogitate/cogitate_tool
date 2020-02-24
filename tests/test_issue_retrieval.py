@@ -1,4 +1,4 @@
-from src_issue_retrieval import issue_retrieval
+from src import issue_retrieval
 from github import Github
 
 # As of the current state, these tests require a token to function
