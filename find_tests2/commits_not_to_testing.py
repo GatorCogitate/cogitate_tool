@@ -24,6 +24,26 @@ def get_repo_authors(user_repo):
 
     return commit_author_list
 
+def single_multi_author_choice(commit_author_list):
+    """Offers user the choice of looking at all or one specific author(s)."""
+
+    user_author_choice = int(
+        input(
+            "-- Would you like to look at (1) all authors or a (2) specific author?: "
+        )
+    )
+    if user_author_choice == 1:
+        pass
+    elif user_author_choice == 2:
+        # Looks for specific author contributions
+        specific_author = input("-- Enter author name:")
+        if specific_author in commit_author_list:
+            commit_author_list = [specific_author]
+    else:
+        print("Invalid choice!")
+
+    return commit_author_list
+
 
 
 def main():
@@ -31,5 +51,6 @@ def main():
 
     user_repo = input("Enter the link to your chosen GitHub repository: ")
     commit_author_list = get_repo_authors(user_repo)
+    commit_author_list = single_multi_author_choice(commit_author_list)
 
 main()  # call the main function; run the program
