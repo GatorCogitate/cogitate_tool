@@ -94,14 +94,17 @@ def get_commit_lines(repo_path):
 
 def get_file_types(repo_path):
     data_list = {}
+
     files_changed = []
+    files_added = []
+    files_deleted = []
     for commit in RepositoryMining(repo_path).traverse_commits():
         author = commit.author.name
         email = commit.author.email
 
         for file in commit.modifications:
             files_changed = file.filename
-            
+
             print("files: " + files_changed + " author: " + author)
     return data_list
 
