@@ -97,11 +97,7 @@ def get_file_types(repo_path):
     for commit in RepositoryMining(repo_path).traverse_commits():
         author = commit.author.name
         email = commit.author.email
-        if author in data_list:
-            data_list[author][1] += 1
-        else:
-            # creates a new key and add the data
-            data_list[author] = [email, 1, 0, 0, 0, 0]
+        
         for file in commit.modifications:
             files_changed = file.filename
 
