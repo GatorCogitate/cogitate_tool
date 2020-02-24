@@ -17,6 +17,8 @@ numpy = "*"
 pandas = "*"
 fastapi = "*"
 uvicorn = "*"
+PrettyTable = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.7"
