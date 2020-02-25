@@ -1,7 +1,7 @@
 language: generic
 
 cache:
-  directories: 
+  directories:
     - $HOME/.pip-cache/
 
 dist: xenial
@@ -41,7 +41,7 @@ before_install:
 install:
   - pip install --upgrade pip
   - pip install --upgrade pipenv
-  - pip install --dev --skip-lock --python "$PYENV-VERSION"
+  - pipenv install --dev --skip-lock --python "$PYENV-VERSION"
   - gem install mdl
 
 # send emails when there is a change or failure
