@@ -136,10 +136,7 @@ def get_commit_data(repo_path):
                 data_list[author][FILES].append(current_file)
     # iterate through the data to do final calculations
     for key in data_list:
-        average = get_commit_average(
-            data_list[key][MODIFIED],
-            data_list[key][COMMITS]
-            )
+        average = get_commit_average(data_list[key][MODIFIED], data_list[key][COMMITS])
         data_list[key][RATIO] = average
         formats = get_file_formats(data_list[key][FILES])
         data_list[key][FORMAT] = formats
