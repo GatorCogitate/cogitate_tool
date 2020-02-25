@@ -56,6 +56,7 @@ notifications:
 # --> lint the README documentation with mdl
 script:
   - mdl README.md
+  - chmod +x ./scripts/*.sh
   - pipenv run cover
   - pipenv run lint --check
   - pipenv run test

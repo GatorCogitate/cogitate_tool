@@ -1,3 +1,4 @@
+"""Test the json_handler file."""
 import os
 from src import json_handler
 
