@@ -1,7 +1,4 @@
-"""Program to count the number of lines added and.
-
-deleted by an indvividual.
-"""
+"""Count the number of lines changed by an indvividual."""
 
 # from git import Repo
 from pydriller import RepositoryMining
