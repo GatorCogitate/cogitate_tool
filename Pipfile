@@ -19,6 +19,7 @@ numpy = "*"
 pandas = "*"
 fastapi = "*"
 uvicorn = "*"
+textblob = "*"
 
 [requires]
 python_version = "3.7"
