@@ -9,8 +9,6 @@ def test_standard_deviations():
     """Function to test the standard_deviations function"""
     metrics.standard_deviations()
     assert len(metrics.values_list) >= 0
-    assert metrics.new_counter >= 0
-    assert metrics.standard_deviations_counter >= 0
     assert len(metrics.standard_deviations_list) >= 0
 
 
@@ -43,6 +41,5 @@ def test_total_team_score_calculator():
 
 def test_get_user_score():
     """Test the user score"""
-    assert metrics.github_data == 0
     metrics.get_user_scores()
-    assert metrics.giuthub_data >= 0 
+    assert metrics.user_scores == []
