@@ -9,7 +9,7 @@ def test_standard_deviations():
     """Function to test the standard_deviations function"""
     metrics.standard_deviations()
     assert len(metrics.values_list) >= 0
-    assert len(metrics.added_list) >= 0
+    assert metrics.new_counter >= 0
     assert metrics.standard_deviations_counter >= 0
     assert len(metrics.standard_deviations_list) >= 0
 
