@@ -5,7 +5,8 @@ Tool to analyze contributions when working in a team.
 ## About the Feature
 
 The Feature 1 tool was built with the purpose of trying to determine if there
-was a student within the group who was only writing test cases. The tool pydriller
+was a student within the group who was only writing test cases. The feature 2
+tool determines who is not contributing to test cases. The tool pydriller
 was used to retrieve information regarding commits from any repository and the
 program will scan through looking for the word "test". The program will display
 the following information.
@@ -30,8 +31,8 @@ https://github.com/ishepard/pydriller
 
 ## Running the Tool
 
-This tool requires a path to a repository in order for the desired information to
-be outputted. This means either a URL or a local path. The program is most
+This tool requires a path to a repository in order for the desired information
+to be outputted. This means either a URL or a local path. The program is most
 functional with master branches of repositories, as the output that is produced
-with a path to a sub-branch is unpredictable. The command that will run this tool
-is - python3 test_commits.py .
+with a path to a sub-branch is unpredictable. The command that will run this
+tool is `python3 test_commits.py` .
