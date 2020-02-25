@@ -1,4 +1,8 @@
-language: python
+language: generic
+
+cache:
+  directories: 
+    - $HOME/.pip-cache/
 
 dist: xenial
 
