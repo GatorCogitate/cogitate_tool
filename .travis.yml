@@ -35,7 +35,6 @@ before_install:
   - wget https://github.com/praekeltfoundation/travis-pyenv/releases/latest/download/setup-pyenv.sh
   - source setup-pyenv.sh
 
-
 # run commands to install dependencies (from Pipfile, not Pipfile.lock)
 # cannot use locked dependencies because of possible version changes
 # between PYENV_VERSION versions
