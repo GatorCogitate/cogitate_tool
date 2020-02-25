@@ -14,7 +14,7 @@ b4,user2, user4
 b5,user1, user2, user3
 ```
 
-Here is an indication of each individual branch and its users. The following provides a set of measurements for code hoarding 
+Here is an indication of each individual branch and its users. The following provides a set of measurements for code hoarding
 and common collaborations in branches.
 
 Branch one commits by user
