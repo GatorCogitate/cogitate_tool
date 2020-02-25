@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "da2359c8f94eaa3b7ebd076577509d0eabf068896700cc5514cc8c91cc1b5b4d"
+            "sha256": "d0763c9b29d20bdaf857fc73ea641cc7d6ee426a0c39619c9a86848e779cc09f"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.7"
+            "python_version": "3.7.3"
         },
         "sources": [
             {
@@ -22,14 +22,6 @@
                 "sha256:d31270c82ce5e37b25fc3bc4e990dc6ac593620a2be0c8c075f297409a92af90"
             ],
             "version": "==4.0.1"
-        },
-        "appnope": {
-            "hashes": [
-                "sha256:5b26757dc6f79a3b7dc9fab95359328d5747fcb2409d331ea66d0272b90ab2a0",
-                "sha256:8b995ffe925347a2138d7ac0fe77155e4311a0ea6d6da4f5128fe4b3cbe5ed71"
-            ],
-            "markers": "sys_platform == 'darwin'",
-            "version": "==0.1.0"
         },
         "astor": {
             "hashes": [
@@ -74,17 +66,17 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:02754cf029d2a8ce8f76d21fecd719ad31c7340b9ea0fd5ffa3edfaf54fa8fa4",
-                "sha256:74fddd07d319b85f9f3c56bad8ccb5a410bcc7eaab1a90fb7f5952fde068b200"
+                "sha256:5260c4138f8492108c53239f3dda912235700938ea9afe7843ce4e2c559dcaed",
+                "sha256:5a97a13777a83fcfddff34a7ca0528ec99a65b1c76113e9d517a6d1791fb82a7"
             ],
-            "version": "==1.12.6"
+            "version": "==1.12.7"
         },
         "botocore": {
             "hashes": [
-                "sha256:3319562f183f760f18f186914fc753f6a9c76c5783ba902fe75a934dd140bad8",
-                "sha256:cfb27bdf426b272d2bb336785eacb4860d8ba936ea9cc19f35fdab37f1eaa71e"
+                "sha256:00bcc6375d331cff8b66430d4979eaa26cb22dac842778d98bb827f31671162d",
+                "sha256:6874d7117c8266076e5038475e0970bd90f315f0de825be48e71f9c5957b1927"
             ],
-            "version": "==1.15.6"
+            "version": "==1.15.7"
         },
         "certifi": {
             "hashes": [
