@@ -39,3 +39,4 @@ lint = "./scripts/lint.sh"
 test-win = 'scripts\\test.bat'
 cover-win = 'scripts\\cover.bat'
 lint-win = 'scripts\\lint.bat'
+cogitate = "./scripts/cogitate.sh"
