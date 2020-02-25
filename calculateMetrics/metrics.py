@@ -18,11 +18,15 @@ github_data = [
 ]
 standard_deviations_list = []
 values_list = []
+commit_scores = []
 commits_overall_score = 0
+added_scores = []
 added_overall_score = 0
+removed_scores = []
 removed_overall_score = 0
 total_team_score = 0
 user_list = []
+user_scores = []
 
 
 def standard_deviations():
@@ -71,7 +75,7 @@ def commits_calculator():
     commits_list = values_list[0]
     # Standard deviation of commits
     commits_sd = standard_deviations_list[0]
-    commit_scores = []
+    global commit_scores
     username_accesser = 0
     for ab in range(len(github_data)):
         # This if/else calculates the commits added to the standard deviation,
@@ -139,7 +143,7 @@ def added_calculator():
     added_list = values_list[1]
     # Standard deviation of lines added
     added_sd = standard_deviations_list[1]
-    added_scores = []
+    global added_scores
     username_accesser = 0
     list_length = len(github_data)
     for cd in range(len(github_data)):
@@ -218,7 +222,7 @@ def removed_calculator():
     removed_list = values_list[2]
     # Standard deviation of lines removed
     removed_sd = standard_deviations_list[2]
-    removed_scores = []
+    global removed_scores
     username_accesser = 0
     list_length = len(github_data)
     for ef in range(len(github_data)):
@@ -342,19 +346,43 @@ def get_user_list():
     global github_data
     global user_list
     user_counter = 0
-    while user_counter <= len(github_data):
+    while user_counter < len(github_data):
         user_list.append(github_data[user_counter][0])
         user_counter += 1
+    print(user_list)
+
+
+def get_user_scores():
+    """This function will create a list of the user's scores"""
+    global github_data
+    user_scores = []
+    score_counter = 0
+    desired_user_index = 0
+    username = input("Type the exact username you want to check:\n")
+    while score_counter < len(github_data):
+        if username == github_data[score_counter][0]:
+            desired_user_index = score_counter
+            break
+        else:
+            score_counter += 1
+    global commit_scores
+    global added_scores
+    global removed_scores
+    user_scores.append(commit_scores[desired_user_index])
+    user_scores.append(added_scores[desired_user_index])
+    user_scores.append(removed_scores[desired_user_index])
+    print("\n",username,"'s scores are listed below:\n", user_scores)
+
 
 
 if __name__ == "__main__":
     # Getting user input
     standard_deviations()
     print("Please enter what information you would like to see.")
-    score_wanted = input(
-        "The team scoring options are: 'all', 'commits', 'added', and 'removed'.\n The user information options are 'users', 'user_data' to view raw user information, and 'user_scores' to see how the users scored in each of the three categories. \n---\n"
+    info_wanted  = input(
+        "The team scoring options are: \n'all', \n'commits', \n'added', \n'removed'.\n\n The user information options are: \n'users', \n'user_data' to view raw user information, \n'user_scores' to see how the users scored in each of the three categories. \n---\n"
     )
-    if score_wanted == "all":
+    if info_wanted  == "all":
         # Sequential calls of the functions declared above to perform
         # the necessary calculations and provide the user with an overall
         # team evaluation.
@@ -363,12 +391,19 @@ if __name__ == "__main__":
         removed_calculator()
         total_team_score_calculator()
         print("\n---\n")
-    if score_wanted == "commits":
+    if info_wanted  == "commits":
         commits_calculator()
         print("---\n")
-    if score_wanted == "added":
+    if info_wanted  == "added":
         added_calculator()
         print("---\n")
-    if score_wanted == "removed":
+    if info_wanted  == "removed":
         removed_calculator()
         print("---\n")
+    if info_wanted == "users":
+        get_user_list()
+    if info_wanted == "user_scores":
+        commits_calculator()
+        added_calculator()
+        removed_calculator()
+        get_user_scores()
