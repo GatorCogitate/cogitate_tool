@@ -79,10 +79,12 @@ def get_test_commit_info(commit_author_list, user_repo):
                                 pass
             if commit.author.name in commit_author_list:
                 total_commit_count = total_commit_count + 1
-        # Print statements that release the calculations of the declared variables
+        # Print statements that release the calculations of the declared variables:
         calculate_commits_to_testing(
             author_name, total_test_commit_count, author_commit_count
         )
+        calculate_commits_not_to_testing(author_name, total_test_commit_count, author_commit_count)
+
 
 
 def calculate_commits_to_testing(
@@ -98,44 +100,6 @@ def calculate_commits_to_testing(
     print("\n\n")
 
 
-def get_non_testing_commit_info(commit_author_list, user_repo):
-    """Retrieves information from the repostory relating to commits to testing."""
-
-    # Calculates the total commits like author, test and general and connecting
-    # to the chosen repo
-    for author_name in commit_author_list:
-        author_commit_count = 0
-        total_commit_count = 0
-        total_test_commit_count = 0
-        for commit in RepositoryMining(
-            user_repo, only_authors=commit_author_list
-        ).traverse_commits():
-            count = 0
-            # Connects the author name to the amount of commits made by user the
-            # clear path to the repo
-            if commit.author.name in author_name:
-                author_commit_count = author_commit_count + 1
-                for modified_file in commit.modifications:
-                    file_path = modified_file.new_path
-                    if count is 0:
-                        if file_path:
-                            if "test" in file_path:  # sees if the commit was to testing
-                                # print(
-                                #     "Found someone who modified tests: ",
-                                #     # will calculate the modifications to the test
-                                #     commit.author.name,
-                                #     file_path,
-                                #     commit.hash,
-                                # )
-                                total_test_commit_count += 1
-                                count = 1
-                            else:
-                                pass
-            if commit.author.name in commit_author_list:
-                total_commit_count = total_commit_count + 1
-
-        calculate_commits_not_to_testing(author_name, total_test_commit_count, author_commit_count)
-
 def calculate_commits_not_to_testing(
     author_name, total_test_commit_count, author_commit_count
 ):
@@ -150,13 +114,13 @@ def calculate_commits_not_to_testing(
     print("-- Percentage of Commits not going to Testing:", percentage_covered, "%")
     print("\n\n")
 
+
 def main():
     """Driver function. Runs all other necessary functions."""
 
     user_repo = input("Enter the link to your chosen GitHub repository: ")
     commit_author_list = get_repo_authors(user_repo)
     commit_author_list = single_multi_author_choice(commit_author_list)
-    get_non_testing_commit_info(commit_author_list, user_repo)
     get_test_commit_info(commit_author_list, user_repo)
 
 
