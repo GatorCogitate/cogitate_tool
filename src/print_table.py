@@ -13,6 +13,7 @@ MODIFIED = 5
 RATIO = 6
 FILES = 7
 FORMAT = 8
+DATE = 9
 
 
 def print_in_table(dictionary):
@@ -27,6 +28,7 @@ def print_in_table(dictionary):
         "Total",
         "Modified Lines",
         "Lines per Commit",
+        "Date",
     ]
     data_table.field_names = headings
     for key in dictionary:
@@ -40,6 +42,7 @@ def print_in_table(dictionary):
                 dictionary[key][TOTAL],
                 dictionary[key][MODIFIED],
                 dictionary[key][RATIO],
+                dictionary[key][DATE],
             ]
         )
     print(data_table)

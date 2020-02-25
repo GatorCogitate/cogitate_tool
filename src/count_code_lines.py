@@ -2,7 +2,7 @@
 
 # from git import Repo
 from pydriller import RepositoryMining
-
+a
 # from pydriller.domain.commit import ModificationType
 
 # Keys for the dicitionary indeces
@@ -15,6 +15,7 @@ MODIFIED = 5
 RATIO = 6
 FILES = 7
 FORMAT = 8
+DATES = 9
 
 
 # TODO go over this function
@@ -105,6 +106,7 @@ def get_commit_data(repo_path):
     for commit in RepositoryMining(repo_path).traverse_commits():
         author = commit.author.name
         email = commit.author.email
+        date = commit.author_date
         # check if the key already in in the dicitionary
         if author in data_list:
             # condition passed, adds one to the number of commits
@@ -127,6 +129,7 @@ def get_commit_data(repo_path):
             data_list[author][REMOVED] += removed_lines
             data_list[author][TOTAL] += total_lines
             data_list[author][MODIFIED] += modified_lines
+            data_list[author][DATES] += date
             # check if the explored file is not in the list in index seven
             if current_file not in data_list[author][FILES]:
                 # the name of the file is appended to the list
