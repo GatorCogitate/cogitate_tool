@@ -10,7 +10,7 @@ def test_standard_deviations():
     metrics.standard_deviations()
     assert len(metrics.commits_list) >= 0
     assert len(metrics.added_list) >= 0
-    assert len(metrics.removed_list) >= 0
+    assert len(metrics.standard_deviations_counter) >= 0
     assert len(metrics.standard_deviations_list) >= 0
 
 
