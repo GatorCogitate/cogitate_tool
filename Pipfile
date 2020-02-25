@@ -4,14 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-codecov = "*"
-
-[dev-packages]
-black = "*"
-pylint = "*"
-flake8 = "*"
-pydocstyle = "*"
-pytest = "*"
 PyGithub= "*"
 streamlit = "*"
 numpy = "*"
@@ -19,14 +11,16 @@ pandas = "*"
 fastapi = "*"
 uvicorn = "*"
 PrettyTable = "*"
-pytest-cov = "*"
-codacy-coverage = "*"
-radon = "*"
-bandit = "*"
-xenon = "*"
 devml = "*"
 gstats = "*"
-codecov = "*"
+
+[dev-packages]
+black = "*"
+pylint = "*"
+flake8 = "*"
+pydocstyle = "*"
+pytest = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.7"
@@ -38,7 +32,3 @@ allow_prereleases = true
 test = "./scripts/test.sh"
 cover = "./scripts/cover.sh"
 lint = "./scripts/lint.sh"
-test-win = 'scripts\\test.bat'
-cover-win = 'scripts\\cover.bat'
-lint-win = 'scripts\\lint.bat'
-cogitate = "./scripts/cogitate.sh"
