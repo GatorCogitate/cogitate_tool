@@ -41,7 +41,7 @@ before_install:
 install:
   - pip install --upgrade pip
   - pip install --upgrade pipenv
-  - pipenv install --dev --skip-lock --python "$PYENV-VERSION"
+  - pipenv install --dev --python "$PYENV-VERSION"
   - gem install mdl
 
 # send emails when there is a change or failure
@@ -55,9 +55,10 @@ notifications:
 # --> lint the code with Pipfile script
 # --> lint the README documentation with mdl
 script:
+  - mdl README.md
   - pipenv run cover
   - pipenv run lint --check
-  - mdl README.md
+  - pipenv run test
 
 # report information to CodeCov and Codacy and tag the release of a pull request:
 # --> Report coverage to CodeCov, which ensures that coverages does not drop by more than a threshold
