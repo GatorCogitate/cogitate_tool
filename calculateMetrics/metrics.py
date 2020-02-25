@@ -1,5 +1,7 @@
 """Determine how the well the team worked together"""
 
+import sys
+import os
 import numpy as np
 
 # github_data is a list containing sample data for our demo
@@ -372,16 +374,32 @@ def get_user_scores():
     user_scores.append(commit_scores[desired_user_index])
     user_scores.append(added_scores[desired_user_index])
     user_scores.append(removed_scores[desired_user_index])
-    print("\n",username,"'s scores are listed below:\n", user_scores)
+    print("\n", username, "'s scores are listed below:\n", user_scores)
 
 
 def read_user_input():
     """Gets users input to be used in the main."""
     global info_wanted
     print("\nPlease enter what information you would like to see.")
-    info_wanted  = input(
+    info_wanted = input(
         "The team scoring options are: \n'all', \n'commits', \n'added', \n'removed'.\n\n The user information options are: \n'users', \n'user_scores' to see how the users scored in each of the three categories.\n(you may type 'quit' at any time to exit the program) \n---\n"
     )
+
+
+def blockPrint():
+    """When called, this will prevent a function from printing."""
+    # Code found at:
+    # https://stackoverflow.com/questions/8391411/
+    # suppress-calls-to-print-python
+    sys.stdout = open(os.devnull, "w")
+
+
+def enablePrint():
+    """When called, this will allow functions to print again."""
+    # Code found at:
+    # https://stackoverflow.com/questions/8391411/
+    # suppress-calls-to-print-python
+    sys.stdout = sys.__stdout__
 
 
 if __name__ == "__main__":
@@ -389,7 +407,7 @@ if __name__ == "__main__":
     read_user_input()
     global info_wanted
     while info_wanted != "quit":
-        if info_wanted  == "all":
+        if info_wanted == "all":
             # Sequential calls of the functions declared above to perform
             # the necessary calculations and provide the user with an overall
             # team evaluation.
@@ -399,15 +417,15 @@ if __name__ == "__main__":
             total_team_score_calculator()
             print("\n---\n")
             read_user_input()
-        elif info_wanted  == "commits":
+        elif info_wanted == "commits":
             commits_calculator()
             print("---\n")
             read_user_input()
-        elif info_wanted  == "added":
+        elif info_wanted == "added":
             added_calculator()
             print("---\n")
             read_user_input()
-        elif info_wanted  == "removed":
+        elif info_wanted == "removed":
             removed_calculator()
             print("---\n")
             read_user_input()
@@ -415,9 +433,15 @@ if __name__ == "__main__":
             get_user_list()
             read_user_input()
         elif info_wanted == "user_scores":
+            # Blocking printing output for the necessary three
+            # functions
+            blockPrint()
             commits_calculator()
             added_calculator()
             removed_calculator()
+            # Re-enabling printing so that get_user_scores
+            # may be printed
+            enablePrint()
             get_user_scores()
             read_user_input()
         else:
