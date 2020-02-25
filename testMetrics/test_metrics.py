@@ -16,7 +16,7 @@ def test_standard_deviations():
 
 def test_commits_calculator():
     """Test the commits calc. function"""
-    assert metrics.commits_overall_score == 0
+    assert metrics.len(commits_scores) >= 0
     metrics.commits_calculator()
     assert metrics.commits_overall_score >= 0
 
