@@ -4,7 +4,13 @@ import os
 
 
 def get_dict_from_json_file(json_file_name, data_path="./data/"):
-    """Populate and return a dictionary of all the data in a specified json file."""
+    """Populate and return a dictionary of all the data in a specified json file.
+
+    Arguments:
+    - json_file_name: The name of the file to open.
+    - data_path: Default/optional argument that stores the relative path to the
+      directory containing the file.
+    """
     with open(os.path.join(data_path, json_file_name + ".json"), "r") as json_file:
         # In the open() function, "r" specifies read-only access
         user_data_dict = json.load(json_file)
@@ -13,7 +19,14 @@ def get_dict_from_json_file(json_file_name, data_path="./data/"):
 
 
 def write_dict_to_json_file(user_data_dict, json_file_name, data_path="./data/"):
-    """Overwrite specified json file with data from a given dictionary."""
+    """Overwrite specified json file with data from a given dictionary.
+
+    Arguments:
+    - user_data_dict: Dictionary to write to a json file.
+    - json_file_name: The name of the file to which to write.
+    - data_path: Default/optional argument that stores the relative path to the
+      directory containing the file.
+    """
     with open(os.path.join(data_path, json_file_name + ".json"), "w") as json_file:
         # In the open() function, "w" specifies write access
         json.dump(user_data_dict, json_file, indent=4)
