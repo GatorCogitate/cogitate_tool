@@ -23,6 +23,8 @@ codacy-coverage = "*"
 radon = "*"
 bandit = "*"
 xenon = "*"
+devml = "*"
+gstats = "*"
 
 [requires]
 python_version = "3.7"
