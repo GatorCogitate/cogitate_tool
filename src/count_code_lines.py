@@ -129,7 +129,8 @@ def get_commit_data(repo_path):
             data_list[author][REMOVED] += removed_lines
             data_list[author][TOTAL] += total_lines
             data_list[author][MODIFIED] += modified_lines
-            data_list[author][DATES] += date
+            data_list[author][DATES] = date
+            # TODO iterate through the dates and add to table with .append
             # check if the explored file is not in the list in index seven
             if current_file not in data_list[author][FILES]:
                 # the name of the file is appended to the list
@@ -169,4 +170,4 @@ def get_commit_data(repo_path):
 #     return dict
 
 
-# NOTE: for printing the data please use the file pint_table.py
+# NOTE: for printing the data please use the file print_table.py

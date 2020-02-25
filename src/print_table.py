@@ -48,8 +48,7 @@ def print_in_table(dictionary):
     print(data_table)
 
 
-def main():
-    """Call other functions in this module asking for user input."""
+if __name__ == "__main__":
     # takes input for the repository local path OR URL
     path_repo = input("Enter the path to the repo : ")
     data = count_code_lines.get_commit_data(path_repo)
@@ -59,7 +58,3 @@ def main():
     # print("data after checking")
     # data = check_emails(data)
     # print_in_table(data)
-
-
-if __name__ == "__main__":
-    main()
