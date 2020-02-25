@@ -375,6 +375,7 @@ def get_user_scores():
 
 
 def read_user_input():
+    """Gets users input to be used in the main."""
     global info_wanted
     print("\nPlease enter what information you would like to see.")
     info_wanted  = input(
@@ -383,12 +384,7 @@ def read_user_input():
 
 
 if __name__ == "__main__":
-    # Getting user input
     standard_deviations()
-    print("Please enter what information you would like to see.")
-    # info_wanted  = input(
-        # "The team scoring options are: \n'all', \n'commits', \n'added', \n'removed'.\n\n The user information options are: \n'users', \n'user_data' to view raw user information, \n'user_scores' to see how the users scored in each of the three categories. \n---\n"
-    # )
     read_user_input()
     global info_wanted
     while info_wanted != "quit":
