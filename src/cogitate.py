@@ -5,6 +5,16 @@ from pprint import pprint
 import argparse
 
 
+def team():
+    """calls all team-based funtions"""
+    pass
+
+
+def individual():
+    """calls all individual functions"""
+    pass
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-l", "--link", help="Cogitate a repo by the url of the repo.")
