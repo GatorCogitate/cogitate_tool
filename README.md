@@ -4,33 +4,34 @@ Tool to analyze contributions when working in a team.
 
 ## About the Feature
 
-This feature is designed to check who contributed source code without adding test cases. The user can enter a link to any repository and the tool will display the following:
+The Feature 1 tool was built with the purpose of trying to determine if there
+was a student within the group who was only writing test cases. The tool pydriller
+to retrieve information regarding commits from any repository and the program will
+scan through looking for the word "test". The program will display the following
+information.
 
-- All authors within the repository
-- Prompt the user, asking if they would like to view the commits of
-  a. One specific author
-  b. All authors
-- Total commits
-- Commits not going towards testing
-- Percentage calculation of commits not going to testing
+- Authors within the repository
+- List the various commits by an individual
+- What files that individual edited
+- How many commits contain the fragment "test"
+- The number of commits by the individual
+- The percentage of the commits went towards testing
 
-## How to Use the Tool
+## To Use the Tool
 
-It is essential that the user has the following downloaded and functional on
-their device:
+It is essential that anyone who wishes to utilize this tool has the following
+downloaded and functional on their device:
 
 - pydriller
 
-To download:
-Search for 'pydriller' in GitHub or use the following link and follow the instructions
-within the repository.
-
+Pydriller can be installed to a device by searching for "pydriller" in GitHub
+and following the installation steps or by using the link below.
 https://github.com/ishepard/pydriller
 
 ## Running the Tool
 
-The tool can be run using the command: 'python3 commits_not_to_testing.py'
-
-## Issues
-
-No issues to currently be reported.
+This tool requires a path to a repository in order for the desired information to
+be outputted. This means either a URL or a local path. The program is most
+functional with master branches of repositories, as the output that is produced
+with a path to a sub-branch is unpredictable. The command that will run this tool
+is - python3 test_commits.py .
