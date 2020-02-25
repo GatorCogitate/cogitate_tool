@@ -82,3 +82,6 @@ def collect_commits_hash(repo):
         commit_list.append(single_commit_dict)
 
     return commit_list
+
+
+pprint.pprint(collect_commits_hash(repo_path))
