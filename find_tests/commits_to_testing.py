@@ -80,14 +80,22 @@ def get_test_commit_info(commit_author_list, user_repo):
             if commit.author.name in commit_author_list:
                 total_commit_count = total_commit_count + 1
         # Print statements that release the calculations of the declared variables
-        print(author_name, "'s Total commits: ", author_commit_count)
-        print("-- Testing commits by", author_name, ":", total_test_commit_count)
-        try:
-            percentage_covered = (total_test_commit_count / author_commit_count) * 100
-        except:
-            percentage_covered = 0
-        print("-- Percentage of Commits Going to Testing:", percentage_covered, "%")
-        print("\n\n")
+        calculate_commits_to_testing(
+            author_name, total_test_commit_count, author_commit_count
+        )
+
+
+def calculate_commits_to_testing(
+    author_name, total_test_commit_count, author_commit_count
+):
+    print(author_name, "'s Total commits: ", author_commit_count)
+    print("-- Testing commits by", author_name, ":", total_test_commit_count)
+    try:
+        percentage_covered = (total_test_commit_count / author_commit_count) * 100
+    except:
+        percentage_covered = 0
+    print("-- Percentage of Commits Going to Testing:", percentage_covered, "%")
+    print("\n\n")
 
 
 def get_non_testing_commit_info(commit_author_list, user_repo):
@@ -125,17 +133,22 @@ def get_non_testing_commit_info(commit_author_list, user_repo):
                                 pass
             if commit.author.name in commit_author_list:
                 total_commit_count = total_commit_count + 1
-        # Print statements that release the calculations of the declared variables
-        print(author_name, "'s Total commits: ", author_commit_count)
-        non_test_commit_count = author_commit_count - total_test_commit_count
-        print("-- Non Testing commits by", author_name, ":", non_test_commit_count)
-        try:
-            percentage_covered = (non_test_commit_count / author_commit_count) * 100
-        except:
-            percentage_covered = 0
-        print("-- Percentage of Commits not going to Testing:", percentage_covered, "%")
-        print("\n\n")
 
+        calculate_commits_not_to_testing(author_name, total_test_commit_count, author_commit_count)
+
+def calculate_commits_not_to_testing(
+    author_name, total_test_commit_count, author_commit_count
+):
+    # Print statements that release the calculations of the declared variables
+    print(author_name, "'s Total commits: ", author_commit_count)
+    non_test_commit_count = author_commit_count - total_test_commit_count
+    print("-- Non Testing commits by", author_name, ":", non_test_commit_count)
+    try:
+        percentage_covered = (non_test_commit_count / author_commit_count) * 100
+    except:
+        percentage_covered = 0
+    print("-- Percentage of Commits not going to Testing:", percentage_covered, "%")
+    print("\n\n")
 
 def main():
     """Driver function. Runs all other necessary functions."""
