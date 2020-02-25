@@ -374,36 +374,54 @@ def get_user_scores():
     print("\n",username,"'s scores are listed below:\n", user_scores)
 
 
+def read_user_input():
+    global info_wanted
+    print("\nPlease enter what information you would like to see.")
+    info_wanted  = input(
+        "The team scoring options are: \n'all', \n'commits', \n'added', \n'removed'.\n\n The user information options are: \n'users', \n'user_scores' to see how the users scored in each of the three categories.\n(you may type 'quit' at any time to exit the program) \n---\n"
+    )
+
 
 if __name__ == "__main__":
     # Getting user input
     standard_deviations()
     print("Please enter what information you would like to see.")
-    info_wanted  = input(
-        "The team scoring options are: \n'all', \n'commits', \n'added', \n'removed'.\n\n The user information options are: \n'users', \n'user_data' to view raw user information, \n'user_scores' to see how the users scored in each of the three categories. \n---\n"
-    )
-    if info_wanted  == "all":
-        # Sequential calls of the functions declared above to perform
-        # the necessary calculations and provide the user with an overall
-        # team evaluation.
-        commits_calculator()
-        added_calculator()
-        removed_calculator()
-        total_team_score_calculator()
-        print("\n---\n")
-    if info_wanted  == "commits":
-        commits_calculator()
-        print("---\n")
-    if info_wanted  == "added":
-        added_calculator()
-        print("---\n")
-    if info_wanted  == "removed":
-        removed_calculator()
-        print("---\n")
-    if info_wanted == "users":
-        get_user_list()
-    if info_wanted == "user_scores":
-        commits_calculator()
-        added_calculator()
-        removed_calculator()
-        get_user_scores()
+    # info_wanted  = input(
+        # "The team scoring options are: \n'all', \n'commits', \n'added', \n'removed'.\n\n The user information options are: \n'users', \n'user_data' to view raw user information, \n'user_scores' to see how the users scored in each of the three categories. \n---\n"
+    # )
+    read_user_input()
+    global info_wanted
+    while info_wanted != "quit":
+        if info_wanted  == "all":
+            # Sequential calls of the functions declared above to perform
+            # the necessary calculations and provide the user with an overall
+            # team evaluation.
+            commits_calculator()
+            added_calculator()
+            removed_calculator()
+            total_team_score_calculator()
+            print("\n---\n")
+            read_user_input()
+        elif info_wanted  == "commits":
+            commits_calculator()
+            print("---\n")
+            read_user_input()
+        elif info_wanted  == "added":
+            added_calculator()
+            print("---\n")
+            read_user_input()
+        elif info_wanted  == "removed":
+            removed_calculator()
+            print("---\n")
+            read_user_input()
+        elif info_wanted == "users":
+            get_user_list()
+            read_user_input()
+        elif info_wanted == "user_scores":
+            commits_calculator()
+            added_calculator()
+            removed_calculator()
+            get_user_scores()
+            read_user_input()
+        else:
+            read_user_input()
