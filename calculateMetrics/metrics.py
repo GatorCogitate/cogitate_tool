@@ -15,6 +15,7 @@ github_data = [
     ["Karl_Marx", 0, 0, 0, 400],
     ["Julius_Caesar", 25, 310, 68, 1],
     ["Napoleon_Bonaparte", 24, 363, 70, 3],
+    ["Alexander_the_Great", 42, 540, 110, 1],
 ]
 standard_deviations_list = []
 values_list = []
