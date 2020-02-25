@@ -41,7 +41,7 @@ before_install:
 install:
   - pip install --upgrade pip
   - pip install --upgrade pipenv
-  - pipenv install --dev --python "$PYENV-VERSION"
+  - pip install --dev --python --skip-lock "$PYENV-VERSION"
   - gem install mdl
 
 # send emails when there is a change or failure
