@@ -113,7 +113,7 @@ def get_commit_data(repo_path):
             data_list[author][COMMITS] += 1
         else:
             # condition fails, creates a new key and adds empty data
-            data_list[author] = [email, 1, 0, 0, 0, 0, 0, [], []]
+            data_list[author] = [email, 1, 0, 0, 0, 0, 0, [], [], []]
         # goes through the files in the current commit
         for file in commit.modifications:
             # retreive data using Pydriller API
