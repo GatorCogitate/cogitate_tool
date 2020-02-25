@@ -36,5 +36,5 @@ def write_dict_to_json_file(user_data_dict, json_file_name, data_path="./data/")
 
 
 def add_user_to_users_dictionary(user_data_dict, to_add):
-    """Append data to the users dictionary"""
+    """Append data to the users dictionary."""
     user_data_dict.update(to_add)
