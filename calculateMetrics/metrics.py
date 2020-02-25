@@ -358,7 +358,7 @@ def get_user_list():
 def get_user_scores():
     """This function will create a list of the user's scores"""
     global github_data
-    user_scores = []
+    global user_scores
     score_counter = 0
     desired_user_index = 0
     username = input("Type the exact username you want to check:\n")

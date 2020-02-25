@@ -39,7 +39,9 @@ def test_total_team_score_calculator():
     metrics.total_team_score_calculator()
     assert metrics.total_team_score >= 0
 
-def test_get_user_score():
-    """Test the user score"""
-    metrics.get_user_scores()
-    assert metrics.user_scores == []
+# def test_get_user_score():
+    # """Test the user score"""
+    # metrics.input() = "cassidyt2"
+    # metrics.get_user_scores().username == "cassidyt2"
+    # user_score_output = metrics.get_user_scores()
+    # assert user_score_output == metrics.user_scores
