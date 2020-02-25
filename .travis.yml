@@ -25,7 +25,7 @@ env:
     - LANG=en_US.UTF-8
     - LC_ALL=en_US.UTF-8
     - secure: c48e9fe3-e7a1-4fae-af4a-402755f36773
-    
+
 # install pyenv with travis-pyenv
 before_install:
   - wget https://github.com/praekeltfoundation/travis-pyenv/releases/latest/download/setup-pyenv.sh
@@ -38,6 +38,9 @@ before_install:
 install:
   - pip install --upgrade pip
   - pip install --upgrade pipenv
+  - pip install --upgrade pytest
+  - pip install codecov
+  - pip install coverage
   - gem install mdl
 
 # send emails when there is a change or failure
