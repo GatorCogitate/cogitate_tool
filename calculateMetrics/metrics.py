@@ -382,7 +382,11 @@ def read_user_input():
     global info_wanted
     print("\nPlease enter what information you would like to see.")
     info_wanted = input(
-        "The team scoring options are: \n'all', \n'commits', \n'added', \n'removed'.\n\n The user information options are: \n'users', \n'user_scores' to see how the users scored in each of the three categories.\n(you may type 'quit' at any time to exit the program) \n---\n"
+        "The team scoring options are: \n'all', \n'commits', \n'added',"
+        + "\n'removed'.\n\n The user information options are: \n'users',"
+        + "\n'user_scores' to see how the users scored in each of the three"
+        + "categories.\n(you may type 'quit' at any time to exit the program)"
+        + "\n---\n"
     )
 
 
