@@ -22,6 +22,7 @@ commits_overall_score = 0
 added_overall_score = 0
 removed_overall_score = 0
 total_team_score = 0
+user_list = []
 
 
 def standard_deviations():
@@ -336,12 +337,22 @@ def total_team_score_calculator():
     )
 
 
+def get_user_list():
+    """This function will obtain a list of all the users"""
+    global github_data
+    global user_list
+    user_counter = 0
+    while user_counter <= len(github_data):
+        user_list.append(github_data[user_counter][0])
+        user_counter += 1
+
+
 if __name__ == "__main__":
     # Getting user input
     standard_deviations()
-    print("Please enter what scores you would like to see.")
+    print("Please enter what information you would like to see.")
     score_wanted = input(
-        "The options are: 'all', 'commits', 'added', and 'removed'.\n---\n"
+        "The team scoring options are: 'all', 'commits', 'added', and 'removed'.\n The user information options are 'users', 'user_data' to view raw user information, and 'user_scores' to see how the users scored in each of the three categories. \n---\n"
     )
     if score_wanted == "all":
         # Sequential calls of the functions declared above to perform
