@@ -1,5 +1,7 @@
 """ Features to measure code hoarding and common collaborations in branches. """
 
+######## Fake data #######
+
 # Definition of shared dictionary
 repo_name = "Cogitate"
 branch_1 = ["user1", "user2", "user3", "user4"]
@@ -44,35 +46,35 @@ commit_branch_1 = {
     "user1": b1_user1,
     "user2": b1_user2,
     "user3": b1_user3,
-    "user4": b1_user4
+    "user4": b1_user4,
 }
 
 commit_branch_2 = {
     "user1": b2_user1,
     "user2": b2_user2,
     "user3": b2_user3,
-    "user4": b2_user4
+    "user4": b2_user4,
 }
 
 commit_branch_3 = {
     "user1": b3_user1,
     "user2": b3_user2,
     "user3": b3_user3,
-    "user4": b3_user4
+    "user4": b3_user4,
 }
 
 commit_branch_4 = {
     "user1": b4_user1,
     "user2": b4_user2,
     "user3": b4_user3,
-    "user4": b4_user4
+    "user4": b4_user4,
 }
 
 commit_branch_5 = {
     "user1": b5_user1,
     "user2": b5_user2,
     "user3": b5_user3,
-    "user4": b5_user4
+    "user4": b5_user4,
 }
 
 commit_branch_dict = {
@@ -82,34 +84,38 @@ commit_branch_dict = {
     "branch4": commit_branch_4,
     "branch5": commit_branch_5,
 }
+######## Fake data #######
 
 
-def code_hoarders(b_dict=branch_dict):
-    """ Method to determine code hoarders. """
-    code_hoarder_list = ["Repo: " + repo_name]
-    for branch_name, user_list in branch_dict.items():
-        if len(user_list) == 1:
-            code_hoarder_list.append(
-                user_list[0]
-                + " is a code hoarder,"
-                + " since they were the only "
-                + "contributor to: "
-                + branch_name
-            )
-        else:
-            pass
-    return code_hoarder_list
+class Calculation:
+    def code_hoarders(b_dict=branch_dict):
+        """ Method to determine code hoarders. """
+        code_hoarder_list = ["Repo: " + repo_name]
+        for branch_name, user_list in branch_dict.items():
+            if len(user_list) == 1:
+                code_hoarder_list.append(
+                    user_list[0]
+                    + " is a code hoarder,"
+                    + " since they were the only "
+                    + "contributor to: "
+                    + branch_name
+                )
+            else:
+                pass
+        return code_hoarder_list
 
+    c_h_list = code_hoarders()
+    for value in c_h_list:
+        print(value)
 
-c_h_list = code_hoarders()
-for value in c_h_list:
-    print(value)
+    def commit_message_gist(commit_message_list):
+        """Get commit messages list, return a list of gists"""
+        return
 
-
-def collaborators():
-    """ Method to determine frequent collaborators in a team project. """
-    collaborator_list = []
-    col_max = 5
-    for branch_name, user_list in branch_dict.items():
-        if len(user_list) > 1:
-            collaborator_list.append(branch_name)
+    def collaborators():
+        """ Method to determine frequent collaborators in a team project. """
+        collaborator_list = []
+        col_max = 5
+        for branch_name, user_list in branch_dict.items():
+            if len(user_list) > 1:
+                collaborator_list.append(branch_name)
