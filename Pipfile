@@ -6,8 +6,6 @@ name = "pypi"
 [packages]
 
 [dev-packages]
-fastapi = "*"
-uvicorn = "*"
 black = "*"
 pylint = "*"
 flake8 = "*"
