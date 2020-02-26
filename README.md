@@ -4,25 +4,30 @@
 
 ### 1. File Structure
 
-```bash
+```
 .
 ├── Pipfile
 ├── Pipfile.lock
 ├── README.md
+├── .travis.yml
+├── .gitignore
+|
 ├── scripts
 │   ├── cogitate.sh
 │   └── test.sh
 ├── src
 │   ├── cogitate.py
 │   ├── data_collection.py
-│   ├── demo.py
+│   ├── data_processor.py
 │   ├── driller.py
+│   ├── json_handler.py
 │   └── __init__.py
-├── tests
-│   ├── conftest.py
-│   ├── __init__.py
-│   └── test_driller.py
-└── TODO.md
+└── tests
+    ├── conftest.py
+    ├── __init__.py
+    ├── test_json_handler.py
+    └── test_driller.py
+
 ```
 
 ### 2. How to Use
