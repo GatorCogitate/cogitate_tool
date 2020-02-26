@@ -18,15 +18,18 @@ def test_get_commit_lines_populates_data_0():
     assert len(data_list) != 0
 
 
+# TODO implement test case
 def test_get_commit_data():
     """Checks that the function correctly gets data."""
 
 
+# TODO implement test case
 def test_print_table():
     """Checks that the module outputs the data table."""
     data = count_code_lines.get_commit_data("")
     # print_table.print_in_table(data)
 
+# TODO additional test cases needed
 
 @pytest.mark.parametrize(
     "input_lines",
