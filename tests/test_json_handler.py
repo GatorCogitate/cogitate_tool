@@ -3,7 +3,6 @@ import os
 from src import json_handler
 
 
-
 def test_write_dict_to_json():
     """Ensure a dictionary is written to a specified file."""
     test_dictionary = {"username": "test_data"}
