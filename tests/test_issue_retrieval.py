@@ -18,7 +18,7 @@ from src import json_handler
     "input_token,repository_name,state,contributor_data",
     [
         (
-            "ccfb4c9f13a25ef16549c81ae7853737447bfcb9",
+            "REDACTED",
             "GatorCogitate/cogitate_tool",
             "all",
             json_handler.get_dict_from_json_file("contributor_data_template"),
