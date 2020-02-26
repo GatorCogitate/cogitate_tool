@@ -43,8 +43,7 @@ OS="$(uname)"
 
 # define all of the linters to iteratively run
 declare -A LINTERS
-LINTERS=( ["black"]="pipenv run black $CHECK $FILES" ["pylint"]="pipenv run pylint $FILES" ["flake8"]="pipenv run flake8 $FILES" ["radon-cc"]="pipenv run radon cc $FILES" ["radon-mi"]="pipenv run radon mi $FILES" ["xenon"]="pipenv run xenon --max-absolute D --max-modules B --max-average A $MODULE" ["pydocstyle"]="pipenv run pydocstyle $FILES" )
-# ["bandit"]="pipenv run bandit -c ./.bandit.yml $FILES"
+LINTERS=( ["black"]="pipenv run black $CHECK $FILES" ["pylint"]="pipenv run pylint $FILES" ["flake8"]="pipenv run flake8 $FILES" ["pydocstyle"]="pipenv run pydocstyle $FILES" )
 # run each of the already configured linters
 for tool in "${!LINTERS[@]}"; do
     echo " -- Running $tool"
