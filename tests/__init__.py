@@ -1,1 +1,1 @@
-"""Pyhton Packaging file"""
+"""Python Packaging file"""
