@@ -87,7 +87,8 @@ def get_test_commit_info(commit_author_list, user_repo):
             author_name, total_test_commit_count, author_commit_count
         )
 
-
+""" This funciton calculates the amount of commits by specific users within the
+repo. """
 def calculate_commits_to_testing(
     author_name, total_test_commit_count, author_commit_count
 ):
@@ -100,7 +101,7 @@ def calculate_commits_to_testing(
     print("-- Percentage of Commits Going to Testing:", percentage_covered, "%")
     print("\n\n")
 
-
+""" Calculates the percentage of commits going to test folder """
 def calculate_commits_not_to_testing(
     author_name, total_test_commit_count, author_commit_count
 ):
