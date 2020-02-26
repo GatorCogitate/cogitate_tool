@@ -1,51 +1,51 @@
-"""Contains the test cases for issue_retrieval.py"""
+"""Contains the test case(s) for retrieve_issue_data in data_miner."""
 
-import os
-import sys
+import pytest
 from github import Github
+from src import data_miner
+from src import json_handler
 
-# __init__.py requires correction and does not add module folders to the path
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + "/../")
-
-# pylint: disable=import-error
-# pylint: disable=wrong-import-position
-from src import issue_retrieval
-from json_interaction import json_handler
-
-# As of the current state, these tests require a token to function
+# As of the current state, this test requires a token to function
 #
-# This requirement will be amended within the week after successful team
-# collaboration provided an alternative test procedure is possible
-#
-# Remove your token from this file after demonstration
-TOKEN = "REDACTED"
-REPOSITORY_NAME = "GatorCogitate/cogitate_tool"
-CONTRIBUTOR_DATA = json_handler.get_dict_from_json_file("contributor_data_template")
+# This requirement should be amended within the week after successful team
+# collaboration provides a Travis Environment Variable
+
+# Below marked as xfail due to token absence; passes with token
 
 
-def test_retrieve_issue_data_retrieves_issues():
+@pytest.mark.xfail
+@pytest.mark.parametrize(
+    "input_token,repository_name,state,contributor_data",
+    [
+        (
+            "ccfb4c9f13a25ef16549c81ae7853737447bfcb9",
+            "GatorCogitate/cogitate_tool",
+            "all",
+            json_handler.get_dict_from_json_file("contributor_data_template"),
+        )
+    ],
+)
+def test_retrieve_issue_data_retrieves_issues(
+    input_token, repository_name, state, contributor_data
+):
     """Test to ensure all issues are associated with the correct contributor"""
 
-    # Refer to concerns above regarding future development
-    # pylint: disable=global-statement
-    global TOKEN
-    global REPOSITORY_NAME
-    global CONTRIBUTOR_DATA
-    ghub = Github(TOKEN)
-    repository = ghub.get_repo(REPOSITORY_NAME)
-    issues = repository.get_issues(state="all")
+    ghub = Github(input_token)
+    repository = ghub.get_repo(repository_name)
 
-    CONTRIBUTOR_DATA = issue_retrieval.retrieve_issue_data(issues, CONTRIBUTOR_DATA)
+    contributor_data = data_miner.retrieve_issue_data(
+        repository, state, contributor_data
+    )
 
     contributor_found = False
 
-    for username in CONTRIBUTOR_DATA:
+    for username in contributor_data:
 
-        for issue_id in CONTRIBUTOR_DATA[username]["issues_opened"]:
+        for issue_id in contributor_data[username]["issues_opened"]:
             assert repository.get_issue(number=issue_id).pull_request is None
             assert repository.get_issue(number=issue_id).user.login == username
 
-        for issue_id in CONTRIBUTOR_DATA[username]["issues_commented"]:
+        for issue_id in contributor_data[username]["issues_commented"]:
             assert repository.get_issue(number=issue_id).pull_request is None
             contributor_found = False
             while contributor_found is False:
@@ -54,11 +54,11 @@ def test_retrieve_issue_data_retrieves_issues():
                         contributor_found = True
             assert contributor_found is True
 
-        for issue_id in CONTRIBUTOR_DATA[username]["pull_requests_opened"]:
+        for issue_id in contributor_data[username]["pull_requests_opened"]:
             assert repository.get_issue(number=issue_id).pull_request is not None
             assert repository.get_issue(number=issue_id).user.login == username
 
-        for issue_id in CONTRIBUTOR_DATA[username]["pull_requests_commented"]:
+        for issue_id in contributor_data[username]["pull_requests_commented"]:
             assert repository.get_issue(number=issue_id).pull_request is not None
             contributor_found = False
             while contributor_found is False:
