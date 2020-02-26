@@ -23,9 +23,6 @@ pytest = "*"
 pytest-cov = "*"
 pytest-sugar = "*"
 pytest-clarity = "*"
-bandit = "*"
-radon = "*"
-xenon = "*"
 
 [requires]
 python_version = "3.7.3"
