@@ -3,11 +3,35 @@
 # Created by https://www.gitignore.io/api/visualstudiocode,linux,dm,git,gradle,latex,macos,pydev,python,test,venv,vim,virtualenv,windows
 # Edit at https://www.gitignore.io/?templates=visualstudiocode,linux,dm,git,gradle,latex,macos,pydev,python,test,venv,vim,virtualenv,windows
 
+# Compiled Source #
+###################
+*.class
+*.o
+*.so
+
+# Android # 
+###########
+*.apk
+*.ap_
+*.dex
+local.properties
+
 ### DM ###
 *.dmb
 *.rsc
 *.int
 *.lk
+*.zip
+
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
 *.zip
 
 ### Git ###
@@ -24,6 +48,24 @@
 *_BASE_*.txt
 *_LOCAL_*.txt
 *_REMOTE_*.txt
+
+# Ant #
+#######
+*.ant_targets
+
+# Ctags #
+#########
+tags
+.tags
+tags.lock
+tags.temp
+tags.tmp
+
+# Extra files #
+###############
+*.xmi
+*.sync
+*.jekyll-metadata
 
 ### LaTeX ###
 ## Core latex/pdflatex auxiliary files:
@@ -175,6 +217,7 @@ acs-*.bib
 *.idx
 *.ilg
 *.ind
+*.ist
 
 # minitoc
 *.maf
