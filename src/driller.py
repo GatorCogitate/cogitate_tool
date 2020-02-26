@@ -1,5 +1,4 @@
 """ Uses Pydriller to extract information from Github."""
-from git import Repo
 from pydriller import RepositoryMining
 
 
