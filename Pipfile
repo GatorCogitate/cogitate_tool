@@ -21,6 +21,9 @@ flake8 = "*"
 pydocstyle = "*"
 pytest = "*"
 pytest-cov = "*"
+radon = "*"
+bandit = "*"
+xenon = "*"
 
 [requires]
 python_version = "3.7"
