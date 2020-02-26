@@ -19,7 +19,7 @@ def test_get_dict_from_json():
     """Ensure data is correctly pulled from a json file."""
     assert "demofile.json" in os.listdir("./data/")  # demofile exists
     test_dictionary = json_handler.get_dict_from_json_file("demofile")
-    assert "testuser" in test_dictionary.keys() 
+    assert "testuser" in test_dictionary.keys()
     # dictionary was populated correctly
 
 
