@@ -7,7 +7,7 @@
 # TODO lines modified score - Madelyn * 
 # TODO lines per commit score - Wonjoon * 
 # TODO amount of files modified overall score - Madelyn * 
-# TODO file for printing the individual score - Teona 
+# TODO file for printing the individual score - Teona * 
 
 # TODO amount of files per commit score 
 # TODO talk about using PyGithub to retrieve issue data 
@@ -15,6 +15,8 @@
 # TODO date distribution score
 # TODO average of all scores
 # TODO average overall score and individual score to produce new individual score
+# TODO give notification of duplicate username if there is one, or the possibility
 
 # Use pipeline programming style
 # User inputs the weight for each category for finding total individual score
+# Implement test cases as functions are written 
