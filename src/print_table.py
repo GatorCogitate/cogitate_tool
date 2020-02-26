@@ -27,7 +27,7 @@ def print_in_table(dictionary):
         "-",
         "Total",
         "Modified Lines",
-        "Lines per Commit",
+        "Lines/Commit",
         "Date",
     ]
     data_table.field_names = headings
@@ -35,14 +35,14 @@ def print_in_table(dictionary):
         data_table.add_row(
             [
                 key,
-                dictionary[key][EMAILS],
-                dictionary[key][COMMITS],
-                dictionary[key][ADDED],
-                dictionary[key][REMOVED],
-                dictionary[key][TOTAL],
-                dictionary[key][MODIFIED],
-                dictionary[key][RATIO],
-                dictionary[key][DATE],
+                dictionary[key]["EMAIL"],
+                dictionary[key]["COMMITS"],
+                dictionary[key]["ADDED"],
+                dictionary[key]["REMOVED"],
+                dictionary[key]["TOTAL"],
+                dictionary[key]["MODIFIED"],
+                dictionary[key]["RATIO"],
+                dictionary[key]["COMMITDATE"],
             ]
         )
     print(data_table)
@@ -50,11 +50,11 @@ def print_in_table(dictionary):
 
 if __name__ == "__main__":
     # takes input for the repository local path OR URL
-    path_repo = input("Enter the path to the repo : ")
-    data = count_code_lines.get_commit_data(path_repo)
+    PATH_REPO = input("Enter the path to the repo : ")
+    DATA = count_code_lines.get_commit_data(PATH_REPO)
     # data = count_code_lines.get_file_types(path_repo)
     # print("data before checking")
-    print_in_table(data)
+    print_in_table(DATA)
     # print("data after checking")
     # data = check_emails(data)
     # print_in_table(data)

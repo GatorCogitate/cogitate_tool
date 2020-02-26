@@ -1,0 +1,41 @@
+{
+    "stephensonc": {
+        "commits": [
+            "commit hash 1",
+            "commit hash 2",
+            "commit hash 3"
+        ],
+        "issues": [
+            "issue 1 to which stephensonc contributed",
+            "issue 2 to which stephensonc contributed",
+            "issue 3 to which stephensonc contributed"
+        ],
+        "pull_requests": [
+            "PR 1 to which stephensonc contributed",
+            "PR 2 to which stephensonc contributed",
+            "PR 3 to which stephensonc contributed"
+        ]
+    },
+    "koscinskic": {
+        "commits": [
+            "commit hash 1",
+            "commit hash 2",
+            "commit hash 3"
+        ],
+        "issues": [
+            "issue 1 to which koscinskic contributed",
+            "issue 2 to which koscinskic contributed",
+            "issue 3 to which koscinskic contributed"
+        ],
+        "pull_requests": [
+            "PR 1 to which koscinskic contributed",
+            "PR 2 to which koscinskic contributed",
+            "PR 3 to which koscinskic contributed"
+        ]
+    },
+    "testuser": {
+        "commits": [],
+        "issues": [],
+        "pull_requests": []
+    }
+}
