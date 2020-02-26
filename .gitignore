@@ -9,7 +9,8 @@
 *.o
 *.so
 
-# Android #
+
+# Android # 
 ###########
 *.apk
 *.ap_
