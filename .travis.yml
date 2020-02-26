@@ -67,7 +67,6 @@ script:
 # --> Automatically apply a release tag to the pull request using pr-tag-release
 after_success:
   - pipenv run codecov
-  - pipenv run python-codacy-coverage -r coverage.xml
 
 # deploy to GitHub Releases on PR merge
 deploy:
