@@ -88,15 +88,76 @@ def get_file_formats(files):
     return formats
 
 
+def get_author_name(commit):
+    """Accept a commit Pydriller object and retruns the name of its author."""
+    return commit.author.name
+
+
+def get_author_email(commit):
+    """Accept a commit Pydriller object and retruns the email of its author."""
+    return commit.author.email
+
+
+def get_commit_date(commit):
+    """Accept a commit Pydriller object and retruns the date it's commited."""
+    return commit.committer_date
+
+
+def get_added_lines(dictionary, key, file):
+    """Accept dictionary, key and Pydriller file object. Returns a dictionary.
+
+    that includes a key and the added lines.
+    """
+    if "ADDED" not in dictionary[key].keys():
+        return {"ADDED": file.added}
+    new_total = dictionary[key]["ADDED"] + file.added
+    return {"ADDED": new_total}
+
+
+def get_removed_lines(dictionary, key, file):
+    """Accept dictionary, key, and Pydriller file object. Returns a dictionary.
+
+    that includes a key and the removed lines.
+    """
+    if "REMOVED" not in dictionary[key].keys():
+        return {"REMOVED": file.removed}
+    new_total = dictionary[key]["REMOVED"] + file.removed
+    return {"REMOVED": new_total}
+
+
+def get_total_lines(dictionary, key, file):
+    """Accept dictionary, key and Pydriller file object. Returns a dictionary.
+
+    that includes a key and the total lines.
+    """
+    total_lines = file.added - file.removed
+    if "TOTAL" not in dictionary[key].keys():
+        return {"TOTAL": total_lines}
+    new_total = dictionary[key]["TOTAL"] + total_lines
+    return {"TOTAL": new_total}
+
+
+def get_modified_lines(dictionary, key, file):
+    """Accept dictionary, key and Pydriller file object. Returns a dictionary.
+
+    that includes a key and the modified lines.
+    """
+    total_lines = file.added + file.removed
+    if "MODIFIED" not in dictionary[key].keys():
+        return {"MODIFIED": total_lines}
+    new_total = dictionary[key]["MODIFIED"] + total_lines
+    return {"MODIFIED": new_total}
+
+
 def get_commit_data(repo_path):
     """Create a dictionary of retreived data from the repository."""
     # creates a hashmap where the key is the authors username
     data_list = {}
     # goes through all the commits in the current branch of the repo
     for commit in RepositoryMining(repo_path).traverse_commits():
-        author = commit.author.name
-        email = commit.author.email
-        date = commit.author_date
+        author = get_author_name(commit)
+        email = get_author_email(commit)
+        date = get_commit_date(commit)
         # check if the key already in in the dicitionary
         if author in data_list:
             # condition passed, adds one to the number of commits
@@ -105,7 +166,7 @@ def get_commit_data(repo_path):
             # condition fails, creates a new key and adds empty data
             data_list[author] = {
                 "EMAIL": email,
-                "COMMITS": 0,
+                "COMMITS": 1,
                 "ADDED": 0,
                 "REMOVED": 0,
                 "TOTAL": 0,
@@ -118,18 +179,12 @@ def get_commit_data(repo_path):
         # goes through the files in the current commit
         for file in commit.modifications:
             # retreive data using Pydriller API
-            added_lines = file.added
-            removed_lines = file.removed
             current_file = file.filename
-            # calculate total lines from previously retreived data
-            total_lines = added_lines - removed_lines
-            # calculate modified lines by combining added and removed
-            modified_lines = added_lines + removed_lines
-            # add retreived data to existing key
-            data_list[author]["ADDED"] += added_lines
-            data_list[author]["REMOVED"] += removed_lines
-            data_list[author]["TOTAL"] += total_lines
-            data_list[author]["MODIFIED"] += modified_lines
+            # use getter methods to add to the existing dictionary
+            data_list[author].update(get_added_lines(data_list, author, file))
+            data_list[author].update(get_removed_lines(data_list, author, file))
+            data_list[author].update(get_total_lines(data_list, author, file))
+            data_list[author].update(get_modified_lines(data_list, author, file))
             # TODO iterate through the dates and add to table with .append
             # check if the explored file is not in the list in index seven
             if current_file not in data_list[author]["FILES"]:

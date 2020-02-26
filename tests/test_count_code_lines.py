@@ -29,7 +29,9 @@ def test_print_table():
     data = count_code_lines.get_commit_data("")
     # print_table.print_in_table(data)
 
+
 # TODO additional test cases needed
+
 
 @pytest.mark.parametrize(
     "input_lines",
