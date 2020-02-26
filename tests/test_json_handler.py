@@ -1,4 +1,4 @@
-""" Test suite for JSON processing."""
+"""Test suite for JSON processing."""
 
 import os
 import json_handler
