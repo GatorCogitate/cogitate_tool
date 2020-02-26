@@ -17,6 +17,7 @@ def individual():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("-l", "--link", help="Cogitate a repo by the url of the repo.")
+    parser.add_argument("-l", "--link", help="Cogitate a\
+     repo by the url of the repo.")
     args = parser.parse_args()
     pprint(find_repositories(args.link))
