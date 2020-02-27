@@ -28,7 +28,7 @@ def print_in_table(dictionary):
         "Total",
         "Modified Lines",
         "Lines/Commit",
-        "Date",
+        "Files",
     ]
     data_table.field_names = headings
     for key in dictionary:
@@ -42,7 +42,7 @@ def print_in_table(dictionary):
                 dictionary[key]["TOTAL"],
                 dictionary[key]["MODIFIED"],
                 dictionary[key]["RATIO"],
-                dictionary[key]["COMMITDATE"],
+                dictionary[key]["FILES"],
             ]
         )
     print(data_table)
