@@ -1,6 +1,7 @@
 """ Collects commit data for contributors of the master branch of a repo. """
 from pydriller import RepositoryMining
 
+
 def collect_commits_hash(repo):
     """
     Creates a list of dictionaries that contains commit info.
@@ -45,7 +46,6 @@ def collect_commits_hash(repo):
                 methods.append(method.name)
             filename.append(item.filename)
             filepath.append(item.new_path)
-
 
         single_commit_dict = {
             "hash": commit.hash,
