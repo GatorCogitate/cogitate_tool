@@ -3,18 +3,6 @@
 from prettytable import PrettyTable
 import count_code_lines
 
-# Keys for the dicitionary indeces
-EMAILS = 0
-COMMITS = 1
-ADDED = 2
-REMOVED = 3
-TOTAL = 4
-MODIFIED = 5
-RATIO = 6
-FILES = 7
-FORMAT = 8
-DATE = 9
-
 
 def print_in_table(dictionary):
     """Create and print the table using prettytable."""
