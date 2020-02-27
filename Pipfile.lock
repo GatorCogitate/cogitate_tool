@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "49a23e5a86416fa5205cfa430c02dd62fce9da46503701fea5595830b0de5889"
+            "sha256": "e4337d6356c6fb27d91f089e72652353fc4703794829ba1a1039b79643537186"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -303,6 +303,13 @@
             ],
             "version": "==0.1.0"
         },
+        "lizard": {
+            "hashes": [
+                "sha256:21994effc04979e80973ae603f02ada19405a773e3aa55795fa952fbb6c0e894",
+                "sha256:d7295be98d43d79cf4bb8daf0cdcdc2d32a238a3e4981a4adf9a628a8a3a1f9d"
+            ],
+            "version": "==1.17.3"
+        },
         "markupsafe": {
             "hashes": [
                 "sha256:00bc623926325b26bb9605ae9eae8a215691f33cae5df11ca5424f06f2d1f473",
@@ -424,10 +431,10 @@
         },
         "parso": {
             "hashes": [
-                "sha256:56b2105a80e9c4df49de85e125feb6be69f49920e121406f15e7acde6c9dfc57",
-                "sha256:951af01f61e6dccd04159042a0706a31ad437864ec6e25d0d7a96a9fbb9b0095"
+                "sha256:0c5659e0c6eba20636f99a04f469798dca8da279645ce5c387315b2c23912157",
+                "sha256:8515fc12cfca6ee3aa59138741fc5624d62340c97e401c74875769948d4f2995"
             ],
-            "version": "==0.6.1"
+            "version": "==0.6.2"
         },
         "pathtools": {
             "hashes": [
@@ -551,10 +558,18 @@
         },
         "pydeck": {
             "hashes": [
-                "sha256:3921fbc21efda8c458c844c9c3c54e45c8f3c9378f97d1ad6bf70a7d96543ac6",
-                "sha256:d58bc0a08707a613ccf1aa99ccdab3b040ac6d93c70046ef165cae913b527fd8"
+                "sha256:1204ac5156be96decb5ab9875bc3fdcb357a73ce7061785670c8f1ad7c3f31a4",
+                "sha256:29a64718de263bcd4e2cbccc44929b41bac03cf0a6a6264151b19a809e26fd47"
             ],
-            "version": "==0.2.1"
+            "version": "==0.3.0b1"
+        },
+        "pydriller": {
+            "hashes": [
+                "sha256:902a9e955272dba02d377253e557640dacc028cd3da700dcc648c8bc704f98fa",
+                "sha256:e312440c455f82fe99500200024c9180808fdca7b0e069ee3f465dde90d64b89"
+            ],
+            "index": "pypi",
+            "version": "==1.11.1"
         },
         "pygithub": {
             "hashes": [

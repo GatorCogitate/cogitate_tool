@@ -4,7 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-PyGithub= "*"
+PyGithub = "*"
+pydriller = "*"
 streamlit = "*"
 numpy = "*"
 pandas = "*"
