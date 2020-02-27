@@ -66,13 +66,6 @@ def get_test_commit_info(commit_author_list, user_repo):
                     if count is 0:
                         if file_path:
                             if "test" in file_path:  # sees if the commit was to testing
-                                # print(
-                                #     "Found someone who modified tests: ",
-                                #     # will calculate the modifications to the test
-                                #     commit.author.name,
-                                #     file_path,
-                                #     commit.hash,
-                                # )
                                 total_test_commit_count += 1
                                 count = 1
                             else:
@@ -87,11 +80,11 @@ def get_test_commit_info(commit_author_list, user_repo):
             author_name, total_test_commit_count, author_commit_count
         )
 
-""" This funciton calculates the amount of commits by specific users within the
-repo. """
+
 def calculate_commits_to_testing(
     author_name, total_test_commit_count, author_commit_count
 ):
+    """Calculates the percentage of commits not going to test folder."""
     print(author_name, "'s Total commits: ", author_commit_count)
     print("-- Testing commits by", author_name, ":", total_test_commit_count)
     try:
@@ -101,10 +94,11 @@ def calculate_commits_to_testing(
     print("-- Percentage of Commits Going to Testing:", percentage_covered, "%")
     print("\n\n")
 
-""" Calculates the percentage of commits going to test folder """
+
 def calculate_commits_not_to_testing(
     author_name, total_test_commit_count, author_commit_count
 ):
+    """Calculates the percentage of commits not going to test folder."""
     # Print statements that release the calculations of the declared variables
     print(author_name, "'s Total commits: ", author_commit_count)
     non_test_commit_count = author_commit_count - total_test_commit_count
