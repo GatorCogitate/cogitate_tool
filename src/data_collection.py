@@ -1,8 +1,6 @@
 """ Collects commit data for contributors of the master branch of a repo. """
 from pydriller import RepositoryMining
 
-repo = "https://github.com/lussierc/simplePerformanceExperimentsJava"
-
 def collect_commits_hash(repo):
     """
     Creates a list of dictionaries that contains commit info.
@@ -19,6 +17,7 @@ def collect_commits_hash(repo):
     complexity: Cyclomatic Complexity of the file
     methods: list of methods of the file.
     filename: files modified by commit.
+    filepath: filepaths of files modified by commit.
     """
 
     commit_list = []
@@ -65,6 +64,3 @@ def collect_commits_hash(repo):
         }
 
         commit_list.append(single_commit_dict)
-
-    print(commit_list)
-collect_commits_hash(repo)
