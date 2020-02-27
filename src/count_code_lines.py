@@ -200,31 +200,4 @@ def get_commit_data(repo_path):
         data_list[key]["FORMAT"] = formats
     return data_list
 
-
-# NOTE: this is a commented out method due to duplicative work
-
-# def get_file_types(repo_path):
-#     data_list = {}
-#     change_file_type = []
-#     author_name = []
-#     author_email = []
-#     comprehensive_list = []
-#     dict = {}
-#     for commit in RepositoryMining(repo_path).traverse_commits():
-#         author = commit.author.name
-#         for m in commit.modifications:
-#             var = str(m.change_type.name)
-#             var_test = "MODIFY"
-#             if var in var_test:
-#                 if author not in dict.keys():
-#                     dict[author] = {}
-#                 if var not in dict[author].keys():
-#                     dict[author][var] = 1
-#                 else:
-#                     dict[author][var] += 1
-#
-#     print(dict)
-#     return dict
-
-
 # NOTE: for printing the data please use the file print_table.py
