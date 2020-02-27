@@ -1,7 +1,7 @@
 language: generic
 
 cache:
-  directories: 
+  directories:
     - $HOME/.pip-cache/
 
 dist: xenial
@@ -55,9 +55,11 @@ notifications:
 # --> lint the code with Pipfile script
 # --> lint the README documentation with mdl
 script:
+  - mdl README.md
+  - chmod +x ./scripts/*.sh
   - pipenv run cover
   - pipenv run lint --check
-  - mdl README.md
+  - pipenv run test
 
 # report information to CodeCov and Codacy and tag the release of a pull request:
 # --> Report coverage to CodeCov, which ensures that coverages does not drop by more than a threshold
@@ -65,6 +67,7 @@ script:
 # --> Automatically apply a release tag to the pull request using pr-tag-release
 after_success:
   - pipenv run codecov
+  - pipenv run python-codacy-coverage -r coverage.xml
 
 # deploy to GitHub Releases on PR merge
 deploy:

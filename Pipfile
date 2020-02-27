@@ -21,9 +21,11 @@ flake8 = "*"
 pydocstyle = "*"
 pytest = "*"
 pytest-cov = "*"
+pytest-sugar = "*"
+pytest-clarity = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.7.3"
 
 [pipenv]
 allow_prereleases = true

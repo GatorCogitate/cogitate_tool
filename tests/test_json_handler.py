@@ -1,7 +1,6 @@
 """Test suite for JSON processing."""
-
 import os
-import json_handler
+from src import json_handler
 
 
 def test_write_dict_to_json():
