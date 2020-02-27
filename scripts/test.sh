@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Run the test suite so that:
 # --> -x: Stops on first error or failure
