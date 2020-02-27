@@ -21,3 +21,20 @@
 # Helpful reminders:
 # Use pipeline programming style
 # Implement test cases as functions are written in the test_individual_scoring.py file
+# Scoring will be done first as percentages ((individual contribution/total branch)*100)
+
+# Add fake data that corresponds to overall-eval-analyzing-metrics branch
+# github_data uses the pattern ["username", commit_total, lines_added,
+# lines_deleted, total_lines, modified_lines, lines_per_commit, files_changed]
+github_data = [
+    ["WonjoonC", 28, 355, 76, 2],
+    ["Hannah Schultz", 22, 349, 50, 4],
+    ["Jordan-A", 23, 375, 30, 3],
+    ["noorbuchi", 27, 315, 75, 7],
+    ["bagashvilit", 25, 360, 65, 10],
+    ["Alexander_Hamilton", 41, 530, 100, 230],
+    ["Karl_Marx", 0, 0, 0, 400],
+    ["Julius_Caesar", 25, 310, 68, 1],
+    ["Napoleon_Bonaparte", 24, 363, 70, 3],
+    ["Alexander_the_Great", 42, 540, 110, 1],
+]
