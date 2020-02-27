@@ -12,6 +12,10 @@
 ├── .travis.yml
 ├── .gitignore
 |
+├── data
+│   ├── demofile.json
+│   └── testfile.json
+|
 ├── scripts
 │   ├── cogitate.sh
 │   └── test.sh
