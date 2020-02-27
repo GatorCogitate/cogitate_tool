@@ -18,6 +18,7 @@ def collect_commits_hash(repo):
     complexity: Cyclomatic Complexity of the file
     methods: list of methods of the file.
     filename: files modified by commit.
+    filepath: filepaths of files modified by commit.
     """
 
     commit_list = []
@@ -30,6 +31,7 @@ def collect_commits_hash(repo):
         complexity = 0
         methods = []
         filename = []
+        filepath = []
 
         for item in commit.modifications:
             # modifications is a list of files and its changes
@@ -43,6 +45,7 @@ def collect_commits_hash(repo):
             for method in item.methods:
                 methods.append(method.name)
             filename.append(item.filename)
+            filepath.append(item.new_path)
 
         single_commit_dict = {
             "hash": commit.hash,
@@ -57,6 +60,7 @@ def collect_commits_hash(repo):
             "complexity": complexity,
             "methods": methods,
             "filename": filename,
+            "filepath": filepath,
         }
 
         commit_list.append(single_commit_dict)
