@@ -44,7 +44,7 @@ OS="$(uname)"
 
 # define all of the linters to iteratively run
 declare -A LINTERS
-LINTERS=( ["black"]="pipenv run black $CHECK $FILES" ["pylint"]="pipenv run pylint $FILE_FOLDERS" ["flake8"]="pipenv run flake8 $FILE_FOLDERS" ["pydocstyle"]="pipenv run pydocstyle" )
+LINTERS=( ["black"]="pipenv run black $CHECK $FILE_FOLDERS" ["pylint"]="pipenv run pylint $FILE_FOLDERS" ["flake8"]="pipenv run flake8 $FILE_FOLDERS" ["pydocstyle"]="pipenv run pydocstyle" )
 
 # run each of the already configured linters
 for tool in "${!LINTERS[@]}"; do
