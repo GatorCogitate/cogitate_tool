@@ -59,7 +59,6 @@ script:
   - chmod +x ./scripts/*.sh
   - pipenv run cover
   - pipenv run lint --check
-  - pipenv run test
 
 # report information to CodeCov and Codacy and tag the release of a pull request:
 # --> Report coverage to CodeCov, which ensures that coverages does not drop by more than a threshold
