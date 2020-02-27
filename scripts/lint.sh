@@ -15,7 +15,7 @@ PASSED=true
 
 OS="$(uname)"
 
- collect the files on MacOS
+ # collect the files on MacOS
  if [[ "$OS" == "Darwin" ]]; then
      FILES=$(find -E . -type f -regex '\./(gator|tests)/.*.py')
  else
@@ -23,6 +23,7 @@ OS="$(uname)"
  fi
 
 # lint all of the Python source code files
+ FILE_FOLDERS=("src" "tests")
  FILES="$FILES *.py"
 
 # xenon cannot accept a lists of files or directories,
@@ -43,7 +44,7 @@ OS="$(uname)"
 
 # define all of the linters to iteratively run
 declare -A LINTERS
-LINTERS=( ["black"]="pipenv run black $CHECK $FILES" ["pylint"]="pipenv run pylint src" ["flake8"]="pipenv run flake8" ["pydocstyle"]="pipenv run pydocstyle" )
+LINTERS=( ["black"]="pipenv run black $CHECK $FILES" ["pylint"]="pipenv run pylint $FILE_FOLDERS" ["flake8"]="pipenv run flake8 $FILE_FOLDERS" ["pydocstyle"]="pipenv run pydocstyle" )
 
 # run each of the already configured linters
 for tool in "${!LINTERS[@]}"; do
