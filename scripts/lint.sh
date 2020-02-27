@@ -44,6 +44,7 @@ OS="$(uname)"
 # define all of the linters to iteratively run
 declare -A LINTERS
 LINTERS=( ["black"]="pipenv run black $CHECK $FILES" ["pylint"]="pipenv run pylint $FILES" ["flake8"]="pipenv run flake8 $FILES" ["pydocstyle"]="pipenv run pydocstyle $FILES" )
+
 # run each of the already configured linters
 for tool in "${!LINTERS[@]}"; do
     echo " -- Running $tool"
