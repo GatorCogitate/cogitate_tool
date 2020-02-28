@@ -17,7 +17,7 @@ def test_write_dict_to_json():
 
 @pytest.mark.parametrize(
     "json_file,expected_contents",
-    [("contributor_data_template", ["stephensonc"])],
+    [("contributor_data_template", ["stephensonc", "koscinskic", "schultzh"])],
 )
 def test_get_dict_from_json(json_file, expected_contents):
     """Ensure data is correctly pulled from a json file."""
