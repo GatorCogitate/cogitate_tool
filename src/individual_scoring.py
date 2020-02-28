@@ -1,3 +1,5 @@
+import operator
+
 # For 3/3/2020:
 # TODO Fake data - start with dictionary - Madelyn *
 # TODO function for commit score - Teona *
@@ -28,8 +30,8 @@
 # lines_deleted, total_lines, modified_lines, lines_per_commit, files_changed]
 
 
-# NOTE This is the fake data, it does not have key for the email for now for tesing purposes
-github_data1 = {
+# NOTE This is the fake data, it does not have key for the email for now, for tesing purposes
+github_data = {
 "noorbuchi" : {"COMMITS" : 28, "ADDED" : 349, "REMOVED" : 70},
 "bagashvilit" : {"COMMITS" : 22, "ADDED" : 355, "REMOVED" : 56},
 "Jordan-A" : { "COMMITS" : 23, "ADDED" : 375, "REMOVED" : 43},
@@ -42,4 +44,6 @@ github_data1 = {
 "Alexander_the_Great": { "COMMITS" : 42, "ADDED" : 355, "REMOVED" : 50},
 }
 
-print(type(github_data1))
+# Sort username keys in an acsending order based on commit numbers
+for item in sorted(github_data.keys(), key=lambda x: github_data[x]['COMMITS']):
+    print(item)
