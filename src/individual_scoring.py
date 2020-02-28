@@ -26,28 +26,20 @@
 # Add fake data that corresponds to overall-eval-analyzing-metrics branch
 # github_data uses the pattern ["username", commit_total, lines_added,
 # lines_deleted, total_lines, modified_lines, lines_per_commit, files_changed]
-github_data = {
-    "WonjoonC": [28, 355, 76, 2],
-    "Hannah Schultz": [22, 349, 50, 4],
-    "Jordan-A": [23, 375, 30, 3],
-    "noorbuchi": [27, 315, 75, 7],
-    "bagashvilit": [25, 360, 65, 10],
-    "Alexander_Hamilton": [41, 530, 100, 230],
-    "Karl_Marx": [0, 0, 0, 400],
-    "Julius_Caesar": [25, 310, 68, 1],
-    "Napoleon_Bonaparte": [24, 363, 70, 3],
-    "Alexander_the_Great": [42, 540, 110, 1],
+
+
+# NOTE This is the fake data, it does not have key for the email for now for tesing purposes
+github_data1 = {
+"noorbuchi" : {"COMMITS" : 28, "ADDED" : 349, "REMOVED" : 70},
+"bagashvilit" : {"COMMITS" : 22, "ADDED" : 355, "REMOVED" : 56},
+"Jordan-A" : { "COMMITS" : 23, "ADDED" : 375, "REMOVED" : 43},
+"WonjoonC": { "COMMITS" : 27, "ADDED" : 365, "REMOVED" : 67},
+"Hannah Schultz": { "COMMITS" : 25, "ADDED" : 315, "REMOVED" : 75},
+"Alexander_Hamilton": { "COMMITS" : 41, "ADDED" : 350, "REMOVED" : 54},
+"Karl_Marx": { "COMMITS" : 0, "ADDED" : 530, "REMOVED" : 57},
+"Julius_Caesar": { "COMMITS" : 25, "ADDED" : 363, "REMOVED" : 35},
+"Napoleon_Bonaparte": { "COMMITS" : 24, "ADDED" : 540, "REMOVED" : 2},
+"Alexander_the_Great": { "COMMITS" : 42, "ADDED" : 355, "REMOVED" : 50},
 }
 
-github_data1 = {
-"noorbuchi" : {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
-"bagashvilit" : {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
-"Jordan-A" : {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
-"WonjoonC": {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
-"Hannah Schultz": {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
-"Alexander_Hamilton": {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
-"Karl_Marx": {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
-"Julius_Caesar": {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
-"Napoleon_Bonaparte": {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
-"Alexander_the_Great": {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
-}
+print(type(github_data1))
