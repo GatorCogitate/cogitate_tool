@@ -39,4 +39,15 @@ github_data = {
     "Alexander_the_Great": [42, 540, 110, 1],
 }
 
-print(type(github_data))
+github_data1 = {
+"noorbuchi" : {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
+"bagashvilit" : {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
+"Jordan-A" : {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
+"WonjoonC": {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
+"Hannah Schultz": {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
+"Alexander_Hamilton": {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
+"Karl_Marx": {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
+"Julius_Caesar": {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
+"Napoleon_Bonaparte": {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
+"Alexander_the_Great": {"EMAIL": email, "COMMITS" : total_commits, "ADDED" : total_added_lines, "REMOVED" : total_removed_lines},
+}
