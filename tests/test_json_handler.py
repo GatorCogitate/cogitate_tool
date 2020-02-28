@@ -1,5 +1,6 @@
 """Test suite for JSON processing."""
 import os
+import pytest
 from src import json_handler
 
 
@@ -14,11 +15,19 @@ def test_write_dict_to_json():
         assert "test_data" in file_contents
 
 
-def test_get_dict_from_json():
+@pytest.mark.parametrize(
+    "json_file,expected_contents",
+    [("contributor_data_template", ["stephensonc"])],
+)
+def test_get_dict_from_json(json_file, expected_contents):
     """Ensure data is correctly pulled from a json file."""
-    assert "demofile.json" in os.listdir("./data/")  # demofile exists
-    test_dictionary = json_handler.get_dict_from_json_file("demofile")
-    assert "testuser" in test_dictionary.keys()
+    assert json_file + ".json" in os.listdir("./data/")
+    # demofile exists
+    test_dictionary = json_handler.get_dict_from_json_file(
+        "contributor_data_template"
+    )
+    for user in expected_contents:
+        assert user in test_dictionary.keys()
     # dictionary was populated correctly
 
 
