@@ -1,1 +1,1 @@
-"""Empty file required by pylint."""
+"""Standard __init__.py file"""
