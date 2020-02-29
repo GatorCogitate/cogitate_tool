@@ -44,17 +44,22 @@ github_data = {
 "Alexander_the_Great": { "COMMITS" : 42, "ADDED" : 355, "REMOVED" : 50},
 }
 
-
+# NOTE: The following code block still needs to be fixed in terms of variable
+# names and docstrings.
 def percentage(individual,overal_branch):
+    """Function to calculate the individual contribution percentage"""
     return round(individual * 100 / overal_branch)
 
 def sum_value(key):
+    """Function to sum up all the values in branch per key"""
     return sum(d[key] for d in github_data.values() if d)
 
-def individual_commitmnet(key1,key2):
-    return github_data[key1][key2]
+def individual_commitmnet(username,category):
+    """Function to return value for key"""
+    return github_data[username][category]
 
+# Print usename and percentage of their contribution for each category
 for username, data in github_data.items():
     print("\n",username)
-    for key in data:
-        print(key, percentage(individual_commitmnet(username,key),sum_value(key)),"%")
+    for category in data:
+        print(category, percentage(individual_commitmnet(username,category),sum_value(category)),"%")
