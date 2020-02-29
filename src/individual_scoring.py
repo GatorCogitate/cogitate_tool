@@ -38,12 +38,23 @@ github_data = {
 "WonjoonC": { "COMMITS" : 27, "ADDED" : 365, "REMOVED" : 67},
 "Hannah Schultz": { "COMMITS" : 25, "ADDED" : 315, "REMOVED" : 75},
 "Alexander_Hamilton": { "COMMITS" : 41, "ADDED" : 350, "REMOVED" : 54},
-"Karl_Marx": { "COMMITS" : 0, "ADDED" : 530, "REMOVED" : 57},
+"Karl_Marx": { "COMMITS" : 0, "ADDED" : 0, "REMOVED" : 0},
 "Julius_Caesar": { "COMMITS" : 25, "ADDED" : 363, "REMOVED" : 35},
 "Napoleon_Bonaparte": { "COMMITS" : 24, "ADDED" : 540, "REMOVED" : 2},
 "Alexander_the_Great": { "COMMITS" : 42, "ADDED" : 355, "REMOVED" : 50},
 }
 
-# Sort username keys in an acsending order based on commit numbers
-for item in sorted(github_data.keys(), key=lambda x: github_data[x]['COMMITS']):
-    print(item)
+
+def percentage(individual,overal_branch):
+    return round(individual * 100 / overal_branch)
+
+def sum_value(key):
+    return sum(d[key] for d in github_data.values() if d)
+
+def individual_commitmnet(key1,key2):
+    return github_data[key1][key2]
+
+for username, data in github_data.items():
+    print("\n",username)
+    for key in data:
+        print(key, percentage(individual_commitmnet(username,key),sum_value(key)),"%")
