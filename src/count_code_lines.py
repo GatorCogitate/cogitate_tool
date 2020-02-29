@@ -1,12 +1,19 @@
-"""Count the number of lines changed by an indvividual."""
+"""This module is intended to run after all data has been collected and added.
+
+to the .json file. The purpose is to create a dictionary where the username is.
+
+the key and other calculated metrics are the values.
+"""
 
 # from git import Repo
 from pydriller import RepositoryMining
+import json_handler
+import data_collection
 
 # from pydriller.domain.commit import ModificationType
 
 
-# TODO go over this function
+# TODO not used yet, has no impact
 def delete_duplicates(data, keys_to_delete):
     """Delete keys from dictionary, keys are sent in a list."""
     dictionary = data
@@ -17,7 +24,7 @@ def delete_duplicates(data, keys_to_delete):
     return dictionary
 
 
-# TODO go over this function
+# TODO not used yet, has no impact
 def parse_email(email):
     """Locate @ and + sign in email and returns the string between them."""
     # find the index of @ sign
@@ -30,7 +37,7 @@ def parse_email(email):
 
 
 # NOTE: there are issues with this function, calls have been commented out
-# TODO go over this function
+# TODO not used yet, has no impact
 def check_emails(data):
     """Remove @github email from users and merges data with duplicates."""
     dictionary = data
@@ -88,76 +95,40 @@ def get_file_formats(files):
     return formats
 
 
-def get_author_name(commit):
-    """Accept a commit Pydriller object and retruns the name of its author."""
-    return commit.author.name
+# NOTE: this function is temporary to test get_individual_metrics considering
+# there is not a main module that connects eerything yet
+def add_data_to_json(path_to_repo, file_name):
+
+    # get the data from .json file
+    current_data = json_handler.get_dict_from_json_file(file_name)
+    # check if data has not been collected and do so if it was not
+    if "RAW_DATA" not in current_data.keys():
+        print("Data has not been collected, collecting it now...")
+        # collects data from data_collection
+        raw_data = {"RAW_DATA" : data_collection.collect_commits_hash(path_to_repo)}
+        # Write raw data to .json file
+        json_handler.add_entry(raw_data, file_name)
+        # Update current_data with the new contents
+        current_data = json_handler.get_dict_from_json_file(file_name)
+    # Call the calculation function
+    print("Data collected")
+    indvividual_metrics_dict = calculate_individual_metrics(current_data)
+
+    # update .json file with indvividual information
+    json_handler.add_entry(indvividual_metrics_dict, file_name)
 
 
-def get_author_email(commit):
-    """Accept a commit Pydriller object and retruns the email of its author."""
-    return commit.author.email
 
 
-def get_commit_date(commit):
-    """Accept a commit Pydriller object and retruns the date it's commited."""
-    return commit.committer_date
-
-
-def get_added_lines(dictionary, key, file):
-    """Accept dictionary, key and Pydriller file object. Returns a dictionary.
-
-    that includes a key and the added lines.
-    """
-    if "ADDED" not in dictionary[key].keys():
-        return {"ADDED": file.added}
-    new_total = dictionary[key]["ADDED"] + file.added
-    return {"ADDED": new_total}
-
-
-def get_removed_lines(dictionary, key, file):
-    """Accept dictionary, key, and Pydriller file object. Returns a dictionary.
-
-    that includes a key and the removed lines.
-    """
-    if "REMOVED" not in dictionary[key].keys():
-        return {"REMOVED": file.removed}
-    new_total = dictionary[key]["REMOVED"] + file.removed
-    return {"REMOVED": new_total}
-
-
-def get_total_lines(dictionary, key, file):
-    """Accept dictionary, key and Pydriller file object. Returns a dictionary.
-
-    that includes a key and the total lines.
-    """
-    total_lines = file.added - file.removed
-    if "TOTAL" not in dictionary[key].keys():
-        return {"TOTAL": total_lines}
-    new_total = dictionary[key]["TOTAL"] + total_lines
-    return {"TOTAL": new_total}
-
-
-def get_modified_lines(dictionary, key, file):
-    """Accept dictionary, key and Pydriller file object. Returns a dictionary.
-
-    that includes a key and the modified lines.
-    """
-    total_lines = file.added + file.removed
-    if "MODIFIED" not in dictionary[key].keys():
-        return {"MODIFIED": total_lines}
-    new_total = dictionary[key]["MODIFIED"] + total_lines
-    return {"MODIFIED": new_total}
-
-
-def get_commit_data(repo_path):
-    """Create a dictionary of retreived data from the repository."""
+def calculate_individual_metrics(current_data):
+    """Retrieve the data from .json file and create a dictionary keyed by user."""
     # creates a hashmap where the key is the authors username
     data_list = {}
-    # goes through all the commits in the current branch of the repo
-    for commit in RepositoryMining(repo_path).traverse_commits():
-        author = get_author_name(commit)
-        email = get_author_email(commit)
-        date = get_commit_date(commit)
+    for key in current_data["RAW_DATA"]:
+        author = key["author_name"]
+        email = key["author_email"]
+        # TODO check date compatibility with json
+        date = "N/A"
         # check if the key already in in the dicitionary
         if author in data_list:
             # condition passed, adds one to the number of commits
@@ -176,22 +147,17 @@ def get_commit_data(repo_path):
                 "FORMAT": [],
                 "COMMITDATE": [],
             }
-        # goes through the files in the current commit
-        for file in commit.modifications:
-            # retreive data using Pydriller API
-            current_file = file.filename
-            # use getter methods to add to the existing dictionary
-            data_list[author].update(get_added_lines(data_list, author, file))
-            data_list[author].update(get_removed_lines(data_list, author, file))
-            data_list[author].update(get_total_lines(data_list, author, file))
-            data_list[author].update(get_modified_lines(data_list, author, file))
-            # TODO iterate through the dates and add to table with .append
-            # check if the explored file is not in the list in index seven
-            if current_file not in data_list[author]["FILES"]:
-                # the name of the file is appended to the list
-                data_list[author]["FILES"].append(current_file)
+
+        data_list[author]["ADDED"] += key["line_added"]
+        data_list[author]["REMOVED"] += key["line_removed"]
+        # TODO: consider adding lines of code from data
+        # check if the explored file is not in the list in index seven
+        current_files = key["filename"]
+        data_list[author]["FILES"] += current_files
     # iterate through the data to do final calculations
     for key in data_list:
+        data_list[author]["TOTAL"] = data_list[author]["ADDED"] - data_list[author]["REMOVED"]
+        data_list[author]["MODIFIED"] = data_list[author]["ADDED"] + data_list[author]["REMOVED"]
         average = get_commit_average(
             data_list[key]["MODIFIED"], data_list[key]["COMMITS"]
         )
@@ -201,3 +167,10 @@ def get_commit_data(repo_path):
     return data_list
 
 # NOTE: for printing the data please use the file print_table.py
+
+
+if __name__ == "__main__":
+    REPO_PATH = input("Enter the path to the repo : ")
+    # JSON_NAME = input("Enter the name of the json file : ")
+    JSON_NAME = "contributor_data_template"
+    add_data_to_json(REPO_PATH, JSON_NAME)
