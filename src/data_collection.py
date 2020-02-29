@@ -102,7 +102,7 @@ def collect_commits_hash(repo):
             "author_msg": commit.msg,
             "author_name": commit.author.name,
             "author_email": commit.author.email,
-            "author_date": commit.author_date.date(),
+            # "author_date": commit.author_date,
             "merge": commit.merge,
             "line_added": line_added,
             "line_removed": line_removed,
