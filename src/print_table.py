@@ -41,8 +41,8 @@ def print_individual_in_table(file_name):
 
 # NOTE: For the purposes of testing and demo
 if __name__ == "__main__":
-    # FILE_NAME = input("Enter the name of the file : ")
-    FILE_NAME = "contributor_data_template"
+    FILE_NAME = input("Enter the name of the file : ")
+    # FILE_NAME = "contributor_data_template"
     DATA = count_code_lines.calculate_individual_metrics(FILE_NAME)
     if DATA == {}:
         REPO_PATH = input("Enter the path to the repo : ")
