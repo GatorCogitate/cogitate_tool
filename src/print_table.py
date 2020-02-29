@@ -2,11 +2,14 @@
 
 from prettytable import PrettyTable
 import count_code_lines
+import json_handler
 
 
-def print_in_table(dictionary):
+def print_individual_in_table(file_name):
     """Create and print the table using prettytable."""
     data_table = PrettyTable()
+    current_data = json_handler.get_dict_from_json_file(file_name)
+    dictionary = current_data["INDIVIDUAL_METRICS"]
     headings = [
         "Username",
         "Email",
@@ -16,7 +19,7 @@ def print_in_table(dictionary):
         "Total",
         "Modified Lines",
         "Lines/Commit",
-        "Files",
+        "File Types",
     ]
     data_table.field_names = headings
     for key in dictionary:
@@ -30,19 +33,23 @@ def print_in_table(dictionary):
                 dictionary[key]["TOTAL"],
                 dictionary[key]["MODIFIED"],
                 dictionary[key]["RATIO"],
-                dictionary[key]["FILES"],
+                dictionary[key]["FORMAT"],
             ]
         )
     print(data_table)
 
 
+# NOTE: For the purposes of testing and demo
 if __name__ == "__main__":
-    # takes input for the repository local path OR URL
-    PATH_REPO = input("Enter the path to the repo : ")
-    DATA = count_code_lines.get_commit_data(PATH_REPO)
-    # data = count_code_lines.get_file_types(path_repo)
-    # print("data before checking")
-    print_in_table(DATA)
-    # print("data after checking")
-    # data = check_emails(data)
-    # print_in_table(data)
+    # FILE_NAME = input("Enter the name of the file : ")
+    FILE_NAME = "contributor_data_template"
+    DATA = count_code_lines.calculate_individual_metrics(FILE_NAME)
+    if DATA == {}:
+        REPO_PATH = input("Enter the path to the repo : ")
+        count_code_lines.add_raw_data_to_json(REPO_PATH, FILE_NAME)
+        print("processing data again")
+        DATA = count_code_lines.calculate_individual_metrics(FILE_NAME)
+    print("Adding processed data to selected json file...")
+    # Write reformatted dictionary to json
+    json_handler.add_entry(DATA, FILE_NAME)
+    print_individual_in_table(FILE_NAME)
