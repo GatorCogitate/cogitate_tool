@@ -1,5 +1,7 @@
 """Command Line Interface for interacting with Github repository info."""
 # from data_collection import collect_commits
+from src import json_handler
+from src import data_collection
 from driller import find_repositories
 from pprint import pprint
 import argparse
@@ -7,17 +9,16 @@ import argparse
 
 def main():
     """Execute the Command Line Interface."""
-
     args = retrieve_arguments()
 
     # Currently only validates the PyGithub repository
-    repository = data_miner.authenticate_repository(args["token"], args["repo"])
+    repository = data_collection.authenticate_repository(args["token"], args["repo"])
 
     # Temporary structure given issue retrieval is the only function
-    contributor_data = data_miner.initialize_contributor_data(
+    contributor_data = data_collection.initialize_contributor_data(
         "contributor_data_template"
     )
-    contributor_data = data_miner.retrieve_issue_data(
+    contributor_data = data_collection.retrieve_issue_data(
         repository, args["state"], contributor_data
     )
 
@@ -27,7 +28,6 @@ def main():
 
 def retrieve_arguments():
     """Retrieve the user arguments and return the args dictionary."""
-
     # As no other functions exist in master as of this pull request, the args
     # below are written to accomadate issual retrieval in data_miner.py
 
@@ -51,12 +51,12 @@ def retrieve_arguments():
 
 
 def team():
-    """calls all team-based funtions"""
+    """Call all team-based funtions."""
     pass
 
 
 def individual():
-    """calls all individual functions"""
+    """Call all individual functions."""
     pass
 
 

@@ -1,13 +1,13 @@
 """
-This module's purpose is to calculate the individual scoring of software
+This module's purpose is to calculate the individual scoring of software.
 
 developers in a Github repository. It will calculate a developer's score
 
 based on a data set gathered previously in a different module.
 """
 
-import operator
-import math
+# import operator
+# import math
 
 # For 3/3/2020:
 # TODO Fake data - start with dictionary - Madelyn *
@@ -53,30 +53,31 @@ github_data = {
     "Alexander_the_Great": {"COMMITS": 42, "ADDED": 355, "REMOVED": 50},
 }
 
+
 # NOTE: The following code block still needs to be fixed in terms of variable
 # names and docstrings.
 def percentage_score(individual, overal_branch):
-    """Function to calculate the individual contribution percentage"""
+    """Calculate the individual contribution percentage."""
     return round(individual * 100 / overal_branch)
 
 
 def sum_value(key):
-    """Function to sum up all the values in branch per key"""
+    """Sum up all the values in branch per key."""
     return sum(d[key] for d in github_data.values() if d)
 
 
 def individual_commitmnet(username, category):
-    """Function to return value for key"""
+    """Get and send value for key."""
     return github_data[username][category]
 
 
 def average_score():
-    """Calculate the average score using all previously calculated metrics"""
+    """Calculate the average score using all previously calculated metrics."""
 
 
 # Print usename and percentage of their contribution for each category
 def print_data():
-    """Function to print out github_data scores."""
+    """Print out github_data scores."""
     for username, data in github_data.items():
         print("\n", username)
         for category in data:
