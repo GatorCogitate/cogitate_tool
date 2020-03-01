@@ -4,6 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+PyGithub = "*"
+pydriller = "*"
+streamlit = "*"
+numpy = "*"
+pandas = "*"
+fastapi = "*"
+uvicorn = "*"
+PrettyTable = "*"
+devml = "*"
+gstats = "*"
+pydriller = "*"
 
 [dev-packages]
 black = "*"
@@ -11,24 +22,12 @@ pylint = "*"
 flake8 = "*"
 pydocstyle = "*"
 pytest = "*"
-PyGithub= "*"
-streamlit = "*"
-numpy = "*"
-pandas = "*"
-fastapi = "*"
-uvicorn = "*"
-PrettyTable = "*"
 pytest-cov = "*"
-codacy-coverage = "*"
-radon = "*"
-bandit = "*"
-xenon = "*"
-devml = "*"
-gstats = "*"
-pydriller = "*"
+pytest-sugar = "*"
+pytest-clarity = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.7.3"
 
 [pipenv]
 allow_prereleases = true
@@ -37,7 +36,3 @@ allow_prereleases = true
 test = "./scripts/test.sh"
 cover = "./scripts/cover.sh"
 lint = "./scripts/lint.sh"
-test-win = 'scripts\\test.bat'
-cover-win = 'scripts\\cover.bat'
-lint-win = 'scripts\\lint.bat'
-cogitate = "./scripts/cogitate.sh"

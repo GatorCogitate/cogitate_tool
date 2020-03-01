@@ -15,21 +15,36 @@ PASSED=true
 
 OS="$(uname)"
 
-# collect the files on MacOS and Linux
-if [[ "$OS" == "Darwin" ]]; then
-    FILES=$(find -E . -type f -regex '.*.py')
-else
-    FILES=$(find . -type f -regextype posix-extended -regex '.*.py')
-fi
+ # collect the files on MacOS
+ if [[ "$OS" == "Darwin" ]]; then
+     FILES=$(find -E . -type f -regex '\./(gator|tests)/.*.py')
+ else
+    FILES=$(find . -type f -regextype posix-extended -regex '\./(gator|tests)/.*.py')
+ fi
+
+# lint all of the Python source code files
+ FILE_FOLDERS=("src" "tests")
+ FILES="$FILES *.py"
+
+# xenon cannot accept a lists of files or directories,
+# so give the directory of the main module instead
+ MODULE="gator"
 
 # Notes about the linters run on Linux and MacOS:
 # - black checks and fixes Python code formatting
 # - pylint and flake8 check Python code
-# - other linters such as radon may be added later
+# - bandit finds security problems in Python code
+# - radon checks code quality for diagnostic purposes
+#   --> cc is for calculating cyclomatic complexity
+#   --> mi is for calculating maintainability index
+# - xenon returns an error code for code quality thresholds
+#   --> absolute: worst tolerable score for a function or block
+#   --> modules: worst tolerable score for a module
+#   --> average: worst tolerable average score across a module
 
 # define all of the linters to iteratively run
 declare -A LINTERS
-LINTERS=( ["black"]="pipenv run black $CHECK $FILES" ["pylint"]="pipenv run pylint $FILES" ["flake8"]="pipenv run flake8 $FILES" ["pydocstyle"]="pipenv run pydocstyle $FILES" )
+LINTERS=( ["black"]="pipenv run black $CHECK $FILE_FOLDERS" ["pylint"]="pipenv run pylint $FILE_FOLDERS" ["flake8"]="pipenv run flake8 $FILE_FOLDERS" ["pydocstyle"]="pipenv run pydocstyle" )
 
 # run each of the already configured linters
 for tool in "${!LINTERS[@]}"; do
