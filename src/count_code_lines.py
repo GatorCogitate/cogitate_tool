@@ -1,4 +1,5 @@
-"""This module is intended to run after all data has been collected and added.
+"""
+This module is intended to run after all data has been collected and added.
 
 to the .json file. The purpose is to create a dictionary where the username is.
 

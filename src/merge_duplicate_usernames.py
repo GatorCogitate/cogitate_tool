@@ -1,4 +1,5 @@
-"""This module is a work in progress intended to fix duplicate username.
+"""
+This module is a work in progress intended to fix duplicate username.
 
 Issues from pydriller.
 """

@@ -1,3 +1,4 @@
+"""Test module to determine the correctness of the data_collection.py file."""
 import pytest
 from src import data_collection
 

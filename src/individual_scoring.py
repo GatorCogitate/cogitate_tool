@@ -1,4 +1,13 @@
+"""
+This module's purpose is to calculate the individual scoring of software
+
+developers in a Github repository. It will calculate a developer's score
+
+based on a data set gathered previously in a different module.
+"""
+
 import operator
+import math
 
 # For 3/3/2020:
 # TODO Fake data - start with dictionary - Madelyn *
@@ -18,7 +27,7 @@ import operator
 # TODO date distribution score
 # TODO average overall score and individual score to produce new individual score
 # TODO give notification of duplicate username if there is one, or the possibility
-# User inputs the weight for each category for finding total individual score
+# TODO User inputs the weight for each category for finding total individual score
 
 # Helpful reminders:
 # Use pipeline programming style
@@ -46,7 +55,7 @@ github_data = {
 
 # NOTE: The following code block still needs to be fixed in terms of variable
 # names and docstrings.
-def percentage(individual, overal_branch):
+def percentage_score(individual, overal_branch):
     """Function to calculate the individual contribution percentage"""
     return round(individual * 100 / overal_branch)
 
@@ -61,12 +70,24 @@ def individual_commitmnet(username, category):
     return github_data[username][category]
 
 
+def average_score():
+    """Calculate the average score using all previously calculated metrics"""
+
+
 # Print usename and percentage of their contribution for each category
-for username, data in github_data.items():
-    print("\n", username)
-    for category in data:
-        print(
-            category,
-            percentage(individual_commitmnet(username, category), sum_value(category)),
-            "%",
-        )
+def print_data():
+    """Function to print out github_data scores."""
+    for username, data in github_data.items():
+        print("\n", username)
+        for category in data:
+            print(
+                category,
+                percentage_score(
+                    individual_commitmnet(username, category), sum_value(category)
+                ),
+                "%",
+            )
+
+
+if __name__ == "__main__":
+    print_data()

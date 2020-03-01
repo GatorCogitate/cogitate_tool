@@ -1,4 +1,4 @@
-""" Command Line Interface for interacting with Github repository info. """
+"""Command Line Interface for interacting with Github repository info."""
 # from data_collection import collect_commits
 from driller import find_repositories
 from pprint import pprint
@@ -6,7 +6,7 @@ import argparse
 
 
 def main():
-    """Execute the CLI."""
+    """Execute the Command Line Interface."""
 
     args = retrieve_arguments()
 
@@ -42,6 +42,7 @@ def retrieve_arguments():
     a_parse.add_argument(
         "-s", "--state", required=True, type=str, help="State of the Issue"
     )
+    a_parse.add_argument("-u", "--update", required=True, help="Update Cogitate data")
     args = vars(a_parse.parse_args())
 
     pprint(find_repositories(args["link"]))
