@@ -2,6 +2,8 @@
 
 import pytest
 from github import Github
+
+# TODO linter issue: data_miner is not in src folder
 from src import data_miner
 from src import json_handler
 

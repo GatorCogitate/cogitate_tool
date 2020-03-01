@@ -1,8 +1,8 @@
 """ Command Line Interface for interacting with Github repository info. """
 # from data_collection import collect_commits
-from driller import find_repositories
 from pprint import pprint
 import argparse
+from driller import find_repositories
 
 
 def main():
@@ -11,17 +11,21 @@ def main():
     args = retrieve_arguments()
 
     # Currently only validates the PyGithub repository
+    # TODO: linter error undefined variable 'data_miner'
     repository = data_miner.authenticate_repository(args["token"], args["repo"])
 
     # Temporary structure given issue retrieval is the only function
+    # TODO: linter error undefined variable 'data_miner'
     contributor_data = data_miner.initialize_contributor_data(
         "contributor_data_template"
     )
+    # TODO: linter error undefined variable 'data_miner'
     contributor_data = data_miner.retrieve_issue_data(
         repository, args["state"], contributor_data
     )
 
     # Intermediate between data_miner and data_processor
+    # TODO: linter error undefined variable 'json_handler'
     json_handler.write_dict_to_json_file(contributor_data, "contributor_data")
 
 
@@ -32,9 +36,7 @@ def retrieve_arguments():
     # below are written to accomadate issual retrieval in data_miner.py
 
     a_parse = argparse.ArgumentParser()
-    a_parse.add_argument(
-        "-l", "--link", help="Cogitate a repo by the url of the repo"
-    )
+    a_parse.add_argument("-l", "--link", help="Cogitate a repo by the url of the repo")
     a_parse.add_argument(
         "-t", "--token", required=True, type=str, help="Github User Token"
     )
@@ -53,12 +55,10 @@ def retrieve_arguments():
 
 def team():
     """calls all team-based funtions"""
-    pass
 
 
 def individual():
     """calls all individual functions"""
-    pass
 
 
 if __name__ == "__main__":

@@ -1,5 +1,7 @@
-import json_handler
+"""Test cases to check the functionality of json handler."""
+# TODO: possble elaboration on module docstring
 import os
+from src import json_handler
 
 
 def test_write_dict_to_json():
