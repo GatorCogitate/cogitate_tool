@@ -2,7 +2,7 @@
 
 import pytest
 from github import Github
-from src import data_miner
+from src import data_collection
 from src import json_handler
 
 # As of the current state, this test requires a token to function

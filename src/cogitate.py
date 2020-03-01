@@ -52,12 +52,10 @@ def retrieve_arguments():
 
 def team():
     """Call all team-based funtions."""
-    pass
 
 
 def individual():
     """Call all individual functions."""
-    pass
 
 
 if __name__ == "__main__":

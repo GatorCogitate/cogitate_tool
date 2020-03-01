@@ -16,18 +16,20 @@ from src import individual_scoring
 
 @pytest.mark.parametrize(
     "input_username, input_category, expected_percentage",
-    [("Julius_Caesar", "COMMITS", 10)],
-    [("Julius_Caesar", "ADDED", 11)],
-    [("Julius_Caesar", "REMOVED", 8)],
-    [("Napoleon_Bonaparte", "COMMITS", 9)],
-    [("Napoleon_Bonaparte", "ADDED", 16)],
-    [("Napoleon_Bonaparte", "REMOVED", 0)],
-    [("Alexander_the_Great", "COMMITS", 16)],
-    [("Alexander_the_Great", "ADDED", 11)],
-    [("Alexander_the_Great", "REMOVED", 11)],
-    [("Karl_Marx", "COMMITS", 0,)],
-    [("Karl_Marx", "ADDED", 0)],
-    [("Karl_Marx", "REMOVED", 0)],
+    [
+        ("Julius_Caesar", "COMMITS", 10),
+        ("Julius_Caesar", "ADDED", 11),
+        ("Julius_Caesar", "REMOVED", 8),
+        ("Napoleon_Bonaparte", "COMMITS", 9),
+        ("Napoleon_Bonaparte", "ADDED", 16),
+        ("Napoleon_Bonaparte", "REMOVED", 0),
+        ("Alexander_the_Great", "COMMITS", 16),
+        ("Alexander_the_Great", "ADDED", 11),
+        ("Alexander_the_Great", "REMOVED", 11),
+        ("Karl_Marx", "COMMITS", 0),
+        ("Karl_Marx", "ADDED", 0),
+        ("Karl_Marx", "REMOVED", 0),
+    ],
 )
 def test_percentage(input_username, input_category, expected_percentage):
     """Function to determine the correctness of percent of overall branches."""

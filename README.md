@@ -78,10 +78,12 @@ The available attributes can be found at their homepage.
 - Run the python file using `pipenv run python print_table.py`
 - Paste the URL or local path of the repository
 - If the current repository is meant to be selected, enter `../` as the path.
-    This will cause the program to take the directory right outside of the `src` folder
-- __NOTE__: the program only displays statistics for the default master branch of the
-    repository if run using repository URL. However, it would display the checked out
-    branch statistics if the local path was provided. This is a current limitation of pydriller
+    This will cause the program to take the directory right outside of the
+    `src` folder
+- __NOTE__: the program only displays statistics for the default master branch
+    of the repository if run using repository URL. However, it would display
+    the checked out branch statistics if the local path was provided. This is
+    a current limitation of `PyDriller`
 
 ## Run the test suite
 
