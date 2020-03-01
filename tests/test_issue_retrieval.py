@@ -30,8 +30,7 @@ from src import json_handler
 def test_retrieve_issue_data_retrieves_issues(
     input_token, repository_name, state, contributor_data
 ):
-    """Test to ensure all issues are associated with the correct contributor"""
-
+    """Test to ensure all issues are associated with the correct contributor."""
     ghub = Github(input_token)
     repository = ghub.get_repo(repository_name)
 

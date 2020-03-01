@@ -1,4 +1,4 @@
-""" Command Line Interface for interacting with Github repository info. """
+"""Command Line Interface for interacting with Github repository info."""
 # from data_collection import collect_commits
 from pprint import pprint
 import argparse
@@ -7,7 +7,6 @@ from driller import find_repositories
 
 def main():
     """Execute the CLI."""
-
     args = retrieve_arguments()
 
     # Currently only validates the PyGithub repository
@@ -31,7 +30,6 @@ def main():
 
 def retrieve_arguments():
     """Retrieve the user arguments and return the args dictionary."""
-
     # As no other functions exist in master as of this pull request, the args
     # below are written to accomadate issual retrieval in data_miner.py
 
@@ -54,11 +52,11 @@ def retrieve_arguments():
 
 
 def team():
-    """calls all team-based funtions"""
+    """Call all team-based funtions."""
 
 
 def individual():
-    """calls all individual functions"""
+    """Call all individual functions."""
 
 
 if __name__ == "__main__":

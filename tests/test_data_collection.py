@@ -1,5 +1,6 @@
-"""Test cases to check the functionality of data_collection"""
+"""Test cases to check the functionality of data_collection."""
 # TODO: possible change to docstring
+# TODO: Linter issue: pytest imported but not used
 import pytest
 from src import data_collection
 
