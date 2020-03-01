@@ -14,7 +14,6 @@ uvicorn = "*"
 PrettyTable = "*"
 devml = "*"
 gstats = "*"
-pydriller = "*"
 
 [dev-packages]
 black = "*"

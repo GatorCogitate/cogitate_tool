@@ -3,9 +3,8 @@ import json
 import os
 
 
-def get_dict_from_json_file(json_file_name, data_path="../data/"):
+def get_dict_from_json_file(json_name, data_path="../data/"):
     """Populate and return a dictionary of all the data in a specified json file.
-
     Arguments:
     - json_file_name: The name of the file to open.
     - data_path: Default/optional argument that stores the relative path
