@@ -12,6 +12,7 @@ import data_collection
 
 # from pydriller.domain.commit import ModificationType
 
+
 def get_commit_average(lines, commits):
     """Find average lines modified per commit."""
     # Loop through the dictionary and calculate the average lines per commits
@@ -50,7 +51,7 @@ def add_raw_data_to_json(path_to_repo, json_file_name):
     if "RAW_DATA" not in current_data.keys():
         print("Raw data has not been collected, collecting it now...")
         # collects data from data_collection
-        raw_data = {"RAW_DATA" : data_collection.collect_commits_hash(path_to_repo)}
+        raw_data = {"RAW_DATA": data_collection.collect_commits_hash(path_to_repo)}
         # Write raw data to .json file
         json_handler.add_entry(raw_data, json_file_name)
         print("Data collected")
@@ -95,8 +96,12 @@ def calculate_individual_metrics(json_file_name):
             data_list[author]["FILES"] += current_files
         # iterate through the data to do final calculations
         for key in data_list:
-            data_list[key]["TOTAL"] = data_list[key]["ADDED"] - data_list[key]["REMOVED"]
-            data_list[key]["MODIFIED"] = data_list[key]["ADDED"] + data_list[key]["REMOVED"]
+            data_list[key]["TOTAL"] = (
+                data_list[key]["ADDED"] - data_list[key]["REMOVED"]
+            )
+            data_list[key]["MODIFIED"] = (
+                data_list[key]["ADDED"] + data_list[key]["REMOVED"]
+            )
             average = get_commit_average(
                 data_list[key]["MODIFIED"], data_list[key]["COMMITS"]
             )
@@ -104,7 +109,7 @@ def calculate_individual_metrics(json_file_name):
             formats = get_file_formats(data_list[key]["FILES"])
             data_list[key]["FORMAT"] = formats
         # Reformat the dictionary as a value of the key INDIVIDUAL_METRICS
-        indvividual_metrics_dict = {"INDIVIDUAL_METRICS" : data_list}
+        indvividual_metrics_dict = {"INDIVIDUAL_METRICS": data_list}
         return indvividual_metrics_dict
     else:
         print("Raw data has not been collected, please run the collection function")

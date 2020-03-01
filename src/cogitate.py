@@ -32,9 +32,7 @@ def retrieve_arguments():
     # below are written to accomadate issual retrieval in data_miner.py
 
     a_parse = argparse.ArgumentParser()
-    a_parse.add_argument(
-        "-l", "--link", help="Cogitate a repo by the url of the repo"
-    )
+    a_parse.add_argument("-l", "--link", help="Cogitate a repo by the url of the repo")
     a_parse.add_argument(
         "-t", "--token", required=True, type=str, help="Github User Token"
     )
