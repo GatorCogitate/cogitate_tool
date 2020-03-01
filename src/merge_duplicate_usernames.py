@@ -1,3 +1,8 @@
+"""This module is a work in progress intended to fix duplicate username.
+
+Issues from pydriller.
+"""
+
 # TODO not used yet, has no impact
 def delete_duplicates(data, keys_to_delete):
     """Delete keys from dictionary, keys are sent in a list."""
