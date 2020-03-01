@@ -4,9 +4,7 @@ to the .json file. The purpose is to create a dictionary where the username is.
 
 the key and other calculated metrics are the values.
 """
-
-# from git import Repo
-from pydriller import RepositoryMining
+from __future__ import division
 import json_handler
 import data_collection
 
@@ -68,7 +66,7 @@ def calculate_individual_metrics(json_file_name):
             author = key["author_name"]
             email = key["author_email"]
             # TODO check date compatibility with json
-            date = "N/A"
+            # date = "N/A"
             # check if the key already in in the dicitionary
             if author in data_list:
                 # condition passed, adds one to the number of commits
@@ -111,7 +109,6 @@ def calculate_individual_metrics(json_file_name):
         # Reformat the dictionary as a value of the key INDIVIDUAL_METRICS
         indvividual_metrics_dict = {"INDIVIDUAL_METRICS": data_list}
         return indvividual_metrics_dict
-    else:
-        print("Raw data has not been collected, please run the collection function")
-        return {}
+    print("Raw data has not been collected, please run the collection function")
+    return {}
     # NOTE: for printing the data please use the file print_table.py
