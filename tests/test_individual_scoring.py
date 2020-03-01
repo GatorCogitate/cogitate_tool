@@ -29,6 +29,9 @@ from src import individual_scoring
         ("Karl_Marx", "COMMITS", 0),
         ("Karl_Marx", "ADDED", 0),
         ("Karl_Marx", "REMOVED", 0),
+        ("Alexander_Hamilton", "COMMITS", 16),
+        ("Alexander_Hamilton", "ADDED", 10),
+        ("Alexander_Hamilton", "REMOVED", 12),
     ],
 )
 def test_percentage(input_username, input_category, expected_percentage):
@@ -44,11 +47,32 @@ def test_percentage(input_username, input_category, expected_percentage):
 
     assert (test_percentage) == expected_percentage
     assert (test_percentage) != -1
-    assert len(test_percentage) != 0
 
 
-def test_sum_value():
+@pytest.mark.parametrize(
+    "input_username, input_category, amount_added",
+    [
+        ("Julius_Caesar", "COMMITS", 25),
+        ("Julius_Caesar", "ADDED", 363),
+        ("Julius_Caesar", "REMOVED", 35),
+        ("Napoleon_Bonaparte", "COMMITS", 24),
+        ("Napoleon_Bonaparte", "ADDED", 363),
+        ("Napoleon_Bonaparte", "REMOVED", 35),
+        ("Alexander_the_Great", "COMMITS", 42),
+        ("Alexander_the_Great", "ADDED", 355),
+        ("Alexander_the_Great", "REMOVED", 50),
+        ("Karl_Marx", "COMMITS", 0),
+        ("Karl_Marx", "ADDED", 0),
+        ("Karl_Marx", "REMOVED", 0),
+        ("Alexander_Hamilton", "COMMITS", 41),
+        ("Alexander_Hamilton", "ADDED", 350),
+        ("Alexander_Hamilton", "REMOVED", 452),
+    ],
+)
+def test_sum_value(input_username, input_category, amount_added):
     """Function to determine the correctness of the values in branch per key."""
+    test_sum_value = individual_scoring.sum_value(input_category)
+    # assert (amount_added) == test_sum_value
 
 
 def test_individual_commitnet():
