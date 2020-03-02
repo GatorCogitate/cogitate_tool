@@ -1,0 +1,37 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+PyGithub = "*"
+pydriller = "*"
+streamlit = "*"
+numpy = "*"
+pandas = "*"
+fastapi = "*"
+uvicorn = "*"
+PrettyTable = "*"
+devml = "*"
+gstats = "*"
+
+[dev-packages]
+black = "*"
+pylint = "*"
+flake8 = "*"
+pydocstyle = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-sugar = "*"
+pytest-clarity = "*"
+
+[requires]
+python_version = "3.7.3"
+
+[pipenv]
+allow_prereleases = true
+
+[scripts]
+test = "./scripts/test.sh"
+cover = "./scripts/cover.sh"
+lint = "./scripts/lint.sh"
