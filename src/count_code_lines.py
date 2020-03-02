@@ -92,7 +92,10 @@ def calculate_individual_metrics(json_file_name):
             # TODO: consider adding lines of code from data
             # check if the explored file is not in the list in index seven
             current_files = key["filename"]
-            data_list[author]["FILES"] += current_files
+            # add the current_files to the user files list without duplicates
+            data_list[author]["FILES"] = list(
+                set(data_list[author]["FILES"]) | set(current_files)
+            )
         # iterate through the data to do final calculations
         for key in data_list:
             data_list[key]["TOTAL"] = (
