@@ -1,4 +1,4 @@
-""" Collects commit data for contributors of the master branch of a repo."""
+"""Collects commit data for contributors of the master branch of a repo."""
 from pydriller import RepositoryMining
 from github import Github
 import json_handler
@@ -52,8 +52,7 @@ def retrieve_issue_data(repository, state, contributor_data):
 
 
 def collect_commits_hash(repo):
-    """
-    Create a list of dictionaries that contains commit info.
+    """Create a list of dictionaries that contains commit info.
 
     hash (str): hash of the commit
     msg (str): commit message
