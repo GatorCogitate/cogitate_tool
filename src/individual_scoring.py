@@ -6,6 +6,9 @@ developers in a Github repository. It will calculate a developer's score
 based on a data set gathered previously in a different module.
 """
 
+# This import fixes a linting error with old division.
+from __future__ import division
+
 # import operator
 # import math
 
@@ -56,6 +59,7 @@ github_data = {
 
 # NOTE: The following code block still needs to be fixed in terms of variable
 # names and docstrings.
+# pylint: disable=round-builtin
 def percentage_score(individual, overal_branch):
     """Calculate the individual contribution percentage."""
     return round(individual * 100 / overal_branch)
