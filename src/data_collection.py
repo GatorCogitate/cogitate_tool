@@ -68,7 +68,6 @@ def collect_commits_hash(repo):
     filename: files modified by commit.
     filepath: filepaths of files modified by commit.
     """
-
     commit_list = []
 
     for commit in RepositoryMining(repo).traverse_commits():
