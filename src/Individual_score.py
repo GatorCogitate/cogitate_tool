@@ -35,11 +35,6 @@ from __future__ import division
 # Implement test cases as functions are written in the test_individual_scoring.py file
 # Scoring will be done first as percentages ((individual contribution/total branch)*100)
 
-# Add fake data that corresponds to overall-eval-analyzing-metrics branch
-# github_data uses the pattern ["username", commit_total, lines_added,
-# lines_deleted, total_lines, modified_lines, lines_per_commit, files_changed]
-
-
 # NOTE This is the fake data, it does not have key for the email for now, for tesing purposes
 github_data = {
     "noorbuchi": {"COMMITS": 28, "ADDED": 349, "REMOVED": 70, "MODIFIED": 419},
@@ -74,7 +69,7 @@ def individual_commitmnet(username, category):
 
 def average_score():
     """Calculate the average score using all previously calculated metrics."""
-
+    
 
 # Print usename and percentage of their contribution for each category
 def print_data():
