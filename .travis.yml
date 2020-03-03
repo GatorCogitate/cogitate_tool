@@ -1,7 +1,7 @@
 language: generic
 
 cache:
-  directories: 
+  directories:
     - $HOME/.pip-cache/
 
 dist: xenial
@@ -35,14 +35,13 @@ before_install:
   - wget https://github.com/praekeltfoundation/travis-pyenv/releases/latest/download/setup-pyenv.sh
   - source setup-pyenv.sh
 
-
 # run commands to install dependencies (from Pipfile, not Pipfile.lock)
 # cannot use locked dependencies because of possible version changes
 # between PYENV_VERSION versions
 install:
   - pip install --upgrade pip
   - pip install --upgrade pipenv
-  - pip install --dev --skip-lock --python "$PYENV-VERSION"
+  - pipenv install --dev --skip-lock --python "$PYENV_VERSION"
   - gem install mdl
 
 # send emails when there is a change or failure
@@ -56,9 +55,10 @@ notifications:
 # --> lint the code with Pipfile script
 # --> lint the README documentation with mdl
 script:
+  - mdl README.md
+  - chmod +x ./scripts/*.sh
   - pipenv run cover
   - pipenv run lint --check
-  - mdl README.md
 
 # report information to CodeCov and Codacy and tag the release of a pull request:
 # --> Report coverage to CodeCov, which ensures that coverages does not drop by more than a threshold
