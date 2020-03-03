@@ -7,32 +7,44 @@ import pytest
 
 from src import individual_metrics
 from src import print_table
+from src import json_handler
 
 
-# TODO fix test case
-# def test_get_commit_lines_populates_data_0():
-#     """Checks that the size of the input variable is correct."""
-#     data_list = {}
-#     # pylint: disable=len-as-condition
-#     assert len(data_list) == 0
-#     data_list = individual_metrics.calculate_individual_metrics(
-#         "contributor_data_template"
-#     )
-#     assert len(data_list) != 0
+def test_raw_data_exists_in_testfile():
+    """Checks the existence of the key RAW_DATA in individual_metrics_testfile."""
+    test_dict = json_handler.get_dict_from_json_file("individual_metrics_testfile")
+    assert "RAW_DATA" in test_dict.keys()
 
 
-# TODO implement test case
-def test_get_commit_data():
-    """Checks that the function correctly gets data."""
-
-
-# TODO implement test case
-def test_print_table():
-    """Checks that the module outputs the data table."""
-    data = individual_metrics.calculate_individual_metrics(
-        "../data/contributor_data_template"
+def test_calculate_individual_metrics_populates_data():
+    """Checks that the function retruns a populated dictionary."""
+    test_dict = {}
+    # pylint: disable=len-as-condition
+    assert len(test_dict) == 0
+    test_dict = individual_metrics.calculate_individual_metrics(
+        "individual_metrics_testfile"
     )
-    # print_table.print_in_table(data)
+    assert len(test_dict) != 0
+    assert "INDIVIDUAL_METRICS" in test_dict.keys()
+
+
+def test_get_individual_metrics_accuracy():
+    """Checks that individual_metrics data outputs correct values."""
+    test_dict = individual_metrics.calculate_individual_metrics(
+        "individual_metrics_testfile"
+    )
+    expected_dict = {
+        "EMAIL": "buchin@allegheny.edu",
+        "COMMITS": 1,
+        "ADDED": 694,
+        "REMOVED": 0,
+        "TOTAL": 694,
+        "MODIFIED": 694,
+        "RATIO": 694,
+        "FILES": ["Pipfile", "Pipfile.lock", "UsingPyGithub.py", "lint.sh", "test.sh"],
+        "FORMAT": [".lock", ".py", ".sh", "Pipfile"],
+    }
+    assert test_dict["INDIVIDUAL_METRICS"]["noorbuchi"] == expected_dict
 
 
 # TODO additional test cases needed
