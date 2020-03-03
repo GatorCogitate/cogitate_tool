@@ -1,5 +1,7 @@
 """ Command Line Interface for interacting with Github repository info. """
 # from data_collection import collect_commits
+# from web_interface import team_visuals
+# from web_interface import individual_visuals
 from driller import find_repositories
 from pprint import pprint
 import argparse
@@ -52,11 +54,13 @@ def retrieve_arguments():
 
 def team():
     """calls all team-based funtions"""
+    # web_interface.team_visuals()
     pass
 
 
 def individual():
     """calls all individual functions"""
+    # web_interface.individual_visuals()
     pass
 
 
