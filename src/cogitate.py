@@ -5,6 +5,7 @@ from pprint import pprint
 from driller import find_repositories
 
 from src import data_collection
+from src import json_handler
 
 
 def main():
@@ -50,15 +51,15 @@ def retrieve_arguments():
 
     return args
 
+# these are currently unnecessary pass statements flagged by travis
+# def team():
+#     """Call all team-based funtions."""
+#     pass
 
-def team():
-    """Call all team-based funtions."""
-    pass
 
-
-def individual():
-    """Call all individual functions."""
-    pass
+# def individual():
+#     """Call all individual functions."""
+#     pass
 
 
 if __name__ == "__main__":

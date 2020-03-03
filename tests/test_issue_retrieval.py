@@ -1,8 +1,8 @@
-"""Contains the test case(s) for retrieve_issue_data in data_miner."""
+"""Contains the test case(s) for retrieve_issue_data in data_collection."""
 
 import pytest
 from github import Github
-from src import data_miner
+from src import data_collection
 from src import json_handler
 
 # As of the current state, this test requires a token to function
@@ -33,7 +33,7 @@ def test_retrieve_issue_data_retrieves_issues(
     ghub = Github(input_token)
     repository = ghub.get_repo(repository_name)
 
-    contributor_data = data_miner.retrieve_issue_data(
+    contributor_data = data_collection.retrieve_issue_data(
         repository, state, contributor_data
     )
 
