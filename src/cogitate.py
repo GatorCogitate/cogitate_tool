@@ -1,8 +1,10 @@
 """Command Line Interface for interacting with Github repository info."""
 # from data_collection import collect_commits
-from driller import find_repositories
-from pprint import pprint
 import argparse
+from pprint import pprint
+from driller import find_repositories
+
+from src import data_collection
 
 
 def main():
