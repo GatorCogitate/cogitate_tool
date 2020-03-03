@@ -37,6 +37,8 @@ def get_file_formats(files):
         current_format = parse_for_type(file)
         if current_format not in formats:
             formats.append(current_format)
+    # sort data to ensure consistency for test
+    formats = sorted(formats)
     return formats
 
 
@@ -84,7 +86,6 @@ def calculate_individual_metrics(json_file_name):
                     "RATIO": 0,
                     "FILES": [],
                     "FORMAT": [],
-                    "COMMITDATE": [],
                 }
 
             data_list[author]["ADDED"] += key["line_added"]
@@ -96,6 +97,8 @@ def calculate_individual_metrics(json_file_name):
             data_list[author]["FILES"] = list(
                 set(data_list[author]["FILES"]) | set(current_files)
             )
+            # Sort list to ensure consistency when testing
+            data_list[author]["FILES"] = sorted(data_list[author]["FILES"])
         # iterate through the data to do final calculations
         for key in data_list:
             data_list[key]["TOTAL"] = (
@@ -113,6 +116,5 @@ def calculate_individual_metrics(json_file_name):
         # Reformat the dictionary as a value of the key INDIVIDUAL_METRICS
         indvividual_metrics_dict = {"INDIVIDUAL_METRICS": data_list}
         return indvividual_metrics_dict
-    print("Raw data has not been collected, please run the collection function")
     return {}
     # NOTE: for printing the data please use the file print_table.py
