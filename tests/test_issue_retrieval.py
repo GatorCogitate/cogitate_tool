@@ -1,5 +1,6 @@
 """Contains the test case(s) for retrieve_issue_data in data_collection."""
 
+import os
 import pytest
 from github import Github
 from src import data_collection
@@ -13,7 +14,7 @@ from src import json_handler
     "input_token,repository_name,state,contributor_data",
     [
         (
-            "REDACTED",
+            os.environ.get("PYGITHUB_TOKEN"),
             "GatorCogitate/cogitate_tool",
             "all",
             json_handler.get_dict_from_json_file("contributor_data_template"),
