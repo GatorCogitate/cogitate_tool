@@ -16,7 +16,7 @@ from src import print_table
 #     # pylint: disable=len-as-condition
 #     assert len(data_list) == 0
 #     data_list = individual_metrics.calculate_individual_metrics(
-#         "../data/contributor_data_template"
+#         "contributor_data_template"
 #     )
 #     assert len(data_list) != 0
 
