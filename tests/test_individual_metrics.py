@@ -5,7 +5,7 @@ of code program are correct.
 
 import pytest
 
-from src import count_code_lines
+from src import individual_metrics
 from src import print_table
 
 
@@ -15,7 +15,7 @@ def test_get_commit_lines_populates_data_0():
     data_list = {}
     # pylint: disable=len-as-condition
     assert len(data_list) == 0
-    data_list = count_code_lines.calculate_individual_metrics("")
+    data_list = individual_metrics.calculate_individual_metrics("")
     assert len(data_list) != 0
 
 
@@ -27,7 +27,7 @@ def test_get_commit_data():
 # TODO implement test case
 def test_print_table():
     """Checks that the module outputs the data table."""
-    data = count_code_lines.calculate_individual_metrics("")
+    data = individual_metrics.calculate_individual_metrics("")
     # print_table.print_in_table(data)
 
 
@@ -40,5 +40,5 @@ def test_print_table():
 def test_get_commit_average(input_lines, input_commits, expected_output):
     """Checks that the function correctly calculates the ratio."""
     assert (
-        count_code_lines.get_commit_average(input_lines, input_commits)
+        individual_metrics.get_commit_average(input_lines, input_commits)
     ) == expected_output
