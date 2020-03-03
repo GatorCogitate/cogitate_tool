@@ -61,6 +61,8 @@ script:
   - pipenv run cover
   - pipenv run test
   - pipenv run lint --check
+  - python3 src/os_print.py
+  - echo PYGITHUB_TOKEN
 
 # report information to CodeCov and Codacy and tag the release of a pull request:
 # --> Report coverage to CodeCov, which ensures that coverages does not drop by more than a threshold
