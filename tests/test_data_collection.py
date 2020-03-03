@@ -3,16 +3,23 @@ from src import data_collection
 
 
 @pytest.mark.xfail
-def test_collect_commits_user_email_key():
+@pytest.mark.parametrize(
+    "repository_url",
+    [("https://github.com/GatorCogitate/cogitate_tool")],
+)
+def test_collect_commits_user_email_key(repository_url):
     dict = {}
     assert len(dict) == 0
-    dict = data_collection.collect_commits_user_email_key(data_collection.repo_path)
+    dict = data_collection.collect_commits_user_email_key(repository_url)
     assert len(dict) != 0
 
 
-@pytest.mark.xfail
-def test_collect_commits_hash():
+@pytest.mark.parametrize(
+    "repository_url",
+    [("https://github.com/GatorCogitate/cogitate_tool")],
+)
+def test_collect_commits_hash(repository_url):
     list = []
     assert len(list) == 0
-    list = data_collection.collect_commits_hash(data_collection.repo_path)
+    list = data_collection.collect_commits_hash(repository_url)
     assert len(list) != 0

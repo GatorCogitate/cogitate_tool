@@ -6,11 +6,6 @@ from src import data_collection
 from src import json_handler
 
 # As of the current state, this test requires a token to function
-#
-# This requirement should be amended within the week after successful team
-# collaboration provides a Travis Environment Variable
-
-# Below marked as xfail due to token absence; passes with token
 
 
 @pytest.mark.xfail
