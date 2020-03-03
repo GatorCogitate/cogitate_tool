@@ -60,6 +60,7 @@ script:
   - mdl README.md
   - chmod +x ./scripts/*.sh
   - pipenv run cover
+  - pipenv run test
   - pipenv run lint --check
 
 # report information to CodeCov and Codacy and tag the release of a pull request:
