@@ -1,4 +1,4 @@
-# cogitate_tool_lines
+# cogitate_tool
 
 ## Development Doc
 
@@ -72,7 +72,7 @@ for `PyDriller`.
 
 The available attributes can be found at their homepage.
 
-## Steps to run `count_code_lines.py`
+## Steps to run `individual_metrics.py`
 
 - Must be in the `src` folder
 - Run the python file using `pipenv run python print_table.py`
