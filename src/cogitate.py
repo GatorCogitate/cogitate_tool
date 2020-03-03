@@ -33,9 +33,7 @@ def retrieve_arguments():
     # below are written to accomadate issual retrieval in data_collection.py
 
     a_parse = argparse.ArgumentParser()
-    a_parse.add_argument(
-        "-l", "--link", help="Cogitate a repo by the url of the repo"
-    )
+    a_parse.add_argument("-l", "--link", help="Cogitate a repo by the url of the repo")
     a_parse.add_argument(
         "-t", "--token", required=True, type=str, help="Github User Token"
     )
@@ -50,6 +48,7 @@ def retrieve_arguments():
     pprint(find_repositories(args["link"]))
 
     return args
+
 
 # these are currently unnecessary pass statements flagged by travis
 # def team():

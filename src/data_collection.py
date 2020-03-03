@@ -31,18 +31,16 @@ def retrieve_issue_data(repository, state, contributor_data):
         for comment in issue.get_comments():
             if comment.user.login in contributor_data.keys():
                 if issue.pull_request is None:
-                    contributor_data[comment.user.login][
-                        "issues_commented"
-                    ].append(issue.number)
+                    contributor_data[comment.user.login]["issues_commented"].append(
+                        issue.number
+                    )
                 else:
                     contributor_data[comment.user.login][
                         "pull_requests_commented"
                     ].append(issue.number)
         if issue.user.login in contributor_data.keys():
             if issue.pull_request is None:
-                contributor_data[issue.user.login]["issues_opened"].append(
-                    issue.number
-                )
+                contributor_data[issue.user.login]["issues_opened"].append(issue.number)
             else:
                 contributor_data[issue.user.login]["pull_requests_opened"].append(
                     issue.number
