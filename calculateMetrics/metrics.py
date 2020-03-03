@@ -34,7 +34,7 @@ user_scores = []
 
 def standard_deviations():
     """Function to calculate the standard_deviations of commits, lines added,
-    and lines removed"""
+    lines removed, and issues opened."""
     new_counter = 1
     holder_list = []
     global values_list
