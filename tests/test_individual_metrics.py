@@ -47,7 +47,7 @@ def test_get_individual_metrics_accuracy():
     assert test_dict["INDIVIDUAL_METRICS"]["noorbuchi"] == expected_dict
 
 
-# TODO additional test cases needed
+# NOTE: additional test cases needed
 
 
 @pytest.mark.parametrize(
