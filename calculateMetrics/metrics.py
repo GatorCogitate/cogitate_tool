@@ -37,7 +37,7 @@ user_scores = []
 
 def standard_deviations():
     """Function to calculate the standard_deviations of commits, lines added,
-    and lines removed"""
+    lines removed, and issues opened."""
     new_counter = 1
     holder_list = []
     global values_list
@@ -86,6 +86,8 @@ def commits_calculator():
     for ab in range(len(github_data)):
         # This if/else calculates the commits added to the standard deviation,
         # in order to grade the team.
+        # If the user is within 0.5 standard deviations of the team's average,
+        # they will receive the score of 5 for their number of commits
         if github_data[username_accesser][1] <= np.average(commits_list) + (
             commits_sd * 0.5
         ) and github_data[username_accesser][1] >= np.average(commits_list) - (
@@ -93,6 +95,8 @@ def commits_calculator():
         ):
             commit_scores.append(5)
             username_accesser += 1
+        # If the user is within 1 standard deviation of the team's average,
+        # they will receive the score of 4 for their number of commits
         elif github_data[username_accesser][1] <= np.average(commits_list) + (
             commits_sd * 1.0
         ) and github_data[username_accesser][1] >= np.average(commits_list) - (
@@ -100,6 +104,8 @@ def commits_calculator():
         ):
             commit_scores.append(4)
             username_accesser += 1
+        # If the user is within 1.5 standard deviations of the team's average,
+        # they will receive the score of 3 for their number of commits
         elif github_data[username_accesser][1] <= np.average(commits_list) + (
             commits_sd * 1.5
         ) and github_data[username_accesser][1] >= np.average(commits_list) - (
@@ -107,6 +113,8 @@ def commits_calculator():
         ):
             commit_scores.append(3)
             username_accesser += 1
+        # If the user is within 2 standard deviations of the team's average,
+        # they will receive the score of 2 for their number of commits
         elif github_data[username_accesser][1] <= np.average(commits_list) + (
             commits_sd * 2.0
         ) and github_data[username_accesser][1] >= np.average(commits_list) - (
@@ -114,6 +122,8 @@ def commits_calculator():
         ):
             commit_scores.append(2)
             username_accesser += 1
+        # If the user is within 2.25 standard deviations of the team's average,
+        # they will receive the score of 1 for their number of commits
         elif github_data[username_accesser][1] <= np.average(commits_list) + (
             commits_sd * 2.25
         ) and github_data[username_accesser][1] >= np.average(commits_list) - (
@@ -121,9 +131,13 @@ def commits_calculator():
         ):
             commit_scores.append(1)
             username_accesser += 1
+        # If the user is outside the window of 2.25 standar deviations of the
+        # team's average, they will receive a score of 0 for their number of
+        # commits
         else:
             commit_scores.append(0)
             username_accesser += 1
+
     global commits_overall_score
     commits_overall_score = np.average(commit_scores)
     # The "''...'_percent" variables calculate the percentage score the
