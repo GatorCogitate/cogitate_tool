@@ -29,7 +29,6 @@ env:
     - LANG=en_US.UTF-8
     - LC_ALL=en_US.UTF-8
     - secure: c48e9fe3-e7a1-4fae-af4a-402755f36773 #code cov token
-    - secure: 0326aa59e108ad793cf3b9eb4a94e6d54a82123b #github token
 
 # install pyenv with travis-pyenv
 before_install:
