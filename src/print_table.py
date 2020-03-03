@@ -41,6 +41,8 @@ def print_individual_in_table(file_name):
 
 # NOTE: For the purposes of testing and demo
 if __name__ == "__main__":
+    # NOTE: this supression needs to be resolved
+    # pylint: disable=input-builtin
     FILE_NAME = input("Enter the name of the file : ")
     # FILE_NAME = "contributor_data_template"
     DATA = individual_metrics.calculate_individual_metrics(FILE_NAME)

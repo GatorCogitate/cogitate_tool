@@ -5,7 +5,7 @@ Issues from pydriller.
 """
 
 
-# TODO not used yet, has no impact
+# NOTE not used yet, has no impact
 def delete_duplicates(data, keys_to_delete):
     """Delete keys from dictionary, keys are sent in a list."""
     dictionary = data
@@ -16,7 +16,7 @@ def delete_duplicates(data, keys_to_delete):
     return dictionary
 
 
-# TODO not used yet, has no impact
+# NOTE not used yet, has no impact
 def parse_email(email):
     """Locate @ and + sign in email and returns the string between them."""
     # find the index of @ sign
@@ -29,7 +29,7 @@ def parse_email(email):
 
 
 # NOTE: there are issues with this function, calls have been commented out
-# TODO not used yet, has no impact
+# NOTE not used yet, has no impact
 def check_emails(data):
     """Remove @github email from users and merges data with duplicates."""
     dictionary = data

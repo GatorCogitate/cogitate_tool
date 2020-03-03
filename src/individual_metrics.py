@@ -66,7 +66,7 @@ def calculate_individual_metrics(json_file_name):
         for key in current_data["RAW_DATA"]:
             author = key["author_name"]
             email = key["author_email"]
-            # TODO check date compatibility with json
+            # NOTE check date compatibility with json
             # date = "N/A"
             # check if the key already in in the dicitionary
             if author in data_list:
@@ -89,7 +89,7 @@ def calculate_individual_metrics(json_file_name):
 
             data_list[author]["ADDED"] += key["line_added"]
             data_list[author]["REMOVED"] += key["line_removed"]
-            # TODO: consider adding lines of code from data
+            # NOTE: consider adding lines of code from data
             # check if the explored file is not in the list in index seven
             current_files = key["filename"]
             # add the current_files to the user files list without duplicates
