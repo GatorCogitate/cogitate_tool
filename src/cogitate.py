@@ -64,12 +64,21 @@ def team():
     # web = False
     # else:
     # print("Please respond with "y" or "n".")
+    pass
 
 
 def individual():
     """calls all individual functions"""
     # allows the user to choose to visit the web interface
-    # web_interface.individual_visuals()
+    # while(web == True):
+    # to_web = input("Would you like to be to the web interface? (y/n)")
+    # if (to_web == "y"):
+    # web_interface.team_visuals()
+    # web = False
+    # elif(to_web == "n"):
+    # web = False
+    # else:
+    # print("Please respond with "y" or "n".")
     pass
 
 
