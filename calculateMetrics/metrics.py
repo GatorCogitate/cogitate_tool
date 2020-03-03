@@ -6,18 +6,18 @@ import numpy as np
 
 # github_data is a list containing sample data for our demo
 # github_data uses the pattern ["username", commit_total, lines_added,
-# lines_deleted, issues_opened]
+# lines_deleted, issues_assigned, issues_comments]
 github_data = [
-    ["cassidyt2", 28, 355, 76, 2],
-    ["johnSmith", 22, 349, 50, 4],
-    ["janeDoe", 23, 375, 30, 3],
-    ["Edgar_AllenPoe", 27, 315, 75, 7],
-    ["George_Washington", 25, 360, 65, 10],
-    ["Alexander_Hamilton", 41, 530, 100, 230],
-    ["Karl_Marx", 0, 0, 0, 400],
-    ["Julius_Caesar", 25, 310, 68, 1],
-    ["Napoleon_Bonaparte", 24, 363, 70, 3],
-    ["Alexander_the_Great", 42, 540, 110, 1],
+    ["cassidyt2", 28, 355, 76, 2, 5, 20],
+    ["johnSmith", 22, 349, 50, 4, 3, 10],
+    ["janeDoe", 23, 375, 30, 3, 8, 0],
+    ["Edgar_AllenPoe", 27, 315, 75, 7, 2, 2],
+    ["George_Washington", 25, 360, 65, 10, 20, 21],
+    ["Alexander_Hamilton", 41, 530, 100, 230, 3, 30],
+    ["Karl_Marx", 0, 0, 0, 400, 0, 30],
+    ["Julius_Caesar", 25, 310, 68, 1, 8, 8],
+    ["Napoleon_Bonaparte", 24, 363, 70, 3, 4, 4],
+    ["Alexander_the_Great", 42, 540, 110, 1, 5, 8],
 ]
 standard_deviations_list = []
 values_list = []
@@ -30,6 +30,9 @@ removed_overall_score = 0
 total_team_score = 0
 user_list = []
 user_scores = []
+# #issues_assigned = []
+# issues_comments = []
+# issues_comments/assigned = 0
 
 
 def standard_deviations():
