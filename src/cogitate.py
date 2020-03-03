@@ -10,24 +10,24 @@ def main():
     args = retrieve_arguments()
 
     # Currently only validates the PyGithub repository
-    repository = data_miner.authenticate_repository(args["token"], args["repo"])
+    repository = data_collection.authenticate_repository(args["token"], args["repo"])
 
     # Temporary structure given issue retrieval is the only function
-    contributor_data = data_miner.initialize_contributor_data(
+    contributor_data = data_collection.initialize_contributor_data(
         "contributor_data_template"
     )
-    contributor_data = data_miner.retrieve_issue_data(
+    contributor_data = data_collection.retrieve_issue_data(
         repository, args["state"], contributor_data
     )
 
-    # Intermediate between data_miner and data_processor
+    # Intermediate between data_collection and data_processor
     json_handler.write_dict_to_json_file(contributor_data, "contributor_data")
 
 
 def retrieve_arguments():
     """Retrieve the user arguments and return the args dictionary."""
     # As no other functions exist in master as of this pull request, the args
-    # below are written to accomadate issual retrieval in data_miner.py
+    # below are written to accomadate issual retrieval in data_collection.py
 
     a_parse = argparse.ArgumentParser()
     a_parse.add_argument(
