@@ -18,7 +18,7 @@ env:
   # run build and test on two multiple versions of Python
   matrix:
     - PYENV_VERSION=3.7.3
-    - PYENV_VERSION=3.6.8
+    # - PYENV_VERSION=3.6.8 (not using due to request on issue number 53)
   # configure all of the needed global variables
   # note that the secure entries reference access tokens
   # that support secure access to remote services
@@ -28,7 +28,7 @@ env:
     - PIPENV_IGNORE_VIRTUALENVS=1
     - LANG=en_US.UTF-8
     - LC_ALL=en_US.UTF-8
-    - secure: c48e9fe3-e7a1-4fae-af4a-402755f36773
+    - secure: c48e9fe3-e7a1-4fae-af4a-402755f36773 #code cov token
 
 # install pyenv with travis-pyenv
 before_install:
@@ -42,6 +42,7 @@ install:
   - pip install --upgrade pip
   - pip install --upgrade pipenv
   - pipenv install --dev --skip-lock --python "$PYENV_VERSION"
+  - pip install --user codecov
   - gem install mdl
 
 # send emails when there is a change or failure
@@ -67,7 +68,7 @@ script:
 after_success:
   - pipenv run codecov
   - pipenv run python-codacy-coverage -r coverage.xml
-
+  
 # deploy to GitHub Releases on PR merge
 deploy:
   provider: releases
