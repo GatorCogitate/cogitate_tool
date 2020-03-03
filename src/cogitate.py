@@ -27,6 +27,10 @@ def main():
     # Intermediate between data_miner and data_processor
     json_handler.write_dict_to_json_file(contributor_data, "contributor_data")
 
+    # ask the user where they want view the data; command-line or web-interface
+    print("If you want to view this data on the web, click the following link")
+    print("'link to web-interface'")
+
 
 def retrieve_arguments():
     """Retrieve the user arguments and return the args dictionary."""
@@ -54,31 +58,11 @@ def retrieve_arguments():
 
 def team():
     """calls all team-based funtions"""
-    # allows the user to choose to visit the web interface
-    # while(web == True):
-    # to_web = input("Would you like to be to the web interface? (y/n)")
-    # if (to_web == "y"):
-    # web_interface.team_visuals()
-    # web = False
-    # elif(to_web == "n"):
-    # web = False
-    # else:
-    # print("Please respond with "y" or "n".")
     pass
 
 
 def individual():
     """calls all individual functions"""
-    # allows the user to choose to visit the web interface
-    # while(web == True):
-    # to_web = input("Would you like to be to the web interface? (y/n)")
-    # if (to_web == "y"):
-    # web_interface.team_visuals()
-    # web = False
-    # elif(to_web == "n"):
-    # web = False
-    # else:
-    # print("Please respond with "y" or "n".")
     pass
 
 
