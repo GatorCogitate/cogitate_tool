@@ -5,10 +5,6 @@ Tentative Graph Type for Features in the Command Line Interface:
 | What repo do you want to view?           | Line Chart|
 | What functions do you want to view?      | Line Chart|
 
-**Questions for the User**
-
-* What option do you want to view the output within the command line interface or the web interface?
-
 **Commands we have:**
 
 * Link
@@ -17,3 +13,16 @@ Tentative Graph Type for Features in the Command Line Interface:
 * State
 * Team
 * Individual
+
+# Functionality 
+
+**Level 1**
+
+* Team or Individuals 
+
+**Level 2**
+
+* Params
+* Calling a Function 
+* Results 
+* Link to Streamlit (Do you want to view the results in the terminal or on streamlit?)
