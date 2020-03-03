@@ -10,13 +10,15 @@ from src import print_table
 
 
 # TODO fix test case
-def test_get_commit_lines_populates_data_0():
-    """Checks that the size of the input variable is correct."""
-    data_list = {}
-    # pylint: disable=len-as-condition
-    assert len(data_list) == 0
-    data_list = individual_metrics.calculate_individual_metrics("")
-    assert len(data_list) != 0
+# def test_get_commit_lines_populates_data_0():
+#     """Checks that the size of the input variable is correct."""
+#     data_list = {}
+#     # pylint: disable=len-as-condition
+#     assert len(data_list) == 0
+#     data_list = individual_metrics.calculate_individual_metrics(
+#         "../data/contributor_data_template"
+#     )
+#     assert len(data_list) != 0
 
 
 # TODO implement test case
@@ -27,7 +29,9 @@ def test_get_commit_data():
 # TODO implement test case
 def test_print_table():
     """Checks that the module outputs the data table."""
-    data = individual_metrics.calculate_individual_metrics("")
+    data = individual_metrics.calculate_individual_metrics(
+        "../data/contributor_data_template"
+    )
     # print_table.print_in_table(data)
 
 

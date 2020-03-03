@@ -3,7 +3,7 @@ import json
 import os
 
 
-def get_dict_from_json_file(json_name, data_path="../data/"):
+def get_dict_from_json_file(json_name, data_path="./data/"):
     """Populate and return a dictionary of all the data in a specified json file.
 
     Arguments:
@@ -18,7 +18,7 @@ def get_dict_from_json_file(json_name, data_path="../data/"):
     return user_data_dict
 
 
-def write_dict_to_json_file(user_data_dict, json_file_name, data_path="../data/"):
+def write_dict_to_json_file(user_data_dict, json_file_name, data_path="./data/"):
     """Overwrite specified json file with data from a given dictionary.
 
     Arguments:
