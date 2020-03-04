@@ -82,7 +82,7 @@ The available attributes can be found at their homepage.
 - Before you run the program make sure you have installed the dev packages.
 - Run the following command `pipenv run python src/print_table.py`
 - Enter the following `contributor_data_template`
-- If you want to use the current repository use `../`.
+- If you want to use the current repository press `ENTER`.
 
 
 ## Steps to run `individual_metrics.py`

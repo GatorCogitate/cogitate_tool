@@ -12,9 +12,9 @@ It will display the checked out branch statistics if the local path was provided
 This is a current limitation of `PyDriller`.
 """
 from __future__ import division
+import os
 import json_handler
 import data_collection
-import os
 
 # from pydriller.domain.commit import ModificationType
 
@@ -33,6 +33,7 @@ def parse_for_type(name):
     """Parse through file name and returns its format."""
     if "." in name:
         file_type, name = os.path.splitext(name)
+        file_type += ""
         return name
     return name
 
