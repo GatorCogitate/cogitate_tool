@@ -12,8 +12,8 @@ It will display the checked out branch statistics if the local path was provided
 This is a current limitation of `PyDriller`.
 """
 from __future__ import division
-from src import json_handler
-from src import data_collection
+import json_handler
+import data_collection
 import os
 
 # from pydriller.domain.commit import ModificationType

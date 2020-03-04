@@ -8,7 +8,7 @@ Unless that path variable is changed.
 import pytest
 from src import data_collection
 
-# NOTE these test cases are not working properly and it are commented out
+# NOTE: these test cases are not working properly and it are commented out
 
 # def test_collect_commits_user_email_key():
 #     dict = {}
