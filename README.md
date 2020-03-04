@@ -77,7 +77,7 @@ for `PyDriller`.
 
 The available attributes can be found at their homepage.
 
-## Steps to run `Cogitate Tool`
+## Steps to print out table
 
 - Must be in the `cogitate_tool` folder.
 - Before you run the program make sure you have installed the dev packages.
