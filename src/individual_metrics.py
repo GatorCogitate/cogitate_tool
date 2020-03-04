@@ -34,6 +34,7 @@ def parse_for_type(name):
     if "." in name:
         file_type, name = os.path.splitext(name)
         return name
+    return name
 
 
 def get_file_formats(files):
