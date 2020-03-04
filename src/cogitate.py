@@ -1,5 +1,4 @@
 """Command Line Interface for interacting with Github repository info."""
-# from data_collection import collect_commits
 import argparse
 from pprint import pprint
 import json_handler
