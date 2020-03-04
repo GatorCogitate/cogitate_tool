@@ -273,6 +273,17 @@ def print_individual_in_table(file_name):
 
 
 # NOTE: For the purposes of testing and demo
+
+# Steps to run data_collection.py and display the data table:
+
+# Must be in the repository folder
+# Run the python file using `pipenv run python src/data_collection.py`
+# Enter the name of the json file you want the data to be written to
+# If prompted, due to data not being collected previously, enter the URL
+# or path of the Repository you would like to analyze
+# If the current repository is the one you would like to analyze, simply
+# hit enter wihtout typing anything.
+
 if __name__ == "__main__":
     # NOTE: this supression needs to be resolved
     # pylint: disable=input-builtin
