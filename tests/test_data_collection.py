@@ -1,4 +1,10 @@
-"""Test module to determine the correctness of the data_collection.py file."""
+"""
+Test module to determine the correctness of the data_collection.py file.
+
+The test case will take the current repository.
+
+Unless that path variable is changed.
+"""
 import pytest
 from src import data_collection
 

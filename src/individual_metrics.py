@@ -4,6 +4,12 @@ This module is intended to run after all data has been collected and added.
 to the .json file. The purpose is to create a dictionary where the username is.
 
 the key and other calculated metrics are the values.
+
+The program only displays statistics for the default master branch if using url.
+
+It will display the checked out branch statistics if the local path was provided.
+
+This is a current limitation of `PyDriller`.
 """
 from __future__ import division
 import json_handler

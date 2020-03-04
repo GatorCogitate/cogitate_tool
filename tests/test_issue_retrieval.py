@@ -1,4 +1,10 @@
-"""Contains the test case(s) for retrieve_issue_data in data_miner."""
+"""
+Contains the test case(s) for retrieve_issue_data in data_miner.
+
+The test case will take the current repository.
+
+Unless that path variable is changed.
+"""
 
 import pytest
 from github import Github
@@ -29,17 +35,17 @@ def test_retrieve_issue_data_retrieves_issues(
     input_token, repository_name, state, contributor_data
 ):
     """Test to ensure all issues are associated with the correct contributor"""
-    #PyGithub Object creation.
+    # PyGithub Object creation.
     ghub = Github(input_token)
     repository = ghub.get_repo(repository_name)
 
     contributor_data = data_miner.retrieve_issue_data(
         repository, state, contributor_data
     )
-    #Sets default status to false.
+    # Sets default status to false.
     contributor_found = False
 
-    #Iterates through contributers in a repository.
+    # Iterates through contributers in a repository.
     for username in contributor_data:
         # Iterates through issues a user has opened. Asserts that it is associating
         # with the correct user by checking username against username data stored
