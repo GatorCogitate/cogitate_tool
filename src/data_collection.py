@@ -1,4 +1,4 @@
-""" Collects commit data for contributors of the master branch of a repo. """
+"""Collects commit data for contributors of the master branch of a repo."""
 from pydriller import RepositoryMining
 from github import Github
 import json_handler
@@ -6,7 +6,6 @@ import json_handler
 
 def authenticate_repository(user_token, repository_name):
     """Authenticate the Github repository using provided credentials."""
-
     # Credentials for PyGithub functions and methods
     ghub = Github(user_token)
     repository = ghub.get_repo(repository_name)
@@ -19,7 +18,6 @@ def authenticate_repository(user_token, repository_name):
 # during refactoring.
 def initialize_contributor_data(file_path):
     """Load a dictionary based upon the given .json file."""
-
     contributor_data = json_handler.get_dict_from_json_file(file_path)
 
     return contributor_data
@@ -27,25 +25,22 @@ def initialize_contributor_data(file_path):
 
 def retrieve_issue_data(repository, state, contributor_data):
     """Retrieve a contributor's involvement based upon issues and pull request threads."""
-
     issues = repository.get_issues(state=state)
 
     for issue in issues:
         for comment in issue.get_comments():
             if comment.user.login in contributor_data.keys():
                 if issue.pull_request is None:
-                    contributor_data[comment.user.login][
-                        "issues_commented"
-                    ].append(issue.number)
+                    contributor_data[comment.user.login]["issues_commented"].append(
+                        issue.number
+                    )
                 else:
                     contributor_data[comment.user.login][
                         "pull_requests_commented"
                     ].append(issue.number)
         if issue.user.login in contributor_data.keys():
             if issue.pull_request is None:
-                contributor_data[issue.user.login]["issues_opened"].append(
-                    issue.number
-                )
+                contributor_data[issue.user.login]["issues_opened"].append(issue.number)
             else:
                 contributor_data[issue.user.login]["pull_requests_opened"].append(
                     issue.number
@@ -55,8 +50,7 @@ def retrieve_issue_data(repository, state, contributor_data):
 
 
 def collect_commits_hash(repo):
-    """
-    Creates a list of dictionaries that contains commit info.
+    """Create a list of dictionaries that contains commit info.
 
     hash (str): hash of the commit
     msg (str): commit message
@@ -72,7 +66,6 @@ def collect_commits_hash(repo):
     filename: files modified by commit.
     filepath: filepaths of files modified by commit.
     """
-
     commit_list = []
 
     for commit in RepositoryMining(repo).traverse_commits():
