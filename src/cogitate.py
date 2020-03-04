@@ -52,16 +52,5 @@ def retrieve_arguments():
     return args
 
 
-# these are currently unnecessary pass statements flagged by travis
-# def team():
-#     """Call all team-based funtions."""
-#     pass
-
-
-# def individual():
-#     """Call all individual functions."""
-#     pass
-
-
 if __name__ == "__main__":
     main()
