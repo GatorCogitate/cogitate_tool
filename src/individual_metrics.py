@@ -68,7 +68,7 @@ def calculate_individual_metrics(json_file_name):
     """Retrieve the data from .json file and create a dictionary keyed by user."""
     current_data = json_handler.get_dict_from_json_file(json_file_name)
     # creates a hashmap where the key is the authors username
-    data_list = {}
+    data_dict = {}
     # Check if RAW_DATA is in json
     if "RAW_DATA" in current_data.keys():
         for key in current_data["RAW_DATA"]:
@@ -77,12 +77,12 @@ def calculate_individual_metrics(json_file_name):
             # NOTE check date compatibility with json
             # date = "N/A"
             # check if the key already in in the dicitionary
-            if author in data_list:
+            if author in data_dict:
                 # condition passed, adds one to the number of commits
-                data_list[author]["COMMITS"] += 1
+                data_dict[author]["COMMITS"] += 1
             else:
                 # condition fails, creates a new key and adds empty data
-                data_list[author] = {
+                data_dict[author] = {
                     "EMAIL": email,
                     "COMMITS": 1,
                     "ADDED": 0,
@@ -94,33 +94,33 @@ def calculate_individual_metrics(json_file_name):
                     "FORMAT": [],
                 }
 
-            data_list[author]["ADDED"] += key["line_added"]
-            data_list[author]["REMOVED"] += key["line_removed"]
+            data_dict[author]["ADDED"] += key["line_added"]
+            data_dict[author]["REMOVED"] += key["line_removed"]
             # NOTE: consider adding lines of code from data
             # check if the explored file is not in the list in index seven
             current_files = key["filename"]
             # add the current_files to the user files list without duplicates
-            data_list[author]["FILES"] = list(
-                set(data_list[author]["FILES"]) | set(current_files)
+            data_dict[author]["FILES"] = list(
+                set(data_dict[author]["FILES"]) | set(current_files)
             )
             # Sort list to ensure consistency when testing
-            data_list[author]["FILES"] = sorted(data_list[author]["FILES"])
+            data_dict[author]["FILES"] = sorted(data_dict[author]["FILES"])
         # iterate through the data to do final calculations
-        for key in data_list:
-            data_list[key]["TOTAL"] = (
-                data_list[key]["ADDED"] - data_list[key]["REMOVED"]
+        for key in data_dict:
+            data_dict[key]["TOTAL"] = (
+                data_dict[key]["ADDED"] - data_dict[key]["REMOVED"]
             )
-            data_list[key]["MODIFIED"] = (
-                data_list[key]["ADDED"] + data_list[key]["REMOVED"]
+            data_dict[key]["MODIFIED"] = (
+                data_dict[key]["ADDED"] + data_dict[key]["REMOVED"]
             )
             average = get_commit_average(
-                data_list[key]["MODIFIED"], data_list[key]["COMMITS"]
+                data_dict[key]["MODIFIED"], data_dict[key]["COMMITS"]
             )
-            data_list[key]["RATIO"] = average
-            formats = get_file_formats(data_list[key]["FILES"])
-            data_list[key]["FORMAT"] = formats
+            data_dict[key]["RATIO"] = average
+            formats = get_file_formats(data_dict[key]["FILES"])
+            data_dict[key]["FORMAT"] = formats
         # Reformat the dictionary as a value of the key INDIVIDUAL_METRICS
-        indvividual_metrics_dict = {"INDIVIDUAL_METRICS": data_list}
+        indvividual_metrics_dict = {"INDIVIDUAL_METRICS": data_dict}
         return indvividual_metrics_dict
     return {}
     # NOTE: for printing the data please use the file print_table.py
