@@ -12,8 +12,9 @@ It will display the checked out branch statistics if the local path was provided
 This is a current limitation of `PyDriller`.
 """
 from __future__ import division
-import json_handler
-import data_collection
+from src import json_handler
+from src import data_collection
+import os
 
 # from pydriller.domain.commit import ModificationType
 
@@ -30,9 +31,8 @@ def get_commit_average(lines, commits):
 
 def parse_for_type(name):
     """Parse through file name and returns its format."""
-    if "." in name:
-        dot_index = name.find(".")
-        return name[dot_index:]
+
+    file_type, name = os.path.splitext(name)
     return name
 
 

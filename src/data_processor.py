@@ -1,6 +1,5 @@
 """Process data retrieved by data_miner.py."""
-
-# from src import count_code_lines
+import data_collection
 
 
 def process_data():
