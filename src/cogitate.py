@@ -41,7 +41,7 @@ def retrieve_arguments():
     a_parse.add_argument(
         "-s", "--state", required=True, type=str, help="State of the Issue"
     )
-    a_parse.add_argument("-u", "--update", required=True, help="Update Cogitate data")
+
     args = vars(a_parse.parse_args())
 
     pprint(find_repositories(args["link"]))

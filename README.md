@@ -65,12 +65,25 @@ For example, if the `command_name` is `cogitate`, the we can use `pipenv run cog
 
 The [homepage](https://docs.python.org/3/howto/argparse.html) for `argparse`.
 
+- `-l` or `--link` Cogitate a repo by the url of the repo.
+- `-t` or `--token` Github user token.
+- `-r` or `--repo` User's repository.
+- `-s` or `--state` State of the issue.
+
 ### 4. PyDriller
 
 The [homepage](https://github.com/ishepard/pydriller) and [documentation](https://pydriller.readthedocs.io/en/latest/intro.html)
 for `PyDriller`.
 
 The available attributes can be found at their homepage.
+
+## Steps to run `Cogitate Tool`
+- Must be in the `cogitate_tool` folder.
+- Before you run the program make sure you have installed the dev packages.
+- Run the following command `pipenv run python src/print_table.py`
+- Enter the following `contributor_data_template`
+- If you want to use the current repository use `../`.
+
 
 ## Steps to run `individual_metrics.py`
 
@@ -83,5 +96,5 @@ The available attributes can be found at their homepage.
 
 ## Run the test suite
 
-- Must be in the main folder outside of the tests folder
+- Must be in the main folder `cogitate_tool` not in the tests folder
 - Run test suite using the command: `pipenv run test`
