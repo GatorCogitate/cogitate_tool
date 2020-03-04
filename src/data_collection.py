@@ -2,6 +2,7 @@
 import os
 from pydriller import RepositoryMining
 from github import Github
+from github import GithubException
 import json_handler
 
 
@@ -22,7 +23,7 @@ def authenticate_repository(user_token, repository_name):
     try:
         ghub = Github(user_token)
         repository = ghub.get_repo(repository_name)
-    except ghub.GithubException.RateLimitExceededException:
+    except GithubException:
         print("\nError: Could not connect to repository.")
         repository = "INVALID"
 
