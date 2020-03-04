@@ -2,7 +2,8 @@
 
 # from data_collection import collect_commits
 import argparse
-from pprint import pprint
+
+# from pprint import pprint
 
 # from driller import find_repositories
 
