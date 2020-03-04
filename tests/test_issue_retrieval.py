@@ -1,12 +1,30 @@
 """Contains the test case(s) for retrieve_issue_data in data_collection."""
 
-import os
 import pytest
 from github import Github
 from src import data_collection
 from src import json_handler
 
-# As of the current state, this test requires a token to function
+
+def test_retrieve_travis_token_retrieves_token():
+    """Test to ensure the retrieval of a Travis token."""
+    token = data_collection.retrieve_travis_token()
+    assert token != "INVALID" or None
+
+
+@pytest.mark.xfail
+@pytest.mark.parametrize(
+    "input_token,repository_name",
+    # Enable the case below to check using a user token
+    # [("REDACTED","GatorCogitate/cogitate_tool")],
+    [(data_collection.retrieve_travis_token(), "GatorCogitate/cogitate_tool")],
+)
+def test_authenticate_repository_authenticates(input_token, repository_name):
+    """Test to ensure the validity of the travis token."""
+    assert (
+        data_collection.authenticate_repository(input_token, repository_name)
+        != "INVALID"
+    )
 
 
 @pytest.mark.xfail
@@ -14,7 +32,7 @@ from src import json_handler
     "input_token,repository_name,state,contributor_data",
     [
         (
-            os.environ.get("PYGITHUB_TOKEN"),
+            data_collection.retrieve_travis_token(),
             "GatorCogitate/cogitate_tool",
             "all",
             json_handler.get_dict_from_json_file("contributor_data_template"),
@@ -22,10 +40,10 @@ from src import json_handler
     ],
 )
 def test_retrieve_issue_data_retrieves_issues(
+    # pylint: disable=bad-continuation
     input_token, repository_name, state, contributor_data
 ):
-    """Test to ensure all issues are associated with the correct contributor"""
-
+    """Test to ensure all issues are associated with the correct contributor."""
     ghub = Github(input_token)
     repository = ghub.get_repo(repository_name)
 

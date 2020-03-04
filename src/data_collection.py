@@ -1,14 +1,30 @@
 """Collects commit data for contributors of the master branch of a repo."""
+import os
 from pydriller import RepositoryMining
 from github import Github
 import json_handler
 
 
+def retrieve_travis_token():
+    """Retrieve the token from the Travis Environment variables."""
+    try:
+        token = os.environ.get("PYGITHUB_TOKEN")
+    except ValueError:
+        print("\nError: Could not retrieve Travis token.")
+        token = "INVALID"
+
+    return token
+
+
 def authenticate_repository(user_token, repository_name):
     """Authenticate the Github repository using provided credentials."""
     # Credentials for PyGithub functions and methods
-    ghub = Github(user_token)
-    repository = ghub.get_repo(repository_name)
+    try:
+        ghub = Github(user_token)
+        repository = ghub.get_repo(repository_name)
+    except ghub.GithubException.RateLimitExceededException:
+        print("\nError: Could not connect to repository.")
+        repository = "INVALID"
 
     return repository
 
