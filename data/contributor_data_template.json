@@ -41,7 +41,7 @@
         "author_msg": "",
         "author_name": "",
         "author_email": "",
-        "merge": false/true,
+        "merge": false,
         "line_added": 0,
         "line_removed": 0,
         "lines_of_code": 0,
@@ -55,7 +55,7 @@
         "author_msg": "",
         "author_name": "",
         "author_email": "",
-        "merge": false/true,
+        "merge": true,
         "line_added": 0,
         "line_removed": 0,
         "lines_of_code": 0,
@@ -63,7 +63,7 @@
         "methods": [],
         "filename": [],
         "filepath": []
-      },
+      }
     ],
     "INDIVIDUAL_METRICS": {
         "schultzh": {
