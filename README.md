@@ -78,12 +78,12 @@ for `PyDriller`.
 The available attributes can be found at their homepage.
 
 ## Steps to run `Cogitate Tool`
+
 - Must be in the `cogitate_tool` folder.
 - Before you run the program make sure you have installed the dev packages.
 - Run the following command `pipenv run python src/print_table.py`
 - Enter the following `contributor_data_template`
 - If you want to use the current repository press `ENTER`.
-
 
 ## Steps to run `individual_metrics.py`
 
