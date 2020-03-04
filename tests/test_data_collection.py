@@ -8,17 +8,24 @@ Unless that path variable is changed.
 import pytest
 from src import data_collection
 
-# NOTE: these test cases are not working properly and it are commented out
+@pytest.mark.xfail
+@pytest.mark.parametrize(
+    "repository_url",
+    [("https://github.com/GatorCogitate/cogitate_tool")],
+)
+def test_collect_commits_user_email_key(repository_url):
+    dict = {}
+    assert len(dict) == 0
+    dict = data_collection.collect_commits_user_email_key(repository_url)
+    assert len(dict) != 0
 
-# def test_collect_commits_user_email_key():
-#     dict = {}
-#     assert len(dict) == 0
-#     dict = data_collection.collect_commits_user_email_key(data_collection.repo_path)
-#     assert len(dict) != 0
 
-
-# def test_collect_commits_hash():
-#     list = []
-#     assert len(list) == 0
-#     list = data_collection.collect_commits_hash(data_collection.repo_path)
-#     assert len(list) != 0
+@pytest.mark.parametrize(
+    "repository_url",
+    [("https://github.com/GatorCogitate/cogitate_tool")],
+)
+def test_collect_commits_hash(repository_url):
+    list = []
+    assert len(list) == 0
+    list = data_collection.collect_commits_hash(repository_url)
+    assert len(list) != 0

@@ -1,13 +1,16 @@
 """Command Line Interface for interacting with Github repository info."""
+
+# from data_collection import collect_commits
 import argparse
 from pprint import pprint
-import json_handler
-import data_collection
 from driller import find_repositories
+
+from src import data_collection
+from src import json_handler
 
 
 def main():
-    """Execute the Command Line Interface."""
+    """Execute the CLI."""
     args = retrieve_arguments()
 
     # Currently only validates the PyGithub repository
@@ -21,14 +24,14 @@ def main():
         repository, args["state"], contributor_data
     )
 
-    # Intermediate between data_miner and data_processor
+    # Intermediate between data_collection and data_processor
     json_handler.write_dict_to_json_file(contributor_data, "contributor_data")
 
 
 def retrieve_arguments():
     """Retrieve the user arguments and return the args dictionary."""
     # As no other functions exist in master as of this pull request, the args
-    # below are written to accomadate issual retrieval in data_miner.py
+    # below are written to accomadate issual retrieval in data_collection.py
 
     a_parse = argparse.ArgumentParser()
     a_parse.add_argument("-l", "--link", help="Cogitate a repo by the url of the repo")
@@ -49,12 +52,15 @@ def retrieve_arguments():
     return args
 
 
-def team():
-    """Call all team-based funtions."""
+# these are currently unnecessary pass statements flagged by travis
+# def team():
+#     """Call all team-based funtions."""
+#     pass
 
 
-def individual():
-    """Call all individual functions."""
+# def individual():
+#     """Call all individual functions."""
+#     pass
 
 
 if __name__ == "__main__":

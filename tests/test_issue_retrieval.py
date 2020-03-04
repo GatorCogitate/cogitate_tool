@@ -1,22 +1,12 @@
-"""
-Contains the test case(s) for retrieve_issue_data in data_miner.
+"""Contains the test case(s) for retrieve_issue_data in data_collection."""
 
-The test case will take the current repository.
-
-Unless that path variable is changed.
-"""
-
+import os
 import pytest
 from github import Github
 from src import data_collection
 from src import json_handler
 
 # As of the current state, this test requires a token to function
-#
-# This requirement should be amended within the week after successful team
-# collaboration provides a Travis Environment Variable
-
-# Below marked as xfail due to token absence; passes with token
 
 
 @pytest.mark.xfail
@@ -24,7 +14,7 @@ from src import json_handler
     "input_token,repository_name,state,contributor_data",
     [
         (
-            "REDACTED",
+            os.environ.get("PYGITHUB_TOKEN"),
             "GatorCogitate/cogitate_tool",
             "all",
             json_handler.get_dict_from_json_file("contributor_data_template"),
@@ -39,7 +29,7 @@ def test_retrieve_issue_data_retrieves_issues(
     ghub = Github(input_token)
     repository = ghub.get_repo(repository_name)
 
-    contributor_data = data_miner.retrieve_issue_data(
+    contributor_data = data_collection.retrieve_issue_data(
         repository, state, contributor_data
     )
     # Sets default status to false.
