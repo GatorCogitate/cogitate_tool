@@ -31,8 +31,9 @@ def get_commit_average(lines, commits):
 
 def parse_for_type(name):
     """Parse through file name and returns its format."""
-    file_type, name = os.path.splitext(name)
-    return name
+    if "." in name:
+        file_type, name = os.path.splitext(name)
+        return name
 
 
 def get_file_formats(files):
