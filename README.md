@@ -83,5 +83,5 @@ The available attributes can be found at their homepage.
 - Before you run the program make sure you have installed the dev packages.
 - Run the following command `pipenv run python src/data_collection.py`
 - Enter the name of the `.json` you would like to write the data to.
-- If you want to use the current repository press `ENTER`, otherwise enter URL/path 
-to other repository.
+- If you want to use the current repository press `ENTER`, otherwise enter URL/path
+  to other repository.
