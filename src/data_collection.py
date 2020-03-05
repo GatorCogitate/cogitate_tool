@@ -10,7 +10,7 @@ def retrieve_travis_token():
     """Retrieve the token from the Travis Environment variables."""
     try:
         token = os.environ.get("PYGITHUB_TOKEN")
-    except ValueError:
+    except ValueError: # pragma: no cover
         print("\nError: Could not retrieve Travis token.")
         token = "INVALID"
 
@@ -23,7 +23,7 @@ def authenticate_repository(user_token, repository_name):
     try:
         ghub = Github(user_token)
         repository = ghub.get_repo(repository_name)
-    except GithubException:
+    except GithubException: # pragma: no cover
         print("\nError: Could not connect to repository.")
         repository = "INVALID"
 

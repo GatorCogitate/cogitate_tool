@@ -1,3 +1,8 @@
 [run]
 omit=test/*
 include=src/*
+
+[report]
+exclude_lines =
+  pragma: no cover
+  def retrieve_issue_data
