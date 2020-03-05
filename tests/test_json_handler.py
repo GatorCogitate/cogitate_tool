@@ -1,9 +1,15 @@
-"""Test suite for JSON processing."""
+"""
+Test suite for JSON processing.
+
+The test case will take the current repository.
+
+Unless that path variable is changed.
+"""
 import os
 import pytest
 from src import json_handler
 
-
+# Checks if the method creates the JSON file.
 def test_write_dict_to_json():
     """Ensure a dictionary is written to a specified file."""
     test_dictionary = {"username": "test_data"}
@@ -29,6 +35,7 @@ def test_get_dict_from_json(json_file, expected_contents):
     # dictionary was populated correctly
 
 
+# Checks that method correctly appends user to the test_dictionary.
 def test_add_user_to_users_dictionary():
     """Ensure users can be added to a json file."""
     test_dictionary = {"username": "test_data"}

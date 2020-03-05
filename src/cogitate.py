@@ -1,8 +1,11 @@
 """Command Line Interface for interacting with Github repository info."""
+
 # from data_collection import collect_commits
 import argparse
-from pprint import pprint
-from driller import find_repositories
+
+# from pprint import pprint
+
+# from driller import find_repositories
 
 from src import data_collection
 from src import json_handler
@@ -43,22 +46,12 @@ def retrieve_arguments():
     a_parse.add_argument(
         "-s", "--state", required=True, type=str, help="State of the Issue"
     )
+
     args = vars(a_parse.parse_args())
 
-    pprint(find_repositories(args["link"]))
+    # pprint(find_repositories(args["link"]))
 
     return args
-
-
-# these are currently unnecessary pass statements flagged by travis
-# def team():
-#     """Call all team-based funtions."""
-#     pass
-
-
-# def individual():
-#     """Call all individual functions."""
-#     pass
 
 
 if __name__ == "__main__":
