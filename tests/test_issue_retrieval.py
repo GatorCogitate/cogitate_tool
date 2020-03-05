@@ -6,8 +6,6 @@ from github import GithubException
 from src import data_collection
 from src import json_handler
 
-global TOKEN
-
 
 def test_retrieve_travis_token_retrieves_token():
     """Test to ensure the retrieval of a Travis token."""
