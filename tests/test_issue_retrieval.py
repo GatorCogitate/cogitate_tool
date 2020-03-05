@@ -1,10 +1,10 @@
-"""Contains the test case(s) for retrieve_issue_data in data_collection."""
+"""Contains the test case(s) for retrieve_issue_data in data_to_json."""
 
 import os
 import pytest
 from github import Github
-from src import data_collection
-from src import json_handler
+from src import data_to_json
+
 
 # As of the current state, this test requires a token to function
 
@@ -17,7 +17,7 @@ from src import json_handler
             os.environ.get("PYGITHUB_TOKEN"),
             "GatorCogitate/cogitate_tool",
             "all",
-            json_handler.get_dict_from_json_file("contributor_data_template"),
+            data_to_json.get_dict_from_json_file("contributor_data_template"),
         )
     ],
 )
@@ -29,7 +29,7 @@ def test_retrieve_issue_data_retrieves_issues(
     ghub = Github(input_token)
     repository = ghub.get_repo(repository_name)
 
-    contributor_data = data_collection.retrieve_issue_data(
+    contributor_data = data_to_json.retrieve_issue_data(
         repository, state, contributor_data
     )
 
