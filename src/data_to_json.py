@@ -23,18 +23,19 @@ def get_dict_from_json_file(json_name, data_path="./data/"):
     return user_data_dict
 
 
-def write_dict_to_json_file(user_data_dict, optional_repo_name = "", data_path="./data/"):
+def write_dict_to_json_file(user_data_dict, file_name ="raw_repository_data", data_path="./data/"):
     """Overwrite specified json file with data from a given dictionary.
 
     Arguments:
     -- user_data_dict: Raw repository data to be written to json file.
-    -- optional_repo_name: Enables the user to label the json
-         file with the repository name. Name of repo preferably entered
+    -- additional_name: Enables the user to label the json
+         file with the repository, or date that data has been collected, or
+         other specification. Additional name preferably entered
          with a "_" to maintain file naming convention(optional)
     -- data_path: Argument that stores the relative path
          to the directory containing the file. (optional)
     """
-    with open(os.path.join(data_path, "raw_repository_data"+ optional_repo_name + ".json"), "w") as json_file:
+    with open(os.path.join(data_path, file_name + ".json"), "w") as json_file:
         # In the open() function, "w" specifies write access
         json.dump(user_data_dict, json_file, indent=4)
         # json.dump() converts a dictionary into a json-formatted string.
