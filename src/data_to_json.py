@@ -28,10 +28,10 @@ def write_dict_to_json_file(user_data_dict, file_name ="raw_repository_data", da
 
     Arguments:
     -- user_data_dict: Raw repository data to be written to json file.
-    -- additional_name: Enables the user to label the json
+    -- file_name: Enables the user to label the json
          file with the repository, or date that data has been collected, or
-         other specification. Additional name preferably entered
-         with a "_" to maintain file naming convention(optional)
+         other specification. File name preferably entered
+         with "_" to maintain file naming convention(optional)
     -- data_path: Argument that stores the relative path
          to the directory containing the file. (optional)
     """
