@@ -38,18 +38,6 @@ def test_add_user_to_users_dictionary():
     assert "test_data" in test_dictionary["new_user"]
 
 
-@pytest.mark.xfail
-@pytest.mark.parametrize(
-    "repository_url",
-    [("https://github.com/GatorCogitate/cogitate_tool")],
-)
-def test_collect_commits_user_email_key(repository_url):
-    dict = {}
-    assert len(dict) == 0
-    dict = data_to_json.collect_commits_user_email_key(repository_url)
-    assert len(dict) != 0
-
-
 @pytest.mark.parametrize(
     "repository_url",
     [("https://github.com/GatorCogitate/cogitate_tool")],
