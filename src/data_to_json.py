@@ -150,5 +150,3 @@ def collect_commits_hash(repo):
         commit_list.append(single_commit_dict)
 
     return commit_list
-
-#write_dict_to_json_file(collect_commits_hash('https://github.com/GatorCogitate/cogitate_tool'))
