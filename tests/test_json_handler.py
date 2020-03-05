@@ -1,4 +1,4 @@
-"""Test suite for JSON processing."""
+"""Test suite data collection and writting."""
 import os
 import pytest
 from src import data_to_json
