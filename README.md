@@ -15,7 +15,6 @@
 
 ## Contributors
 
-
 ### 1. File Structure
 
 ```
