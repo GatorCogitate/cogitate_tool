@@ -74,22 +74,22 @@ def individual_commitmnet(username, category):
 def average_score():
     """Calculate the average score using all previously calculated metrics."""
 
-weights = {
-"COMMITS": 0.2,
-"ADDED": 0.4,
-"REMOVED": 0.4 }
+# weights = {
+# "COMMITS": 0.2,
+# "ADDED": 0.4,
+# "REMOVED": 0.4 }
+#
+# def get_weighted(User):
+#     user=github_data[User]
+#
+#     weighted={User: {k:(round(user[k]*weights[k])) for k in user.keys()}}
+#     return weighted
 
-def get_weighted(User):
-    user=github_data[User]
 
-    weighted={User: {k:(round(user[k]*weights[k])) for k in user.keys()}}
-    return weighted
-
-
-Print usename and percentage of their contribution for each category
-def print_data(dictionary):
+#Print usename and percentage of their contribution for each category
+def print_data():
     """Print out github_data scores."""
-    for username, data in dictionary.items():
+    for username, data in github_data.items():
         print("\n", username)
         for category in data:
             print(
@@ -101,7 +101,9 @@ def print_data(dictionary):
             )
 
 
+
+
 if __name__ == "__main__":
-    for username in github_data:
-        print (get_weighted(username))
-print_data()
+    # for username in github_data:
+    #     print (get_weighted(username))
+    print_data()
