@@ -8,16 +8,16 @@ import numpy as np
 # github_data uses the pattern ["username", commit_total, lines_added,
 # lines_deleted, issues_assigned, issues_comments]
 github_data = [
-    ["cassidyt2", 28, 355, 76, 2, 5, 20],
-    ["johnSmith", 22, 349, 50, 4, 3, 10],
-    ["janeDoe", 23, 375, 30, 3, 8, 0],
-    ["Edgar_AllenPoe", 27, 315, 75, 7, 2, 2],
-    ["George_Washington", 25, 360, 65, 10, 20, 21],
-    ["Alexander_Hamilton", 41, 530, 100, 230, 3, 30],
-    ["Karl_Marx", 0, 0, 0, 400, 0, 30],
-    ["Julius_Caesar", 25, 310, 68, 1, 8, 8],
-    ["Napoleon_Bonaparte", 24, 363, 70, 3, 4, 4],
-    ["Alexander_the_Great", 42, 540, 110, 1, 5, 8],
+    ["cassidyt2", 28, 355, 76, 2, 5],
+    ["johnSmith", 22, 349, 50, 4, 3],
+    ["janeDoe", 23, 375, 30, 3, 8],
+    ["Edgar_AllenPoe", 27, 315, 75, 7, 2],
+    ["George_Washington", 25, 360, 65, 10, 20],
+    ["Alexander_Hamilton", 41, 530, 100, 230, 3],
+    ["Karl_Marx", 0, 0, 0, 400, 0],
+    ["Julius_Caesar", 25, 310, 68, 1, 8],
+    ["Napoleon_Bonaparte", 24, 363, 70, 3, 4],
+    ["Alexander_the_Great", 42, 540, 110, 1, 5],
 ]
 standard_deviations_list = []
 values_list = []
