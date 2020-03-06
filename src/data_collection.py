@@ -18,7 +18,7 @@ def initialize_contributor_data(file_path):
 
 def retrieve_token(file_path=None):
     """Retrieve the token from the local token.txt file or from Travis."""
-    if file_path is None:  # pragma: no cover
+    if file_path is not None:  # pragma: no cover
         try:
             token = open(file_path).read()
         except FileNotFoundError:
