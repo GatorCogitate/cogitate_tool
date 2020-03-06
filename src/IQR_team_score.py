@@ -33,6 +33,7 @@ github_data = {
 
 
 def calculate_iqr_score(data_list):
+    """Calculate a team score for a data set according to outliers calculated with the interquartile range."""
     below_amount = 0
     above_amount = 0
     within_amount = 0
@@ -75,6 +76,7 @@ def calculate_iqr_score(data_list):
 
 
 def determine_datasets(dictionary):
+    """Determine the datasets of the information in the dictionary and add them to the corresponding list."""
     # iterate through nested dictionary
     for username, data in github_data.items():
         # for each key in the dictionary its values to a list
@@ -92,6 +94,7 @@ def determine_datasets(dictionary):
 
 
 def calculate_average(dictionary):
+    """Calculate the average team score by totaling the team scores for each dataset and dividing by amount of datasets."""
     # import lists from calculate_datasets function
     determine_datasets(dictionary)
     # print(commit_data)
