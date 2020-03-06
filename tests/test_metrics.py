@@ -1,6 +1,6 @@
 """Test the code that determines how the well the team worked together"""
 
-from calculateMetrics import metrics
+from src import metrics
 import sys
 import string
 
