@@ -2,6 +2,12 @@
 from __future__ import division
 import numpy as np
 
+commit_data = []
+added_data = []
+removed_data = []
+modified_data = []
+
+
 # fake data
 github_data = {
     "noorbuchi": {"COMMITS": 28, "ADDED": 349, "REMOVED": 70, "MODIFIED": 419},
@@ -62,6 +68,18 @@ def calculate_iqr():
 
 def calculate_average(dictionary):
     # TODO: Add code to iterate through nested dictionary
+    for username, data in github_data.items():
+        for key in data:
+            if(key == "COMMITS"):
+                commit_data.append(data[key])
+            if(key == "ADDED"):
+                added_data.append(data[key])
+            if(key == "REMOVED"):
+                removed_data.append(data[key])
+            if(key == "MODIFIED"):
+                modified_data.append(data[key])
+
+    print(commit_data)
 
 
 if __name__ == "__main__":
