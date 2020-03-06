@@ -17,16 +17,10 @@ github_data = {
     "Alexander_the_Great": {"COMMITS": 42, "ADDED": 355, "REMOVED": 50, "MODIFIED": 405},
 }
 
-below_iqr = []
-above_iqr = []
-within_iqr = []
-# below_amount = 0
-# above_amount = 0
-# within_amount = 0
-
 def calculate_iqr(metrics):
     # list_numbers = [32, 37, 34, 35, 33, 35, 33, 32, 4, 2, 55, 74, 102]
     dataset = metrics
+    # calculate the size of the dataset
     size = len(dataset)
     # sort the dataset in ascending order
     sorted(dataset)
@@ -38,7 +32,7 @@ def calculate_iqr(metrics):
     lower_bound = q1 -(1.5 * iqr) 
     # calculate the upper bound of the IQR
     upper_bound = q3 +(1.5 * iqr)
-    # make lists of 
+    # for any value above, below or within the IQR add to the total
     for d in dataset:
         if(d < lower_bound):
             below_amount = below_amount + 1
@@ -46,15 +40,17 @@ def calculate_iqr(metrics):
             above_amount = above_amount + 1
         if(lower_bound <= d <= upper_bound):
             within_amount = within_amount + 1
-
+    # create factions of above, below, and within IQR amounts (divide by size) and round
     below_fraction = round(below_amount/size, 2)
     above_fraction = round(above_amount/size, 2)
     within_fraction = round(within_amoung/size, 2)
 
     # print(below_amount, above_amount, within_amount)
+    # calculate all areas with their weight measurement
     weighted_below = round(0.05 * below_fraction, 2)
     weighted_above = round(0.20 * above_fraction, 2)
     weighted_within = round(0.75 * within_fraction, 2)
+    # add weighted scores together to calcuate overall team score as percentage
     team_score = (weighted_below + weighted_above + weighted_within) * 100
 
     return team_score
