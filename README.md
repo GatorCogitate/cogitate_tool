@@ -1,5 +1,7 @@
 # cogitate_tool
 
+[![Build Status](https://travis-ci.com/GatorCogitate/cogitate_tool.svg?branch=master)](https://travis-ci.com/GatorCogitate/cogitate_tool)
+
 ## Development Doc
 
 ### 1. File Structure
