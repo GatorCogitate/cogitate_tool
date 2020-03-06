@@ -10,7 +10,7 @@
 *.so
 
 
-# Android # 
+# Android #
 ###########
 *.apk
 *.ap_
@@ -655,6 +655,7 @@ gradle-app.setting
 
 .DS_Store
 data/*.json
+* data/token.txt
 !data/contributor_data_template.json
 
 # End of https://www.gitignore.io/api/visualstudiocode,linux,dm,git,gradle,latex,macos,pydev,python,test,venv,vim,virtualenv,windows

@@ -6,13 +6,28 @@ from github import GithubException
 import json_handler
 
 
-def retrieve_travis_token():
-    """Retrieve the token from the Travis Environment variables."""
-    try:
-        token = os.environ.get("PYGITHUB_TOKEN")
-    except ValueError: # pragma: no cover
-        print("\nError: Could not retrieve Travis token.")
-        token = "INVALID"
+# Written as a temporary pass-through in case this variable is converted to a global
+# variable, in which case that process would occur here. Pass-through will be eliminated
+# during refactoring.
+def initialize_contributor_data(file_path):
+    """Load a dictionary based upon the given .json file."""
+    contributor_data = json_handler.get_dict_from_json_file(file_path)
+
+    return contributor_data
+
+
+def retrieve_token(file_path=None):
+    """Retrieve the token from the local token.txt file or from Travis."""
+    if file_path is None:  # pragma: no cover
+        try:
+            token = open(file_path).read()
+        except FileNotFoundError:
+            token = "NOT FOUND"
+    else:
+        try:
+            token = os.environ.get("PYGITHUB_TOKEN")
+        except ValueError:  # pragma: no cover
+            token = "INVALID TRAVIS TOKEN"
 
     return token
 
@@ -23,21 +38,10 @@ def authenticate_repository(user_token, repository_name):
     try:
         ghub = Github(user_token)
         repository = ghub.get_repo(repository_name)
-    except GithubException: # pragma: no cover
-        print("\nError: Could not connect to repository.")
+    except GithubException:  # pragma: no cover
         repository = "INVALID"
 
     return repository
-
-
-# Written as a temporary pass-through in case this variable is converted to a global
-# variable, in which case that process would occur here. Pass-through will be eliminated
-# during refactoring.
-def initialize_contributor_data(file_path):
-    """Load a dictionary based upon the given .json file."""
-    contributor_data = json_handler.get_dict_from_json_file(file_path)
-
-    return contributor_data
 
 
 def retrieve_issue_data(repository, state, contributor_data):
