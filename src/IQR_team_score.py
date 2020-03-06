@@ -17,7 +17,13 @@ github_data = {
     "Alexander_the_Great": {"COMMITS": 42, "ADDED": 355, "REMOVED": 50, "MODIFIED": 405},
 }
 
-def calculate_iqr(dataset):
+
+def calculate_iqr():
+    list_numbers = [32, 37, 34, 35, 33, 35, 33, 32, 4, 2, 55, 74, 102]
+    dataset = list_numbers
+    below_iqr = []
+    above_iqr = []
+    within_iqr = []
     # sort the dataset in ascending order
     sorted(dataset)
     # determine the first and third quartiles
@@ -27,4 +33,18 @@ def calculate_iqr(dataset):
     # calculate the lower bound of the IQR
     lower_bound = q1 -(1.5 * iqr) 
     # calculate the upper bound of the IQR
-    upper_bound = q3 +(1.5 * iqr) 
+    upper_bound = q3 +(1.5 * iqr)
+    for d in dataset:
+        if(d < lower_bound):
+            below_iqr.append(d)
+        if(d > upper_bound):
+            above_iqr.append(d)
+        if(lower_bound <= d <= upper_bound):
+            within_iqr.append(d)
+
+    print(below_iqr)
+    print(above_iqr)
+    print(within_iqr)
+
+if __name__ == "__main__":
+    calculate_iqr()
