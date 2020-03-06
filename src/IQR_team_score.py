@@ -31,7 +31,6 @@ def calculate_iqr(data_list):
     below_amount = 0
     above_amount = 0
     within_amount = 0
-    # list_numbers = [32, 37, 34, 35, 33, 35, 33, 32, 4, 2, 55, 74, 102]
     dataset = data_list
     # calculate the size of the dataset
     size = len(dataset)
@@ -71,8 +70,9 @@ def calculate_iqr(data_list):
 
 
 def calculate_datasets(dictionary):
-    # TODO: Add code to iterate through nested dictionary
+    # iterate through nested dictionary
     for username, data in github_data.items():
+        # for each key in the dictionary its values to a list
         for key in data:
             if(key == "COMMITS"):
                 commit_data.append(data[key])
@@ -87,18 +87,21 @@ def calculate_datasets(dictionary):
 
 
 def calculate_average(dictionary):
+    # import lists from calculate_datasets function
     calculate_datasets(dictionary)
     # print(commit_data)
+    # calculate the team score for each list of data
     commits_score = calculate_iqr(commit_data)
     added_score = calculate_iqr(added_data)
     removed_score = calculate_iqr(removed_data)
     modified_score = calculate_iqr(modified_data)
 
+    # find the average team score for all of the categories
     average_score = (commits_score + added_score + removed_score + modified_score) / 4
 
-    print(average_score)
+    return average_score
 
 
 if __name__ == "__main__":
-    print(calculate_iqr())
-    calculate_average(github_data)
+    # print(calculate_iqr())
+    print(calculate_average(github_data), "%")
