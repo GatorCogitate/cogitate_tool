@@ -2,7 +2,18 @@
 
 [![Build Status](https://travis-ci.com/GatorCogitate/cogitate_tool.svg?branch=master)](https://travis-ci.com/GatorCogitate/cogitate_tool)
 
-## Development Doc
+## Table of Contents
+
+## About the cogitate_tool
+
+## Installing the cogitate_tool
+
+## Testing the cogitate_tool
+
+## Running the cogitate_tool
+
+## Contributors
+
 
 ### 1. File Structure
 
