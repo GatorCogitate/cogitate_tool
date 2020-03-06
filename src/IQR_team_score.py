@@ -24,9 +24,9 @@ within_iqr = []
 # above_amount = 0
 # within_amount = 0
 
-def calculate_iqr():
-    list_numbers = [32, 37, 34, 35, 33, 35, 33, 32, 4, 2, 55, 74, 102]
-    dataset = list_numbers
+def calculate_iqr(metrics):
+    # list_numbers = [32, 37, 34, 35, 33, 35, 33, 32, 4, 2, 55, 74, 102]
+    dataset = metrics
     size = len(dataset)
     # sort the dataset in ascending order
     sorted(dataset)
@@ -38,25 +38,28 @@ def calculate_iqr():
     lower_bound = q1 -(1.5 * iqr) 
     # calculate the upper bound of the IQR
     upper_bound = q3 +(1.5 * iqr)
+    # make lists of 
     for d in dataset:
         if(d < lower_bound):
-            below_iqr.append(d)
+            below_amount = below_amount + 1
         if(d > upper_bound):
-            above_iqr.append(d)
+            above_amount = above_amount + 1
         if(lower_bound <= d <= upper_bound):
-            within_iqr.append(d)
+            within_amount = within_amount + 1
 
-    below_amount = round((len(below_iqr))/size, 2)
-    above_amount = round((len(above_iqr))/size, 2)
-    within_amount = round((len(within_iqr))/size, 2)
+    below_fraction = round(below_amount/size, 2)
+    above_fraction = round(above_amount/size, 2)
+    within_fraction = round(within_amoung/size, 2)
 
-    print(below_amount, above_amount, within_amount)
-    weighted_below = round(0.05 * below_amount, 2)
-    weighted_above = round(0.20 * above_amount, 2)
-    weighted_within = round(0.75 * within_amount, 2)
-    team_score = weighted_below + weighted_above + weighted_within
+    # print(below_amount, above_amount, within_amount)
+    weighted_below = round(0.05 * below_fraction, 2)
+    weighted_above = round(0.20 * above_fraction, 2)
+    weighted_within = round(0.75 * within_fraction, 2)
+    team_score = (weighted_below + weighted_above + weighted_within) * 100
 
-    print(weighted_below, weighted_above, weighted_within, team_score)
+    return team_score
+    # print(weighted_below, weighted_above, weighted_within, team_score)
+
 
 if __name__ == "__main__":
-    calculate_iqr()
+    print(calculate_iqr())
