@@ -27,7 +27,7 @@ github_data = {
 }
 
 
-def calculate_iqr(data_list):
+def calculate_iqr_score(data_list):
     below_amount = 0
     above_amount = 0
     within_amount = 0
@@ -69,7 +69,7 @@ def calculate_iqr(data_list):
     # print(weighted_below, weighted_above, weighted_within, team_score)
 
 
-def calculate_datasets(dictionary):
+def determine_datasets(dictionary):
     # iterate through nested dictionary
     for username, data in github_data.items():
         # for each key in the dictionary its values to a list
@@ -88,13 +88,13 @@ def calculate_datasets(dictionary):
 
 def calculate_average(dictionary):
     # import lists from calculate_datasets function
-    calculate_datasets(dictionary)
+    determine_datasets(dictionary)
     # print(commit_data)
     # calculate the team score for each list of data
-    commits_score = calculate_iqr(commit_data)
-    added_score = calculate_iqr(added_data)
-    removed_score = calculate_iqr(removed_data)
-    modified_score = calculate_iqr(modified_data)
+    commits_score = calculate_iqr_score(commit_data)
+    added_score = calculate_iqr_score(added_data)
+    removed_score = calculate_iqr_score(removed_data)
+    modified_score = calculate_iqr_score(modified_data)
 
     # find the average team score for all of the categories
     average_score = (commits_score + added_score + removed_score + modified_score) / 4
@@ -103,5 +103,4 @@ def calculate_average(dictionary):
 
 
 if __name__ == "__main__":
-    # print(calculate_iqr())
     print(calculate_average(github_data), "%")
