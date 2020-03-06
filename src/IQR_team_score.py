@@ -6,13 +6,9 @@ commit_data = []
 added_data = []
 removed_data = []
 modified_data = []
-commits_score = 0
-added_score = 0
-removed_score = 0
-modified_score = 0
-average_score = 0
 
-# fake data
+
+# fake data -> will be converted to use nested dictionary from the .json file
 github_data = {
     "noorbuchi": {"COMMITS": 28, "ADDED": 349, "REMOVED": 70, "MODIFIED": 419},
     "bagashvilit": {"COMMITS": 22, "ADDED": 355, "REMOVED": 56, "MODIFIED": 411},
@@ -90,6 +86,11 @@ def determine_datasets(dictionary):
 
 def calculate_average(dictionary):
     """Calculate the average team score by totaling the team scores for each dataset and dividing by amount of datasets."""
+    commits_score = 0
+    added_score = 0
+    removed_score = 0
+    modified_score = 0
+    average_score = 0
     # import lists from calculate_datasets function
     determine_datasets(dictionary)
     # print(commit_data)
