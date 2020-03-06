@@ -31,7 +31,7 @@ def calculate_iqr(data_list):
     below_amount = 0
     above_amount = 0
     within_amount = 0
-    list_numbers = [32, 37, 34, 35, 33, 35, 33, 32, 4, 2, 55, 74, 102]
+    # list_numbers = [32, 37, 34, 35, 33, 35, 33, 32, 4, 2, 55, 74, 102]
     dataset = data_list
     # calculate the size of the dataset
     size = len(dataset)
