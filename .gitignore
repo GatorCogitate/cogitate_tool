@@ -3,11 +3,36 @@
 # Created by https://www.gitignore.io/api/visualstudiocode,linux,dm,git,gradle,latex,macos,pydev,python,test,venv,vim,virtualenv,windows
 # Edit at https://www.gitignore.io/?templates=visualstudiocode,linux,dm,git,gradle,latex,macos,pydev,python,test,venv,vim,virtualenv,windows
 
+# Compiled Source #
+###################
+*.class
+*.o
+*.so
+
+
+# Android #
+###########
+*.apk
+*.ap_
+*.dex
+local.properties
+
 ### DM ###
 *.dmb
 *.rsc
 *.int
 *.lk
+*.zip
+
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
 *.zip
 
 ### Git ###
@@ -24,6 +49,24 @@
 *_BASE_*.txt
 *_LOCAL_*.txt
 *_REMOTE_*.txt
+
+# Ant #
+#######
+*.ant_targets
+
+# Ctags #
+#########
+tags
+.tags
+tags.lock
+tags.temp
+tags.tmp
+
+# Extra files #
+###############
+*.xmi
+*.sync
+*.jekyll-metadata
 
 ### LaTeX ###
 ## Core latex/pdflatex auxiliary files:
@@ -175,6 +218,7 @@ acs-*.bib
 *.idx
 *.ilg
 *.ind
+*.ist
 
 # minitoc
 *.maf
@@ -503,18 +547,6 @@ dmypy.json
 *mies
 
 # Other names that would make sense
-*tests
-*testsdir
-*testsfile
-*testsfiles
-*test
-*testdir
-*testfile
-*testfiles
-*testing
-*testingdir
-*testingfile
-*testingfiles
 *temp
 *tempdir
 *tempfile
@@ -623,7 +655,8 @@ gradle-app.setting
 
 .DS_Store
 data/*.json
-!data/demofile.json
+!data/contributor_data_template.json
+!data/individual_metrics_testfile.json
 
 # End of https://www.gitignore.io/api/visualstudiocode,linux,dm,git,gradle,latex,macos,pydev,python,test,venv,vim,virtualenv,windows
 

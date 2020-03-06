@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Make sure that you understand the purpose of this script
-
 # Run the test suite so that:
 # --> -s: Outputs all diagnostic information
 # --> Other parameters: Track coverage and output report as XML file
