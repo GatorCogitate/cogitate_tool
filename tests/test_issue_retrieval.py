@@ -49,8 +49,6 @@ def test_retrieve_issue_data_retrieves_issues(
     state,
     contributor_data,
 ):
-
-
     """Test to ensure all issues are associated with the correct contributor."""
     try:
         ghub = Github(input_token)

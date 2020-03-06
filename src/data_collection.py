@@ -1,4 +1,3 @@
-
 """
 Collects repository data for contributors of the master branch of a repo.
 
@@ -7,8 +6,8 @@ Writes the data to a .json file.
 Calculates statistics based on the data from Github.
 """
 
-import os
 from __future__ import division
+import os
 from pydriller import RepositoryMining
 from prettytable import PrettyTable
 from github import Github
