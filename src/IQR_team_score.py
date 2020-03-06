@@ -17,13 +17,17 @@ github_data = {
     "Alexander_the_Great": {"COMMITS": 42, "ADDED": 355, "REMOVED": 50, "MODIFIED": 405},
 }
 
+below_iqr = []
+above_iqr = []
+within_iqr = []
+# below_amount = 0
+# above_amount = 0
+# within_amount = 0
 
 def calculate_iqr():
     list_numbers = [32, 37, 34, 35, 33, 35, 33, 32, 4, 2, 55, 74, 102]
     dataset = list_numbers
-    below_iqr = []
-    above_iqr = []
-    within_iqr = []
+    size = len(dataset)
     # sort the dataset in ascending order
     sorted(dataset)
     # determine the first and third quartiles
@@ -42,9 +46,17 @@ def calculate_iqr():
         if(lower_bound <= d <= upper_bound):
             within_iqr.append(d)
 
-    print(below_iqr)
-    print(above_iqr)
-    print(within_iqr)
+    below_amount = round((len(below_iqr))/size, 2)
+    above_amount = round((len(above_iqr))/size, 2)
+    within_amount = round((len(within_iqr))/size, 2)
+
+    print(below_amount, above_amount, within_amount)
+    weighted_below = round(0.05 * below_amount, 2)
+    weighted_above = round(0.20 * above_amount, 2)
+    weighted_within = round(0.75 * within_amount, 2)
+    team_score = weighted_below + weighted_above + weighted_within
+
+    print(weighted_below, weighted_above, weighted_within, team_score)
 
 if __name__ == "__main__":
     calculate_iqr()
