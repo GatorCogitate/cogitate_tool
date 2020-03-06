@@ -17,9 +17,12 @@ github_data = {
     "Alexander_the_Great": {"COMMITS": 42, "ADDED": 355, "REMOVED": 50, "MODIFIED": 405},
 }
 
-def calculate_iqr(metrics):
-    # list_numbers = [32, 37, 34, 35, 33, 35, 33, 32, 4, 2, 55, 74, 102]
-    dataset = metrics
+def calculate_iqr():
+    below_amount = 0
+    above_amount = 0
+    within_amount = 0
+    list_numbers = [32, 37, 34, 35, 33, 35, 33, 32, 4, 2, 55, 74, 102]
+    dataset = list_numbers
     # calculate the size of the dataset
     size = len(dataset)
     # sort the dataset in ascending order
@@ -43,7 +46,7 @@ def calculate_iqr(metrics):
     # create factions of above, below, and within IQR amounts (divide by size) and round
     below_fraction = round(below_amount/size, 2)
     above_fraction = round(above_amount/size, 2)
-    within_fraction = round(within_amoung/size, 2)
+    within_fraction = round(within_amount/size, 2)
 
     # print(below_amount, above_amount, within_amount)
     # calculate all areas with their weight measurement
@@ -57,5 +60,9 @@ def calculate_iqr(metrics):
     # print(weighted_below, weighted_above, weighted_within, team_score)
 
 
+def calculate_average(dictionary):
+
+
 if __name__ == "__main__":
     print(calculate_iqr())
+    calculate_average(github_data)
