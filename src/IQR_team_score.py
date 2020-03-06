@@ -66,7 +66,7 @@ def calculate_iqr():
     # print(weighted_below, weighted_above, weighted_within, team_score)
 
 
-def calculate_average(dictionary):
+def calculate_datasets(dictionary):
     # TODO: Add code to iterate through nested dictionary
     for username, data in github_data.items():
         for key in data:
