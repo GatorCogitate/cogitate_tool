@@ -23,7 +23,12 @@ github_data = {
     "Karl_Marx": {"COMMITS": 0, "ADDED": 0, "REMOVED": 0, "MODIFIED": 0},
     "Julius_Caesar": {"COMMITS": 25, "ADDED": 363, "REMOVED": 35, "MODIFIED": 398},
     "Napoleon_Bonaparte": {"COMMITS": 24, "ADDED": 540, "REMOVED": 2, "MODIFIED": 542},
-    "Alexander_the_Great": {"COMMITS": 42, "ADDED": 355, "REMOVED": 50, "MODIFIED": 405},
+    "Alexander_the_Great": {
+        "COMMITS": 42,
+        "ADDED": 355,
+        "REMOVED": 50,
+        "MODIFIED": 405,
+    },
 }
 
 
@@ -46,11 +51,11 @@ def calculate_iqr_score(data_list):
     upper_bound = q3 + (1.5 * iqr)
     # for any value above, below or within the IQR add to the total
     for d in dataset:
-        if(d < lower_bound):
+        if d < lower_bound:
             below_amount = below_amount + 1
-        if(d > upper_bound):
+        if d > upper_bound:
             above_amount = above_amount + 1
-        if(lower_bound <= d <= upper_bound):
+        if lower_bound <= d <= upper_bound:
             within_amount = within_amount + 1
     # create factions of above, below, and within IQR amounts (divide by size) and round
     below_fraction = round(below_amount / size, 2)
@@ -74,13 +79,13 @@ def determine_datasets(dictionary):
     for username, data in github_data.items():
         # for each key in the dictionary its values to a list
         for key in data:
-            if(key == "COMMITS"):
+            if key == "COMMITS":
                 commit_data.append(data[key])
-            if(key == "ADDED"):
+            if key == "ADDED":
                 added_data.append(data[key])
-            if(key == "REMOVED"):
+            if key == "REMOVED":
                 removed_data.append(data[key])
-            if(key == "MODIFIED"):
+            if key == "MODIFIED":
                 modified_data.append(data[key])
 
     # print(commit_data)
