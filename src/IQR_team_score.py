@@ -1,7 +1,6 @@
 # This import fixes a linting error with old division.
 from __future__ import division
 import numpy as np
-import pandas as pd
 
 # fake data
 github_data = {
@@ -17,6 +16,7 @@ github_data = {
     "Alexander_the_Great": {"COMMITS": 42, "ADDED": 355, "REMOVED": 50, "MODIFIED": 405},
 }
 
+
 def calculate_iqr():
     below_amount = 0
     above_amount = 0
@@ -28,13 +28,13 @@ def calculate_iqr():
     # sort the dataset in ascending order
     sorted(dataset)
     # determine the first and third quartiles
-    q1, q3 = np.percentile(dataset,[25,75])
+    q1, q3 = np.percentile(dataset, [25, 75])
     # calculate the interquartile range (q3-q1)
     iqr = q3 - q1
     # calculate the lower bound of the IQR
-    lower_bound = q1 -(1.5 * iqr) 
+    lower_bound = q1 - (1.5 * iqr)
     # calculate the upper bound of the IQR
-    upper_bound = q3 +(1.5 * iqr)
+    upper_bound = q3 + (1.5 * iqr)
     # for any value above, below or within the IQR add to the total
     for d in dataset:
         if(d < lower_bound):
@@ -44,9 +44,9 @@ def calculate_iqr():
         if(lower_bound <= d <= upper_bound):
             within_amount = within_amount + 1
     # create factions of above, below, and within IQR amounts (divide by size) and round
-    below_fraction = round(below_amount/size, 2)
-    above_fraction = round(above_amount/size, 2)
-    within_fraction = round(within_amount/size, 2)
+    below_fraction = round(below_amount / size, 2)
+    above_fraction = round(above_amount / size, 2)
+    within_fraction = round(within_amount / size, 2)
 
     # print(below_amount, above_amount, within_amount)
     # calculate all areas with their weight measurement
@@ -61,6 +61,7 @@ def calculate_iqr():
 
 
 def calculate_average(dictionary):
+    # TODO: Add code to iterate through nested dictionary
 
 
 if __name__ == "__main__":
