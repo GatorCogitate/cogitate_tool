@@ -1,0 +1,290 @@
+{
+"RAW_DATA": [
+        {
+            "hash": "ea1ce00850df54c0ec2cde3d13a03fa0166f8276",
+            "author_msg": "Initial commit",
+            "author_name": "schultzh",
+            "author_email": "42979565+schultzh@users.noreply.github.com",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 0,
+            "lines_of_code": 1,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "README.md"
+            ],
+            "filepath": [
+                "README.md"
+            ]
+        },
+        {
+            "hash": "efcffdf45007f58c49439b7222e8a8980d49ef6a",
+            "author_msg": "Added dependecies",
+            "author_name": "WonjoonC",
+            "author_email": "chos@allegheny.edu",
+            "merge": false,
+            "line_added": 875,
+            "line_removed": 0,
+            "lines_of_code": 498,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                ".flake8",
+                ".gitignore",
+                ".mdlrc",
+                ".pylintrc",
+                ".style.yapf",
+                "Pipfile",
+                "README.md",
+                "demo.py",
+                "lint.sh",
+                "test.sh"
+            ],
+            "filepath": [
+                ".flake8",
+                ".gitignore",
+                ".mdlrc",
+                ".pylintrc",
+                ".style.yapf",
+                "Pipfile",
+                "README.md",
+                "demo.py",
+                "scripts/lint.sh",
+                "scripts/test.sh"
+            ]
+        },
+        {
+            "hash": "7829b3f90b8db581fd20264f8bc68b31e22f3e22",
+            "author_msg": "oops",
+            "author_name": "WonjoonC",
+            "author_email": "chos@allegheny.edu",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 0,
+            "lines_of_code": 1,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "README.md"
+            ],
+            "filepath": [
+                "README.md"
+            ]
+        },
+        {
+            "hash": "201adbca35a4ea9079a5967efd55b270e8b09b87",
+            "author_msg": "Merge branch 'master' of https://github.com/GatorCogitate/cogitate_tool",
+            "author_name": "WonjoonC",
+            "author_email": "chos@allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "0dc6197d42d8ba464a094aab96ab2592b0f9ba7d",
+            "author_msg": "removed problems hopefully",
+            "author_name": "WonjoonC",
+            "author_email": "chos@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 874,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                ".flake8",
+                ".gitignore",
+                ".mdlrc",
+                ".pylintrc",
+                ".style.yapf",
+                "Pipfile",
+                "demo.py",
+                "lint.sh",
+                "test.sh"
+            ],
+            "filepath": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                "demo.py",
+                null,
+                null
+            ]
+        },
+        {
+            "hash": "8c8fb0c9cb03d9f1ec204ef7d71baa1584636f59",
+            "author_msg": "Add travis.yml file to support Travis CI config",
+            "author_name": "schultzh",
+            "author_email": "42979565+schultzh@users.noreply.github.com",
+            "merge": false,
+            "line_added": 58,
+            "line_removed": 0,
+            "lines_of_code": 37,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "travis.yml"
+            ],
+            "filepath": [
+                "travis.yml"
+            ]
+        },
+        {
+            "hash": "cdbbab1e328ee1d27b7887b7f302a6ca030b0172",
+            "author_msg": "Rename travis file with \".\"",
+            "author_name": "Hannah Schultz",
+            "author_email": "schultzh@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                ".travis.yml"
+            ],
+            "filepath": [
+                ".travis.yml"
+            ]
+        },
+        {
+            "hash": "09f51c1e5417d3950eabf5c2bb2fcaee99dd7c42",
+            "author_msg": "Added Commits.py File.",
+            "author_name": "Jordan-A",
+            "author_email": "jordanbyrne@Jordans-MacBook-Pro.local",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Commits.py"
+            ],
+            "filepath": [
+                "Commits.py"
+            ]
+        },
+        {
+            "hash": "5e70139a995ecb1f5a68dfcb5c5768d889cce51d",
+            "author_msg": "Merge pull request #17 from GatorCogitate/Enhancement/travis-ci-config\n\nFix Travis CI configuration file",
+            "author_name": "schultzh",
+            "author_email": "42979565+schultzh@users.noreply.github.com",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "60d5ba43a05acdc82ce44d73576446e97573d7d0",
+            "author_msg": "oops.",
+            "author_name": "Jordan-A",
+            "author_email": "jordanbyrne@Jordans-MacBook-Pro.local",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Commits.py"
+            ],
+            "filepath": [
+                "Commits.py"
+            ]
+        },
+        {
+            "hash": "79520637694cf81279f26d6af74aa97dcb0732bb",
+            "author_msg": "Add dependencies, known issues",
+            "author_name": "noorbuchi",
+            "author_email": "buchin@allegheny.edu",
+            "merge": false,
+            "line_added": 694,
+            "line_removed": 0,
+            "lines_of_code": 621,
+            "complexity": 7,
+            "methods": [
+                "create_user",
+                "get_repo_list",
+                "get_org_repo_list",
+                "get_repo_info",
+                "main_method"
+            ],
+            "filename": [
+                "Pipfile",
+                "Pipfile.lock",
+                "UsingPyGithub.py",
+                "lint.sh",
+                "test.sh"
+            ],
+            "filepath": [
+                "Pipfile",
+                "Pipfile.lock",
+                "UsingPyGithub.py",
+                "scripts/lint.sh",
+                "scripts/test.sh"
+            ]
+        },
+        {
+            "hash": "1d468428d46528d03c23626d5df09917a873bbba",
+            "author_msg": "Add json_demo.py containing reading and writing functions for json files",
+            "author_name": "Chris Stephenson",
+            "author_email": "stephensonc@allegheny.edu",
+            "merge": false,
+            "line_added": 68,
+            "line_removed": 0,
+            "lines_of_code": 54,
+            "complexity": 5,
+            "methods": [
+                "main",
+                "get_dict_from_json_file",
+                "write_dict_to_json_file",
+                "append_user_to_json"
+            ],
+            "filename": [
+                "demofile.json",
+                "json_demo.py"
+            ],
+            "filepath": [
+                "data/demofile.json",
+                "demo/json_demo.py"
+            ]
+        },
+        {
+            "hash": "be143decb3b20d6bd1cff1f8dacfb186cf115eca",
+            "author_msg": "Add comments to json_demo.py to better explain json package functions",
+            "author_name": "Chris Stephenson",
+            "author_email": "stephensonc@allegheny.edu",
+            "merge": false,
+            "line_added": 21,
+            "line_removed": 13,
+            "lines_of_code": 28,
+            "complexity": 5,
+            "methods": [
+                "main",
+                "get_dict_from_json_file",
+                "write_dict_to_json_file",
+                "append_user_to_json"
+            ],
+            "filename": [
+                "json_demo.py"
+            ],
+            "filepath": [
+                "demo/json_demo.py"
+            ]
+        }
+      ]
+}
