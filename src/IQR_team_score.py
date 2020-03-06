@@ -23,12 +23,7 @@ github_data = {
     "Karl_Marx": {"COMMITS": 0, "ADDED": 0, "REMOVED": 0, "MODIFIED": 0},
     "Julius_Caesar": {"COMMITS": 25, "ADDED": 363, "REMOVED": 35, "MODIFIED": 398},
     "Napoleon_Bonaparte": {"COMMITS": 24, "ADDED": 540, "REMOVED": 2, "MODIFIED": 542},
-    "Alexander_the_Great": {
-        "COMMITS": 42,
-        "ADDED": 355,
-        "REMOVED": 50,
-        "MODIFIED": 405,
-    },
+    "Alexander_the_Great": {"COMMITS": 42, "ADDED": 355, "REMOVED": 50, "MODIFIED": 405},
 }
 
 
