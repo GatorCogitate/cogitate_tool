@@ -6,7 +6,11 @@ commit_data = []
 added_data = []
 removed_data = []
 modified_data = []
-
+commits_score = 0
+added_score = 0
+removed_score = 0
+modified_score = 0
+average_score = 0
 
 # fake data
 github_data = {
@@ -23,12 +27,12 @@ github_data = {
 }
 
 
-def calculate_iqr():
+def calculate_iqr(data_list):
     below_amount = 0
     above_amount = 0
     within_amount = 0
     list_numbers = [32, 37, 34, 35, 33, 35, 33, 32, 4, 2, 55, 74, 102]
-    dataset = list_numbers
+    dataset = data_list
     # calculate the size of the dataset
     size = len(dataset)
     # sort the dataset in ascending order
@@ -79,7 +83,20 @@ def calculate_datasets(dictionary):
             if(key == "MODIFIED"):
                 modified_data.append(data[key])
 
-    print(commit_data)
+    # print(commit_data)
+
+
+def calculate_average(dictionary):
+    calculate_datasets(dictionary)
+    # print(commit_data)
+    commits_score = calculate_iqr(commit_data)
+    added_score = calculate_iqr(added_data)
+    removed_score = calculate_iqr(removed_data)
+    modified_score = calculate_iqr(modified_data)
+
+    average_score = (commits_score + added_score + removed_score + modified_score) / 4
+
+    print(average_score)
 
 
 if __name__ == "__main__":
