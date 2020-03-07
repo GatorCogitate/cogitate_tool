@@ -4,7 +4,7 @@
             "hash": "ea1ce00850df54c0ec2cde3d13a03fa0166f8276",
             "author_msg": "Initial commit",
             "author_name": "schultzh",
-            "author_email": "42979565+schultzh@users.noreply.github.com",
+            "author_email": "schultzh@allegheny.edu",
             "merge": false,
             "line_added": 2,
             "line_removed": 0,
@@ -141,7 +141,7 @@
         {
             "hash": "cdbbab1e328ee1d27b7887b7f302a6ca030b0172",
             "author_msg": "Rename travis file with \".\"",
-            "author_name": "Hannah Schultz",
+            "author_name": "schultzh",
             "author_email": "schultzh@allegheny.edu",
             "merge": false,
             "line_added": 0,
