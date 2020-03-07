@@ -25,11 +25,11 @@ def authenticate_repository(user_token, repository_name):
 # Written as a temporary pass-through in case this variable is converted to a global
 # variable, in which case that process would occur here. Pass-through will be eliminated
 # during refactoring.
-def initialize_contributor_data(file_path):
-    """Load a dictionary based upon the given .json file."""
-    contributor_data = json_handler.get_dict_from_json_file(file_path)
+# def initialize_contributor_data(file_path):
+# """Load a dictionary based upon the given .json file."""
+# contributor_data = json_handler.get_dict_from_json_file(file_path)
 
-    return contributor_data
+# return contributor_data
 
 
 def retrieve_issue_data(repository, state, contributor_data):

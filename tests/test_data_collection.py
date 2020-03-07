@@ -10,11 +10,36 @@ from src import data_collection
 from src import json_handler
 
 
+def test_authenticate_repository():
+    """Determine that the repository has been authenticated."""
+
+
+def test_retrive_issue_data():
+    """Check that the issue data has be retrived."""
+
+
+def test_add_raw_data_to_json():
+    """Check that the issue data has be retrived."""
+
+
+def test_calculate_individual_metrics():
+    """Check that the individual metrics have been calculated."""
+
+
+def test_find_repositories():
+    """Check that the repositories have been found."""
+
+
+def test_print_individual_in_table():
+    """Check that the table has been printed."""
+
+
 @pytest.mark.xfail
 @pytest.mark.parametrize(
     "repository_url", [("https://github.com/GatorCogitate/cogitate_tool")],
 )
 def test_collect_commits_user_hash(repository_url):
+    """Check the collection of the commits hash."""
     dict = {}
     assert len(dict) == 0
     dict = data_collection.collect_commits_hash(repository_url)
@@ -25,6 +50,7 @@ def test_collect_commits_user_hash(repository_url):
     "repository_url", [("https://github.com/GatorCogitate/cogitate_tool")],
 )
 def test_collect_commits_hash(repository_url):
+    """Check the commits hash has been gathered."""
     list = []
     assert len(list) == 0
     list = data_collection.collect_commits_hash(repository_url)
@@ -68,11 +94,8 @@ def test_get_individual_metrics_accuracy():
     assert test_dict["INDIVIDUAL_METRICS"]["noorbuchi"] == expected_dict
 
 
-# NOTE: additional test cases needed
-
-
 @pytest.mark.parametrize(
-    "input_lines,input_commits,expected_output", [(50, 50, 1), (1, 1, 1), (0, 1, 0)],
+    "input_lines,input_commits,expected_output", [(50, 50, 1), (1, 1, 1), (0, 0, 0)],
 )
 def test_get_commit_average(input_lines, input_commits, expected_output):
     """Checks that the function correctly calculates the ratio."""
