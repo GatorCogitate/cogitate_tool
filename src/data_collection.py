@@ -4,6 +4,22 @@ Collects repository data for contributors of the master branch of a repo.
 Writes the data to a .json file.
 
 Calculates statistics based on the data from Github.
+
+Steps to run data_collection.py and display the data table:
+
+Must be in the repository folder
+
+Run the python file using `pipenv run python src/data_collection.py`
+
+Enter the name of the json file you want the data to be written to.
+
+If prompted, due to data not being collected previously, enter the URL or path
+
+of the Repository you would like to analyze.
+
+If the current repository is the one you would like to analyze, simply
+
+hit enter wihtout typing anything.
 """
 from __future__ import division
 import os
@@ -13,14 +29,17 @@ from github import Github
 import json_handler
 
 
-def authenticate_repository(user_token, repository_name):
-    """Authenticate the Github repository using provided credentials."""
-    # Credentials for PyGithub functions and methods
-    ghub = Github(user_token)
-    repository = ghub.get_repo(repository_name)
+# Note: Is this function needed if it's not called?
 
-    return repository
+# def authenticate_repository(user_token, repository_name):
+#   """Authenticate the Github repository using provided credentials."""
+# Credentials for PyGithub functions and methods
+# ghub = Github(user_token)
+# repository = ghub.get_repo(repository_name)
 
+# return repository
+
+# Note: Is this function needed if it's not called?
 
 # Written as a temporary pass-through in case this variable is converted to a global
 # variable, in which case that process would occur here. Pass-through will be eliminated
@@ -231,13 +250,6 @@ def calculate_individual_metrics(json_file_name):
     # NOTE: for printing the data please use the file print_table.py
 
 
-def find_repositories(repo):
-    """Locates a Github repository with the URL provided by the user."""
-    # ask the user for a URL of a Github repository
-    miner = RepositoryMining(path_to_repo=repo)
-    return miner
-
-
 def print_individual_in_table(file_name):
     """Create and print the table using prettytable."""
     data_table = PrettyTable()
@@ -271,18 +283,6 @@ def print_individual_in_table(file_name):
         )
     print(data_table)
 
-
-# NOTE: For the purposes of testing and demo
-
-# Steps to run data_collection.py and display the data table:
-
-# Must be in the repository folder
-# Run the python file using `pipenv run python src/data_collection.py`
-# Enter the name of the json file you want the data to be written to
-# If prompted, due to data not being collected previously, enter the URL
-# or path of the Repository you would like to analyze
-# If the current repository is the one you would like to analyze, simply
-# hit enter wihtout typing anything.
 
 if __name__ == "__main__":
     # NOTE: this supression needs to be resolved

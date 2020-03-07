@@ -10,28 +10,44 @@ from src import data_collection
 from src import json_handler
 
 
-def test_authenticate_repository():
-    """Determine that the repository has been authenticated."""
-
-
-def test_retrive_issue_data():
+@pytest.mark.parametrize(
+    "repository_url, input_state, input_contributer_data",
+    [("https://github.com/GatorCogitate/cogitate_tool", 2, 2)],
+)
+def test_retrive_issue_data(repository_url, input_state, input_contributer_data):
     """Check that the issue data has be retrived."""
+    data_collection.retrieve_issue_data(
+        repository_url, input_state, input_contributer_data
+    )
+    assert (repository_url) != input_state
 
 
-def test_add_raw_data_to_json():
+@pytest.mark.parametrize(
+    "repository_url, json_file_name",
+    [("https://github.com/GatorCogitate/cogitate_tool", "individual_metrics_testfile")],
+)
+def test_add_raw_data_to_json(repository_url, json_file_name):
     """Check that the issue data has be retrived."""
+    assert (repository_url) != json_file_name
 
 
-def test_calculate_individual_metrics():
+@pytest.mark.parametrize(
+    "json_file_name", [("individual_metrics_testfile")],
+)
+def test_calculate_individual_metrics(json_file_name):
     """Check that the individual metrics have been calculated."""
+    data = data_collection.calculate_individual_metrics(json_file_name)
+    assert len(data) != 0
+    # assert (data) != 0
 
 
-def test_find_repositories():
-    """Check that the repositories have been found."""
-
-
-def test_print_individual_in_table():
+@pytest.mark.parametrize(
+    "json_file_name", [("individual_metrics_testfile")],
+)
+def test_print_individual_in_table(json_file_name):
     """Check that the table has been printed."""
+    data_collection.print_individual_in_table(json_file_name)
+    assert (1) == 1
 
 
 @pytest.mark.xfail

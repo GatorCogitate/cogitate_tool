@@ -1,8 +1,9 @@
-# cogitate_tool
+# Cogitate
 
-## Development Doc
+Cogitate is a tool that enables you to evaluate the performance of
+software developers on Github.
 
-### 1. File Structure
+### File Structure
 
 ```
 .
@@ -34,21 +35,21 @@
 
 ```
 
-### 2. How to Use
+### How to run Cogitate
 
-#### 2.1 How To Install Packages
+#### How To Install Packages
 
 After pulling the repo, use `pipenv shell` in `cogitate_tool/` to enter the virtual
 environment. Use `exit` to exit. Under the virtual environment, use
 `pipenv install <package_name> --dev` to install new packages for development.
 
-Here is a good [tutorial](https://realpython.com/pipenv-guide/) on how to use `pipenv`.
+Here is a [tutorial](https://realpython.com/pipenv-guide/) on how to use `pipenv`.
 
 When under development, always install the virtual environment first by using
 `pipenv install --dev`, then run the developing program by using
 `pipenv run python program_name`.
 
-#### 2.2 How to setup scripts
+#### How to setup scripts
 
 The purpose of script is to automate the running or testing process. To make the
 scripts take effect, add the following code to the `Pipfile`:
@@ -61,7 +62,7 @@ command_name = "./scripts/script_name.sh"
 Here the `command_name` is the command you want to use when running the project.
 For example, if the `command_name` is `cogitate`, the we can use `pipenv run cogitate`.
 
-### 3. CLI
+### Command Line Interface
 
 The [homepage](https://docs.python.org/3/howto/argparse.html) for `argparse`.
 
@@ -70,14 +71,14 @@ The [homepage](https://docs.python.org/3/howto/argparse.html) for `argparse`.
 - `-r` or `--repo` User's repository.
 - `-s` or `--state` State of the issue.
 
-### 4. PyDriller
+### PyDriller
 
 The [homepage](https://github.com/ishepard/pydriller) and [documentation](https://pydriller.readthedocs.io/en/latest/intro.html)
 for `PyDriller`.
 
 The available attributes can be found at their homepage.
 
-## Steps to print out table
+## Steps to collect and print data
 
 - Must be in the `cogitate_tool` folder.
 - Before you run the program make sure you have installed the dev packages.
