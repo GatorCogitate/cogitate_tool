@@ -10,16 +10,18 @@ from src import data_collection
 from src import json_handler
 
 
-@pytest.mark.parametrize(
-    "repository_url, input_state, input_contributer_data",
-    [("https://github.com/GatorCogitate/cogitate_tool", 2, 2)],
-)
-def test_retrive_issue_data(repository_url, input_state, input_contributer_data):
-    """Check that the issue data has be retrived."""
-    data_collection.retrieve_issue_data(
-        repository_url, input_state, input_contributer_data
-    )
-    assert (repository_url) != input_state
+# NOTE: a repository object must be sent in to this function and not a string
+# NOTE: this issue is already being worked on in test_issue_retrieval.py
+# @pytest.mark.parametrize(
+#     "repository_url, input_state, input_contributer_data",
+#     [("https://github.com/GatorCogitate/cogitate_tool", 2, 2)],
+# )
+# def test_retrive_issue_data(repository_url, input_state, input_contributer_data):
+#     """Check that the issue data has be retrived."""
+#     data_collection.retrieve_issue_data(
+#         repository_url, input_state, input_contributer_data
+#     )
+#     assert (repository_url) != input_state
 
 
 @pytest.mark.parametrize(
@@ -41,16 +43,17 @@ def test_calculate_individual_metrics(json_file_name):
     # assert (data) != 0
 
 
-@pytest.mark.parametrize(
-    "json_file_name", [("individual_metrics_testfile")],
-)
-def test_print_individual_in_table(json_file_name):
-    """Check that the table has been printed."""
-    data_collection.print_individual_in_table(json_file_name)
-    assert (1) == 1
+# NOTE: Printing the table does not need to be tested since it is a temporary
+# function
+# @pytest.mark.parametrize(
+#     "json_file_name", [("individual_metrics_testfile")],
+# )
+# def test_print_individual_in_table(json_file_name):
+#     """Check that the table has been printed."""
+#     data_collection.print_individual_in_table(json_file_name)
+#     assert (1) == 1
 
 
-@pytest.mark.xfail
 @pytest.mark.parametrize(
     "repository_url", [("https://github.com/GatorCogitate/cogitate_tool")],
 )
