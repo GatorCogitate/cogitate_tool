@@ -65,6 +65,8 @@ def web_interface():
 
     ################### Feature 6 ###################
     # Are there team members who are “code hoarders” or “domain experts”?
+    if add_selectbox == 'Team Members Who Are Code Hoarders':
+        st.title("Information on Code Hoarders")
 
     ################### Feature 7 ###################
     # Are there team members who contribute source code without also adding test cases?
