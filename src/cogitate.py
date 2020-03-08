@@ -10,11 +10,7 @@ import argparse
 import re
 
 # from pprint import pprint
-
 # from driller import find_repositories
-
-from src import data_collection
-from src import json_handler
 
 
 def main():
