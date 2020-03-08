@@ -1,4 +1,4 @@
-""" Command Line Interface for interacting with Github repository info. """
+"""Command Line Interface for interacting with Github repository info."""
 # from data_collection import collect_commits
 # from web_interface import team_visuals
 # from web_interface import individual_visuals

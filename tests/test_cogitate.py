@@ -2,5 +2,5 @@ import pytest
 from src import cogitate
 
 """
-file to test command line interface functions in cogitate.py
+File to test command line interface functions in cogitate.py
 """

@@ -1,4 +1,4 @@
-""" Uses Pydriller to extract information from Github."""
+"""Uses Pydriller to extract information from Github."""
 from pydriller import RepositoryMining
 
 

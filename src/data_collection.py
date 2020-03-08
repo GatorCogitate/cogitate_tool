@@ -1,4 +1,4 @@
-""" Collects commit data for contributors of the master branch of a repo. """
+"""Collects commit data for contributors of the master branch of a repo."""
 from pydriller import RepositoryMining
 from github import Github
 import json_handler

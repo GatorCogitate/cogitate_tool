@@ -48,7 +48,7 @@ When under development, always install the virtual environment first by using
 `pipenv install --dev`, then run the developing program by using
 `pipenv run python 'program_name'`.
 
-#### 2.2 How to setup scripts
+#### 2.2 How To Setup Scripts
 
 The purpose of script is to automate the running or testing process. To make the
 scripts take effect, add the following code to the `Pipfile`:
