@@ -59,7 +59,8 @@ def web_interface():
 
     ################### Feature 4 ###################
     # What is the overall score for an individual’s contribution to a team project?
-
+    elif add_selectbox == 'An individuals overall contribution to a team or project':
+        st.title("An individuals overall contribution to a team or project")
     ################### Feature 5 ###################
     # Are there individuals who collaborate together too frequently or not enough?
 
@@ -70,7 +71,8 @@ def web_interface():
 
     ################### Feature 7 ###################
     # Are there team members who contribute source code without also adding test cases?
-
+    elif add_selectbox == 'Team Members Who Contribute Source Code Without Tests':
+        st.title("Team Members Who Contribute Source Code Without Tests")
     ################### Feature 8 ###################
     # Are there team members who break the build or contribute to unusually high code churn?
 
