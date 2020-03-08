@@ -9,10 +9,16 @@ import json_handler
 import argparse
 import re
 
+# from pprint import pprint
+
+# from driller import find_repositories
+
+from src import data_collection
+from src import json_handler
+
 
 def main():
     """Execute the CLI."""
-
     args = retrieve_arguments()
 
     # Currently only validates the PyGithub repository
@@ -36,9 +42,8 @@ def main():
 
 def retrieve_arguments():
     """Retrieve the user arguments and return the args dictionary."""
-
     # As no other functions exist in master as of this pull request, the args
-    # below are written to accomadate issual retrieval in data_miner.py
+    # below are written to accomadate issual retrieval in data_collection.py
 
     a_parse = argparse.ArgumentParser()
     a_parse.add_argument("-l", "--link", help="Cogitate a repo by the url of the repo")
@@ -51,9 +56,10 @@ def retrieve_arguments():
     a_parse.add_argument(
         "-s", "--state", required=True, type=str, help="State of the Issue"
     )
+
     args = vars(a_parse.parse_args())
 
-    pprint(find_repositories(args["link"]))
+    # pprint(find_repositories(args["link"]))
 
     return args
 

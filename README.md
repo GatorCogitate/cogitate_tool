@@ -65,7 +65,14 @@ For example, if the `command_name` is `cogitate`, the we can use `pipenv run cog
 
 The [homepage](https://docs.python.org/3/howto/argparse.html) for `argparse`.
 
+<<<<<<< HEAD
 The available attributes can be found at their homepage.
+=======
+- `-l` or `--link` Cogitate a repo by the url of the repo.
+- `-t` or `--token` Github user token.
+- `-r` or `--repo` User's repository.
+- `-s` or `--state` State of the issue.
+>>>>>>> master
 
 ### 4. PyDriller
 
@@ -73,3 +80,12 @@ The [homepage](https://github.com/ishepard/pydriller) and [documentation](https:
 for `PyDriller`.
 
 The available attributes can be found at their homepage.
+
+## Steps to print out table
+
+- Must be in the `cogitate_tool` folder.
+- Before you run the program make sure you have installed the dev packages.
+- Run the following command `pipenv run python src/data_collection.py`
+- Enter the name of the `.json` you would like to write the data to.
+- If you want to use the current repository press `ENTER`, otherwise enter URL/path
+  to other repository.
