@@ -31,24 +31,24 @@ import json_handler
 
 # Note: Is this function needed if it's not called?
 
-# def authenticate_repository(user_token, repository_name):
-#   """Authenticate the Github repository using provided credentials."""
-# Credentials for PyGithub functions and methods
-# ghub = Github(user_token)
-# repository = ghub.get_repo(repository_name)
 
-# return repository
+def authenticate_repository(user_token, repository_name):
+    """Authenticate the Github repository using provided credentials."""
+    # Credentials for PyGithub functions and methods
+    ghub = Github(user_token)
+    repository = ghub.get_repo(repository_name)
 
-# Note: Is this function needed if it's not called?
+    return repository
+
 
 # Written as a temporary pass-through in case this variable is converted to a global
 # variable, in which case that process would occur here. Pass-through will be eliminated
 # during refactoring.
-# def initialize_contributor_data(file_path):
-# """Load a dictionary based upon the given .json file."""
-# contributor_data = json_handler.get_dict_from_json_file(file_path)
+def initialize_contributor_data(file_path):
+    """Load a dictionary based upon the given .json file."""
+    contributor_data = json_handler.get_dict_from_json_file(file_path)
 
-# return contributor_data
+    return contributor_data
 
 
 def retrieve_issue_data(repository, state, contributor_data):
