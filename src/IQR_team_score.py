@@ -29,6 +29,10 @@ commit_data = []
 added_data = []
 removed_data = []
 modified_data = []
+github_data = {}
+
+# def find_github_data():
+# github_data = data_collection.calculate_individual_metrics("individual_metrics_testfile")
 
 
 def calculate_iqr_score(data_list):
@@ -110,6 +114,5 @@ def calculate_average(dictionary):
 
 
 if __name__ == "__main__":
-    lists = [32, 37, 34, 35, 33, 35, 33, 32, 4, 2, 55, 74, 102]
-    print(calculate_iqr_score(lists))
-    print(calculate_average(github_data), "%")
+    print(data_collection.calculate_individual_metrics("individual_metrics_testfile"))
+    print(calculate_average(data_collection.calculate_individual_metrics("individual_metrics_testfile")), "%")
