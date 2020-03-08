@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-"""Collects commit data for contributors of the master branch of a repo."""
-=======
 """
 Collects repository data for contributors of the master branch of a repo.
 
@@ -10,7 +7,6 @@ Calculates statistics based on the data from Github.
 """
 from __future__ import division
 import os
->>>>>>> master
 from pydriller import RepositoryMining
 from prettytable import PrettyTable
 from github import Github
