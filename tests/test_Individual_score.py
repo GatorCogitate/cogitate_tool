@@ -35,13 +35,13 @@ from src import Individual_score
 )
 def test_percentage(input_username, input_category, expected_percentage):
     """Function to determine the correctness of percent of overall branches."""
-    test_current_user = individual_scoring.individual_commitmnet(
+    test_current_user = Individual_score.individual_commitmnet(
         input_username, input_category
     )
-    test_sum_value = individual_scoring.sum_value(input_category)
+    test_sum_value = Individual_score.sum_value(input_category)
 
     test_percentage = round(
-        individual_scoring.percentage_score(test_current_user, test_sum_value)
+        Individual_score.percentage_score(test_current_user, test_sum_value)
     )
 
     assert (test_percentage) == expected_percentage
@@ -70,7 +70,7 @@ def test_percentage(input_username, input_category, expected_percentage):
 )
 def test_sum_value(input_username, input_category, amount_added):
     """Function to determine the correctness of the values in branch per key."""
-    test_sum_value = individual_scoring.sum_value(input_category)
+    test_sum_value = Individual_score.sum_value(input_category)
     # assert (amount_added) == test_sum_value
 
 
