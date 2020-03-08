@@ -3,11 +3,6 @@ from __future__ import division
 import numpy as np
 import data_collection
 
-commit_data = []
-added_data = []
-removed_data = []
-modified_data = []
-
 
 # fake data -> will be converted to use nested dictionary from the .json file
 github_data = {
@@ -23,6 +18,10 @@ github_data = {
     "Alexander_the_Great": {"COMMITS": 42, "ADDED": 355, "REMOVED": 50, "MODIFIED": 405},
 }
 
+commit_data = []
+added_data = []
+removed_data = []
+modified_data = []
 
 def calculate_iqr_score(data_list):
     """Calculate a team score for a data set according to outliers calculated with the interquartile range."""
@@ -64,7 +63,6 @@ def calculate_iqr_score(data_list):
     team_score = (weighted_below + weighted_above + weighted_within) * 100
 
     return team_score
-    # print(weighted_below, weighted_above, weighted_within, team_score)
 
 
 def determine_datasets(dictionary):
@@ -82,8 +80,6 @@ def determine_datasets(dictionary):
             if key == "MODIFIED":
                 modified_data.append(data[key])
 
-    # print(commit_data)
-
 
 def calculate_average(dictionary):
     """Calculate the average team score by totaling the team scores for each dataset and dividing by amount of datasets."""
@@ -94,13 +90,11 @@ def calculate_average(dictionary):
     average_score = 0
     # import lists from calculate_datasets function
     determine_datasets(dictionary)
-    # print(commit_data)
     # calculate the team score for each list of data
     commits_score = calculate_iqr_score(commit_data)
     added_score = calculate_iqr_score(added_data)
     removed_score = calculate_iqr_score(removed_data)
     modified_score = calculate_iqr_score(modified_data)
-
     # find the average team score for all of the categories
     average_score = (commits_score + added_score + removed_score + modified_score) / 4
 
