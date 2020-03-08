@@ -1,9 +1,8 @@
-# Cogitate
+# cogitate_tool
 
-Cogitate is a tool that enables you to evaluate the performance of
-software developers on Github.
+## Development Doc
 
-### File Structure
+### 1. File Structure
 
 ```
 .
@@ -14,42 +13,42 @@ software developers on Github.
 ├── .gitignore
 |
 ├── data
-│   ├── demofile.json
-│   └── testfile.json
+│   ├── demofile.json
+│   └── testfile.json
 |
 ├── scripts
-│   ├── cogitate.sh
-│   └── test.sh
+│   ├── cogitate.sh
+│   └── test.sh
 ├── src
-│   ├── cogitate.py
-│   ├── data_collection.py
-│   ├── data_processor.py
-│   ├── driller.py
+│   ├── cogitate.py
+│   ├── data_collection.py
+│   ├── data_processor.py
+│   ├── driller.py
 │   ├── json_handler.py
-│   └── __init__.py
+│   └── __init__.py
 └── tests
-    ├── conftest.py
-    ├── __init__.py
+    ├── conftest.py
+    ├── __init__.py
     ├── test_json_handler.py
-    └── test_driller.py
+    └── test_driller.py
 
 ```
 
-### How to run Cogitate
+### 2. How to Use
 
-#### How To Install Packages
+#### 2.1 How To Install Packages
 
 After pulling the repo, use `pipenv shell` in `cogitate_tool/` to enter the virtual
 environment. Use `exit` to exit. Under the virtual environment, use
 `pipenv install <package_name> --dev` to install new packages for development.
 
-Here is a [tutorial](https://realpython.com/pipenv-guide/) on how to use `pipenv`.
+Here is a good [tutorial](https://realpython.com/pipenv-guide/) on how to use `pipenv`.
 
 When under development, always install the virtual environment first by using
 `pipenv install --dev`, then run the developing program by using
 `pipenv run python program_name`.
 
-#### How to setup scripts
+#### 2.2 How to setup scripts
 
 The purpose of script is to automate the running or testing process. To make the
 scripts take effect, add the following code to the `Pipfile`:
@@ -62,7 +61,7 @@ command_name = "./scripts/script_name.sh"
 Here the `command_name` is the command you want to use when running the project.
 For example, if the `command_name` is `cogitate`, the we can use `pipenv run cogitate`.
 
-### Command Line Interface
+### 3. CLI
 
 The [homepage](https://docs.python.org/3/howto/argparse.html) for `argparse`.
 
@@ -71,14 +70,14 @@ The [homepage](https://docs.python.org/3/howto/argparse.html) for `argparse`.
 - `-r` or `--repo` User's repository.
 - `-s` or `--state` State of the issue.
 
-### PyDriller
+### 4. PyDriller
 
 The [homepage](https://github.com/ishepard/pydriller) and [documentation](https://pydriller.readthedocs.io/en/latest/intro.html)
 for `PyDriller`.
 
 The available attributes can be found at their homepage.
 
-## Steps to collect and print data
+## Steps to print out table
 
 - Must be in the `cogitate_tool` folder.
 - Before you run the program make sure you have installed the dev packages.
