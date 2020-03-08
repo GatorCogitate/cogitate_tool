@@ -74,8 +74,10 @@ def individual_commitmnet(username, category):
     """Get and send value for key."""
     return github_data[username][category]
 
+
 def average_score():
     """Calculate the average score using all previously calculated metrics."""
+
 
 # weights = {
 # "COMMITS": 0.2,
@@ -89,7 +91,7 @@ def average_score():
 #     return weighted
 
 
-#Print usename and percentage of their contribution for each category
+# Print usename and percentage of their contribution for each category
 def print_data():
     """Print out github_data scores."""
     for username, data in github_data.items():
@@ -102,7 +104,6 @@ def print_data():
                 ),
                 "%",
             )
-
 
 
 if __name__ == "__main__":
