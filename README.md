@@ -65,14 +65,12 @@ For example, if the `command_name` is `cogitate`, the we can use `pipenv run cog
 
 The [homepage](https://docs.python.org/3/howto/argparse.html) for `argparse`.
 
-<<<<<<< HEAD
 The available attributes can be found at their homepage.
-=======
+
 - `-l` or `--link` Cogitate a repo by the url of the repo.
 - `-t` or `--token` Github user token.
 - `-r` or `--repo` User's repository.
 - `-s` or `--state` State of the issue.
->>>>>>> master
 
 ### 4. PyDriller
 
