@@ -66,6 +66,22 @@ def retrieve_issue_data(repository, state, contributor_data):
                     contributor_data[comment.user.login][
                         "pull_requests_commented"
                     ].append(issue.number)
+            else:
+                contributor_data[comment.user.login] = {
+                    "issues_commented": [],
+                    "pull_requests_commented": [],
+                    "issues_opened": [],
+                    "pull_requests_opened": [],
+                }
+                if issue.pull_request is None:
+                    contributor_data[comment.user.login]["issues_commented"].append(
+                        issue.number
+                    )
+                else:
+                    contributor_data[comment.user.login][
+                        "pull_requests_commented"
+                    ].append(issue.number)
+
         if issue.user.login in contributor_data.keys():
             if issue.pull_request is None:
                 contributor_data[issue.user.login]["issues_opened"].append(issue.number)
@@ -287,14 +303,32 @@ def print_individual_in_table(file_name):
 if __name__ == "__main__":
     # NOTE: this supression needs to be resolved
     # pylint: disable=input-builtin
-    FILE_NAME = input("Enter the name of the file : ")
-    # FILE_NAME = "contributor_data_template"
+    FILE_NAME = "testfile"
     DATA = calculate_individual_metrics(FILE_NAME)
     if DATA == {}:
         REPO_PATH = input("Enter the path to the repo : ")
         add_raw_data_to_json(REPO_PATH, FILE_NAME)
         print("processing data again")
         DATA = calculate_individual_metrics(FILE_NAME)
+    token = input("Enter user token")
+    repo_name = "GatorCogitate/cogitate_tool"
+    current_repo = authenticate_repository(token, repo_name)
+    ISSUE_DATA = {}
+    ISSUE_DATA = retrieve_issue_data(current_repo, "all", ISSUE_DATA)
+    for key in ISSUE_DATA:
+        if key not in DATA["INDIVIDUAL_METRICS"].keys():
+            DATA["INDIVIDUAL_METRICS"][key] = {
+                "EMAIL": "This is a bot",
+                "COMMITS": 0,
+                "ADDED": 0,
+                "REMOVED": 0,
+                "TOTAL": 0,
+                "MODIFIED": 0,
+                "RATIO": 0,
+                "FILES": [],
+                "FORMAT": [],
+            }
+        DATA["INDIVIDUAL_METRICS"][key].update(ISSUE_DATA[key])
     print("Adding processed data to selected json file...")
     # Write reformatted dictionary to json
     json_handler.add_entry(DATA, FILE_NAME)
