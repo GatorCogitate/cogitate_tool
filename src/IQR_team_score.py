@@ -1,3 +1,5 @@
+"""A file for calculating how well a team works together using the interquartile range."""
+
 # This import fixes a linting error with old division.
 from __future__ import division
 import numpy as np
@@ -69,7 +71,7 @@ def determine_datasets(dictionary):
     """Determine the datasets of the information in the dictionary and add them to the corresponding list."""
     # iterate through nested dictionary
     for username, data in github_data.items():
-        # for each key in the dictionary its values to a list
+        # for each key in the dictionary add its values to a list
         for key in data:
             if key == "COMMITS":
                 commit_data.append(data[key])
@@ -102,4 +104,6 @@ def calculate_average(dictionary):
 
 
 if __name__ == "__main__":
+    lists = [32, 37, 34, 35, 33, 35, 33, 32, 4, 2, 55, 74, 102]
+    print(calculate_iqr_score(lists))
     print(calculate_average(github_data), "%")
