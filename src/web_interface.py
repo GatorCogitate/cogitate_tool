@@ -53,6 +53,24 @@ def web_interface():
     # How many lines of code did an individual add, modify, and delete?
     elif add_selectbox == 'Lines of Code Added, Modified, Deleted by an Individual':
         st.title("Lines of Code Added, Modified, Deleted by an Individual")  # dispaly relevant title for dataframe
+        df = pd.DataFrame({
+          'type': ['Lines Added','Lines Modified', 'Lines Deleted'],
+          'Christian Lussier': [8, 5, 9],
+          'Cory Wiard': [5, 9, 3],
+          'Devin Spitalny': [2, 5, 7],
+          'Devin Ho': [8, 9, 2],
+          'Jordan Wilson': [5, 9, 3],
+          'Danny Reid': [5, 4, 3],
+          'Anthony Baldeosingh': [1, 2, 1],
+          'Xingbang Liu': [6, 9, 4]
+        })  # create dataframe with sample dates and contributor commit numbers
+
+        df = df.rename(columns={'type':'index'}).set_index('index')  # set date as index
+
+        df  # display chart of sample commits
+
+        
+        st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
 
     ################### Feature 3 ###################
     # Why types of files did an individual normally modify in a repository?
