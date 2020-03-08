@@ -113,6 +113,23 @@ def test_get_individual_metrics_accuracy():
     assert test_dict["INDIVIDUAL_METRICS"]["noorbuchi"] == expected_dict
 
 
+def test_get_individual_metrics_populates_keys():
+    """Checks that individual_metrics data hass correct keys."""
+    test_dict = data_collection.calculate_individual_metrics(
+        "individual_metrics_testfile"
+    )
+    assert "INDIVIDUAL_METRICS" in test_dict.keys()
+    expected_keys = [
+        "schultzh",
+        "WonjoonC",
+        "Jordan-A",
+        "noorbuchi",
+        "Chris Stephenson",
+    ]
+    internal_keys = list(test_dict["INDIVIDUAL_METRICS"].keys())
+    assert internal_keys == expected_keys
+
+
 @pytest.mark.parametrize(
     "input_lines,input_commits,expected_output", [(50, 50, 1), (1, 1, 1), (0, 0, 0)],
 )
