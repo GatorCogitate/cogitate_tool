@@ -59,7 +59,7 @@ def web_interface():
 
     ################### Feature 4 ###################
     # What is the overall score for an individual’s contribution to a team project?
-
+    elif add_selectbox == 'An individuals overall contribution to a team or project':
     ################### Feature 5 ###################
     # Are there individuals who collaborate together too frequently or not enough?
 
