@@ -68,7 +68,7 @@ def web_interface():
 
     ################### Feature 7 ###################
     # Are there team members who contribute source code without also adding test cases?
-
+    elif add_selectbox == 'team members who contribute source code without also adding test cases'
     ################### Feature 8 ###################
     # Are there team members who break the build or contribute to unusually high code churn?
 
