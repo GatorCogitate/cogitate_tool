@@ -69,7 +69,11 @@ def web_interface():
 
         df  # display chart of sample commits
 
-        
+        columns = st.multiselect(
+            label="Enter the names of specific contributors below:", options=df.columns
+        )  # allow users to display specific contributor information on dataframe graph
+
+
         st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
 
     ################### Feature 3 ###################
