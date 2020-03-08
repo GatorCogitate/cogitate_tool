@@ -1,6 +1,7 @@
 # This import fixes a linting error with old division.
 from __future__ import division
 import numpy as np
+import data_collection
 
 commit_data = []
 added_data = []
