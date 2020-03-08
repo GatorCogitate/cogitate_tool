@@ -14,15 +14,15 @@ Tentative Graph Type for Features in the Command Line Interface:
 * Team
 * Individual
 
-# Functionality 
+# Functionality
 
 **Level 1**
 
-* Team or Individuals 
+* Team or Individuals
 
 **Level 2**
 
-* Params
-* Calling a Function 
-* Results 
-* Link to Streamlit (Do you want to view the results in the terminal or on streamlit?)
+* Parameters
+* Calling a Function
+* Results
+* Link to Streamlit (Do you want to view the results in the terminal or on Streamlit?)

@@ -46,7 +46,7 @@ Here is a good [tutorial](https://realpython.com/pipenv-guide/) on how to use `p
 
 When under development, always install the virtual environment first by using
 `pipenv install --dev`, then run the developing program by using
-`pipenv run python program_name`.
+`pipenv run python 'program_name'`.
 
 #### 2.2 How to setup scripts
 
@@ -64,6 +64,8 @@ For example, if the `command_name` is `cogitate`, the we can use `pipenv run cog
 ### 3. CLI
 
 The [homepage](https://docs.python.org/3/howto/argparse.html) for `argparse`.
+
+The available attributes can be found at their homepage.
 
 ### 4. PyDriller
 
