@@ -13,6 +13,7 @@ from github import Github
 import json_handler
 import pprint
 
+
 def authenticate_repository(user_token, repository_name):
     """Authenticate the Github repository using provided credentials."""
     # Credentials for PyGithub functions and methods
@@ -313,15 +314,17 @@ def get_testing_commit_info(json_file_name):
             # Sort list to ensure consistency when testing
         # iterate through the data to do final calculations
         for key in data_dict:
-            data_dict[key]["PERCENT_TO_TESTING"] = ((
+            data_dict[key]["PERCENT_TO_TESTING"] = (
                 data_dict[key]["COMMITS_TO_TESTING"] / data_dict[key]["COMMITS"]
-            ) * 100)
+            ) * 100
 
-            data_dict[key]["COMMITS_ELSEWHERE"] = (data_dict[key]["COMMITS"] - data_dict[key]["COMMITS_TO_TESTING"])
+            data_dict[key]["COMMITS_ELSEWHERE"] = (
+                data_dict[key]["COMMITS"] - data_dict[key]["COMMITS_TO_TESTING"]
+            )
 
-            data_dict[key]["PERCENT_NOT_TO_TESTING"] = ((
+            data_dict[key]["PERCENT_NOT_TO_TESTING"] = (
                 data_dict[key]["COMMITS_ELSEWHERE"] / data_dict[key]["COMMITS"]
-            ) * 100)
+            ) * 100
         # Reformat the dictionary as a value of the key INDIVIDUAL_METRICS
         testing_dict = {"TESTING_DICT": data_dict}
         return testing_dict
@@ -355,6 +358,7 @@ def print_testing_in_table(file_name):
         )
     print(data_table)
 
+
 # NOTE: For the purposes of testing and demo
 
 # Steps to run data_collection.py and display the data table:
@@ -387,7 +391,6 @@ if __name__ == "__main__":
     # FILE_NAME = "contributor_data_template"
     DATA = get_testing_commit_info(FILE_NAME)
     if DATA == {}:
-        REPO_PATH = input("Enter the path to the repo : ")
         add_raw_data_to_json(REPO_PATH, FILE_NAME)
         print("processing data again")
         DATA = get_testing_commit_info(FILE_NAME)
