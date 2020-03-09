@@ -5,11 +5,6 @@ import validators
 
 # from web_interface import web_interface
 import data_collection
-import json_handler
-
-
-# from pprint import pprint
-# from driller import find_repositories
 
 
 def main():
@@ -26,9 +21,9 @@ def main():
     contributor_data = data_collection.retrieve_issue_data(
         repository, args["state"], contributor_data
     )
-    link_str = str(["link"])
+    link_str = str(args["link"])
     if link_validator(link_str) is True:
-        commit_list = data_collection.collect_commits_hash(args["link"])
+        data_collection.collect_commits_hash(args["link"])
     else:
         print("The link you have entered is invalid.")
     # gives the user the option to use the web interface
@@ -39,10 +34,10 @@ def main():
         if visit_web == "y":
             # print(web_interface.web_interface())
             print("link")
-            break
+            web = False
         elif visit_web == "n":
             data_collection.print_file("contributor_data", ["repo"])
-            # exists loop when user chooses not to use the web interface
+            # exits loop when user chooses not to use the web interface
             web = False
         else:
             print("Please enter (y/n).")
