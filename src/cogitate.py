@@ -8,12 +8,9 @@ import json_handler
 import argparse
 import re
 
-<<<<<<< Updated upstream
-=======
 # from pprint import pprint
 # from driller import find_repositories
 
->>>>>>> Stashed changes
 
 def main():
     """Execute the CLI."""
@@ -30,29 +27,26 @@ def main():
         repository, args["state"], contributor_data
     )
     commit_list = data_collection.collect_commits_hash(args["link"])
-<<<<<<< Updated upstream
-    pprint(commit_list)
-=======
->>>>>>> Stashed changes
     # Intermediate between data_miner and data_processor
     json_handler.write_dict_to_json_file(contributor_data, "contributor_data")
-    # gives the user the option to use  the web interface
-    to_web = True
-    while to_web == True:
-        to_webinterface = input("Would you like to view the data on the web?(y/n)")
-        # print(web_interface.web_interface())
 
     # gives the user the option to use the web interface
     web = True
-    while(web == True):
+    # while loop to ensure user input is "y" or "n"
+    while web == True:
         visit_web = input("Would you like to view the data on the web?(y/n)")
         if visit_web == "y":
             # print(web_interface.web_interface())
+            continue
         elif visit_web == "n":
             print("You have chosen to not view the data on the web.")
+            # exists loop when user chooses not to use the web interface
+            web = False
         else:
             print("Please enter (y/n).")
-
+            # loop is repeated when output is not "y" or "n"
+    print("Thank you for using GatorCogitate. Have a great day!")
+    # end of the CLI main method
 
 
 def retrieve_arguments():
