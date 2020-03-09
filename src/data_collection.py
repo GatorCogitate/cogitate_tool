@@ -121,62 +121,6 @@ def collect_commits_hash(repo):
 
     return commit_list
 
-def get_testing_commit_info(json_file_name):
-    current_data = json_handler.get_dict_from_json_file(json_file_name)
-    # creates a hashmap where the key is the authors username
-    data_dict = {}
-    # Check if RAW_DATA is in json
-    if "RAW_DATA" in current_data.keys():
-        for key in current_data["RAW_DATA"]:
-            author = key["author_name"]
-            filepaths = key["filepath"]
-
-            # NOTE check date compatibility with json
-            # date = "N/A"
-            # check if the key already in in the dicitionary
-            if author in data_dict:
-                # condition passed, adds one to the number of commits
-                data_dict[author]["COMMITS"] += 1
-            else:
-                # condition fails, creates a new key and adds empty data
-                print("FOUND AUTHOR", author)
-                data_dict[author] = {
-                    "COMMITS": 1,
-                    "COMMITS_TO_TESTING": 0,
-                    "COMMITS_ELSEWHERE": 0,
-                    "PERCENT_TO_TESTING": 0,
-                    "PERCENT_NOT_TO_TESTING": 0,
-                }
-
-            count = 0
-            for filepath in filepaths:
-                if count is 0:
-                    if filepath:
-                        if "test" in filepath:
-                            data_dict[author]["COMMITS_TO_TESTING"] += 1
-                            count = 1
-                        else:
-                            pass
-                else:
-                    pass
-            # Sort list to ensure consistency when testing
-        # iterate through the data to do final calculations
-        for key in data_dict:
-            data_dict[key]["PERCENT_TO_TESTING"] = ((
-                data_dict[key]["COMMITS_TO_TESTING"] / data_dict[key]["COMMITS"]
-            ) * 100)
-
-            data_dict[key]["COMMITS_ELSEWHERE"] = (data_dict[key]["COMMITS"] - data_dict[key]["COMMITS_TO_TESTING"])
-
-            data_dict[key]["PERCENT_NOT_TO_TESTING"] = ((
-                data_dict[key]["COMMITS_ELSEWHERE"] / data_dict[key]["COMMITS"]
-            ) * 100)
-        # Reformat the dictionary as a value of the key INDIVIDUAL_METRICS
-        testing_dict = {"TESTING_DICT": data_dict}
-        pprint.pprint(data_dict)
-        return testing_dict
-    return {}
-
 
 def get_commit_average(lines, commits):
     """Find average lines modified per commit."""
@@ -327,6 +271,62 @@ def print_individual_in_table(file_name):
         )
 
     print(data_table)
+
+
+def get_testing_commit_info(json_file_name):
+    current_data = json_handler.get_dict_from_json_file(json_file_name)
+    # creates a hashmap where the key is the authors username
+    data_dict = {}
+    # Check if RAW_DATA is in json
+    if "RAW_DATA" in current_data.keys():
+        for key in current_data["RAW_DATA"]:
+            author = key["author_name"]
+            filepaths = key["filepath"]
+
+            # NOTE check date compatibility with json
+            # date = "N/A"
+            # check if the key already in in the dicitionary
+            if author in data_dict:
+                # condition passed, adds one to the number of commits
+                data_dict[author]["COMMITS"] += 1
+            else:
+                # condition fails, creates a new key and adds empty data
+                print("FOUND AUTHOR", author)
+                data_dict[author] = {
+                    "COMMITS": 1,
+                    "COMMITS_TO_TESTING": 0,
+                    "COMMITS_ELSEWHERE": 0,
+                    "PERCENT_TO_TESTING": 0,
+                    "PERCENT_NOT_TO_TESTING": 0,
+                }
+
+            count = 0
+            for filepath in filepaths:
+                if count is 0:
+                    if filepath:
+                        if "test" in filepath:
+                            data_dict[author]["COMMITS_TO_TESTING"] += 1
+                            count = 1
+                        else:
+                            pass
+                else:
+                    pass
+            # Sort list to ensure consistency when testing
+        # iterate through the data to do final calculations
+        for key in data_dict:
+            data_dict[key]["PERCENT_TO_TESTING"] = ((
+                data_dict[key]["COMMITS_TO_TESTING"] / data_dict[key]["COMMITS"]
+            ) * 100)
+
+            data_dict[key]["COMMITS_ELSEWHERE"] = (data_dict[key]["COMMITS"] - data_dict[key]["COMMITS_TO_TESTING"])
+
+            data_dict[key]["PERCENT_NOT_TO_TESTING"] = ((
+                data_dict[key]["COMMITS_ELSEWHERE"] / data_dict[key]["COMMITS"]
+            ) * 100)
+        # Reformat the dictionary as a value of the key INDIVIDUAL_METRICS
+        testing_dict = {"TESTING_DICT": data_dict}
+        return testing_dict
+    return {}
 
 
 def print_testing_in_table(file_name):
