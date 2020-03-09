@@ -97,3 +97,19 @@ def test_get_testing_commit_info_populates_data():
     )
     assert len(test_dict) != 0
     assert "TESTING_DICT" in test_dict.keys()
+
+
+
+def test_get_testing_commit_info_accuracy():
+    """Checks that individual_metrics data outputs correct values."""
+    test_dict = data_collection.get_testing_commit_info(
+        "testing_commits_testfile"
+    )
+    expected_dict = {
+        "COMMITS": 41,
+        "COMMITS_TO_TESTING": 1,
+        "COMMITS_ELSEWHERE": 40,
+        "PERCENT_TO_TESTING": 2.4390243902439024,
+        "PERCENT_NOT_TO_TESTING": 97.5609756097561,
+    }
+    assert test_dict["TESTING_DICT"]["clussier"] == expected_dict
