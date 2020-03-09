@@ -286,22 +286,22 @@ def merge_duplicate_usernames(current_data, kept_entry, removed_entry):
 if __name__ == "__main__":
     # NOTE: this supression needs to be resolved
     # pylint: disable=input-builtin
-    FILE_NAME = "testfile"
+    FILE_NAME = input("Enter the name of the file to store data: ")
     DATA = calculate_individual_metrics(FILE_NAME)
     if DATA == {}:
-        REPO_PATH = "https://github.com/GatorCogitate/cogitate_tool"
+        REPO_PATH = input("Enter repository path URL/Local: ")
         add_raw_data_to_json(REPO_PATH, FILE_NAME)
         print("processing data again")
         DATA = calculate_individual_metrics(FILE_NAME)
     token = input("Enter user token")
-    repo_name = "GatorCogitate/cogitate_tool"
+    repo_name = input("Enter repo name (org/repo_name): ")
     current_repo = authenticate_repository(token, repo_name)
     ISSUE_DATA = {}
     ISSUE_DATA = retrieve_issue_data(current_repo, "all", ISSUE_DATA)
     for key in ISSUE_DATA:
         if key not in DATA["INDIVIDUAL_METRICS"].keys():
             DATA["INDIVIDUAL_METRICS"][key] = {
-                "EMAIL": "This is a bot",
+                "EMAIL": "N/A",
                 "COMMITS": 0,
                 "ADDED": 0,
                 "REMOVED": 0,
