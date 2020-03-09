@@ -91,7 +91,6 @@ def test_calculate_individual_metrics_populates_data():
         "individual_metrics_testfile"
     )
     assert len(test_dict) != 0
-    assert "INDIVIDUAL_METRICS" in test_dict.keys()
 
 
 def test_get_individual_metrics_accuracy():
@@ -110,7 +109,7 @@ def test_get_individual_metrics_accuracy():
         "FILES": ["Pipfile", "Pipfile.lock", "UsingPyGithub.py", "lint.sh", "test.sh"],
         "FORMAT": [],
     }
-    assert test_dict["INDIVIDUAL_METRICS"]["noorbuchi"] == expected_dict
+    assert test_dict["noorbuchi"] == expected_dict
 
 
 def test_get_individual_metrics_populates_keys():
