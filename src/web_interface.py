@@ -104,6 +104,12 @@ def web_interface():
           'Anthony Baldeosingh': [1, 2, 1, 2],
           'Xingbang Liu': [6, 9, 4, 7]
         })
+
+        df = df.rename(columns={'date':'index'}).set_index('index')  # set date as index
+
+        df
+
+        
     ################### Feature 8 ###################
     # Are there team members who break the build or contribute to unusually high code churn?
 
