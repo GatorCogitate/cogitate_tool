@@ -46,6 +46,12 @@ Otherwise, all dependencies listed in the `Pipfile` will need to be installed lo
 
 ## Running GatorCogitate
 
+Run the command `pipenv python run src/cogitate.py` in the root directory.
+When prompted, press `Enter` to leave the repository path as default.
+
+*Note: Any users that do not wish to develop the tool can stop reading here.*
+
+## Development Info:
 
 ### 1. File Structure
 
@@ -78,8 +84,6 @@ Otherwise, all dependencies listed in the `Pipfile` will need to be installed lo
     └── test_driller.py
 
 ```
-
-### 2. How to Use
 
 #### 2.1 How To Install Packages
 
