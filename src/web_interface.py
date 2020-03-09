@@ -79,7 +79,7 @@ def web_interface():
     # Are there individuals who collaborate together too frequently or not enough?
     elif add_selectbox == 'Collaboration Tendencies of Individuals':
         st.title("Collaboration Tendencies of Individuals")
-        relevant title for dataframe
+        
         df = pd.DataFrame({
           'type': ['Individuals overall contribution'],
           'Christian Lussier': [28, 255, 75],
