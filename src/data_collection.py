@@ -227,7 +227,6 @@ def calculate_individual_metrics(json_file_name):
                     "COMMITS": 1,
                     "ADDED": 0,
                     "REMOVED": 0,
-                    "LINESOFCODE": 0,
                     "TOTAL": 0,
                     "MODIFIED": 0,
                     "RATIO": 0,
@@ -237,7 +236,6 @@ def calculate_individual_metrics(json_file_name):
 
             data_dict[author]["ADDED"] += commit["line_added"]
             data_dict[author]["REMOVED"] += commit["line_removed"]
-            data_dict[author]["LINESOFCODE"] += commit["lines_of_code"]
             # check if the explored file is not in the list in index seven
             current_files = commit["filename"]
             # add the current_files to the user files list without duplicates
@@ -258,7 +256,7 @@ def print_individual_in_table(file_name):
     data_table = PrettyTable()
     current_data = json_handler.get_dict_from_json_file(file_name)
     dictionary = current_data["INDIVIDUAL_METRICS"]
-    headings = ["Username", "Email", "Commits", "+", "-", "Lines of code"]
+    headings = ["Username", "Email", "Commits", "+", "-"]
     data_table.field_names = headings
     for author in dictionary:
         data_table.add_row(
@@ -268,10 +266,20 @@ def print_individual_in_table(file_name):
                 dictionary[author]["COMMITS"],
                 dictionary[author]["ADDED"],
                 dictionary[author]["REMOVED"],
-                dictionary[author]["LINESOFCODE"],
             ]
         )
     print(data_table)
+
+
+def merge_duplicate_usernames(dictionary, kept_entry, removed_entry):
+    """Take input from user and merge data in entries then delete one."""
+    dictionary[kept_entry]["COMMITS"] += dictionary[kept_entry]["COMMITS"]
+    dictionary[kept_entry]["ADDED"] += dictionary[kept_entry]["ADDED"]
+    dictionary[kept_entry]["REMOVED"] += dictionary[kept_entry]["REMOVED"]
+    try:
+        del dictionary[removed_entry]
+    except KeyError:
+        print("Key 'testing' not found")
 
 
 if __name__ == "__main__":
@@ -296,7 +304,6 @@ if __name__ == "__main__":
                 "COMMITS": 0,
                 "ADDED": 0,
                 "REMOVED": 0,
-                "LINESOFCODE": 0,
                 "TOTAL": 0,
                 "MODIFIED": 0,
                 "RATIO": 0,
