@@ -1,7 +1,6 @@
-"""Command Line Interface for interacting with Github repository info."""
+"""Command Line Interface for the Cogitate tool."""
 # from data_collection import collect_commits
-# from web_interface import team_visuals
-# from web_interface import individual_visuals
+# from web_interface import web_interface
 from driller import find_repositories
 from pprint import pprint
 import data_collection
@@ -31,9 +30,9 @@ def main():
     # Intermediate between data_miner and data_processor
     json_handler.write_dict_to_json_file(contributor_data, "contributor_data")
 
-    # ask the user where they want view the data; command-line or web-interface
-    print("If you want to view this data on the web, click the following link")
-    print("'link to web-interface'")
+    # gives the user the URL for the web interface
+    print("If you want to view this data on the web, click the following link.")
+    # web_interface.web_interface()
 
 
 def retrieve_arguments():
