@@ -11,7 +11,6 @@ from pydriller import RepositoryMining
 from prettytable import PrettyTable
 from github import Github
 import json_handler
-import pprint
 
 
 def authenticate_repository(user_token, repository_name):
@@ -276,7 +275,7 @@ def print_individual_in_table(file_name):
 
 def get_testing_commit_info(json_file_name):
     """Get repo info about commits to or not to testing."""
-    
+
     current_data = json_handler.get_dict_from_json_file(json_file_name)
     # creates a hashmap where the key is the authors username
     data_dict = {}
