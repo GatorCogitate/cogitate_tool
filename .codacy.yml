@@ -1,0 +1,12 @@
+---
+engines:
+  duplication:
+    enabled: true
+    exclude_paths:
+      - 'data/**'
+      - 'json_interaction/**'
+      - 'README.md'
+exclude_paths:
+  - 'data/**'
+  - 'json_interaction/**'
+  - 'README.md'
