@@ -82,14 +82,14 @@ def web_interface():
         relevant title for dataframe
         df = pd.DataFrame({
           'type': ['Individuals overall contribution'],
-          'Christian Lussier': [8],
-          'Cory Wiard': [5],
-          'Devin Spitalny': [2],
-          'Devin Ho': [8],
-          'Jordan Wilson': [5],
-          'Danny Reid': [5],
-          'Anthony Baldeosingh': [1],
-          'Xingbang Liu': [6]
+          'Christian Lussier': [28, 255, 75],
+          'Cory Wiard': [6, 349, 50],
+          'Devin Spitalny': [22, 15, 48],
+          'Devin Ho': [8, 128, 2],
+          'Jordan Wilson': [10, 8, 28],
+          'Danny Reid': [25, 5, 15],
+          'Anthony Baldeosingh': [1, 1, 1],
+          'Xingbang Liu': [6, 100, 129]
         })  # create dataframe with sample dates and contributor commit numbers
 
         df = df.rename(columns={'type':'index'}).set_index('index')  # set date as index
