@@ -283,7 +283,7 @@ def get_testing_commit_info(json_file_name):
     if "RAW_DATA" in current_data.keys():
         for key in current_data["RAW_DATA"]:
             author = key["author_name"]
-            filepaths = key["filepath"]
+            filepaths = key["filepath"]  # get filepaths of file modified
 
             # NOTE check date compatibility with json
             # date = "N/A"
@@ -301,13 +301,17 @@ def get_testing_commit_info(json_file_name):
                     "PERCENT_NOT_TO_TESTING": 0,
                 }
 
-            count = 0
+            count = 0  # when 0 the current commit has no changes to tests
             for filepath in filepaths:
-                if count is 0:
+                if (
+                    count is 0
+                ):  # when 0, current commit no testing changes; if not 0, this commit already had testing changes
                     if filepath:
                         if "test" in filepath:
-                            data_dict[author]["COMMITS_TO_TESTING"] += 1
-                            count = 1
+                            data_dict[author][
+                                "COMMITS_TO_TESTING"
+                            ] += 1  # the current commit has a change to testing
+                            count = 1  # found a change to testing for this commit
                         else:
                             pass
                 else:
