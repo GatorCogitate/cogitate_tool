@@ -274,12 +274,26 @@ def print_individual_in_table(
 def merge_duplicate_usernames(current_data, kept_entry, removed_entry):
     """Take input from user and merge data in entries then delete one."""
     dictionary = current_data["INDIVIDUAL_METRICS"]
-    dictionary[kept_entry]["COMMITS"] += dictionary[removed_entry]["COMMITS"]
-    dictionary[kept_entry]["ADDED"] += dictionary[removed_entry]["ADDED"]
-    dictionary[kept_entry]["REMOVED"] += dictionary[removed_entry]["REMOVED"]
-    dictionary[kept_entry]["FILES"] = list(
-        set(dictionary[kept_entry]["FILES"]) | set(dictionary[removed_entry]["FILES"])
-    )
+    categories = [
+        "COMMITS",
+        "ADDED",
+        "REMOVED",
+        "FILES",
+        "issues_commented",
+        "issues_opened",
+        "pull_requests_opened",
+        "pull_requests_commented",
+    ]
+    for category in categories:
+        # Special case for merging files to avoid duplicates
+        if category == "FILES":
+            dictionary[kept_entry][category] = list(
+                set(dictionary[kept_entry][category])
+                | set(dictionary[removed_entry][category])
+            )
+        else:
+            # simple addiyion for all other metrics
+            dictionary[kept_entry][category] += dictionary[removed_entry][category]
     try:
         del dictionary[removed_entry]
     except KeyError:
@@ -287,6 +301,7 @@ def merge_duplicate_usernames(current_data, kept_entry, removed_entry):
     return {"INDIVIDUAL_METRICS": dictionary}
 
 
+# This main method is only for the purposes of testing
 if __name__ == "__main__":
     # NOTE: this supression needs to be resolved
     # pylint: disable=input-builtin
