@@ -41,7 +41,11 @@ environment. Use `exit` to exit. Under the virtual environment, use
 
 Here is a good [tutorial](https://realpython.com/pipenv-guide/) on how to use `pipenv`.
 
-Otherwise, all dependencies listed in the `Pipfile` will need to be installed locally.
+Otherwise, all dependencies will need to be installed locally with the commands:
+```
+python3 -m pip install --upgrade pip
+python3 -m pip install -e
+```
 
 
 ## Running GatorCogitate
