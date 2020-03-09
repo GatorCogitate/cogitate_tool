@@ -32,13 +32,13 @@ Or with SSH:
 ```
 git clone git@github.com:GatorCogitate/cogitate_tool.git
 ```
+2. Install Pipenv
+
+## Testing GatorCogitate
 
 
-## Testing the cogitate_tool
+## Running GatorCogitate
 
-## Running the cogitate_tool
-
-## Contributors
 
 ### 1. File Structure
 
