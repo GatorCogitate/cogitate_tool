@@ -240,11 +240,14 @@ def find_repositories(repo):
     return miner
 
 
-def print_individual_in_table(file_name):
-    """Create and print the table using prettytable."""
+def print_individual_in_table(file_name="individual_metrics_storage"):
+    """Create and print the table using prettytable.
+    Use individual_metrics_storage as default file unless otherwise chosen.
+    """
+    # Initialize pretty table object
     data_table = PrettyTable()
-    current_data = json_handler.get_dict_from_json_file(file_name)
-    dictionary = current_data["INDIVIDUAL_METRICS"]
+    # retreive data from the appropriate json file
+    dictionary = json_handler.get_dict_from_json_file(file_name)
     headings = [
         "Username",
         "Email",
