@@ -8,9 +8,6 @@ import json_handler
 import argparse
 import re
 
-# from pprint import pprint
-# from driller import find_repositories
-
 
 def main():
     """Execute the CLI."""
@@ -27,11 +24,11 @@ def main():
         repository, args["state"], contributor_data
     )
     commit_list = data_collection.collect_commits_hash(args["link"])
+    pprint(commit_list)
     # Intermediate between data_miner and data_processor
     json_handler.write_dict_to_json_file(contributor_data, "contributor_data")
-
     # gives the user the URL for the web interface
-    print("If you want to view this data on the web, click the following link.")
+    print("If you want to view this data on the web, click the following link:")
     # web_interface.web_interface()
 
 
