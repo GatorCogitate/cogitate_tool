@@ -154,6 +154,7 @@ def get_file_formats(files):
 
 
 # This function simplifies gathering and writing raw data to json file
+# pylint: disable=C0330
 def colect_and_add_raw_data_to_json(
     path_to_repo, json_file_name="raw_data_storage", overwrite=True
 ):
@@ -175,6 +176,7 @@ def colect_and_add_raw_data_to_json(
         json_handler.add_entry(raw_data, json_file_name)
 
 
+# pylint: disable=C0330
 def colect_and_add_individual_metrics_to_json(
     read_file="raw_data_storage",
     write_file="individual_metrics_storage",
