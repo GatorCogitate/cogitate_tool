@@ -1,3 +1,3906 @@
 {
-    "username": "test_data"
+    "username": "test_data",
+    "RAW_DATA": [
+        {
+            "hash": "bfd08de199d55ec8268e46d03cb361cff34e16de",
+            "author_msg": "Initial commit",
+            "author_name": "Saejin Mahlau-Heinert",
+            "author_email": "saejinmh@gmail.com",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "README.md"
+            ],
+            "filepath": [
+                "README.md"
+            ]
+        },
+        {
+            "hash": "8850920441620ec8e789d7632e046e561d2d0600",
+            "author_msg": "Add general overview of project to README.",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 1,
+            "lines_of_code": 1,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "README.md"
+            ],
+            "filepath": [
+                "README.md"
+            ]
+        },
+        {
+            "hash": "c32dfa782f6fa649d4fec96bfbc5ecf88cdda636",
+            "author_msg": "Create sqlite3 database for future use.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "dfbe1c7543ae80a19cb573c54971d1bfc2a277f2",
+            "author_msg": "Initial basic setup of flask web server.",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv106.allegheny.edu",
+            "merge": false,
+            "line_added": 28,
+            "line_removed": 0,
+            "lines_of_code": 22,
+            "complexity": 1,
+            "methods": [
+                "home_get"
+            ],
+            "filename": [
+                "app.py",
+                "home.css",
+                "home.js",
+                "home.html"
+            ],
+            "filepath": [
+                "src/app.py",
+                "src/static/css/home.css",
+                "src/static/js/home.js",
+                "src/templates/home.html"
+            ]
+        },
+        {
+            "hash": "cb603e1e3a98bd58c613e0d41dbab97d35613120",
+            "author_msg": "Create sqlite3 database for future use.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "fb38a34a6e8fb0cde890c1183ca22f490e96ccb4",
+            "author_msg": "Added redirect for home",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv106.allegheny.edu",
+            "merge": false,
+            "line_added": 5,
+            "line_removed": 0,
+            "lines_of_code": 10,
+            "complexity": 2,
+            "methods": [
+                "home_redirect",
+                "home_get"
+            ],
+            "filename": [
+                "app.py"
+            ],
+            "filepath": [
+                "src/app.py"
+            ]
+        },
+        {
+            "hash": "288fac278850d9728f70343e3462348e05018080",
+            "author_msg": "Add tables",
+            "author_name": "Jerfenson Cerda Mejia",
+            "author_email": "cerdamejiaj@aldenv107.allegheny.edu",
+            "merge": false,
+            "line_added": 19,
+            "line_removed": 0,
+            "lines_of_code": 17,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Tables.sql"
+            ],
+            "filepath": [
+                "Tables.sql"
+            ]
+        },
+        {
+            "hash": "2a857a3e48a2462b8066e33679b4a80138026046",
+            "author_msg": "Merge branch 'Create-Data-Tables' of github.com:GatorEducator/petition-pronto into Create-Data-Tables",
+            "author_name": "Jerfenson Cerda Mejia",
+            "author_email": "cerdamejiaj@aldenv107.allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "9d14a47ed7301443909ce9fd768b6d67b19d3dc1",
+            "author_msg": "Transfer new tables to .sqlite3 database files.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 18,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                ".DS_Store",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                ".DS_Store",
+                "petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "e4158a994e4e73c2571cea9cb455e4036b3b1db0",
+            "author_msg": "Add .gitignore file.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 237,
+            "line_removed": 0,
+            "lines_of_code": 183,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                ".gitignore"
+            ],
+            "filepath": [
+                ".gitignore"
+            ]
+        },
+        {
+            "hash": "661dd858227efc4741b1395a340aac74d03a44ac",
+            "author_msg": "Added error page",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv106.allegheny.edu",
+            "merge": false,
+            "line_added": 17,
+            "line_removed": 0,
+            "lines_of_code": 25,
+            "complexity": 3,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "page_not_found"
+            ],
+            "filename": [
+                "app.py",
+                "404.html"
+            ],
+            "filepath": [
+                "src/app.py",
+                "src/templates/404.html"
+            ]
+        },
+        {
+            "hash": "cf6b507ba87fcc8a21f6a4e543e3b842c4efc668",
+            "author_msg": "Remove .DS_Store file as it is unneeded.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                ".DS_Store"
+            ],
+            "filepath": [
+                ".DS_Store"
+            ]
+        },
+        {
+            "hash": "d803957ce9f26f669667b3b9ec3596a7c9905cf2",
+            "author_msg": "Somework on login",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv106.allegheny.edu",
+            "merge": false,
+            "line_added": 31,
+            "line_removed": 2,
+            "lines_of_code": 36,
+            "complexity": 11,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "login_get",
+                "login_post",
+                "petitions_get",
+                "page_not_found"
+            ],
+            "filename": [
+                "app.py",
+                "database_handler.py",
+                "login_handler.py",
+                "login.html",
+                "petitions.html"
+            ],
+            "filepath": [
+                "src/app.py",
+                "src/database_handler.py",
+                "src/login_handler.py",
+                "src/templates/login.html",
+                "src/templates/petitions.html"
+            ]
+        },
+        {
+            "hash": "0c6558f0e215c90ee284cf5403c077c709128b0e",
+            "author_msg": "Login is almost working, just need a logout",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv106.allegheny.edu",
+            "merge": false,
+            "line_added": 55,
+            "line_removed": 3,
+            "lines_of_code": 102,
+            "complexity": 12,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "petitions_get",
+                "page_not_found"
+            ],
+            "filename": [
+                "app.py",
+                "home.html",
+                "invalid_login.html",
+                "login.html",
+                "petitions.html"
+            ],
+            "filepath": [
+                "src/app.py",
+                "src/templates/home.html",
+                "src/templates/invalid_login.html",
+                "src/templates/login.html",
+                "src/templates/petitions.html"
+            ]
+        },
+        {
+            "hash": "c35a2753128ca87dc669a089ee7b47c29c2f68b3",
+            "author_msg": "Added logout functionality",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv106.allegheny.edu",
+            "merge": false,
+            "line_added": 7,
+            "line_removed": 0,
+            "lines_of_code": 62,
+            "complexity": 13,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "petitions_get",
+                "page_not_found"
+            ],
+            "filename": [
+                "app.py",
+                "petitions.html"
+            ],
+            "filepath": [
+                "src/app.py",
+                "src/templates/petitions.html"
+            ]
+        },
+        {
+            "hash": "a27d772d06e90b334876133bb1a42e03b6a52fd1",
+            "author_msg": "Refactor",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv106.allegheny.edu",
+            "merge": false,
+            "line_added": 9,
+            "line_removed": 2,
+            "lines_of_code": 56,
+            "complexity": 15,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "petitions_get",
+                "page_not_found",
+                "validate_user"
+            ],
+            "filename": [
+                "login_handler.cpython-36.pyc",
+                "app.py",
+                "login_handler.py"
+            ],
+            "filepath": [
+                "src/__pycache__/login_handler.cpython-36.pyc",
+                "src/app.py",
+                "src/login_handler.py"
+            ]
+        },
+        {
+            "hash": "fbd384833f9193f2ad5ac0d454ef922b234ca102",
+            "author_msg": "Merge pull request #4 from GatorEducator/flask-starter\n\nFlask starter",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "067202a8100262245e9eb94d7932647dd21fbd01",
+            "author_msg": "Merge pull request #6 from GatorEducator/Create-Data-Tables\n\nCreate data tables",
+            "author_name": "Jerfenson Cerda Mejia",
+            "author_email": "cerdamejiaj@allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "4346fe64f489c257d02c420f74ab4ab3d3a3ffc1",
+            "author_msg": "Move .sqlite3 file into the 'src' folder.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 19,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Tables.sql",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                null,
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "b517fe72677da2eae57884c00f91762039ecfefa",
+            "author_msg": "First commit on branch",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv175.allegheny.edu",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 0,
+            "lines_of_code": 49,
+            "complexity": 12,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "petitions_get",
+                "page_not_found"
+            ],
+            "filename": [
+                "app.py"
+            ],
+            "filepath": [
+                "src/app.py"
+            ]
+        },
+        {
+            "hash": "2a5aa58609bde1e9a4c461b079dcc7cedac98132",
+            "author_msg": "Added start to displaying a list of petitions",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv175.allegheny.edu",
+            "merge": false,
+            "line_added": 11,
+            "line_removed": 1,
+            "lines_of_code": 74,
+            "complexity": 12,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "petitions_get",
+                "page_not_found"
+            ],
+            "filename": [
+                "login_handler.cpython-36.pyc",
+                "app.py",
+                "petitions.html"
+            ],
+            "filepath": [
+                "src/__pycache__/login_handler.cpython-36.pyc",
+                "src/app.py",
+                "src/templates/petitions.html"
+            ]
+        },
+        {
+            "hash": "eb036665150dcd5269da9136217e65af37d5a419",
+            "author_msg": "Now you can inspect each petition in greater detail",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv175.allegheny.edu",
+            "merge": false,
+            "line_added": 30,
+            "line_removed": 4,
+            "lines_of_code": 95,
+            "complexity": 14,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "petitions_get",
+                "petitions_inspect_get",
+                "page_not_found"
+            ],
+            "filename": [
+                "app.py",
+                "petition_info.html",
+                "petitions.html"
+            ],
+            "filepath": [
+                "src/app.py",
+                "src/templates/petition_info.html",
+                "src/templates/petitions.html"
+            ]
+        },
+        {
+            "hash": "579546010a1fb13203876dd33ddf690e2ee03b5b",
+            "author_msg": "Begin implementing login connectivity with database.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 26,
+            "line_removed": 2,
+            "lines_of_code": 15,
+            "complexity": 3,
+            "methods": [
+                "validate_user"
+            ],
+            "filename": [
+                "login_handler.py"
+            ],
+            "filepath": [
+                "src/login_handler.py"
+            ]
+        },
+        {
+            "hash": "41a8a9e7cc95371203aae02c73eb6fb491201ecd",
+            "author_msg": "Add module to handle emails for submitted petitions to user",
+            "author_name": "Matthew Baldeosingh",
+            "author_email": "baldeosinghm@allegheny.edu",
+            "merge": false,
+            "line_added": 22,
+            "line_removed": 0,
+            "lines_of_code": 17,
+            "complexity": 1,
+            "methods": [
+                "connectDatabase"
+            ],
+            "filename": [
+                "login_handler.cpython-36.pyc",
+                "email_handler.py"
+            ],
+            "filepath": [
+                "src/__pycache__/login_handler.cpython-36.pyc",
+                "src/email_handler.py"
+            ]
+        },
+        {
+            "hash": "9adb90776e3c680d4125f6e5c56f451f954f660e",
+            "author_msg": "Started working on getting approving functionality",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv175.allegheny.edu",
+            "merge": false,
+            "line_added": 16,
+            "line_removed": 1,
+            "lines_of_code": 89,
+            "complexity": 16,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "petitions_get",
+                "petitions_inspect_get",
+                "petitions_inspect_post",
+                "page_not_found"
+            ],
+            "filename": [
+                "app.py",
+                "petition_info.html"
+            ],
+            "filepath": [
+                "src/app.py",
+                "src/templates/petition_info.html"
+            ]
+        },
+        {
+            "hash": "635acede971ed41becb2360c21216bb3b204130b",
+            "author_msg": "Prevent issues with login queries.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 16,
+            "line_removed": 13,
+            "lines_of_code": 55,
+            "complexity": 6,
+            "methods": [
+                "validate_user",
+                "validate_user_old"
+            ],
+            "filename": [
+                "login_handler.py",
+                "petitiondb.sqlite3",
+                "petitiondb.sqlite3 copy"
+            ],
+            "filepath": [
+                "src/login_handler.py",
+                "src/petitiondb.sqlite3",
+                "src/petitiondb.sqlite3 copy"
+            ]
+        },
+        {
+            "hash": "432e32d924e0a0ee9612f8291131246821d65176",
+            "author_msg": "updating file",
+            "author_name": "Jerfenson Cerda Mejia",
+            "author_email": "cerdamejiaj@aldenv140.allegheny.edu",
+            "merge": false,
+            "line_added": 142,
+            "line_removed": 5,
+            "lines_of_code": 141,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "LoginT.css",
+                "login.css",
+                "login.js",
+                "login.html"
+            ],
+            "filepath": [
+                "src/static/css/LoginT.css",
+                "src/static/css/login.css",
+                "src/static/js/login.js",
+                "src/templates/login.html"
+            ]
+        },
+        {
+            "hash": "e95e773f94c20319d233afbccc9f7a07a18b3c88",
+            "author_msg": "Add support for SQLite3 logins.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 15,
+            "line_removed": 2,
+            "lines_of_code": 31,
+            "complexity": 7,
+            "methods": [
+                "validate_user",
+                "validate_user_old"
+            ],
+            "filename": [
+                "login_handler.py"
+            ],
+            "filepath": [
+                "src/login_handler.py"
+            ]
+        },
+        {
+            "hash": "8b3b4e6bb0964d71c6787db6200be5a70fc4edad",
+            "author_msg": "Add support for invalid logins.\n\nPrevents Invalid Exception page from appearing when there is an invalid \nlogin. Instead displays the invalid login page.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 4,
+            "line_removed": 1,
+            "lines_of_code": 34,
+            "complexity": 8,
+            "methods": [
+                "validate_user",
+                "validate_user_old"
+            ],
+            "filename": [
+                "login_handler.py"
+            ],
+            "filepath": [
+                "src/login_handler.py"
+            ]
+        },
+        {
+            "hash": "54e427680d0712b1988e8a8e9f2bfb290d263e61",
+            "author_msg": "Clean up login code formatting.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 4,
+            "line_removed": 16,
+            "lines_of_code": 27,
+            "complexity": 5,
+            "methods": [
+                "validate_user"
+            ],
+            "filename": [
+                "login_handler.py"
+            ],
+            "filepath": [
+                "src/login_handler.py"
+            ]
+        },
+        {
+            "hash": "d104568c3f9ea018f76a03c270f17dc0b02dba31",
+            "author_msg": "Add comments to login handler.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 11,
+            "line_removed": 12,
+            "lines_of_code": 26,
+            "complexity": 5,
+            "methods": [
+                "validate_user"
+            ],
+            "filename": [
+                "login_handler.py"
+            ],
+            "filepath": [
+                "src/login_handler.py"
+            ]
+        },
+        {
+            "hash": "ec5f285fe044e77a96175061475c59d3ef03b20a",
+            "author_msg": "Improve formatting; remove unneeded code.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 7,
+            "lines_of_code": 23,
+            "complexity": 5,
+            "methods": [
+                "validate_user"
+            ],
+            "filename": [
+                "login_handler.py"
+            ],
+            "filepath": [
+                "src/login_handler.py"
+            ]
+        },
+        {
+            "hash": "ebb35f9a50732c3fd26c65e75fd036ef44a24b9c",
+            "author_msg": "Remove unneeded file.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "petitiondb.sqlite3 copy"
+            ],
+            "filepath": [
+                "src/petitiondb.sqlite3 copy"
+            ]
+        },
+        {
+            "hash": "8b5d7c505c21d0bc9725fa6706a044e2ca4b0d53",
+            "author_msg": "Merge pull request #10 from GatorEducator/database-login-connectivity\n\nConnect Website Login to SQLite3 Database",
+            "author_name": "Jerfenson Cerda Mejia",
+            "author_email": "cerdamejiaj@allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "739255b2ab2d63092bb9eb3f507e11de3e6b5322",
+            "author_msg": "First commit on branch",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv175.allegheny.edu",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 0,
+            "lines_of_code": 49,
+            "complexity": 12,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "petitions_get",
+                "page_not_found"
+            ],
+            "filename": [
+                "app.py"
+            ],
+            "filepath": [
+                "src/app.py"
+            ]
+        },
+        {
+            "hash": "15f1fa493f9a9143f54e2d25350546993f110cfc",
+            "author_msg": "Added start to displaying a list of petitions",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv175.allegheny.edu",
+            "merge": false,
+            "line_added": 11,
+            "line_removed": 1,
+            "lines_of_code": 74,
+            "complexity": 12,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "petitions_get",
+                "page_not_found"
+            ],
+            "filename": [
+                "login_handler.cpython-36.pyc",
+                "app.py",
+                "petitions.html"
+            ],
+            "filepath": [
+                "src/__pycache__/login_handler.cpython-36.pyc",
+                "src/app.py",
+                "src/templates/petitions.html"
+            ]
+        },
+        {
+            "hash": "dc022e279e5ed46f2e9efe9bd83fc5fdf99e6c2c",
+            "author_msg": "Now you can inspect each petition in greater detail",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv175.allegheny.edu",
+            "merge": false,
+            "line_added": 30,
+            "line_removed": 4,
+            "lines_of_code": 95,
+            "complexity": 14,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "petitions_get",
+                "petitions_inspect_get",
+                "page_not_found"
+            ],
+            "filename": [
+                "app.py",
+                "petition_info.html",
+                "petitions.html"
+            ],
+            "filepath": [
+                "src/app.py",
+                "src/templates/petition_info.html",
+                "src/templates/petitions.html"
+            ]
+        },
+        {
+            "hash": "e30d1b0b6b99e2af591a104cdddc3fd2d0b363d1",
+            "author_msg": "Started working on getting approving functionality",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv175.allegheny.edu",
+            "merge": false,
+            "line_added": 16,
+            "line_removed": 1,
+            "lines_of_code": 89,
+            "complexity": 16,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "petitions_get",
+                "petitions_inspect_get",
+                "petitions_inspect_post",
+                "page_not_found"
+            ],
+            "filename": [
+                "app.py",
+                "petition_info.html"
+            ],
+            "filepath": [
+                "src/app.py",
+                "src/templates/petition_info.html"
+            ]
+        },
+        {
+            "hash": "ea239cbdac842befdcaa4effd35af1794e8a4680",
+            "author_msg": "Merge branch 'flask_petitions' of github.com:GatorEducator/petition-pronto into flask_petitions",
+            "author_name": "bristola",
+            "author_email": "bristola@allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "1994a3c93a459460cf6fa1f4eb93225b7b7a365e",
+            "author_msg": "Create functions that will hold code for getting petition information.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 6,
+            "line_removed": 0,
+            "lines_of_code": 5,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "43a531267c747d631f9d8331823f58874bcd9614",
+            "author_msg": "Add Computer Science Department to Department table.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 13,
+            "line_removed": 0,
+            "lines_of_code": 32,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "c5aff7c927e71040dc5fb574273c0b5302fb02d7",
+            "author_msg": "Add recent work.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 8,
+            "line_removed": 4,
+            "lines_of_code": 15,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "3e8d4e7d9071d9859949df096a417fff675f0e1d",
+            "author_msg": "updating branch",
+            "author_name": "Jerfenson Cerda Mejia",
+            "author_email": "cerdamejiaj@aldenv104.allegheny.edu",
+            "merge": false,
+            "line_added": 65,
+            "line_removed": 5,
+            "lines_of_code": 92,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "login_handler.cpython-36.pyc",
+                "home.css",
+                "home.html",
+                "login.html"
+            ],
+            "filepath": [
+                "src/__pycache__/login_handler.cpython-36.pyc",
+                "src/static/css/home.css",
+                "src/templates/home.html",
+                "src/templates/login.html"
+            ]
+        },
+        {
+            "hash": "41880d5990e5fd2302ed7c8a988437731ad33c2a",
+            "author_msg": "Add work on getting petition functions.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 23,
+            "line_removed": 1,
+            "lines_of_code": 50,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "55b1838868211b9110faf40f3d0a3e9461385cde",
+            "author_msg": "Add working get_petitions() function.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 10,
+            "line_removed": 6,
+            "lines_of_code": 33,
+            "complexity": 5,
+            "methods": [
+                "get_petitions",
+                "get_petition_info"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "0b4dc0a1c656f4631fc0b358a603e1decea845fd",
+            "author_msg": "Add working get_petition_info function.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 11,
+            "line_removed": 6,
+            "lines_of_code": 55,
+            "complexity": 5,
+            "methods": [
+                "get_petitions",
+                "get_petition_info"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "9637d7137607c6ef61611071a93913b843841182",
+            "author_msg": "Remove lines of test code for petition database connectivity.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 9,
+            "lines_of_code": 30,
+            "complexity": 5,
+            "methods": [
+                "get_petitions",
+                "get_petition_info"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "8540bc9e8e81b8ad98bbf7a1e9b4a3571b46e852",
+            "author_msg": "Merge pull request #14 from GatorEducator/connect-petitions-to-database\n\nConnect Petitions to Database",
+            "author_name": "Jerfenson Cerda Mejia",
+            "author_email": "cerdamejiaj@allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "119bad7c5ceaf3a8c5ee0aa8c4c417865cc3e808",
+            "author_msg": "Added confirm password",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv135.allegheny.edu",
+            "merge": false,
+            "line_added": 60,
+            "line_removed": 0,
+            "lines_of_code": 149,
+            "complexity": 23,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "change_password_get",
+                "change_password_post",
+                "invalid_confirmation_get",
+                "petitions_get",
+                "petitions_inspect_get",
+                "petitions_inspect_post",
+                "page_not_found"
+            ],
+            "filename": [
+                "login_handler.cpython-36.pyc",
+                "app.py",
+                "change_password.html",
+                "invalid_confirmation.html",
+                "petitions.html"
+            ],
+            "filepath": [
+                "src/__pycache__/login_handler.cpython-36.pyc",
+                "src/app.py",
+                "src/templates/change_password.html",
+                "src/templates/invalid_confirmation.html",
+                "src/templates/petitions.html"
+            ]
+        },
+        {
+            "hash": "26bb2ad0a162d0417d72bf43d89a6713482c6552",
+            "author_msg": "Merge branch 'master' into flask_petitions",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv135.allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "c9a1729fb184b2a247207cdc74bf9873098ebe74",
+            "author_msg": "Email File",
+            "author_name": "Jeremy Moore",
+            "author_email": "jjmoore@ewire23-42.allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 0,
+            "lines_of_code": 2,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "config.py"
+            ],
+            "filepath": [
+                "src/config.py"
+            ]
+        },
+        {
+            "hash": "4e880cbd7cd034649c69eff61b026770628e0ccb",
+            "author_msg": "Merge branch 'email' of https://github.com/GatorEducator/petition-pronto into email",
+            "author_name": "Jeremy Moore",
+            "author_email": "jjmoore@ewire23-42.allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "0c9aa0de3e5ca82c55a5976f2142b50f0e09e0f9",
+            "author_msg": "Email messenger",
+            "author_name": "Jeremy Moore",
+            "author_email": "jjmoore@ewire23-42.allegheny.edu",
+            "merge": false,
+            "line_added": 26,
+            "line_removed": 0,
+            "lines_of_code": 20,
+            "complexity": 2,
+            "methods": [
+                "send_email"
+            ],
+            "filename": [
+                "mycontacts.txt",
+                "send_email.py"
+            ],
+            "filepath": [
+                "src/mycontacts.txt",
+                "src/send_email.py"
+            ]
+        },
+        {
+            "hash": "b51a3003fc28813cf9d0d198a10905c3087e6de3",
+            "author_msg": "added ability to actually get petitions",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv135.allegheny.edu",
+            "merge": false,
+            "line_added": 9,
+            "line_removed": 6,
+            "lines_of_code": 106,
+            "complexity": 24,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "change_password_get",
+                "change_password_post",
+                "invalid_confirmation_get",
+                "petitions_get",
+                "petitions_inspect_get",
+                "petitions_inspect_post",
+                "page_not_found"
+            ],
+            "filename": [
+                "login_handler.cpython-36.pyc",
+                "app.py"
+            ],
+            "filepath": [
+                "src/__pycache__/login_handler.cpython-36.pyc",
+                "src/app.py"
+            ]
+        },
+        {
+            "hash": "0e2962c0980cda186015d292c4955a27d25ec497",
+            "author_msg": "Add basic code for changing user passwords.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 17,
+            "line_removed": 0,
+            "lines_of_code": 58,
+            "complexity": 6,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "2eef524e4b34b6b5a8017433c46c5f10067235a5",
+            "author_msg": "Merge pull request #15 from GatorEducator/flask_petitions\n\nFlask petitions",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "170214160d7847a0e8f46ec570f78e3b109a84c3",
+            "author_msg": "Add working password changing function.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 3,
+            "line_removed": 6,
+            "lines_of_code": 57,
+            "complexity": 6,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "1a3570b02aad0aedb7006200fd6a1450c6b53886",
+            "author_msg": "Add petiton form to the home page",
+            "author_name": "Jerfenson Cerda Mejia",
+            "author_email": "cerdamejiaj@aldenv139.allegheny.edu",
+            "merge": false,
+            "line_added": 27,
+            "line_removed": 3,
+            "lines_of_code": 66,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "home.html"
+            ],
+            "filepath": [
+                "src/templates/home.html"
+            ]
+        },
+        {
+            "hash": "43f91952b823c73aecc3bf1635ed3f276bb15022",
+            "author_msg": "Add name to petiton form",
+            "author_name": "Jerfenson Cerda Mejia",
+            "author_email": "cerdamejiaj@aldenv139.allegheny.edu",
+            "merge": false,
+            "line_added": 5,
+            "line_removed": 1,
+            "lines_of_code": 70,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "home.html"
+            ],
+            "filepath": [
+                "src/templates/home.html"
+            ]
+        },
+        {
+            "hash": "6102a50f3ba05163a8652154848c7821e1e49ec0",
+            "author_msg": "Remove preliminary email module",
+            "author_name": "Matthew Baldeosingh",
+            "author_email": "baldeosinghm@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 22,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "email_handler.py"
+            ],
+            "filepath": [
+                null
+            ]
+        },
+        {
+            "hash": "60a8d03ca526e30174d45fc7ade174383e790128",
+            "author_msg": "Changed email contacts file location\n\nCo-authored-by: <jjmoore@allegheny.edu",
+            "author_name": "Matthew Baldeosingh",
+            "author_email": "baldeosinghm@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 3,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "mycontacts.txt"
+            ],
+            "filepath": [
+                null
+            ]
+        },
+        {
+            "hash": "123749a7cd2cf5f62dd129fc4f1e3c1e25ee5b18",
+            "author_msg": "Changed location of the main module for the email handler\n\nCo-authored-by: <jjmoore@allegheny.edu",
+            "author_name": "Matthew Baldeosingh",
+            "author_email": "baldeosinghm@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 23,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "send_email.py"
+            ],
+            "filepath": [
+                null
+            ]
+        },
+        {
+            "hash": "16df043ce223b3810a3af82c7941eb40cec359c9",
+            "author_msg": "Changed email config location\n\nCo-authored-by: <jjmoore@allegheny.edu",
+            "author_name": "Matthew Baldeosingh",
+            "author_email": "baldeosinghm@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 2,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "config.py"
+            ],
+            "filepath": [
+                null
+            ]
+        },
+        {
+            "hash": "de141d81855ef4bf627b311e30f6b20eb770d581",
+            "author_msg": "Moved config file location to email directory",
+            "author_name": "Matthew Baldeosingh",
+            "author_email": "baldeosinghm@allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 0,
+            "lines_of_code": 2,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "config.py"
+            ],
+            "filepath": [
+                "src/email/config.py"
+            ]
+        },
+        {
+            "hash": "3bebc4d193946b1b50e3b312b2217af48c8c19f4",
+            "author_msg": "Moved email handler main module to an email directory in src folder",
+            "author_name": "Matthew Baldeosingh",
+            "author_email": "baldeosinghm@allegheny.edu",
+            "merge": false,
+            "line_added": 22,
+            "line_removed": 0,
+            "lines_of_code": 18,
+            "complexity": 2,
+            "methods": [
+                "send_email"
+            ],
+            "filename": [
+                "send_email.py"
+            ],
+            "filepath": [
+                "src/email/send_email.py"
+            ]
+        },
+        {
+            "hash": "a88c89266b5f8efe62d8d5e62983b4f6fc1ce776",
+            "author_msg": "Moved contacts file location to an email dir in src folder",
+            "author_name": "Matthew Baldeosingh",
+            "author_email": "baldeosinghm@allegheny.edu",
+            "merge": false,
+            "line_added": 3,
+            "line_removed": 0,
+            "lines_of_code": 3,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "mycontacts.txt"
+            ],
+            "filepath": [
+                "src/email/mycontacts.txt"
+            ]
+        },
+        {
+            "hash": "00d4536e78463796d3a5be389af256c2141f5d7d",
+            "author_msg": "Pycache updated",
+            "author_name": "Matthew Baldeosingh",
+            "author_email": "baldeosinghm@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 2,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "login_handler.cpython-36.pyc"
+            ],
+            "filepath": [
+                "src/__pycache__/login_handler.cpython-36.pyc"
+            ]
+        },
+        {
+            "hash": "94fe1a54cb169fadeec7140ae580c94d1595a870",
+            "author_msg": "Merge pull request #16 from GatorEducator/change-pass-in-database\n\nChange Password in Database",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "e38757822706c86f3b1239dadd88909615cfb7a9",
+            "author_msg": "removed pyc file",
+            "author_name": "Jerfenson Cerda Mejia",
+            "author_email": "cerdamejiaj@aldenv177.allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "login_handler.cpython-36.pyc"
+            ],
+            "filepath": [
+                "src/__pycache__/login_handler.cpython-36.pyc"
+            ]
+        },
+        {
+            "hash": "e40ed9efc4f2565cf1f2039f8bf21fc398de1bbf",
+            "author_msg": "Merge branch 'master' into HTML_Responsive",
+            "author_name": "Jerfenson Cerda Mejia",
+            "author_email": "cerdamejiaj@aldenv177.allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "c6b470c57e67597b1c9de414f7bfa179a5c8e921",
+            "author_msg": "Merge pull request #20 from GatorEducator/HTML_Responsive\n\nHtml responsive",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "c01709fc6b0760612aaa3dfbf081e7a628dc6f29",
+            "author_msg": "Added work to create account if you are an admin",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv176.allegheny.edu",
+            "merge": false,
+            "line_added": 58,
+            "line_removed": 5,
+            "lines_of_code": 214,
+            "complexity": 36,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "change_password_get",
+                "change_password_post",
+                "invalid_confirmation_get",
+                "create_account_get",
+                "create_account_post",
+                "petitions_get",
+                "petitions_inspect_get",
+                "petitions_inspect_post",
+                "page_not_found",
+                "validate_user"
+            ],
+            "filename": [
+                "login_handler.cpython-36.pyc",
+                "app.py",
+                "login_handler.py",
+                "petitiondb.sqlite3",
+                "create_account.html",
+                "petitions.html"
+            ],
+            "filepath": [
+                "src/__pycache__/login_handler.cpython-36.pyc",
+                "src/app.py",
+                "src/login_handler.py",
+                "src/petitiondb.sqlite3",
+                "src/templates/create_account.html",
+                "src/templates/petitions.html"
+            ]
+        },
+        {
+            "hash": "8aba11b617af0ee1cdcd30e5e4fe407146d2c787",
+            "author_msg": "Small change so that forms work again in new styling",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv176.allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 2,
+            "lines_of_code": 37,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "login_handler.cpython-36.pyc",
+                "login.html"
+            ],
+            "filepath": [
+                "src/__pycache__/login_handler.cpython-36.pyc",
+                "src/templates/login.html"
+            ]
+        },
+        {
+            "hash": "9b55ab07cd30c9d7ee7c377bee260d8e7960a424",
+            "author_msg": "Merge branch 'master' into flask_petitions",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv176.allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "d4236a8d842bbd1e0caa43472b8f5e00ca3affdd",
+            "author_msg": "Refactor the config.py file to work properly",
+            "author_name": "Jeremy Moore",
+            "author_email": "jjmoore@MacBook-Pro-72.local",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 0,
+            "lines_of_code": 3,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "config.py"
+            ],
+            "filepath": [
+                "src/config.py"
+            ]
+        },
+        {
+            "hash": "7263b880ce23452e2e05d68fb39d1a110ff41e62",
+            "author_msg": "EMAIL_RECIEVER funtion added to allow the use of mass emails",
+            "author_name": "Jeremy Moore",
+            "author_email": "jjmoore@MacBook-Pro-72.local",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 2,
+            "lines_of_code": 17,
+            "complexity": 2,
+            "methods": [
+                "send_email"
+            ],
+            "filename": [
+                "send_email.py"
+            ],
+            "filepath": [
+                "src/send_email.py"
+            ]
+        },
+        {
+            "hash": "c6f1d3bf35e8f4c4daf55384329030b3d49bc01e",
+            "author_msg": "Added flask functionality to student petition form",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv176.allegheny.edu",
+            "merge": false,
+            "line_added": 24,
+            "line_removed": 6,
+            "lines_of_code": 200,
+            "complexity": 32,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "home_post",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "change_password_get",
+                "change_password_post",
+                "invalid_confirmation_get",
+                "create_account_get",
+                "create_account_post",
+                "petitions_get",
+                "petitions_inspect_get",
+                "petitions_inspect_post",
+                "page_not_found"
+            ],
+            "filename": [
+                "app.py",
+                "home.html"
+            ],
+            "filepath": [
+                "src/app.py",
+                "src/templates/home.html"
+            ]
+        },
+        {
+            "hash": "386ef18b644e260469a64d000600ca43b011b206",
+            "author_msg": "Merge branch 'email' of https://github.com/GatorEducator/petition-pronto into email",
+            "author_name": "Jeremy Moore",
+            "author_email": "jjmoore@MacBook-Pro-72.local",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "229d98500607f62302068ed1a8e39c2f35a172e5",
+            "author_msg": "Removed title",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@allegheny.edu",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 5,
+            "lines_of_code": 66,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "home.html"
+            ],
+            "filepath": [
+                "src/templates/home.html"
+            ]
+        },
+        {
+            "hash": "f22a0d46e0aad2badd5969b1bc395aab95bef95e",
+            "author_msg": "Merge pull request #22 from GatorEducator/flask_petitions\n\nFlask petitions",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "0f44df65de1fedfef7c7bb75a3f43f2c91bc2f42",
+            "author_msg": "Add code for automatic ID updating for user created accounts.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 15,
+            "line_removed": 1,
+            "lines_of_code": 67,
+            "complexity": 8,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "201f4426af7f0b53fba3e5c03afa53c649101a78",
+            "author_msg": "Add create account functionality.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 6,
+            "line_removed": 0,
+            "lines_of_code": 55,
+            "complexity": 8,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "47aa28b992e7854c0d076ea0f829b8db07185e19",
+            "author_msg": "Update account creation formatting and comments.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 5,
+            "line_removed": 4,
+            "lines_of_code": 55,
+            "complexity": 8,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "a83eff293ec380192a21fd9e2fbfbf0177597b31",
+            "author_msg": "Formatting changes and added comments for account creation function.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 4,
+            "line_removed": 3,
+            "lines_of_code": 55,
+            "complexity": 8,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "9d902b9a163e9ef0e5bde4b5ed8a61504e4686f8",
+            "author_msg": "Add Petition-Pronto email as sender; remove unneeded file.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 3,
+            "line_removed": 6,
+            "lines_of_code": 3,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "config.py",
+                "mycontacts.txt"
+            ],
+            "filepath": [
+                "src/email/config.py",
+                null
+            ]
+        },
+        {
+            "hash": "4dba095c4bd4a94e8bc5dce0d75e9d8b2128cb58",
+            "author_msg": "Update formatting.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 1,
+            "lines_of_code": 17,
+            "complexity": 2,
+            "methods": [
+                "send_email"
+            ],
+            "filename": [
+                "send_email.py"
+            ],
+            "filepath": [
+                "src/email/send_email.py"
+            ]
+        },
+        {
+            "hash": "c6edd205eeb2afe866d337281d9804189af70139",
+            "author_msg": "Remove pycache files.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "login_handler.cpython-36.pyc"
+            ],
+            "filepath": [
+                "src/__pycache__/login_handler.cpython-36.pyc"
+            ]
+        },
+        {
+            "hash": "1931012a393b68f67f22d35852ae3c0a62013873",
+            "author_msg": "Git remove pycache.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "8831d5de6e0029dcf59d15bea75fd3dbeaf28ea2",
+            "author_msg": "Add \".pyc\" to gitignore.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 0,
+            "lines_of_code": 184,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                ".gitignore"
+            ],
+            "filepath": [
+                ".gitignore"
+            ]
+        },
+        {
+            "hash": "045a009edc1f70859b16f747f160898b79950a4c",
+            "author_msg": "Merge branch 'master' into create_account",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv174.allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "16be2b082b638f6646d5cbac1f50fff17d077d9f",
+            "author_msg": "Merge pull request #23 from GatorEducator/create_account\n\nCreate Account Function",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "1ac6f2f2edc928f91af39b8706cf0a8228cfb75f",
+            "author_msg": "Added database functions to flask server.",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv174.allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 7,
+            "lines_of_code": 156,
+            "complexity": 32,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "home_post",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "change_password_get",
+                "change_password_post",
+                "invalid_confirmation_get",
+                "create_account_get",
+                "create_account_post",
+                "petitions_get",
+                "petitions_inspect_get",
+                "petitions_inspect_post",
+                "page_not_found"
+            ],
+            "filename": [
+                "login_handler.cpython-36.pyc",
+                "app.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/__pycache__/login_handler.cpython-36.pyc",
+                "src/app.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "9d3eed3d6c577a25d62a4330d07aec59e20d5d16",
+            "author_msg": "Added ability to approve or disapprove a petition",
+            "author_name": "bristola",
+            "author_email": "bristola@allegheny.edu",
+            "merge": false,
+            "line_added": 5,
+            "line_removed": 1,
+            "lines_of_code": 27,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "petition_info.html"
+            ],
+            "filepath": [
+                "src/templates/petition_info.html"
+            ]
+        },
+        {
+            "hash": "866ad102e4dc436767ab89083a3fb78eb17207da",
+            "author_msg": "Merge branch 'master' into email",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "c8505cb9c40c95aef96441c0ec06df1d39560715",
+            "author_msg": "Update send_email function to take in reciever emails as a parameter.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 4,
+            "line_removed": 5,
+            "lines_of_code": 20,
+            "complexity": 2,
+            "methods": [
+                "send_email"
+            ],
+            "filename": [
+                "config.py",
+                "send_email.py"
+            ],
+            "filepath": [
+                "src/email/config.py",
+                "src/email/send_email.py"
+            ]
+        },
+        {
+            "hash": "929109b3f31ea475984a7bcb93b56b17ce89d5b5",
+            "author_msg": "Merge pull request #17 from GatorEducator/email\n\nEmail Handler",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "68f3e3db2e1e1ea4736dca11a43ee07c499780bc",
+            "author_msg": "Create Approval_Responses Table.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 21,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "62f381605756797fa461e20312ac90f853003aac",
+            "author_msg": "Create new column in approval table for petitions that have no reviews yet.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 21,
+            "line_removed": 1,
+            "lines_of_code": 90,
+            "complexity": 10,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "8859efd72b9e0f5915673aa2bf31464ef6023525",
+            "author_msg": "Find current number of responses and approvals for given petition.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 16,
+            "line_removed": 1,
+            "lines_of_code": 79,
+            "complexity": 11,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "8bf253833d995f411b8b541b98abcd6b8aa1b9d6",
+            "author_msg": "Add code to automatically update number of Petition Reviews in database.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 4,
+            "line_removed": 3,
+            "lines_of_code": 104,
+            "complexity": 11,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "4316634ed618a52752b9eb4244b83b45658c26e8",
+            "author_msg": "Work in progress approval code.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 27,
+            "line_removed": 6,
+            "lines_of_code": 135,
+            "complexity": 16,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "send_email"
+            ],
+            "filename": [
+                "config.py",
+                "database_handler.py",
+                "petitiondb.sqlite3",
+                "send_email.py"
+            ],
+            "filepath": [
+                "src/config.py",
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3",
+                "src/send_email.py"
+            ]
+        },
+        {
+            "hash": "d8d9a2adeaf6d42c3f1d3e923af22ace9b83c678",
+            "author_msg": "Fix incorrect approval counting",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 6,
+            "line_removed": 4,
+            "lines_of_code": 124,
+            "complexity": 14,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "4080a0fcb42ac45a614a2187d0b283ea39873295",
+            "author_msg": "Logo for Project",
+            "author_name": "Jeremy Moore",
+            "author_email": "jjmoore@ewire28-151.allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 113,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "PetitionLogo.jpg",
+                "PetitonLogoTranparent.png"
+            ],
+            "filepath": [
+                "logo/PetitionLogo.jpg",
+                "logo/PetitonLogoTranparent.png"
+            ]
+        },
+        {
+            "hash": "00ae11ef94915f04e4714f0458b31ff65785b57f",
+            "author_msg": "Removed logo from the wrong branch",
+            "author_name": "Jeremy Moore",
+            "author_email": "jjmoore@ewire28-151.allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "PetitionLogo.jpg",
+                "PetitonLogoTranparent.png"
+            ],
+            "filepath": [
+                "logo/PetitionLogo.jpg",
+                "logo/PetitonLogoTranparent.png"
+            ]
+        },
+        {
+            "hash": "dd9b6fd28e6e703879cdb8ddac6b19309810dc15",
+            "author_msg": "Created logo for Petition Pronto",
+            "author_name": "Jeremy Moore",
+            "author_email": "jjmoore@ewire28-151.allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 113,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "PetitionLogo.jpg",
+                "PetitonLogoTranparent.png"
+            ],
+            "filepath": [
+                "src/logo 12.48.34 PM/PetitionLogo.jpg",
+                "src/logo 12.48.34 PM/PetitonLogoTranparent.png"
+            ]
+        },
+        {
+            "hash": "3574127bd8056c17807febfd11fd43b2ab531d8b",
+            "author_msg": "Quick update.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 6,
+            "line_removed": 7,
+            "lines_of_code": 122,
+            "complexity": 14,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "259fd48e20b8f25c85222f01c5024f6ff29c7d18",
+            "author_msg": "Functionality for using the email in the petition information.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 13,
+            "line_removed": 2,
+            "lines_of_code": 109,
+            "complexity": 15,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "144ac1fe6cd1be5f5e1f38b857230e505146c8b3",
+            "author_msg": "Find faculty emails for petition's department.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 18,
+            "line_removed": 2,
+            "lines_of_code": 140,
+            "complexity": 17,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "92ddddbc0d405f4f94571bb1a07d3d89d2c27206",
+            "author_msg": "Add send email support for faculty members.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 3,
+            "line_removed": 2,
+            "lines_of_code": 120,
+            "complexity": 17,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "9035635147a548edbceb1931c9c1642a2999fe37",
+            "author_msg": "Email functionality.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 30,
+            "line_removed": 29,
+            "lines_of_code": 146,
+            "complexity": 17,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "acd1ca39be626f3fc06d5b149e6b1c841a5008c1",
+            "author_msg": "Update email messages.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 6,
+            "line_removed": 4,
+            "lines_of_code": 148,
+            "complexity": 17,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "9ea7ed406902ebe38f89c960abeea1e10d25ae17",
+            "author_msg": "Create Petition_Voters table.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 24,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "240cd5b11eb707a4aef27fed163298e6825381ed",
+            "author_msg": "Add get_user_id function.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 15,
+            "line_removed": 0,
+            "lines_of_code": 166,
+            "complexity": 25,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "validate_user",
+                "get_user_id"
+            ],
+            "filename": [
+                "database_handler.py",
+                "login_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/login_handler.py"
+            ]
+        },
+        {
+            "hash": "436ac9fbee83978983ad1bebce29a053104ed579",
+            "author_msg": "Add functionality that stops users from voting twice.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 61,
+            "line_removed": 30,
+            "lines_of_code": 211,
+            "complexity": 29,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "add_vote",
+                "validate_user"
+            ],
+            "filename": [
+                "database_handler.py",
+                "login_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/login_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "47dc270cc0336da568b94a5f8e7bd66e22236739",
+            "author_msg": "add style to page 404, petition info and change password pages",
+            "author_name": "cerdamejiaj",
+            "author_email": "cerdamejiaj@alleheny.edu",
+            "merge": false,
+            "line_added": 155,
+            "line_removed": 15,
+            "lines_of_code": 261,
+            "complexity": 2,
+            "methods": [
+                "and",
+                "and"
+            ],
+            "filename": [
+                "404.css",
+                "404.html",
+                "change_password.html",
+                "home.html",
+                "login.html",
+                "petition_info.html"
+            ],
+            "filepath": [
+                "src/static/css/404.css",
+                "src/templates/404.html",
+                "src/templates/change_password.html",
+                "src/templates/home.html",
+                "src/templates/login.html",
+                "src/templates/petition_info.html"
+            ]
+        },
+        {
+            "hash": "f2efb74ef29ba4f6e5a864b4948a276fa462fb4c",
+            "author_msg": "Update comments; remove unneeded code.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 4,
+            "line_removed": 9,
+            "lines_of_code": 161,
+            "complexity": 23,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "add_vote"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "86132ccaa29aa3b13510358efea588538df0013c",
+            "author_msg": "Add comments for submit_decision().",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 33,
+            "line_removed": 22,
+            "lines_of_code": 158,
+            "complexity": 23,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "add_vote"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "0e5ab760bb85dedcc9ebe5a6bc2967dd7571bebd",
+            "author_msg": "Add comments for add_vote() function.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 6,
+            "line_removed": 4,
+            "lines_of_code": 158,
+            "complexity": 23,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "add_vote"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "c1793914fcd2ef547e20d42a0960c66064b74d31",
+            "author_msg": "Clear tables relating to petition voting.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 24,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "b0fc3b6037254acd8be3182e531d8a50fa56c3e6",
+            "author_msg": "Update code for seeing if someone has already voted.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 30,
+            "line_removed": 13,
+            "lines_of_code": 185,
+            "complexity": 24,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "add_vote",
+                "find"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "2a5e3b033ece3eda7b73e36c997861d8b8b19db3",
+            "author_msg": "Create count_vote() function. \n\nUse updated number of approvals and responses from database to count the \nvote.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 26,
+            "line_removed": 16,
+            "lines_of_code": 201,
+            "complexity": 26,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "count_votes",
+                "add_vote",
+                "find"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "d4a09233e6a94859b295ebdea3c573e7159fab92",
+            "author_msg": "Improve code formatting.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 17,
+            "line_removed": 17,
+            "lines_of_code": 202,
+            "complexity": 26,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "count_votes",
+                "add_vote",
+                "find"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "e1987d20535221810803e5222c9d5e3e9fd59cf7",
+            "author_msg": "Quick fixes.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 5,
+            "lines_of_code": 175,
+            "complexity": 26,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "count_votes",
+                "add_vote",
+                "find"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "15e7cbeb4c7b9d80281cfd7ee761dd23b0c0da0d",
+            "author_msg": "Added travis yaml file to enable Travis CI to check code",
+            "author_name": "Matthew Baldeosingh",
+            "author_email": "baldeosinghm@allegheny.edu",
+            "merge": false,
+            "line_added": 52,
+            "line_removed": 0,
+            "lines_of_code": 36,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                ".travis.yml"
+            ],
+            "filepath": [
+                "src/.travis.yml"
+            ]
+        },
+        {
+            "hash": "fea2a92a3b7ca3fb678cda4fc4509ca931c1db3c",
+            "author_msg": "Fix email in database; quick fixes in python code.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 5,
+            "lines_of_code": 196,
+            "complexity": 26,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "count_votes",
+                "add_vote",
+                "find"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "7170d97d5db52a7180d5bfc9c1bacb7b1b1baef8",
+            "author_msg": "Merge branch 'master' into HTML_Responsive",
+            "author_name": "Jerfenson Cerda Mejia",
+            "author_email": "cerdamejiaj@aldenv139.allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "06f2d9487b611935e518bc6ce4e9d7137cde6792",
+            "author_msg": "Merge pull request #26 from GatorEducator/approval-functionality\n\nApproval Functionality",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "7ffca1ea32d35e507bd314a6adc0e6efb3617ad6",
+            "author_msg": "Merge branch 'master' into flask_database",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv135.allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "334ec9fbefdb6b2690b50ddc6843405ffdeae593",
+            "author_msg": "Merge pull request #27 from GatorEducator/flask_database\n\nFlask database",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "489883566e96f6086acf8cd11559d4585c11f067",
+            "author_msg": "Merge pull request #28 from GatorEducator/testing\n\nConnecting Travis CI",
+            "author_name": "Matthew Baldeosingh",
+            "author_email": "42876742+baldeosinghm@users.noreply.github.com",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "34d6ddc8b750b5f55fd0fc7d8940c2b573901c05",
+            "author_msg": "Fixed a merge thing from before and added approved functionality.",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv135.allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 1,
+            "lines_of_code": 152,
+            "complexity": 32,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "home_post",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "change_password_get",
+                "change_password_post",
+                "invalid_confirmation_get",
+                "create_account_get",
+                "create_account_post",
+                "petitions_get",
+                "petitions_inspect_get",
+                "petitions_inspect_post",
+                "page_not_found"
+            ],
+            "filename": [
+                "app.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/app.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "fa8f6d2cec8266c966aa34086d84f01f5935cb9e",
+            "author_msg": "Merge pull request #29 from GatorEducator/flask_validation\n\nFixed a merge thing from before and added approved functionality.",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "15a8c7fe705b1420fc19260c24c8d53200027c3d",
+            "author_msg": "Add code for getting department ID number.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 18,
+            "line_removed": 0,
+            "lines_of_code": 184,
+            "complexity": 28,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "count_votes",
+                "add_vote",
+                "find",
+                "add_petition"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "acce7a09b5d238699c22b163e56e3b577caafc48",
+            "author_msg": "Add more style to pages and made minor changes to layout",
+            "author_name": "Jerfenson Cerda Mejia",
+            "author_email": "cerdamejiaj@aldenv139.allegheny.edu",
+            "merge": false,
+            "line_added": 197,
+            "line_removed": 24,
+            "lines_of_code": 318,
+            "complexity": 2,
+            "methods": [
+                "and",
+                "and"
+            ],
+            "filename": [
+                "login_handler.cpython-36.pyc",
+                "change.css",
+                "invalidConfig.css",
+                "petition_info.css",
+                "404.html",
+                "change_password.html",
+                "invalid_confirmation.html",
+                "invalid_login.html",
+                "login.html",
+                "petition_info.html",
+                "petitions.html"
+            ],
+            "filepath": [
+                "src/__pycache__/login_handler.cpython-36.pyc",
+                "src/static/css/change.css",
+                "src/static/css/invalidConfig.css",
+                "src/static/css/petition_info.css",
+                "src/templates/404.html",
+                "src/templates/change_password.html",
+                "src/templates/invalid_confirmation.html",
+                "src/templates/invalid_login.html",
+                "src/templates/login.html",
+                "src/templates/petition_info.html",
+                "src/templates/petitions.html"
+            ]
+        },
+        {
+            "hash": "fbf8ca636e9f0fcbbc7f4a8588f2a33fd0815399",
+            "author_msg": "Add code for adding petition into database.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 7,
+            "line_removed": 1,
+            "lines_of_code": 188,
+            "complexity": 28,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "count_votes",
+                "add_vote",
+                "find",
+                "add_petition"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "1c910cea36d4f52b76f2fc37f10430f278b7a4a3",
+            "author_msg": "Merge branch 'master' into HTML_Responsive",
+            "author_name": "Jerfenson Cerda Mejia",
+            "author_email": "cerdamejiaj@aldenv139.allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "2a60f29ad03a6cea21a5146e1e5ec295e15a5a70",
+            "author_msg": "Add code for generating new petition IDs.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 13,
+            "line_removed": 1,
+            "lines_of_code": 197,
+            "complexity": 29,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "count_votes",
+                "add_vote",
+                "find",
+                "add_petition"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "63faa39de8e3f4606044886ca5f75dee399cc625",
+            "author_msg": "Add working code for adding a petition to the database.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 1,
+            "lines_of_code": 215,
+            "complexity": 29,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "count_votes",
+                "add_vote",
+                "find",
+                "add_petition"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "ed1fbd4d66d01e363d31d92485222c3fefff6e88",
+            "author_msg": "Quick updates to add_petition function.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 4,
+            "line_removed": 5,
+            "lines_of_code": 195,
+            "complexity": 29,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "count_votes",
+                "add_vote",
+                "find",
+                "add_petition"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "f1a77d03f9421cd245c64d2ccec13335b023eb53",
+            "author_msg": "Create delete_petition function.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 4,
+            "line_removed": 0,
+            "lines_of_code": 198,
+            "complexity": 30,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "count_votes",
+                "add_vote",
+                "find",
+                "add_petition",
+                "delete_petition"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "6c8e392b3b68a27f56ef5f05ded71cf34b24d3a3",
+            "author_msg": "Fix bad request error",
+            "author_name": "Jerfenson Cerda Mejia",
+            "author_email": "cerdamejiaj@aldenv139.allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 2,
+            "lines_of_code": 150,
+            "complexity": 32,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "home_post",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "change_password_get",
+                "change_password_post",
+                "invalid_confirmation_get",
+                "create_account_get",
+                "create_account_post",
+                "petitions_get",
+                "petitions_inspect_get",
+                "petitions_inspect_post",
+                "page_not_found"
+            ],
+            "filename": [
+                "app.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/app.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "83952715abcc92a9682e4f7230fb2979e7d1beff",
+            "author_msg": "Add code for deleting petitions based on petitionID.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 5,
+            "line_removed": 1,
+            "lines_of_code": 217,
+            "complexity": 30,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "count_votes",
+                "add_vote",
+                "find",
+                "add_petition",
+                "delete_petition"
+            ],
+            "filename": [
+                "database_handler.py",
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/database_handler.py",
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "7d320b7db854f9035d76fba219f5099c45b2bf3d",
+            "author_msg": "Delete petitions reviewed by all the faculty of a department.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 0,
+            "lines_of_code": 201,
+            "complexity": 30,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "count_votes",
+                "add_vote",
+                "find",
+                "add_petition",
+                "delete_petition"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "1135707b412406d585929be5d99c7659891120ee",
+            "author_msg": "Quick update.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 1,
+            "lines_of_code": 201,
+            "complexity": 30,
+            "methods": [
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "count_votes",
+                "add_vote",
+                "find",
+                "add_petition",
+                "delete_petition"
+            ],
+            "filename": [
+                "database_handler.py"
+            ],
+            "filepath": [
+                "src/database_handler.py"
+            ]
+        },
+        {
+            "hash": "10e3f74c067fcd8a3c1d578a3a925340abb4ec05",
+            "author_msg": "Merge branch 'add-petition-to-db'",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "239b4ec18f79b586c9a4cced9098e07d4975ba6b",
+            "author_msg": "Merge branch 'master' of github.com:GatorEducator/petition-pronto",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "961b7309b4802b854bfce9e0d31b85e1706825fb",
+            "author_msg": "Add correct database.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 24,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "petitiondb.sqlite3"
+            ],
+            "filepath": [
+                "src/petitiondb.sqlite3"
+            ]
+        },
+        {
+            "hash": "41ae6c92c2e9faff99fdd1a8bb02595f95ce4c12",
+            "author_msg": "Adding the logo to the doc folder",
+            "author_name": "Jeremy Moore",
+            "author_email": "jjmoore@MacBook-Pro-72.local",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 113,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "PetitionLogo.jpg",
+                "PetitonLogoTranparent.png"
+            ],
+            "filepath": [
+                "docs/PetitionLogo.jpg",
+                "docs/PetitonLogoTranparent.png"
+            ]
+        },
+        {
+            "hash": "86bffb849dc914bf5fa2a3ca8f59b870bc0313f9",
+            "author_msg": "Updating the README file",
+            "author_name": "Jeremy Moore",
+            "author_email": "jjmoore@MacBook-Pro-72.local",
+            "merge": false,
+            "line_added": 4,
+            "line_removed": 2,
+            "lines_of_code": 2,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "README.md"
+            ],
+            "filepath": [
+                "README.md"
+            ]
+        },
+        {
+            "hash": "38d94657463360e501cdaabf2c60cee79944d5d7",
+            "author_msg": "Removing logo files",
+            "author_name": "Jeremy Moore",
+            "author_email": "jjmoore@MacBook-Pro-72.local",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "PetitionLogo.jpg",
+                "PetitonLogoTranparent.png"
+            ],
+            "filepath": [
+                "src/logo 12.48.34 PM/PetitionLogo.jpg",
+                "src/logo 12.48.34 PM/PetitonLogoTranparent.png"
+            ]
+        },
+        {
+            "hash": "b7cea4ff5775503a0782ddbb871f7a3979d99a62",
+            "author_msg": "updatig branch with database to fix merge comflict",
+            "author_name": "Jerfenson Cerda Mejia",
+            "author_email": "cerdamejiaj@aldenv127.allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "5bbe46e550c2e51b3a5f136da94144afee4eba63",
+            "author_msg": "Merge pull request #32 from GatorEducator/HTML_Responsive\n\nHtml responsive",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "b9cc9f13bf2e7b772c93d1b70c76755f535a5fd9",
+            "author_msg": "Merge pull request #24 from GatorEducator/logo\n\nPP Logo",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "0499a045167236d1e8905abda7ee37910cd0ffe9",
+            "author_msg": "Updating README",
+            "author_name": "Jeremy Moore",
+            "author_email": "jjmoore@MacBook-Pro-72.local",
+            "merge": false,
+            "line_added": 5,
+            "line_removed": 2,
+            "lines_of_code": 3,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "README.md"
+            ],
+            "filepath": [
+                "README.md"
+            ]
+        },
+        {
+            "hash": "65f0eaa9acd5d4ae84ac2685123dec26b5e69db8",
+            "author_msg": "Hooked up database with flask and tidied up some loose ends.",
+            "author_name": "Austin Bristol",
+            "author_email": "bristola@aldenv126.allegheny.edu",
+            "merge": false,
+            "line_added": 35,
+            "line_removed": 14,
+            "lines_of_code": 248,
+            "complexity": 34,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "home_post",
+                "success_get",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "change_password_get",
+                "change_password_post",
+                "invalid_confirmation_get",
+                "create_account_get",
+                "create_account_post",
+                "petitions_get",
+                "petitions_inspect_get",
+                "petitions_inspect_post",
+                "page_not_found"
+            ],
+            "filename": [
+                "login_handler.cpython-36.pyc",
+                "app.py",
+                "petitiondb.sqlite3",
+                "home.html",
+                "success.html"
+            ],
+            "filepath": [
+                "src/__pycache__/login_handler.cpython-36.pyc",
+                "src/app.py",
+                "src/petitiondb.sqlite3",
+                "src/templates/home.html",
+                "src/templates/success.html"
+            ]
+        },
+        {
+            "hash": "4b483d1f72fc3cb8b189e891b4a8d8488cd07139",
+            "author_msg": "Merge pull request #33 from GatorEducator/flask_form\n\nHooked up database with flask and tidied up some loose ends.",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "1f69b1939d201dc6bca4f59072407b3f18a5e6d1",
+            "author_msg": "Added documentation to README",
+            "author_name": "Jeremy Moore",
+            "author_email": "jjmoore@MacBook-Pro-72.local",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 1,
+            "lines_of_code": 3,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "README.md"
+            ],
+            "filepath": [
+                "README.md"
+            ]
+        },
+        {
+            "hash": "171afb32b78890b9e71b3a04635728a9a6707d64",
+            "author_msg": "Created License",
+            "author_name": "Matthew Baldeosingh",
+            "author_email": "42876742+baldeosinghm@users.noreply.github.com",
+            "merge": false,
+            "line_added": 165,
+            "line_removed": 0,
+            "lines_of_code": 137,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "LICENSE"
+            ],
+            "filepath": [
+                "LICENSE"
+            ]
+        },
+        {
+            "hash": "5e48b98f642025e6d920e414a51092af76ec21c4",
+            "author_msg": "Merge pull request #35 from GatorEducator/add-license-1\n\nLicense Added",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "9ec428b318912c285bb5a35e5712a61637ab87b1",
+            "author_msg": "Merge pull request #34 from GatorEducator/README\n\nAdded Readme",
+            "author_name": "Jeremy Moore",
+            "author_email": "moorej2@allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "22830fb094526081e99812f8e2a7c90807ec2368",
+            "author_msg": "Small improvements to the README.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 13,
+            "line_removed": 3,
+            "lines_of_code": 12,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "README.md"
+            ],
+            "filepath": [
+                "README.md"
+            ]
+        },
+        {
+            "hash": "2acbdd48a18fe1e5657a82cf0c96dbaf66b5b26f",
+            "author_msg": "Add style to change password page, add logo to homepage",
+            "author_name": "cerdamejiaj",
+            "author_email": "cerdamejiaj@alleheny.edu",
+            "merge": false,
+            "line_added": 60,
+            "line_removed": 9,
+            "lines_of_code": 129,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "create.css",
+                "create_account.html",
+                "home.html"
+            ],
+            "filepath": [
+                "src/static/css/create.css",
+                "src/templates/create_account.html",
+                "src/templates/home.html"
+            ]
+        },
+        {
+            "hash": "3d05a736e2371daa7aa06d59d88e75f459fd4dec",
+            "author_msg": "Got logo to work for homepage and created an img folder in static folder",
+            "author_name": "cerdamejiaj",
+            "author_email": "cerdamejiaj@alleheny.edu",
+            "merge": false,
+            "line_added": 4,
+            "line_removed": 5,
+            "lines_of_code": 126,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "PetitonLogoTranparent.png",
+                "home.html"
+            ],
+            "filepath": [
+                "src/static/img/PetitonLogoTranparent.png",
+                "src/templates/home.html"
+            ]
+        },
+        {
+            "hash": "438a76b92ddad02e6d1f7236968bb3f71e093886",
+            "author_msg": "Merge pull request #36 from GatorEducator/HTML_Responsive\n\nHtml responsive",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "259e98e8b2288f745ebaf8eb62eeeb47d2b49ee4",
+            "author_msg": "Merge pull request #37 from GatorEducator/README-Improvements\n\nSmall Improvements to the README",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "a320b5ed20107eef562e268522082803bf86c371",
+            "author_msg": "Add drop-down for creating an account. Remove economics from drop-down menu.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 17,
+            "line_removed": 5,
+            "lines_of_code": 427,
+            "complexity": 65,
+            "methods": [
+                "home_redirect",
+                "home_get",
+                "home_post",
+                "success_get",
+                "login_get",
+                "login_post",
+                "invalid_login_get",
+                "logout_get",
+                "change_password_get",
+                "change_password_post",
+                "invalid_confirmation_get",
+                "create_account_get",
+                "create_account_post",
+                "petitions_get",
+                "petitions_inspect_get",
+                "petitions_inspect_post",
+                "page_not_found",
+                "get_petitions",
+                "get_petition_info",
+                "change_password",
+                "create_account",
+                "submit_decision",
+                "count_votes",
+                "add_vote",
+                "find",
+                "add_petition",
+                "delete_petition"
+            ],
+            "filename": [
+                "app.py",
+                "database_handler.py",
+                "create_account.html",
+                "home.html"
+            ],
+            "filepath": [
+                "src/app.py",
+                "src/database_handler.py",
+                "src/templates/create_account.html",
+                "src/templates/home.html"
+            ]
+        },
+        {
+            "hash": "e68f8887ba983485f82bbd9f99d43da83cbc2479",
+            "author_msg": "Merge pull request #38 from GatorEducator/improve-account-creation\n\nImprove Account Creation Menu",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        }
+    ],
+    "INDIVIDUAL_METRICS": {
+        "Saejin Mahlau-Heinert": {
+            "EMAIL": "saejinmh@gmail.com",
+            "COMMITS": 1,
+            "ADDED": 1,
+            "REMOVED": 0,
+            "TOTAL": 1,
+            "MODIFIED": 1,
+            "RATIO": 1,
+            "FILES": [
+                "README.md"
+            ],
+            "FORMAT": [
+                ".md"
+            ]
+        },
+        "Christian Lussier": {
+            "EMAIL": "32375724+lussierc@users.noreply.github.com",
+            "COMMITS": 15,
+            "ADDED": 2,
+            "REMOVED": 1,
+            "TOTAL": 1,
+            "MODIFIED": 3,
+            "RATIO": 0,
+            "FILES": [
+                "README.md"
+            ],
+            "FORMAT": [
+                ".md"
+            ]
+        },
+        "clussier": {
+            "EMAIL": "lussierc@allegheny.edu",
+            "COMMITS": 72,
+            "ADDED": 875,
+            "REMOVED": 324,
+            "TOTAL": 551,
+            "MODIFIED": 1199,
+            "RATIO": 16,
+            "FILES": [
+                ".DS_Store",
+                ".gitignore",
+                "README.md",
+                "Tables.sql",
+                "app.py",
+                "config.py",
+                "create_account.html",
+                "database_handler.py",
+                "home.html",
+                "login_handler.cpython-36.pyc",
+                "login_handler.py",
+                "mycontacts.txt",
+                "petitiondb.sqlite3",
+                "petitiondb.sqlite3 copy",
+                "send_email.py"
+            ],
+            "FORMAT": [
+                "",
+                ".html",
+                ".md",
+                ".py",
+                ".pyc",
+                ".sql",
+                ".sqlite3",
+                ".sqlite3 copy",
+                ".txt"
+            ]
+        },
+        "Austin Bristol": {
+            "EMAIL": "bristola@aldenv106.allegheny.edu",
+            "COMMITS": 31,
+            "ADDED": 461,
+            "REMOVED": 65,
+            "TOTAL": 396,
+            "MODIFIED": 526,
+            "RATIO": 16,
+            "FILES": [
+                "404.html",
+                "app.py",
+                "change_password.html",
+                "create_account.html",
+                "database_handler.py",
+                "home.css",
+                "home.html",
+                "home.js",
+                "invalid_confirmation.html",
+                "invalid_login.html",
+                "login.html",
+                "login_handler.cpython-36.pyc",
+                "login_handler.py",
+                "petition_info.html",
+                "petitiondb.sqlite3",
+                "petitions.html",
+                "success.html"
+            ],
+            "FORMAT": [
+                ".css",
+                ".html",
+                ".js",
+                ".py",
+                ".pyc",
+                ".sqlite3"
+            ]
+        },
+        "Jerfenson Cerda Mejia": {
+            "EMAIL": "cerdamejiaj@aldenv107.allegheny.edu",
+            "COMMITS": 16,
+            "ADDED": 457,
+            "REMOVED": 40,
+            "TOTAL": 417,
+            "MODIFIED": 497,
+            "RATIO": 31,
+            "FILES": [
+                "404.html",
+                "LoginT.css",
+                "Tables.sql",
+                "app.py",
+                "change.css",
+                "change_password.html",
+                "home.css",
+                "home.html",
+                "invalidConfig.css",
+                "invalid_confirmation.html",
+                "invalid_login.html",
+                "login.css",
+                "login.html",
+                "login.js",
+                "login_handler.cpython-36.pyc",
+                "petition_info.css",
+                "petition_info.html",
+                "petitiondb.sqlite3",
+                "petitions.html"
+            ],
+            "FORMAT": [
+                ".css",
+                ".html",
+                ".js",
+                ".py",
+                ".pyc",
+                ".sql",
+                ".sqlite3"
+            ]
+        },
+        "Matthew Baldeosingh": {
+            "EMAIL": "baldeosinghm@allegheny.edu",
+            "COMMITS": 12,
+            "ADDED": 266,
+            "REMOVED": 50,
+            "TOTAL": 216,
+            "MODIFIED": 316,
+            "RATIO": 26,
+            "FILES": [
+                ".travis.yml",
+                "LICENSE",
+                "config.py",
+                "email_handler.py",
+                "login_handler.cpython-36.pyc",
+                "mycontacts.txt",
+                "send_email.py"
+            ],
+            "FORMAT": [
+                ".py",
+                ".pyc",
+                ".txt",
+                ".yml",
+                "LICENSE"
+            ]
+        },
+        "bristola": {
+            "EMAIL": "bristola@allegheny.edu",
+            "COMMITS": 2,
+            "ADDED": 5,
+            "REMOVED": 1,
+            "TOTAL": 4,
+            "MODIFIED": 6,
+            "RATIO": 3,
+            "FILES": [
+                "petition_info.html"
+            ],
+            "FORMAT": [
+                ".html"
+            ]
+        },
+        "Jeremy Moore": {
+            "EMAIL": "jjmoore@ewire23-42.allegheny.edu",
+            "COMMITS": 15,
+            "ADDED": 41,
+            "REMOVED": 7,
+            "TOTAL": 34,
+            "MODIFIED": 48,
+            "RATIO": 3,
+            "FILES": [
+                "PetitionLogo.jpg",
+                "PetitonLogoTranparent.png",
+                "README.md",
+                "config.py",
+                "mycontacts.txt",
+                "send_email.py"
+            ],
+            "FORMAT": [
+                ".jpg",
+                ".md",
+                ".png",
+                ".py",
+                ".txt"
+            ]
+        },
+        "cerdamejiaj": {
+            "EMAIL": "cerdamejiaj@alleheny.edu",
+            "COMMITS": 3,
+            "ADDED": 219,
+            "REMOVED": 29,
+            "TOTAL": 190,
+            "MODIFIED": 248,
+            "RATIO": 82,
+            "FILES": [
+                "404.css",
+                "404.html",
+                "PetitonLogoTranparent.png",
+                "change_password.html",
+                "create.css",
+                "create_account.html",
+                "home.html",
+                "login.html",
+                "petition_info.html"
+            ],
+            "FORMAT": [
+                ".css",
+                ".html",
+                ".png"
+            ]
+        }
+    }
 }

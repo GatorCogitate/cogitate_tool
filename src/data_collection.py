@@ -299,3 +299,4 @@ if __name__ == "__main__":
     # Write reformatted dictionary to json
     json_handler.add_entry(DATA, FILE_NAME)
     print_individual_in_table(FILE_NAME)
+    print(DATA["INDIVIDUAL_METRICS"]["clussier"]["EMAIL"])
