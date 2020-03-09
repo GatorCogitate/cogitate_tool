@@ -119,6 +119,8 @@ def web_interface():
           'Xingbang Liu': [0.334, 6.87, 2.97]
         })
 
+        df = df.rename(columns={'type':'index'}).set_index('index')  # set date as index
+
     ################### Feature 7 ###################
     # Are there team members who contribute source code without also adding test cases?
     elif add_selectbox == 'Team Members Who Contribute Source Code Without Tests':
