@@ -4,26 +4,35 @@
 [![codecov](https://codecov.io/gh/GatorCogitate/cogitate_tool/branch/master/graph/badge.svg)](https://codecov.io/gh/GatorCogitate/cogitate_tool)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-orange.svg)](https://www.python.org/)
 
-## Table of Contents
+## About GatorCogitate
 
-## About the cogitate_tool
-
-Cogitate is an open source tool that evaluates the level of contributions for members of a GitHub repository. Cogitate
-Generate a score for members based on a variety of metrics including:
+Cogitate is a free and open source tool written in Python. It is designed to evaluate the level of contributions for members of a GitHub repository. GatorCogitate generates a score for members based on a variety of metrics including:
 - Lines added
 - Lines removed
 - Lines Deleted
 - Pull Requests
 - Issue Tracker
-- Teamwork Based on IQR
+- Teamwork Performance
 
-This tool was created for increased accuracy within academic assessment in group
-projects.
+These metrics are combined into an overall score for the user.
 
 *Note: This tool is alpha software. Please contact us if you intend to run it in
 production.*
 
-## Installing the cogitate_tool
+## Installing GatorCogitate
+
+### Manuel
+1. Clone the GatorCogitate source code onto your machine.
+
+With HTTPS:
+```
+git clone https://github.com/GatorCogitate/cogitate_tool.git
+```
+Or with SSH:
+```
+git clone git@github.com:GatorCogitate/cogitate_tool.git
+```
+
 
 ## Testing the cogitate_tool
 
