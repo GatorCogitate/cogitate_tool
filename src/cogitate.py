@@ -65,7 +65,7 @@ def retrieve_arguments():
         "-r", "--repo", required=True, type=str, help="User's Repository"
     )
     a_parse.add_argument(
-        "-s", "--state", required=True, type=str, help="State of the Issue"
+        "-s", "--state", required=False, type=str, help="State of the Issue"
     )
 
     args = vars(a_parse.parse_args())
