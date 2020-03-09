@@ -173,18 +173,18 @@ def colect_and_add_raw_data_to_json(
         json_handler.add_entry(raw_data, json_file_name)
 
 
-def calculate_individual_metrics(json_file_name):
+def calculate_individual_metrics(json_file_name="raw_data_storage"):
     """Retrieve the data from .json file and create a dictionary keyed by user."""
+    # retreive data from raw data json
     current_data = json_handler.get_dict_from_json_file(json_file_name)
-    # creates a hashmap where the key is the authors username
+    # creates a dictionary where the key is the authors username
     data_dict = {}
-    # Check if RAW_DATA is in json
+    # Check if RAW_DATA is in json tp prevent a key error
     if "RAW_DATA" in current_data.keys():
         for key in current_data["RAW_DATA"]:
             author = key["author_name"]
             email = key["author_email"]
             # NOTE check date compatibility with json
-            # date = "N/A"
             # check if the key already in in the dicitionary
             if author in data_dict:
                 # condition passed, adds one to the number of commits
@@ -205,7 +205,6 @@ def calculate_individual_metrics(json_file_name):
 
             data_dict[author]["ADDED"] += key["line_added"]
             data_dict[author]["REMOVED"] += key["line_removed"]
-            # NOTE: consider adding lines of code from data
             # check if the explored file is not in the list in index seven
             current_files = key["filename"]
             # add the current_files to the user files list without duplicates
@@ -228,9 +227,8 @@ def calculate_individual_metrics(json_file_name):
             data_dict[key]["RATIO"] = average
             formats = get_file_formats(data_dict[key]["FILES"])
             data_dict[key]["FORMAT"] = formats
-        # Reformat the dictionary as a value of the key INDIVIDUAL_METRICS
-        indvividual_metrics_dict = {"INDIVIDUAL_METRICS": data_dict}
-        return indvividual_metrics_dict
+        return data_dict
+    # if RAW_DATA key was not found, empty dictionary will be returned
     return {}
     # NOTE: for printing the data please use the file print_table.py
 
