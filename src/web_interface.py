@@ -68,18 +68,18 @@ def web_interface():
           'Jordan Wilson': [0.207, 9.87, 3.97],
           'Danny Reid': [0.760, 43.12, 3.97],
           'Anthony Baldeosingh': [0.210, 4.96, 2.17],
-          'Xingbang Liu': [0.334, 6.87, 2.97]
-        })
+          'Xingbang Liu': [0.324, 6.87, 2.97]
+        }) # create dataframe with sample data for files modified
 
         df = df.rename(columns={'types of files modified':'index'}).set_index('index')
 
-        df
+        df # display chart for types of files modified
 
         columns = st.multiselect(
             label="Enter the names of specific contributors below:", options=df.columns
-        )
+        ) # allow users to display specific contributor information on dataframe graph
 
-        plot = df.plot.pie(y='types of files modified', figsize=(5,5))
+        plot = df.plot.pie(y='types of files modified', figsize=(5,5)) # display graph for types of files modified
 
     ################### Feature 4 ###################
     # What is the overall score for an individual’s contribution to a team project?
