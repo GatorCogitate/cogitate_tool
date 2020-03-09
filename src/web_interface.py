@@ -108,7 +108,7 @@ def web_interface():
         st.title("Team Members Who Are Code Hoarders")
 
         df = pd.DataFrame({
-          'types of files modified': ['src', 'tests', 'scripts'],
+          'type': ['src', 'tests', 'scripts'],
           'Christian Lussier': [0.330, 4.87, 5.97],
           'Cory Wiard': [0.430, 5.87, 4.97],
           'Devin Spitalny': [0.230, 3.87, 6.97],
