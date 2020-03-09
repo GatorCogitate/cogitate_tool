@@ -158,7 +158,9 @@ def colect_and_add_raw_data_to_json(
     path_to_repo, json_file_name="raw_data_storage", overwrite=True
 ):
     """Use collect_commits_hash to collect data from the repository path.
+
     Overwrite any data in the chosen file unless otherwise specified.
+
     Default file is raw_data_storage unless otherwise specified.
     """
     # collects data from collect_commits_hash and reformat dicitionary
@@ -179,7 +181,9 @@ def colect_and_add_individual_metrics_to_json(
     overwrite=True,
 ):
     """Use calculate_individual_metrics to calculate metrics using read_file.
+
     Write metrics to write_file.
+
     Overwrite existing data in write_file unless otherwise specified.
     """
     # Call calculate_individual_metrics to get data dicitionary
@@ -263,6 +267,7 @@ def find_repositories(repo):
 
 def print_individual_in_table(file_name="individual_metrics_storage"):
     """Create and print the table using prettytable.
+
     Use individual_metrics_storage as default file unless otherwise chosen.
     """
     # Initialize pretty table object
