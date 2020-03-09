@@ -35,7 +35,7 @@ github_data = {}
 github_data = data_collection.calculate_individual_metrics("individual_score_test")
 
 
-def calculate_iqr_score(data_list):
+def calculate_iqr_score(data_list, below_weight, above_weight, within_weight):
     """Calculate a team score for a data set according to outliers calculated with the interquartile range."""
     below_amount = 0
     above_amount = 0
@@ -68,9 +68,9 @@ def calculate_iqr_score(data_list):
 
     # print(below_amount, above_amount, within_amount)
     # calculate all areas with their weight measurement
-    weighted_below = round(0.05 * below_fraction, 2)
-    weighted_above = round(0.20 * above_fraction, 2)
-    weighted_within = round(0.75 * within_fraction, 2)
+    weighted_below = round(below_weight * below_fraction, 2)
+    weighted_above = round(above_weight * above_fraction, 2)
+    weighted_within = round(within_weight * within_fraction, 2)
     # add weighted scores together to calcuate overall team score as percentage
     team_score = (weighted_below + weighted_above + weighted_within) * 100
 
