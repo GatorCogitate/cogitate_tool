@@ -21,10 +21,9 @@ production.*
 
 ## Installing GatorCogitate
 
-### Manuel
-1. Clone the GatorCogitate source code onto your machine.
+**1. Clone the GatorCogitate source code onto your machine.**
 
-With HTTPS:
+  With HTTPS:
 ```
 git clone https://github.com/GatorCogitate/cogitate_tool.git
 ```
@@ -32,9 +31,17 @@ Or with SSH:
 ```
 git clone git@github.com:GatorCogitate/cogitate_tool.git
 ```
-2. Install Pipenv
+**2. Install Pipenv (Recommended)**
 
-## Testing GatorCogitate
+Documentation for installing pipenv can be found [Here.](https://pipenv.kennethreitz.org/en/latest/#install-pipenv-today)
+
+After pulling the repo, use `pipenv shell` in `cogitate_tool/` to enter the virtual
+environment. Use `exit` to exit. Under the virtual environment, use
+`pipenv install <package_name> --dev` to install new packages for development.
+
+Here is a good [tutorial](https://realpython.com/pipenv-guide/) on how to use `pipenv`.
+
+Otherwise, all dependencies listed in the `Pipfile` will need to be installed locally.
 
 
 ## Running GatorCogitate
@@ -75,12 +82,6 @@ git clone git@github.com:GatorCogitate/cogitate_tool.git
 ### 2. How to Use
 
 #### 2.1 How To Install Packages
-
-After pulling the repo, use `pipenv shell` in `cogitate_tool/` to enter the virtual
-environment. Use `exit` to exit. Under the virtual environment, use
-`pipenv install <package_name> --dev` to install new packages for development.
-
-Here is a good [tutorial](https://realpython.com/pipenv-guide/) on how to use `pipenv`.
 
 When under development, always install the virtual environment first by using
 `pipenv install --dev`, then run the developing program by using
