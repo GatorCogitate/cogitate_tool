@@ -1,12 +1,12 @@
 """Command Line Interface for the Cogitate tool."""
-# from data_collection import collect_commits
+
+import argparse
+import validators
+
 # from web_interface import web_interface
-from driller import find_repositories
-from pprint import pprint
 import data_collection
 import json_handler
-import argparse
-import re
+
 
 # from pprint import pprint
 # from driller import find_repositories
@@ -26,18 +26,25 @@ def main():
     contributor_data = data_collection.retrieve_issue_data(
         repository, args["state"], contributor_data
     )
-    commit_list = data_collection.collect_commits_hash(args["link"])
-    # Intermediate between data_miner and data_processor
-    json_handler.write_dict_to_json_file(contributor_data, "contributor_data")
-
+    link_str = str(["link"])
+    if link_validator(link_str) is True:
+        commit_list = data_collection.collect_commits_hash(args["link"])
+        for dicts in commit_list:
+            print(dicts.get("Username")),
+            print(dicts.get("Commits")),
+            print(dicts.get("+")),
+            print(dicts.get("-")),
+            print(dicts.get("Modified")),
+            print(dicts.get("Total"))
     # gives the user the option to use the web interface
     web = True
     # while loop to ensure user input is "y" or "n"
-    while web == True:
+    while web is True:
         visit_web = input("Would you like to view the data on the web?(y/n)")
         if visit_web == "y":
             # print(web_interface.web_interface())
-            continue
+            print("link")
+            break
         elif visit_web == "n":
             print("You have chosen to not view the data on the web.")
             # exists loop when user chooses not to use the web interface
@@ -74,30 +81,17 @@ def retrieve_arguments():
 
 
 def team():
-    """calls all team-based funtions"""
-    pass
+    """Call all team-based funtions."""
 
 
 def individual():
-    """calls all individual functions"""
-    pass
+    """Call all individual functions."""
 
 
 def link_validator(url_str):
-    """Validates if an url is a real link"""
-    url_pattern = re.compile(
-        r"^(?:http|ftp)s?://"  # http:// or https://
-        r"(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|"  # domain...
-        r"localhost|"  # localhost...
-        r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})"  # ...or ip
-        r"(?::\d+)?"  # optional port
-        r"(?:/?|[/?]\S+)$",
-        re.IGNORECASE,
-    )
-    if re.match(regex, url_str) is not None:
-        return True
-    else:
-        return False
+    """Take a string and checks if it is a valid URL."""
+    # returns a boolean value
+    return validators.url(url_str)
 
 
 if __name__ == "__main__":
