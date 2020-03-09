@@ -232,6 +232,10 @@ def calculate_individual_metrics(json_file_name):
                     "RATIO": 0,
                     "FILES": [],
                     "FORMAT": [],
+                    "issues_commented": [],
+                    "issues_opened": [],
+                    "pull_requests_commented": [],
+                    "pull_requests_opened": [],
                 }
 
             data_dict[author]["ADDED"] += commit["line_added"]
