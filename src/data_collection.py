@@ -1,8 +1,6 @@
 """
 Collects repository data for contributors of the master branch of a repo.
-
 Writes the data to a .json file.
-
 Calculates statistics based on the data from Github.
 """
 from __future__ import division
@@ -60,7 +58,6 @@ def retrieve_issue_data(repository, state, contributor_data):
 
 def collect_commits_hash(repo):
     """Create a list of dictionaries that contains commit info.
-
     hash (str): hash of the commit
     msg (str): commit message
     author_name (str): commit author name
