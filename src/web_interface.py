@@ -79,7 +79,7 @@ def web_interface():
     # Are there individuals who collaborate together too frequently or not enough?
     elif add_selectbox == 'Collaboration Tendencies of Individuals':
         st.title("Collaboration Tendencies of Individuals")
-        
+
         df = pd.DataFrame({
           'type': ['Individuals overall contribution'],
           'Christian Lussier': [28, 255, 75],
@@ -101,7 +101,7 @@ def web_interface():
         )  # allow users to display specific contributor information on dataframe graph
 
 
-        st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
+        st.line_chart(df[columns])  # display dataframe/graph that vizualizes commit info # display dataframe/graph that vizualizes commit info
     ################### Feature 6 ###################
     # Are there team members who are “code hoarders” or “domain experts”?
     elif add_selectbox == 'Team Members Who Are Code Hoarders':
