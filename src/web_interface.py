@@ -121,6 +121,13 @@ def web_interface():
 
         df = df.rename(columns={'type':'index'}).set_index('index')  # set date as index
 
+        df  # display chart of sample commits
+
+        columns = st.multiselect(
+            label="Enter the names of specific contributors below:", options=df.columns
+        )  # allow users to display specific contributor information on dataframe graph
+
+
     ################### Feature 7 ###################
     # Are there team members who contribute source code without also adding test cases?
     elif add_selectbox == 'Team Members Who Contribute Source Code Without Tests':
