@@ -7,23 +7,23 @@ import data_collection
 
 
 # fake data -> will be converted to use nested dictionary from the .json file
-github_data = {
-    "noorbuchi": {"COMMITS": 28, "ADDED": 349, "REMOVED": 70, "MODIFIED": 419},
-    "bagashvilit": {"COMMITS": 22, "ADDED": 355, "REMOVED": 56, "MODIFIED": 411},
-    "Jordan-A": {"COMMITS": 23, "ADDED": 375, "REMOVED": 43, "MODIFIED": 418},
-    "WonjoonC": {"COMMITS": 27, "ADDED": 365, "REMOVED": 67, "MODIFIED": 432},
-    "Hannah Schultz": {"COMMITS": 25, "ADDED": 315, "REMOVED": 75, "MODIFIED": 390},
-    "Alexander_Hamilton": {"COMMITS": 41, "ADDED": 350, "REMOVED": 54, "MODIFIED": 404},
-    "Karl_Marx": {"COMMITS": 0, "ADDED": 0, "REMOVED": 0, "MODIFIED": 0},
-    "Julius_Caesar": {"COMMITS": 25, "ADDED": 363, "REMOVED": 35, "MODIFIED": 398},
-    "Napoleon_Bonaparte": {"COMMITS": 24, "ADDED": 540, "REMOVED": 2, "MODIFIED": 542},
-    "Alexander_the_Great": {
-        "COMMITS": 42,
-        "ADDED": 355,
-        "REMOVED": 50,
-        "MODIFIED": 405,
-    },
-}
+# github_data = {
+#     "noorbuchi": {"COMMITS": 28, "ADDED": 349, "REMOVED": 70, "MODIFIED": 419},
+#     "bagashvilit": {"COMMITS": 22, "ADDED": 355, "REMOVED": 56, "MODIFIED": 411},
+#     "Jordan-A": {"COMMITS": 23, "ADDED": 375, "REMOVED": 43, "MODIFIED": 418},
+#     "WonjoonC": {"COMMITS": 27, "ADDED": 365, "REMOVED": 67, "MODIFIED": 432},
+#     "Hannah Schultz": {"COMMITS": 25, "ADDED": 315, "REMOVED": 75, "MODIFIED": 390},
+#     "Alexander_Hamilton": {"COMMITS": 41, "ADDED": 350, "REMOVED": 54, "MODIFIED": 404},
+#     "Karl_Marx": {"COMMITS": 0, "ADDED": 0, "REMOVED": 0, "MODIFIED": 0},
+#     "Julius_Caesar": {"COMMITS": 25, "ADDED": 363, "REMOVED": 35, "MODIFIED": 398},
+#     "Napoleon_Bonaparte": {"COMMITS": 24, "ADDED": 540, "REMOVED": 2, "MODIFIED": 542},
+#     "Alexander_the_Great": {
+#         "COMMITS": 42,
+#         "ADDED": 355,
+#         "REMOVED": 50,
+#         "MODIFIED": 405,
+#     },
+# }
 
 commit_data = []
 added_data = []
@@ -32,7 +32,7 @@ modified_data = []
 github_data = {}
 
 # def find_github_data():
-# github_data = data_collection.calculate_individual_metrics("individual_metrics_testfile")
+github_data = data_collection.calculate_individual_metrics("individual_metrics_testfile")
 
 
 def calculate_iqr_score(data_list):
@@ -114,5 +114,6 @@ def calculate_average(dictionary):
 
 
 if __name__ == "__main__":
-    print(data_collection.calculate_individual_metrics("individual_metrics_testfile"))
-    print(calculate_average(data_collection.calculate_individual_metrics("individual_metrics_testfile")), "%")
+    print(github_data)
+    # print(data_collection.calculate_individual_metrics("individual_metrics_testfile"))
+    print(calculate_average(github_data), "%")
