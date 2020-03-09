@@ -291,7 +291,6 @@ def get_testing_commit_info(json_file_name):
                 data_dict[author]["COMMITS"] += 1
             else:
                 # condition fails, creates a new key and adds empty data
-                print("FOUND AUTHOR", author)
                 data_dict[author] = {
                     "COMMITS": 1,
                     "COMMITS_TO_TESTING": 0,
