@@ -155,7 +155,7 @@ def get_file_formats(files):
 
 # This function simplifies gathering and writing raw data to json file
 # pylint: disable=C0330
-def colect_and_add_raw_data_to_json(
+def collect_and_add_raw_data_to_json(
     path_to_repo, json_file_name="raw_data_storage", overwrite=True
 ):
     """Use collect_commits_hash to collect data from the repository path.
@@ -177,7 +177,7 @@ def colect_and_add_raw_data_to_json(
 
 
 # pylint: disable=C0330
-def colect_and_add_individual_metrics_to_json(
+def collect_and_add_individual_metrics_to_json(
     read_file="raw_data_storage",
     write_file="individual_metrics_storage",
     overwrite=True,
@@ -327,7 +327,7 @@ if __name__ == "__main__":
     if DATA == {}:
         REPO_PATH = input("Enter the path to the repo : ")
         # This call will use default options for file and overwrite condition
-        colect_and_add_raw_data_to_json(REPO_PATH)
+        collect_and_add_raw_data_to_json(REPO_PATH)
     print("Adding processed data to selected json file...")
-    colect_and_add_individual_metrics_to_json()
+    collect_and_add_individual_metrics_to_json()
     print_individual_in_table()
