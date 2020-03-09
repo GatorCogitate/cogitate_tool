@@ -8,6 +8,12 @@ import json_handler
 import argparse
 import re
 
+<<<<<<< Updated upstream
+=======
+# from pprint import pprint
+# from driller import find_repositories
+
+>>>>>>> Stashed changes
 
 def main():
     """Execute the CLI."""
@@ -24,7 +30,10 @@ def main():
         repository, args["state"], contributor_data
     )
     commit_list = data_collection.collect_commits_hash(args["link"])
+<<<<<<< Updated upstream
     pprint(commit_list)
+=======
+>>>>>>> Stashed changes
     # Intermediate between data_miner and data_processor
     json_handler.write_dict_to_json_file(contributor_data, "contributor_data")
     # gives the user the option to use  the web interface
@@ -32,6 +41,18 @@ def main():
     while to_web == True:
         to_webinterface = input("Would you like to view the data on the web?(y/n)")
         # print(web_interface.web_interface())
+
+    # gives the user the option to use the web interface
+    web = True
+    while(web == True):
+        visit_web = input("Would you like to view the data on the web?(y/n)")
+        if visit_web == "y":
+            # print(web_interface.web_interface())
+        elif visit_web == "n":
+            print("You have chosen to not view the data on the web.")
+        else:
+            print("Please enter (y/n).")
+
 
 
 def retrieve_arguments():
