@@ -10,7 +10,6 @@ from src import data_collection
 from src import json_handler
 
 
-@pytest.mark.xfail
 @pytest.mark.parametrize(
     "repository_url", [("https://github.com/GatorCogitate/cogitate_tool")],
 )
@@ -46,7 +45,6 @@ def test_calculate_individual_metrics_populates_data():
         "individual_metrics_testfile"
     )
     assert len(test_dict) != 0
-    assert "INDIVIDUAL_METRICS" in test_dict.keys()
 
 
 def test_get_individual_metrics_accuracy():
@@ -65,7 +63,7 @@ def test_get_individual_metrics_accuracy():
         "FILES": ["Pipfile", "Pipfile.lock", "UsingPyGithub.py", "lint.sh", "test.sh"],
         "FORMAT": [".lock", ".py", ".sh", "Pipfile"],
     }
-    assert test_dict["INDIVIDUAL_METRICS"]["noorbuchi"] == expected_dict
+    assert test_dict["noorbuchi"] == expected_dict
 
 
 # NOTE: additional test cases needed
