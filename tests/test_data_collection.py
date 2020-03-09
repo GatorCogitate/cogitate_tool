@@ -10,27 +10,57 @@ from src import data_collection
 from src import json_handler
 
 
-# NOTE: a repository object must be sent in to this function and not a string
-# NOTE: this issue is already being worked on in test_issue_retrieval.py
-# @pytest.mark.parametrize(
-#     "repository_url, input_state, input_contributer_data",
-#     [("https://github.com/GatorCogitate/cogitate_tool", 2, 2)],
-# )
-# def test_retrive_issue_data(repository_url, input_state, input_contributer_data):
-#     """Check that the issue data has be retrived."""
-#     data_collection.retrieve_issue_data(
-#         repository_url, input_state, input_contributer_data
-#     )
-#     assert (repository_url) != input_state
+def test_collect_and_add_raw_data_to_json():
+    """Check that raw data was collected from the repository and was written."""
+    test_file = "raw_data_testfile"
+    # retreive the dictionary from the test file
+    data_from_file = json_handler.get_dict_from_json_file(test_file)
+    # Makes sure that the default key is in the dicitionary
+    # The key is called "Keep this file empty"
+    assert "Keep this file empty" in data_from_file
+    repository = "https://github.com/GatorCogitate/cogitate_tool"
+    # Call collect and write funciton
+    data_collection.collect_and_add_raw_data_to_json(repository, test_file)
+    # Update dicitionary from the new data in the file
+    data_from_file = json_handler.get_dict_from_json_file(test_file)
+    # Make sure the correct key is added
+    assert "RAW_DATA" in data_from_file
+    # Start teardown process to put file in default state
+    default_dict = {"Keep this file empty": []}
+    json_handler.write_dict_to_json_file(default_dict, test_file)
 
 
-@pytest.mark.parametrize(
-    "repository_url, json_file_name",
-    [("https://github.com/GatorCogitate/cogitate_tool", "individual_metrics_testfile")],
-)
-def test_add_raw_data_to_json(repository_url, json_file_name):
-    """Check that the issue data has be retrived."""
-    assert (repository_url) != json_file_name
+def test_collect_and_add_individual_metrics_to_json():
+    """Check that calculated data was collected from the repository and was written."""
+    read_test_file = "individual_metrics_testfile"
+    write_test_file = "calculated_metrics_testfile"
+    # retreive the dictionaries from the test file
+    calculated_data_from_file = json_handler.get_dict_from_json_file(write_test_file)
+    raw_data_from_file = json_handler.get_dict_from_json_file(read_test_file)
+    # Makes sure that the default values are in the dicitionaries
+    # The key is called "Keep this file empty"
+    assert "Keep this file empty" in calculated_data_from_file
+    # makes sure RAW_DATA is a key in the individual_metrics_testfile
+    assert "RAW_DATA" in raw_data_from_file
+    # Call collect and write funciton
+    data_collection.collect_and_add_individual_metrics_to_json(
+        read_test_file, write_test_file
+    )
+    # Update dicitionary from the new data in the file
+    calculated_data_from_file = json_handler.get_dict_from_json_file(write_test_file)
+    # Make sure the correct keys are added
+    expected_keys = [
+        "schultzh",
+        "WonjoonC",
+        "Jordan-A",
+        "noorbuchi",
+        "Chris Stephenson",
+    ]
+    actual_keys = list(calculated_data_from_file.keys())
+    assert actual_keys == expected_keys
+    # Start teardown process to put file in default state
+    default_dict = {"Keep this file empty": []}
+    json_handler.write_dict_to_json_file(default_dict, write_test_file)
 
 
 @pytest.mark.parametrize(
@@ -41,17 +71,6 @@ def test_calculate_individual_metrics(json_file_name):
     data = data_collection.calculate_individual_metrics(json_file_name)
     assert len(data) != 0
     # assert (data) != 0
-
-
-# NOTE: Printing the table does not need to be tested since it is a temporary
-# function
-# @pytest.mark.parametrize(
-#     "json_file_name", [("individual_metrics_testfile")],
-# )
-# def test_print_individual_in_table(json_file_name):
-#     """Check that the table has been printed."""
-#     data_collection.print_individual_in_table(json_file_name)
-#     assert (1) == 1
 
 
 @pytest.mark.parametrize(
