@@ -104,11 +104,11 @@ def test_get_individual_metrics_accuracy():
         "COMMITS": 1,
         "ADDED": 694,
         "REMOVED": 0,
-        "TOTAL": 694,
-        "MODIFIED": 694,
-        "RATIO": 694,
+        "TOTAL": 0,
+        "MODIFIED": 0,
+        "RATIO": 0,
         "FILES": ["Pipfile", "Pipfile.lock", "UsingPyGithub.py", "lint.sh", "test.sh"],
-        "FORMAT": [".lock", ".py", ".sh", "Pipfile"],
+        "FORMAT": [],
     }
     assert test_dict["INDIVIDUAL_METRICS"]["noorbuchi"] == expected_dict
 

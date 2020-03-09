@@ -211,9 +211,9 @@ def calculate_individual_metrics(json_file_name):
     data_dict = {}
     # Check if RAW_DATA is in json
     if "RAW_DATA" in current_data.keys():
-        for key in current_data["RAW_DATA"]:
-            author = key["author_name"]
-            email = key["author_email"]
+        for commit in current_data["RAW_DATA"]:
+            author = commit["author_name"]
+            email = commit["author_email"]
             # NOTE check date compatibility with json
             # date = "N/A"
             # check if the key already in in the dicitionary
@@ -234,31 +234,17 @@ def calculate_individual_metrics(json_file_name):
                     "FORMAT": [],
                 }
 
-            data_dict[author]["ADDED"] += key["line_added"]
-            data_dict[author]["REMOVED"] += key["line_removed"]
+            data_dict[author]["ADDED"] += commit["line_added"]
+            data_dict[author]["REMOVED"] += commit["line_removed"]
             # NOTE: consider adding lines of code from data
             # check if the explored file is not in the list in index seven
-            current_files = key["filename"]
+            current_files = commit["filename"]
             # add the current_files to the user files list without duplicates
             data_dict[author]["FILES"] = list(
                 set(data_dict[author]["FILES"]) | set(current_files)
             )
             # Sort list to ensure consistency when testing
             data_dict[author]["FILES"] = sorted(data_dict[author]["FILES"])
-        # iterate through the data to do final calculations
-        for key in data_dict:
-            data_dict[key]["TOTAL"] = (
-                data_dict[key]["ADDED"] - data_dict[key]["REMOVED"]
-            )
-            data_dict[key]["MODIFIED"] = (
-                data_dict[key]["ADDED"] + data_dict[key]["REMOVED"]
-            )
-            average = get_commit_average(
-                data_dict[key]["MODIFIED"], data_dict[key]["COMMITS"]
-            )
-            data_dict[key]["RATIO"] = average
-            formats = get_file_formats(data_dict[key]["FILES"])
-            data_dict[key]["FORMAT"] = formats
         # Reformat the dictionary as a value of the key INDIVIDUAL_METRICS
         indvividual_metrics_dict = {"INDIVIDUAL_METRICS": data_dict}
         return indvividual_metrics_dict
@@ -277,24 +263,16 @@ def print_individual_in_table(file_name):
         "Commits",
         "+",
         "-",
-        "Total",
-        "Modified Lines",
-        "Lines/Commit",
-        "File Types",
     ]
     data_table.field_names = headings
-    for key in dictionary:
+    for author in dictionary:
         data_table.add_row(
             [
-                key,
-                dictionary[key]["EMAIL"],
-                dictionary[key]["COMMITS"],
-                dictionary[key]["ADDED"],
-                dictionary[key]["REMOVED"],
-                dictionary[key]["TOTAL"],
-                dictionary[key]["MODIFIED"],
-                dictionary[key]["RATIO"],
-                dictionary[key]["FORMAT"],
+                author,
+                dictionary[author]["EMAIL"],
+                dictionary[author]["COMMITS"],
+                dictionary[author]["ADDED"],
+                dictionary[author]["REMOVED"],
             ]
         )
     print(data_table)
