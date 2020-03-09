@@ -283,18 +283,14 @@ def print_individual_in_table(file_name):
 # or path of the Repository you would like to analyze
 # If the current repository is the one you would like to analyze, simply
 # hit enter wihtout typing anything.
-
-# NOTE: this supression needs to be resolved
-# pylint: disable=input-builtin
-# FILE_NAME = input("Enter the name of the file : ")
-# FILE_NAME = "contributor_data_template"
-# DATA = calculate_individual_metrics(FILE_NAME)
-# if DATA == {}:
-#     REPO_PATH = input("Enter the path to the repo : ")
-#     add_raw_data_to_json(REPO_PATH, FILE_NAME)
-#     print("processing data again")
-#     DATA = calculate_individual_metrics(FILE_NAME)
-# print("Adding processed data to selected json file...")
-# # Write reformatted dictionary to json
-# json_handler.add_entry(DATA, FILE_NAME)
-# print_individual_in_table(FILE_NAME)
+def print_file(json_name, repo_path):
+    """Print a json file as a table."""
+    DATA = calculate_individual_metrics(json_name)
+    if DATA == {}:
+        add_raw_data_to_json(repo_path, json_name)
+        print("Processing data...")
+        DATA = calculate_individual_metrics(json_name)
+    print("Adding processed data to selected json file...")
+    # Write reformatted dictionary to json
+    json_handler.add_entry(DATA, json_name)
+    print_individual_in_table(json_name)

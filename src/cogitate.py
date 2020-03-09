@@ -29,13 +29,8 @@ def main():
     link_str = str(["link"])
     if link_validator(link_str) is True:
         commit_list = data_collection.collect_commits_hash(args["link"])
-        for dicts in commit_list:
-            print(dicts.get("Username")),
-            print(dicts.get("Commits")),
-            print(dicts.get("+")),
-            print(dicts.get("-")),
-            print(dicts.get("Modified")),
-            print(dicts.get("Total"))
+    else:
+        print("The link you have entered is invalid.")
     # gives the user the option to use the web interface
     web = True
     # while loop to ensure user input is "y" or "n"
@@ -46,7 +41,7 @@ def main():
             print("link")
             break
         elif visit_web == "n":
-            print("You have chosen to not view the data on the web.")
+            data_collection.print_file("contributor_data", ["repo"])
             # exists loop when user chooses not to use the web interface
             web = False
         else:
