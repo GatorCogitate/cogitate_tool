@@ -127,6 +127,8 @@ def web_interface():
             label="Enter the names of specific contributors below:", options=df.columns
         )  # allow users to display specific contributor information on dataframe graph
 
+        st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
+
 
     ################### Feature 7 ###################
     # Are there team members who contribute source code without also adding test cases?
