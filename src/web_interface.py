@@ -77,7 +77,31 @@ def web_interface():
         st.title("An individuals overall contribution to a team or project")
     ################### Feature 5 ###################
     # Are there individuals who collaborate together too frequently or not enough?
+    elif add_selectbox == 'Collaboration Tendencies of Individuals':
+        st.title("Collaboration Tendencies of Individuals")
+        relevant title for dataframe
+        df = pd.DataFrame({
+          'type': ['Individuals overall contribution'],
+          'Christian Lussier': [28, 255, 75],
+          'Cory Wiard': [6, 349, 50],
+          'Devin Spitalny': [22, 15, 48],
+          'Devin Ho': [8, 128, 2],
+          'Jordan Wilson': [10, 8, 28],
+          'Danny Reid': [25, 5, 15],
+          'Anthony Baldeosingh': [1, 1, 1],
+          'Xingbang Liu': [6, 100, 129]
+        })  # create dataframe with sample dates and contributor commit numbers
 
+        df = df.rename(columns={'type':'index'}).set_index('index')  # set date as index
+
+        df  # display chart of sample commits
+
+        columns = st.multiselect(
+            label="Enter the names of specific contributors below:", options=df.columns
+        )  # allow users to display specific contributor information on dataframe graph
+
+
+        st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
     ################### Feature 6 ###################
     # Are there team members who are “code hoarders” or “domain experts”?
     elif add_selectbox == 'Team Members Who Are Code Hoarders':
@@ -113,7 +137,7 @@ def web_interface():
 
 
             st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
-            
+
     ################### Feature 9 ###################
     # Are there team members who frequently fix the build right before merging a PR to master?
 
