@@ -8,29 +8,6 @@ based on a data set gathered previously in a different module.
 from __future__ import division
 import data_collection
 
-# import operator
-# import math
-
-# For 3/3/2020:
-# TODO Fake data - start with dictionary - Madelyn *
-# TODO function for commit score - Teona *
-# TODO function for added lines score - Teona *
-# TODO function for deleted lines - Wonjoon *
-# TODO lines modified score - Madelyn *
-# TODO lines per commit score - Wonjoon *
-# TODO amount of files modified overall score - Madelyn *
-# TODO file for printing the individual score - Teona *
-# TODO average of all scores - Everyone, once other features are finished
-
-# Possible other features or scoring metrics:
-# TODO amount of files per commit score
-# TODO talk about using PyGithub to retrieve issue data
-# TODO amount of comments in lines of code score - research tools for parsing
-# TODO date distribution score
-# TODO average overall score and individual score to produce new individual score
-# TODO give notification of duplicate username if there is one, or the possibility
-# TODO User inputs the weight for each category for finding total individual score
-
 # Helpful reminders:
 # Use pipeline programming style
 # Implement test cases as functions are written in the test_individual_scoring.py file
@@ -60,7 +37,9 @@ github_data = {
 
 #github_data = data_collection.calculate_individual_metrics("individual_metrics_testfile")
 # pylint: disable=round-builtin
-def percentage_score(individual, overal_branch):
+data_collection.add_raw_data_to_json("/home/teona/Documents/CS203/project/cogitate_tool", "individual_score_test")
+github_data = data_collection.calculate_individual_metrics("individual_score_test")
+def percentage_contribution(individual, overal_branch):
     """Calculate the individual contribution percentage."""
     return round(individual * 100 / overal_branch)
 
@@ -68,22 +47,6 @@ def percentage_score(individual, overal_branch):
 def sum_value(key):
     """Sum up all the values in branch per key."""
     return sum(d[key] for d in github_data.values() if d)
-
-
-def individual_commitmnet(username, category):
-    """Get and send value for key."""
-    return github_data.get(username).get(category)
-
-# weights = {
-# "COMMITS": 0.2,
-# "ADDED": 0.4,
-# "REMOVED": 0.4 }
-
-# def get_weighted(User):
-#     user=github_data[User]
-#
-#     weighted={User: {k:(round(user[k]*weights[k])) for k in user.keys()}}
-#     return weighted
 
 
 #Print usename and percentage of their contribution for each category
@@ -95,8 +58,8 @@ def print_data():
             if isinstance(value, int):
                 print(
                     category,
-                    percentage_score(
-                        individual_commitmnet(username, category), sum_value(category)
+                    percentage_contribution(
+                        value, sum_value(category)
                         ),
                         "%",
                         )
@@ -109,3 +72,18 @@ if __name__ == "__main__":
     #     print (get_weighted(username))
     #print(data_collection.calculate_individual_metrics("individual_metrics_testfile"))
     print_data()
+
+    # def individual_commitmnet(username, category):
+    #     """Get and send value for key."""
+    #     return github_data.get(username).get(category)
+
+    # weights = {
+    # "COMMITS": 0.2,
+    # "ADDED": 0.4,
+    # "REMOVED": 0.4 }
+
+    # def get_weighted(User):
+    #     user=github_data[User]
+    #
+    #     weighted={User: {k:(round(user[k]*weights[k])) for k in user.keys()}}
+    #     return weighted
