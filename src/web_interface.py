@@ -93,33 +93,20 @@ def web_interface():
     # Are there team members who contribute source code without also adding test cases?
     elif add_selectbox == 'Team Members Who Contribute Source Code Without Tests':
         st.title("Team Members Who Contribute Source Code Without Tests")
-
+        df = pd.DataFrame({
+          'date': ['10/1/2019','10/2/2019', '10/3/2019', '10/4/2019'],
+          'Christian Lussier': [8, 5, 9, 3],
+          'Cory Wiard': [5, 9, 3, 5],
+          'Devin Spitalny': [2, 5, 7, 3],
+          'Devin Ho': [8, 9, 2, 1],
+          'Jordan Wilson': [5, 9, 3, 8],
+          'Danny Reid': [5, 4, 3, 5],
+          'Anthony Baldeosingh': [1, 2, 1, 2],
+          'Xingbang Liu': [6, 9, 4, 7]
+        })
     ################### Feature 8 ###################
     # Are there team members who break the build or contribute to unusually high code churn?
-    elif add_selectbox == 'Team Members Who Contribute To High Code Churn':
-        st.title("Team Members Code Churn Contributions")  # dispaly relevant title for dataframe
-        df = pd.DataFrame({
-          'type': ['Code Churn'],
-          'Christian Lussier': [8],
-          'Cory Wiard': [5],
-          'Devin Spitalny': [2],
-          'Devin Ho': [8],
-          'Jordan Wilson': [5],
-          'Danny Reid': [5],
-          'Anthony Baldeosingh': [1],
-          'Xingbang Liu': [6]
-        })  # create dataframe with sample dates and contributor commit numbers
 
-        df = df.rename(columns={'type':'index'}).set_index('index')  # set date as index
-
-        df  # display chart of sample commits
-
-        columns = st.multiselect(
-            label="Enter the names of specific contributors below:", options=df.columns
-        )  # allow users to display specific contributor information on dataframe graph
-
-
-        st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
     ################### Feature 9 ###################
     # Are there team members who frequently fix the build right before merging a PR to master?
 
