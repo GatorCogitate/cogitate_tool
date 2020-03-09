@@ -27,7 +27,7 @@ def main():
     contributor_data = data_collection.retrieve_issue_data(
         repository, args["state"], contributor_data
     )
-    commit_list = data_collection.collect_commits_hash(args["repo"])
+    commit_list = data_collection.collect_commits_hash(args["link"])
     # Intermediate between data_miner and data_processor
     json_handler.write_dict_to_json_file(contributor_data, "contributor_data")
 
