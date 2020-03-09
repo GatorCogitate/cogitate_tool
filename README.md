@@ -1,4 +1,4 @@
-# cogitate_tool
+
 ![Cogitate Logo](/images/logo.png)
 [![Build Status](https://travis-ci.com/GatorCogitate/cogitate_tool.svg?branch=master)](https://travis-ci.com/GatorCogitate/cogitate_tool)
 [![codecov](https://codecov.io/gh/GatorCogitate/cogitate_tool/branch/master/graph/badge.svg)](https://codecov.io/gh/GatorCogitate/cogitate_tool)
@@ -19,6 +19,9 @@ Generate a score for members based on a variety of metrics including:
 
 This tool was created for increased accuracy within academic assessment in group
 projects.
+
+*Note: This tool is alpha software. Please contact us if you intend to run it in
+production.*
 
 ## Installing the cogitate_tool
 
