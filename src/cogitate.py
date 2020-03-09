@@ -27,18 +27,11 @@ def main():
     pprint(commit_list)
     # Intermediate between data_miner and data_processor
     json_handler.write_dict_to_json_file(contributor_data, "contributor_data")
-<<<<<<< HEAD
-    # gives the user the URL for the web interface
-    print("If you want to view this data on the web, click the following link:")
-    # web_interface.web_interface()
-=======
-
     # gives the user the option to use  the web interface
     to_web = True
     while to_web == True:
         to_webinterface = input("Would you like to view the data on the web?(y/n)")
         # print(web_interface.web_interface())
->>>>>>> 7bcd04a807ddeabc6ba99a5f695f0d0cd11447c6
 
 
 def retrieve_arguments():
