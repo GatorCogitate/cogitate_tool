@@ -85,3 +85,15 @@ def test_testing_dict_exists_in_testfile():
     """Checks the existence of the key RAW_DATA in individual_metrics_testfile."""
     test_dict = json_handler.get_dict_from_json_file("testing_commits_testfile")
     assert "TESTING_DICT" in test_dict.keys()
+
+
+def test_get_testing_commit_info_populates_data():
+    """Checks that the function retruns a populated dictionary."""
+    test_dict = {}
+    # pylint: disable=len-as-condition
+    assert len(test_dict) == 0
+    test_dict = data_collection.get_testing_commit_info(
+        "testing_commits_testfile"
+    )
+    assert len(test_dict) != 0
+    assert "TESTING_DICT" in test_dict.keys()
