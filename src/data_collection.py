@@ -302,17 +302,16 @@ def get_testing_commit_info(json_file_name):
 
             count = 0  # when 0 the current commit has no changes to tests
             for filepath in filepaths:
-                if (
-                    count == 0
-                ):  # when 0, current commit no testing changes; if not 0, this commit already had testing changes
-                    if filepath:
-                        if "test" in filepath:
-                            data_dict[author][
-                                "COMMITS_TO_TESTING"
-                            ] += 1  # the current commit has a change to testing
-                            count = 1  # found a change to testing for this commit
-                        else:
-                            pass
+                # when count == 0, current commit no testing changes
+                # if not 0, this commit already had testing changes
+                if count == 0:
+                    if filepath and "test" in filepath:
+                        data_dict[author][
+                            "COMMITS_TO_TESTING"
+                        ] += 1  # the current commit has a change to testing
+                        count = 1  # found a change to testing for this commit
+                    else:
+                        pass
                 else:
                     pass
             # Sort list to ensure consistency when testing
