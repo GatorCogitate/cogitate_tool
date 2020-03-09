@@ -30,7 +30,7 @@ def main():
     web = True
     # while loop to ensure user input is "y" or "n"
     while web is True:
-        # pylint: disable=input-built-in-reference
+        # pylint: disable=input-builtin
         visit_web = input("Would you like to view the data on the web?(y/n)")
         if visit_web == "y":
             # print(web_interface.web_interface())
