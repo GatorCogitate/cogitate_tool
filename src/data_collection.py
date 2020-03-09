@@ -271,15 +271,13 @@ def print_individual_in_table(current_data):
 
 
 def print_usernames_emails(current_data):
-    "Print username and emails from a dictionary."
+    """Print username and emails from a dictionary."""
     data_table = PrettyTable()
     headings = ["username", "email"]
     data_table.field_names = headings
     dictionary = current_data["INDIVIDUAL_METRICS"]
     for author in dictionary:
-        data_table.add_row(
-            [author, dictionary[author]["EMAIL"],]
-        )
+        data_table.add_row([author, dictionary[author]["EMAIL"]])
     print(data_table)
 
 
@@ -331,10 +329,10 @@ if __name__ == "__main__":
         DATA["INDIVIDUAL_METRICS"][key].update(ISSUE_DATA[key])
     print_individual_in_table(DATA)
     choice = True
-    while choice == True:
-        removed_entry = input("enter username to be merged then deleted")
-        kept_entry = input("enter username to be merged into")
-        DATA = merge_duplicate_usernames(DATA, kept_entry, removed_entry)
+    while choice:
+        remove = input("enter username to be merged then deleted")
+        keep = input("enter username to be merged into")
+        DATA = merge_duplicate_usernames(DATA, keep, remove)
         print("data after this merge...")
         print_individual_in_table(DATA)
         pick = input("would you like to continue? y/n")
