@@ -64,16 +64,17 @@ def determine_datasets(dictionary):
     """Determine the datasets of the information in the dictionary and add them to the corresponding list."""
     # iterate through nested dictionary
     for username, data in github_data.items():
-        for category, value in data.items():
-            # for each key in the dictionary add its values to a list
-            if value == "COMMITS":
-                commit_data.append(category[value])
-            if value == "ADDED":
-                added_data.append(category[value])
-            if value == "REMOVED":
-                removed_data.append(category[value])
-            if value == "MODIFIED":
-                modified_data.append(category[value])
+        # for each key in the dictionary add its values to a list
+        for key in data:
+            if key == "COMMITS":
+                commit_data.append(data[key])
+            if key == "ADDED":
+                added_data.append(data[key])
+            if key == "REMOVED":
+                removed_data.append(data[key])
+            if key == "MODIFIED":
+                modified_data.append(data[key])
+
 
 
 def calculate_average(dictionary):
