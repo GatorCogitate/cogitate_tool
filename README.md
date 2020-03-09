@@ -8,7 +8,7 @@
 
 ## About the cogitate_tool
 
-Cogitate is an open source tool that evaluates the level of contributions for members of a GitHub repository. Cogitate
+Cogitate is an open source tool that evaluates the level of contributions for members of a GitHub repository. Cogitate 
 Generate a score for members based on a variety of metrics including:
 - Lines added
 - Lines removed
