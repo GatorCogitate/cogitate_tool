@@ -77,7 +77,8 @@ def web_interface():
         st.title("An individuals overall contribution to a team or project")
     ################### Feature 5 ###################
     # Are there individuals who collaborate together too frequently or not enough?
-
+elif add_selectbox == 'Collaboration Tendencies of Individuals':
+        st.title("Collaboration Tendencies of Individuals")
     ################### Feature 6 ###################
     # Are there team members who are “code hoarders” or “domain experts”?
 
@@ -111,7 +112,7 @@ def web_interface():
 
 
             st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
-            
+
     ################### Feature 9 ###################
     # Are there team members who frequently fix the build right before merging a PR to master?
 
