@@ -71,6 +71,16 @@ def web_interface():
           'Xingbang Liu': [0.334, 6.87, 2.97]
         })
 
+        df = df.rename(columns={'types of files modified':'index'}).set_index('index')
+
+        df
+
+        columns = st.multiselect(
+            label="Enter the names of specific contributors below:", options=df.columns
+        )
+
+        plot = df.plot.pie(y='types of files modified', figsize=(5,5))
+
     ################### Feature 4 ###################
     # What is the overall score for an individual’s contribution to a team project?
     elif add_selectbox == 'An individuals overall contribution to a team or project':
