@@ -32,7 +32,7 @@ modified_data = []
 github_data = {}
 
 # def find_github_data():
-github_data = data_collection.calculate_individual_metrics("individual_metrics_testfile")
+github_data = data_collection.calculate_individual_metrics("individual_score_test")
 
 
 def calculate_iqr_score(data_list):
