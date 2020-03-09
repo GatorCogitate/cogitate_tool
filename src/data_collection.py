@@ -245,7 +245,7 @@ def calculate_individual_metrics(json_file_name):
             data_dict[key]["RATIO"] = average
             formats = get_file_formats(data_dict[key]["FILES"])
             data_dict[key]["FORMAT"] = formats
-            
+
             data_dict[key]["PERCENT_TO_TESTING"] = (
                 data_dict[key]["COMMITS_TO_TESTING"] / data_dict[key]["COMMITS"]
             ) * 100
