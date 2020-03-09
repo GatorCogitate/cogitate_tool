@@ -657,6 +657,7 @@ gradle-app.setting
 data/*.json
 !data/contributor_data_template.json
 !data/individual_metrics_testfile.json
+!data/testing_commits_testfile.json
 
 # End of https://www.gitignore.io/api/visualstudiocode,linux,dm,git,gradle,latex,macos,pydev,python,test,venv,vim,virtualenv,windows
 
