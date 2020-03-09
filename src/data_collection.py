@@ -173,6 +173,27 @@ def colect_and_add_raw_data_to_json(
         json_handler.add_entry(raw_data, json_file_name)
 
 
+def colect_and_add_individual_metrics_to_json(
+    read_file="raw_data_storage",
+    write_file="individual_metrics_storage",
+    overwrite=True,
+):
+    """Use calculate_individual_metrics to calculate metrics using read_file.
+    Write metrics to write_file.
+    Overwrite existing data in write_file unless otherwise specified.
+    """
+    # Call calculate_individual_metrics to get data dicitionary
+    metrics = calculate_individual_metrics(read_file)
+    # Write raw data to .json file
+    # Checks if overwriting the file was picked
+    if overwrite:
+        # use json handler to overwrite the old content
+        json_handler.write_dict_to_json_file(metrics, write_file)
+    else:
+        # use json handler to update the old content
+        json_handler.add_entry(metrics, write_file)
+
+
 def calculate_individual_metrics(json_file_name="raw_data_storage"):
     """Retrieve the data from .json file and create a dictionary keyed by user."""
     # retreive data from raw data json
@@ -248,6 +269,7 @@ def print_individual_in_table(file_name="individual_metrics_storage"):
     data_table = PrettyTable()
     # retreive data from the appropriate json file
     dictionary = json_handler.get_dict_from_json_file(file_name)
+    # Add needed headings
     headings = [
         "Username",
         "Email",
@@ -292,15 +314,13 @@ def print_individual_in_table(file_name="individual_metrics_storage"):
 if __name__ == "__main__":
     # NOTE: this supression needs to be resolved
     # pylint: disable=input-builtin
-    FILE_NAME = input("Enter the name of the file : ")
-    # FILE_NAME = "contributor_data_template"
-    DATA = calculate_individual_metrics(FILE_NAME)
+    # This call will use the default file names
+    DATA = calculate_individual_metrics()
+    # if statement will check if raw data was collected
     if DATA == {}:
         REPO_PATH = input("Enter the path to the repo : ")
-        add_raw_data_to_json(REPO_PATH, FILE_NAME)
-        print("processing data again")
-        DATA = calculate_individual_metrics(FILE_NAME)
+        # This call will use default options for file and overwrite condition
+        colect_and_add_raw_data_to_json(REPO_PATH)
     print("Adding processed data to selected json file...")
-    # Write reformatted dictionary to json
-    json_handler.add_entry(DATA, FILE_NAME)
-    print_individual_in_table(FILE_NAME)
+    colect_and_add_individual_metrics_to_json()
+    print_individual_in_table()
