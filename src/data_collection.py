@@ -325,8 +325,36 @@ def print_individual_in_table(file_name):
                 dictionary[key]["FORMAT"],
             ]
         )
+
     print(data_table)
 
+
+def print_testing_in_table(file_name):
+    """Create and print the table using prettytable."""
+    data_table = PrettyTable()
+    current_data = json_handler.get_dict_from_json_file(file_name)
+    dictionary = current_data["TESTING_DICT"]
+    headings = [
+        "Username",
+        "Commits",
+        "Commits to Testing",
+        "Commits Elsewhere",
+        "Percent of Commits to Testing",
+        "Percent of Commits not to Testing",
+    ]
+    data_table.field_names = headings
+    for key in dictionary:
+        data_table.add_row(
+            [
+                key,
+                dictionary[key]["COMMITS"],
+                dictionary[key]["COMMITS_TO_TESTING"],
+                dictionary[key]["COMMITS_ELSEWHERE"],
+                dictionary[key]["PERCENT_TO_TESTING"],
+                dictionary[key]["PERCENT_NOT_TO_TESTING"],
+            ]
+        )
+    print(data_table)
 
 # NOTE: For the purposes of testing and demo
 
@@ -354,4 +382,4 @@ if __name__ == "__main__":
     print("Adding processed data to selected json file...")
     # Write reformatted dictionary to json
     json_handler.add_entry(DATA, FILE_NAME)
-    #print_individual_in_table(FILE_NAME)
+    print_testing_in_table(FILE_NAME)
