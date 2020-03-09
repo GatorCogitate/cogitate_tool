@@ -79,3 +79,9 @@ def test_get_commit_average(input_lines, input_commits, expected_output):
     assert (
         data_collection.get_commit_average(input_lines, input_commits)
     ) == expected_output
+
+
+def test_testing_dict_exists_in_testfile():
+    """Checks the existence of the key RAW_DATA in individual_metrics_testfile."""
+    test_dict = json_handler.get_dict_from_json_file("testing_commits_testfile")
+    assert "TESTING_DICT" in test_dict.keys()
