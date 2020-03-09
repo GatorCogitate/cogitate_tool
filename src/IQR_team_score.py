@@ -12,7 +12,10 @@ modified_data = []
 github_data = {}
 
 
-github_data = data_collection.calculate_individual_metrics("individual_score_test")
+data_collection.add_raw_data_to_json(
+    "/home/maddykapfhammer/Documents/Allegheny/2020/Spring/CS203/cogitate_tool", "team_score_test"
+)
+github_data = data_collection.calculate_individual_metrics("team_score_test")
 
 
 def calculate_iqr_score(data_list, below_weight, above_weight, within_weight):
