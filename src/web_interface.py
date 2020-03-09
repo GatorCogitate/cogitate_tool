@@ -55,7 +55,21 @@ def web_interface():
         st.title("Lines of Code Added, Modified, Deleted by an Individual")  # dispaly relevant title for dataframe
 
     ################### Feature 3 ###################
-    # Why types of files did an individual normally modify in a repository?
+    # What types of files did an individual normally modify in a repository?
+    elif add_selectbox == 'What Types of Files did an Individual':
+        st.title("Types of Files Modified by an Individual")
+
+        df = pd.DataFrame({
+          'types of files modified': ['src', 'tests', 'scripts'],
+          'Christian Lussier': [0.330, 4.87, 5.97],
+          'Cory Wiard': [0.430, 5.87, 4.97],
+          'Devin Spitalny': [0.230, 3.87, 6.97],
+          'Devin Ho': [0.450, 5.77, 4.97],
+          'Jordan Wilson': [0.207, 9.87, 3.97],
+          'Danny Reid': [0.760, 43.12, 3.97],
+          'Anthony Baldeosingh': [0.210, 4.96, 2.17],
+          'Xingbang Liu': [0.334, 6.87, 2.97]
+        })
 
     ################### Feature 4 ###################
     # What is the overall score for an individual’s contribution to a team project?
@@ -75,7 +89,31 @@ def web_interface():
         st.title("Team Members Who Contribute Source Code Without Tests")
     ################### Feature 8 ###################
     # Are there team members who break the build or contribute to unusually high code churn?
+    elif add_selectbox == 'Team Members Who Contribute To High Code Churn':
+            st.title("Team Members Code Churn Contributions")  # dispaly relevant title for dataframe
+            df = pd.DataFrame({
+              'type': ['Code Churn'],
+              'Christian Lussier': [8],
+              'Cory Wiard': [5],
+              'Devin Spitalny': [2],
+              'Devin Ho': [8],
+              'Jordan Wilson': [5],
+              'Danny Reid': [5],
+              'Anthony Baldeosingh': [1],
+              'Xingbang Liu': [6]
+            })  # create dataframe with sample dates and contributor commit numbers
 
+            df = df.rename(columns={'type':'index'}).set_index('index')  # set date as index
+
+            df  # display chart of sample commits
+
+            columns = st.multiselect(
+                label="Enter the names of specific contributors below:", options=df.columns
+            )  # allow users to display specific contributor information on dataframe graph
+
+
+            st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
+            
     ################### Feature 9 ###################
     # Are there team members who frequently fix the build right before merging a PR to master?
 
