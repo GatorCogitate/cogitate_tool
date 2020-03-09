@@ -153,20 +153,24 @@ def get_file_formats(files):
     return formats
 
 
-# NOTE: this function is temporary to test get_individual_metrics considering
-# there is not a main module that connects eerything yet
-def add_raw_data_to_json(path_to_repo, json_file_name):
-    """Check if raw data is in .json file and collects it if not."""
-    # get the data from .json file
-    current_data = json_handler.get_dict_from_json_file(json_file_name)
-    # check if data has not been collected and do so if it was not
-    if "RAW_DATA" not in current_data.keys():
-        print("Raw data has not been collected, collecting it now...")
-        # collects data from data_collection
-        raw_data = {"RAW_DATA": collect_commits_hash(path_to_repo)}
-        # Write raw data to .json file
+# This function simplifies gathering and writing raw data to json file
+def colect_and_add_raw_data_to_json(
+    path_to_repo, json_file_name="raw_data_storage", overwrite=True
+):
+    """Use collect_commits_hash to collect data from the repository path.
+    Overwrite any data in the chosen file unless otherwise specified.
+    Default file is raw_data_storage unless otherwise specified.
+    """
+    # collects data from collect_commits_hash and reformat dicitionary
+    raw_data = {"RAW_DATA": collect_commits_hash(path_to_repo)}
+    # Write raw data to .json file
+    # Checks if overwriting the file was picked
+    if overwrite:
+        # use json handler to overwrite the old content
+        json_handler.write_dict_to_json_file(raw_data, json_file_name)
+    else:
+        # use json handler to update the old content
         json_handler.add_entry(raw_data, json_file_name)
-        print("Data collected")
 
 
 def calculate_individual_metrics(json_file_name):
