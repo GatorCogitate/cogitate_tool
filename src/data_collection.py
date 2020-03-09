@@ -251,10 +251,9 @@ def calculate_individual_metrics(json_file_name):
     # NOTE: for printing the data please use the file print_table.py
 
 
-def print_individual_in_table(file_name):
+def print_individual_in_table(current_data):
     """Create and print the table using prettytable."""
     data_table = PrettyTable()
-    current_data = json_handler.get_dict_from_json_file(file_name)
     dictionary = current_data["INDIVIDUAL_METRICS"]
     headings = ["Username", "Email", "Commits", "+", "-"]
     data_table.field_names = headings
@@ -271,15 +270,34 @@ def print_individual_in_table(file_name):
     print(data_table)
 
 
-def merge_duplicate_usernames(dictionary, kept_entry, removed_entry):
+def print_usernames_emails(current_data):
+    "Print username and emails from a dictionary."
+    data_table = PrettyTable()
+    headings = ["username", "email"]
+    data_table.field_names = headings
+    dictionary = current_data["INDIVIDUAL_METRICS"]
+    for author in dictionary:
+        data_table.add_row(
+            [author, dictionary[author]["EMAIL"],]
+        )
+    print(data_table)
+
+
+def merge_duplicate_usernames(current_data, kept_entry, removed_entry):
     """Take input from user and merge data in entries then delete one."""
-    dictionary[kept_entry]["COMMITS"] += dictionary[kept_entry]["COMMITS"]
-    dictionary[kept_entry]["ADDED"] += dictionary[kept_entry]["ADDED"]
-    dictionary[kept_entry]["REMOVED"] += dictionary[kept_entry]["REMOVED"]
+    dictionary = current_data["INDIVIDUAL_METRICS"]
+    print(dictionary.keys())
+    dictionary[kept_entry]["COMMITS"] += dictionary[removed_entry]["COMMITS"]
+    dictionary[kept_entry]["ADDED"] += dictionary[removed_entry]["ADDED"]
+    dictionary[kept_entry]["REMOVED"] += dictionary[removed_entry]["REMOVED"]
+    dictionary[kept_entry]["FILES"] = list(
+        set(dictionary[kept_entry]["FILES"]) | set(dictionary[removed_entry]["FILES"])
+    )
     try:
         del dictionary[removed_entry]
     except KeyError:
         print("Key 'testing' not found")
+    return {"INDIVIDUAL_METRICS": dictionary}
 
 
 if __name__ == "__main__":
@@ -288,7 +306,7 @@ if __name__ == "__main__":
     FILE_NAME = "testfile"
     DATA = calculate_individual_metrics(FILE_NAME)
     if DATA == {}:
-        REPO_PATH = input("Enter the path to the repo : ")
+        REPO_PATH = "https://github.com/GatorCogitate/cogitate_tool"
         add_raw_data_to_json(REPO_PATH, FILE_NAME)
         print("processing data again")
         DATA = calculate_individual_metrics(FILE_NAME)
@@ -311,7 +329,17 @@ if __name__ == "__main__":
                 "FORMAT": [],
             }
         DATA["INDIVIDUAL_METRICS"][key].update(ISSUE_DATA[key])
-    print("Adding processed data to selected json file...")
+    print_individual_in_table(DATA)
+    choice = True
+    while choice == True:
+        removed_entry = input("enter username to be merged then deleted")
+        kept_entry = input("enter username to be merged into")
+        DATA = merge_duplicate_usernames(DATA, kept_entry, removed_entry)
+        print("data after this merge...")
+        print_individual_in_table(DATA)
+        pick = input("would you like to continue? y/n")
+        if pick == "n":
+            choice = False
     # Write reformatted dictionary to json
     json_handler.add_entry(DATA, FILE_NAME)
-    print_individual_in_table(FILE_NAME)
+    print_individual_in_table(DATA)
