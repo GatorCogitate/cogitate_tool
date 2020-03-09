@@ -83,13 +83,16 @@ def calculate_average(dictionary):
     removed_score = 0
     modified_score = 0
     average_score = 0
+    below_weight = 0.05
+    above_weight = 0.2
+    within_weight = 0.75
     # import lists from calculate_datasets function
     determine_datasets(dictionary)
     # calculate the team score for each list of data
-    commits_score = calculate_iqr_score(commit_data)
-    added_score = calculate_iqr_score(added_data)
-    removed_score = calculate_iqr_score(removed_data)
-    modified_score = calculate_iqr_score(modified_data)
+    commits_score = calculate_iqr_score(commit_data, below_weight, above_weight, within_weight)
+    added_score = calculate_iqr_score(added_data, below_weight, above_weight, within_weight)
+    removed_score = calculate_iqr_score(removed_data, below_weight, above_weight, within_weight)
+    modified_score = calculate_iqr_score(modified_data, below_weight, above_weight, within_weight)
     # find the average team score for all of the categories
     average_score = (commits_score + added_score + removed_score + modified_score) / 4
 
