@@ -11,7 +11,7 @@ from pydriller import RepositoryMining
 from prettytable import PrettyTable
 from github import Github
 import json_handler
-import pprint
+
 
 def authenticate_repository(user_token, repository_name):
     """Authenticate the Github repository using provided credentials."""
@@ -121,7 +121,7 @@ def collect_commits_hash(repo):
 
     return commit_list
 
-def get_testing_commit_info(json_file_name):
+def get_testing_commit_info():
     current_data = json_handler.get_dict_from_json_file(json_file_name)
     # creates a hashmap where the key is the authors username
     data_dict = {}
@@ -129,52 +129,53 @@ def get_testing_commit_info(json_file_name):
     if "RAW_DATA" in current_data.keys():
         for key in current_data["RAW_DATA"]:
             author = key["author_name"]
-            filepaths = key["filepath"]
+            file_path = key["filepath"]
 
+            email = key["author_email"]
             # NOTE check date compatibility with json
             # date = "N/A"
             # check if the key already in in the dicitionary
-            if author in data_dict:
+            if author in testing_dict:
                 # condition passed, adds one to the number of commits
                 data_dict[author]["COMMITS"] += 1
             else:
                 # condition fails, creates a new key and adds empty data
-                print("FOUND AUTHOR", author)
                 data_dict[author] = {
-                    "COMMITS": 1,
                     "COMMITS_TO_TESTING": 0,
                     "COMMITS_ELSEWHERE": 0,
                     "PERCENT_TO_TESTING": 0,
                     "PERCENT_NOT_TO_TESTING": 0,
                 }
 
-            count = 0
-            for filepath in filepaths:
-                if count is 0:
-                    if filepath:
-                        if "test" in filepath:
-                            data_dict[author]["COMMITS_TO_TESTING"] += 1
-                            count = 1
-                        else:
-                            pass
-                else:
-                    pass
+            if file_path
+            data_dict[author]["ADDED"] += key["line_added"]
+            data_dict[author]["REMOVED"] += key["line_removed"]
+            # NOTE: consider adding lines of code from data
+            # check if the explored file is not in the list in index seven
+            current_files = key["filename"]
+            # add the current_files to the user files list without duplicates
+            data_dict[author]["FILES"] = list(
+                set(data_dict[author]["FILES"]) | set(current_files)
+            )
             # Sort list to ensure consistency when testing
+            data_dict[author]["FILES"] = sorted(data_dict[author]["FILES"])
         # iterate through the data to do final calculations
         for key in data_dict:
-            data_dict[key]["PERCENT_TO_TESTING"] = ((
-                data_dict[key]["COMMITS_TO_TESTING"] / data_dict[key]["COMMITS"]
-            ) * 100)
-
-            data_dict[key]["COMMITS_ELSEWHERE"] = (data_dict[key]["COMMITS"] - data_dict[key]["COMMITS_TO_TESTING"])
-
-            data_dict[key]["PERCENT_NOT_TO_TESTING"] = ((
-                data_dict[key]["COMMITS_ELSEWHERE"] / data_dict[key]["COMMITS"]
-            ) * 100)
+            data_dict[key]["TOTAL"] = (
+                data_dict[key]["ADDED"] - data_dict[key]["REMOVED"]
+            )
+            data_dict[key]["MODIFIED"] = (
+                data_dict[key]["ADDED"] + data_dict[key]["REMOVED"]
+            )
+            average = get_commit_average(
+                data_dict[key]["MODIFIED"], data_dict[key]["COMMITS"]
+            )
+            data_dict[key]["RATIO"] = average
+            formats = get_file_formats(data_dict[key]["FILES"])
+            data_dict[key]["FORMAT"] = formats
         # Reformat the dictionary as a value of the key INDIVIDUAL_METRICS
-        testing_dict = {"TESTING_DICT": data_dict}
-        pprint.pprint(data_dict)
-        return testing_dict
+        indvividual_metrics_dict = {"INDIVIDUAL_METRICS": data_dict}
+        return indvividual_metrics_dict
     return {}
 
 
@@ -345,13 +346,13 @@ if __name__ == "__main__":
     # pylint: disable=input-builtin
     FILE_NAME = input("Enter the name of the file : ")
     # FILE_NAME = "contributor_data_template"
-    DATA = get_testing_commit_info(FILE_NAME)
+    DATA = calculate_individual_metrics(FILE_NAME)
     if DATA == {}:
         REPO_PATH = input("Enter the path to the repo : ")
         add_raw_data_to_json(REPO_PATH, FILE_NAME)
         print("processing data again")
-        DATA = get_testing_commit_info(FILE_NAME)
+        DATA = calculate_individual_metrics(FILE_NAME)
     print("Adding processed data to selected json file...")
     # Write reformatted dictionary to json
     json_handler.add_entry(DATA, FILE_NAME)
-    #print_individual_in_table(FILE_NAME)
+    print_individual_in_table(FILE_NAME)
