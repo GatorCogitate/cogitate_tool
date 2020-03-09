@@ -3615,5 +3615,203 @@
             "PERCENT_TO_TESTING": 0.0,
             "PERCENT_NOT_TO_TESTING": 100.0
         }
+    },
+    "INDIVIDUAL_METRICS": {
+        "Gregory M. Kapfhammer": {
+            "EMAIL": "gkapfham@allegheny.edu",
+            "COMMITS": 17,
+            "ADDED": 717,
+            "REMOVED": 23,
+            "TOTAL": 694,
+            "MODIFIED": 740,
+            "RATIO": 43,
+            "FILES": [
+                ".gitignore",
+                ".travis.yml",
+                "README.md",
+                "build.gradle",
+                "google_checks.xml",
+                "gradle.properties",
+                "proposal.md",
+                "reflection.md",
+                "report.md",
+                "settings.gradle",
+                "update.md"
+            ],
+            "FORMAT": [
+                "",
+                ".gradle",
+                ".md",
+                ".properties",
+                ".xml",
+                ".yml"
+            ]
+        },
+        "clussier": {
+            "EMAIL": "lussierc@allegheny.edu",
+            "COMMITS": 41,
+            "ADDED": 644,
+            "REMOVED": 189,
+            "TOTAL": 455,
+            "MODIFIED": 833,
+            "RATIO": 20,
+            "FILES": [
+                ".DS_Store",
+                "ArithmeticComputation.java",
+                "FactorialComputation.java",
+                "FibonacciComputation.java",
+                "IterativeFactorialComputation.java",
+                "IterativeFibonacciComputation.java",
+                "Main.java",
+                "RecursiveFactorialComputation.java",
+                "RecursiveFibonacciComputation.java",
+                "ResultsTable.java",
+                "RunCampaign.java",
+                "TestArithmeticComputations.java",
+                "build.gradle",
+                "filerelationships.JPG",
+                "proposal.md",
+                "reflection.md",
+                "report.md",
+                "update.md",
+                "writtenTaskList.JPG"
+            ],
+            "FORMAT": [
+                "",
+                ".JPG",
+                ".gradle",
+                ".java",
+                ".md"
+            ]
+        },
+        "Juncheng Wu": {
+            "EMAIL": "wuj@aldenv138.allegheny.edu",
+            "COMMITS": 33,
+            "ADDED": 705,
+            "REMOVED": 176,
+            "TOTAL": 529,
+            "MODIFIED": 881,
+            "RATIO": 26,
+            "FILES": [
+                ".DS_Store",
+                ".gitignore",
+                "ArithmeticComputation.java",
+                "ArrayList.java",
+                "DoublyLinkedList.java",
+                "Experiment.java",
+                "FibonacciComputation.java",
+                "IterativeFactorialComputation.java",
+                "IterativeFibonacciComputation.java",
+                "Main.java",
+                "RecursiveFactorialComputation.java",
+                "RecursiveFibonacciComputation.java",
+                "RecursiveFibonacciHashMap.java",
+                "RunCampaign.java",
+                "SinglyLinkedList.java",
+                "TestArithmeticComputations.java",
+                "TestResultsTable.java",
+                "reflection.md"
+            ],
+            "FORMAT": [
+                "",
+                ".java",
+                ".md"
+            ]
+        },
+        "Lancaster Wu": {
+            "EMAIL": "31478979+Lancasterwu@users.noreply.github.com",
+            "COMMITS": 23,
+            "ADDED": 995,
+            "REMOVED": 203,
+            "TOTAL": 792,
+            "MODIFIED": 1198,
+            "RATIO": 52,
+            "FILES": [
+                "ArrayList.java",
+                "Campaign",
+                "Campaign.java",
+                "DoublyLinkedList.java",
+                "Experiment",
+                "Experiment.java",
+                "List.java",
+                "Main",
+                "Main.java",
+                "RecursiveFibonacciComputationHashMap.java",
+                "RecursiveFibonacciHashMap.java",
+                "ResultsTable.java",
+                "RunCampaign.java",
+                "SinglyLinkedList.java",
+                "experiment"
+            ],
+            "FORMAT": [
+                ".java",
+                "Campaign",
+                "Experiment",
+                "Main",
+                "experiment"
+            ]
+        },
+        "Devin Ho": {
+            "EMAIL": "hod@aldenv139.allegheny.edu",
+            "COMMITS": 38,
+            "ADDED": 485,
+            "REMOVED": 131,
+            "TOTAL": 354,
+            "MODIFIED": 616,
+            "RATIO": 16,
+            "FILES": [
+                ".DS_Store",
+                "Campaign.java",
+                "Experiment.java",
+                "IterativeFibonacciComputation.java",
+                "Main.java",
+                "RecursiveFactorialComputation.java",
+                "RecursiveFibonacciComputation.java",
+                "RunCampaign.java",
+                "TestArithmeticComputations.java",
+                "reflection.md",
+                "report.md"
+            ],
+            "FORMAT": [
+                "",
+                ".java",
+                ".md"
+            ]
+        },
+        "Christian Lussier": {
+            "EMAIL": "32375724+lussierc@users.noreply.github.com",
+            "COMMITS": 9,
+            "ADDED": 84,
+            "REMOVED": 112,
+            "TOTAL": -28,
+            "MODIFIED": 196,
+            "RATIO": 21,
+            "FILES": [
+                "CODE_OF_CONDUCT.md",
+                "IMG_3251.JPG",
+                "LICENSE",
+                "README.md"
+            ],
+            "FORMAT": [
+                ".JPG",
+                ".md",
+                "LICENSE"
+            ]
+        },
+        "Spencer Huang": {
+            "EMAIL": "31478964+huangs1@users.noreply.github.com",
+            "COMMITS": 1,
+            "ADDED": 1,
+            "REMOVED": 1,
+            "TOTAL": 0,
+            "MODIFIED": 2,
+            "RATIO": 2,
+            "FILES": [
+                "RunCampaign.java"
+            ],
+            "FORMAT": [
+                ".java"
+            ]
+        }
     }
 }

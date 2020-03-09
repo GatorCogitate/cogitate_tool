@@ -373,6 +373,19 @@ if __name__ == "__main__":
     # pylint: disable=input-builtin
     FILE_NAME = input("Enter the name of the file : ")
     # FILE_NAME = "contributor_data_template"
+    DATA = calculate_individual_metrics(FILE_NAME)
+    if DATA == {}:
+        REPO_PATH = input("Enter the path to the repo : ")
+        add_raw_data_to_json(REPO_PATH, FILE_NAME)
+        print("processing data again")
+        DATA = calculate_individual_metrics(FILE_NAME)
+    print("Adding processed data to selected json file...")
+    # Write reformatted dictionary to json
+    json_handler.add_entry(DATA, FILE_NAME)
+    print_individual_in_table(FILE_NAME)
+    # NOTE: this supression needs to be resolved
+    # pylint: disable=input-builtin
+    # FILE_NAME = "contributor_data_template"
     DATA = get_testing_commit_info(FILE_NAME)
     if DATA == {}:
         REPO_PATH = input("Enter the path to the repo : ")
