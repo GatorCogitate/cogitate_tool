@@ -179,6 +179,7 @@ def calculate_individual_metrics(json_file_name):
         for key in current_data["RAW_DATA"]:
             author = key["author_name"]
             email = key["author_email"]
+            filepaths = key["filepath"]  # get filepaths of file modified
             # NOTE check date compatibility with json
             # date = "N/A"
             # check if the key already in in the dicitionary
@@ -197,6 +198,10 @@ def calculate_individual_metrics(json_file_name):
                     "RATIO": 0,
                     "FILES": [],
                     "FORMAT": [],
+                    "COMMITS_TO_TESTING": 0,
+                    "COMMITS_ELSEWHERE": 0,
+                    "PERCENT_TO_TESTING": 0,
+                    "PERCENT_NOT_TO_TESTING": 0,
                 }
 
             data_dict[author]["ADDED"] += key["line_added"]
@@ -210,6 +215,22 @@ def calculate_individual_metrics(json_file_name):
             )
             # Sort list to ensure consistency when testing
             data_dict[author]["FILES"] = sorted(data_dict[author]["FILES"])
+
+            # get testing commit info:
+            count = 0  # when 0 the current commit has no changes to tests
+            for filepath in filepaths:
+                # when count == 0, current commit no testing changes
+                # if not 0, this commit already had testing changes
+                if count == 0:
+                    if filepath and "test" in filepath:
+                        data_dict[author][
+                            "COMMITS_TO_TESTING"
+                        ] += 1  # the current commit has a change to testing
+                        count = 1  # found a change to testing for this commit
+                    else:
+                        pass
+                else:
+                    pass
         # iterate through the data to do final calculations
         for key in data_dict:
             data_dict[key]["TOTAL"] = (
@@ -224,6 +245,18 @@ def calculate_individual_metrics(json_file_name):
             data_dict[key]["RATIO"] = average
             formats = get_file_formats(data_dict[key]["FILES"])
             data_dict[key]["FORMAT"] = formats
+            
+            data_dict[key]["PERCENT_TO_TESTING"] = (
+                data_dict[key]["COMMITS_TO_TESTING"] / data_dict[key]["COMMITS"]
+            ) * 100
+
+            data_dict[key]["COMMITS_ELSEWHERE"] = (
+                data_dict[key]["COMMITS"] - data_dict[key]["COMMITS_TO_TESTING"]
+            )
+
+            data_dict[key]["PERCENT_NOT_TO_TESTING"] = (
+                data_dict[key]["COMMITS_ELSEWHERE"] / data_dict[key]["COMMITS"]
+            ) * 100
         # Reformat the dictionary as a value of the key INDIVIDUAL_METRICS
         indvividual_metrics_dict = {"INDIVIDUAL_METRICS": data_dict}
         return indvividual_metrics_dict
@@ -253,6 +286,10 @@ def print_individual_in_table(file_name):
         "Modified Lines",
         "Lines/Commit",
         "File Types",
+        "Commits to Testing",
+        "Commits Elsewhere",
+        "Percent of Commits to Testing",
+        "Percent of Commits not to Testing",
     ]
     data_table.field_names = headings
     for key in dictionary:
@@ -267,98 +304,13 @@ def print_individual_in_table(file_name):
                 dictionary[key]["MODIFIED"],
                 dictionary[key]["RATIO"],
                 dictionary[key]["FORMAT"],
-            ]
-        )
-
-    print(data_table)
-
-
-def get_testing_commit_info(json_file_name):
-    """Get repo info about commits to or not to testing."""
-    current_data = json_handler.get_dict_from_json_file(json_file_name)
-    # creates a hashmap where the key is the authors username
-    data_dict = {}
-    # Check if RAW_DATA is in json
-    if "RAW_DATA" in current_data.keys():
-        for key in current_data["RAW_DATA"]:
-            author = key["author_name"]
-            filepaths = key["filepath"]  # get filepaths of file modified
-
-            # NOTE check date compatibility with json
-            # date = "N/A"
-            # check if the key already in in the dicitionary
-            if author in data_dict:
-                # condition passed, adds one to the number of commits
-                data_dict[author]["COMMITS"] += 1
-            else:
-                # condition fails, creates a new key and adds empty data
-                data_dict[author] = {
-                    "COMMITS": 1,
-                    "COMMITS_TO_TESTING": 0,
-                    "COMMITS_ELSEWHERE": 0,
-                    "PERCENT_TO_TESTING": 0,
-                    "PERCENT_NOT_TO_TESTING": 0,
-                }
-
-            count = 0  # when 0 the current commit has no changes to tests
-            for filepath in filepaths:
-                # when count == 0, current commit no testing changes
-                # if not 0, this commit already had testing changes
-                if count == 0:
-                    if filepath and "test" in filepath:
-                        data_dict[author][
-                            "COMMITS_TO_TESTING"
-                        ] += 1  # the current commit has a change to testing
-                        count = 1  # found a change to testing for this commit
-                    else:
-                        pass
-                else:
-                    pass
-            # Sort list to ensure consistency when testing
-        # iterate through the data to do final calculations
-        for key in data_dict:
-            data_dict[key]["PERCENT_TO_TESTING"] = (
-                data_dict[key]["COMMITS_TO_TESTING"] / data_dict[key]["COMMITS"]
-            ) * 100
-
-            data_dict[key]["COMMITS_ELSEWHERE"] = (
-                data_dict[key]["COMMITS"] - data_dict[key]["COMMITS_TO_TESTING"]
-            )
-
-            data_dict[key]["PERCENT_NOT_TO_TESTING"] = (
-                data_dict[key]["COMMITS_ELSEWHERE"] / data_dict[key]["COMMITS"]
-            ) * 100
-        # Reformat the dictionary as a value of the key INDIVIDUAL_METRICS
-        testing_dict = {"TESTING_DICT": data_dict}
-        return testing_dict
-    return {}
-
-
-def print_testing_in_table(file_name):
-    """Create and print the table of testing data using prettytable."""
-    data_table = PrettyTable()
-    current_data = json_handler.get_dict_from_json_file(file_name)
-    dictionary = current_data["TESTING_DICT"]
-    headings = [
-        "Username",
-        "Commits",
-        "Commits to Testing",
-        "Commits Elsewhere",
-        "Percent of Commits to Testing",
-        "Percent of Commits not to Testing",
-    ]
-    data_table.field_names = headings
-    for key in dictionary:
-        data_table.add_row(
-            [
-                key,
-                dictionary[key]["COMMITS"],
                 dictionary[key]["COMMITS_TO_TESTING"],
                 dictionary[key]["COMMITS_ELSEWHERE"],
                 dictionary[key]["PERCENT_TO_TESTING"],
                 dictionary[key]["PERCENT_NOT_TO_TESTING"],
             ]
         )
+
     print(data_table)
 
 
@@ -389,13 +341,3 @@ if __name__ == "__main__":
     # Write reformatted dictionary to json
     json_handler.add_entry(DATA, FILE_NAME)
     print_individual_in_table(FILE_NAME)
-
-    DATA = get_testing_commit_info(FILE_NAME)
-    if DATA == {}:
-        add_raw_data_to_json(REPO_PATH, FILE_NAME)
-        print("processing data again")
-        DATA = get_testing_commit_info(FILE_NAME)
-    print("Adding processed data to selected json file...")
-    # Write reformatted dictionary to json
-    json_handler.add_entry(DATA, FILE_NAME)
-    print_testing_in_table(FILE_NAME)
