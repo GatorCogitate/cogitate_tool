@@ -251,40 +251,25 @@ def calculate_individual_metrics(json_file_name):
     # NOTE: for printing the data please use the file print_table.py
 
 
-def print_individual_in_table(current_data):
+def print_individual_in_table(
+    current_data, headings=["EMAIL", "COMMITS", "ADDED", "REMOVED"]
+):
     """Create and print the table using prettytable."""
     data_table = PrettyTable()
     dictionary = current_data["INDIVIDUAL_METRICS"]
-    headings = ["Username", "Email", "Commits", "+", "-"]
-    data_table.field_names = headings
+    data_table.field_names = ["Username"] + headings
     for author in dictionary:
-        data_table.add_row(
-            [
-                author,
-                dictionary[author]["EMAIL"],
-                dictionary[author]["COMMITS"],
-                dictionary[author]["ADDED"],
-                dictionary[author]["REMOVED"],
-            ]
-        )
-    print(data_table)
-
-
-def print_usernames_emails(current_data):
-    """Print username and emails from a dictionary."""
-    data_table = PrettyTable()
-    headings = ["username", "email"]
-    data_table.field_names = headings
-    dictionary = current_data["INDIVIDUAL_METRICS"]
-    for author in dictionary:
-        data_table.add_row([author, dictionary[author]["EMAIL"]])
+        current_row = [author]
+        for heading in headings:
+            current_row.append(dictionary[author][heading])
+        data_table.add_row(current_row)
+        current_row = []
     print(data_table)
 
 
 def merge_duplicate_usernames(current_data, kept_entry, removed_entry):
     """Take input from user and merge data in entries then delete one."""
     dictionary = current_data["INDIVIDUAL_METRICS"]
-    print(dictionary.keys())
     dictionary[kept_entry]["COMMITS"] += dictionary[removed_entry]["COMMITS"]
     dictionary[kept_entry]["ADDED"] += dictionary[removed_entry]["ADDED"]
     dictionary[kept_entry]["REMOVED"] += dictionary[removed_entry]["REMOVED"]
@@ -330,8 +315,8 @@ if __name__ == "__main__":
     print_individual_in_table(DATA)
     choice = True
     while choice:
-        remove = input("enter username to be merged then deleted")
-        keep = input("enter username to be merged into")
+        remove = input("enter username to be merged then deleted: ")
+        keep = input("enter username to be merged into: ")
         DATA = merge_duplicate_usernames(DATA, keep, remove)
         print("data after this merge...")
         print_individual_in_table(DATA)
