@@ -275,6 +275,8 @@ def print_individual_in_table(file_name):
 
 
 def get_testing_commit_info(json_file_name):
+    """Get repo info about commits to or not to testing."""
+    
     current_data = json_handler.get_dict_from_json_file(json_file_name)
     # creates a hashmap where the key is the authors username
     data_dict = {}
@@ -332,7 +334,7 @@ def get_testing_commit_info(json_file_name):
 
 
 def print_testing_in_table(file_name):
-    """Create and print the table using prettytable."""
+    """Create and print the table of testing data using prettytable."""
     data_table = PrettyTable()
     current_data = json_handler.get_dict_from_json_file(file_name)
     dictionary = current_data["TESTING_DICT"]
@@ -386,9 +388,7 @@ if __name__ == "__main__":
     # Write reformatted dictionary to json
     json_handler.add_entry(DATA, FILE_NAME)
     print_individual_in_table(FILE_NAME)
-    # NOTE: this supression needs to be resolved
-    # pylint: disable=input-builtin
-    # FILE_NAME = "contributor_data_template"
+
     DATA = get_testing_commit_info(FILE_NAME)
     if DATA == {}:
         add_raw_data_to_json(REPO_PATH, FILE_NAME)
