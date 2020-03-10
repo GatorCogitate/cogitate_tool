@@ -161,14 +161,14 @@ def web_interface():
 
         df = pd.DataFrame({
           'commits': ['total', 'src', 'tests', 'scripts'],
-          'Christian Lussier': [10, 4.87, 5.97],
-          'Cory Wiard': [12, 5.87, 4.97],
-          'Devin Spitalny': [18, 3.87, 6.97],
-          'Devin Ho': [11, 5.77, 4.97],
-          'Jordan Wilson': [10, 9.87, 3.97],
-          'Danny Reid': [14, 43.12, 3.97],
-          'Anthony Baldeosingh': [16, 4.96, 2.17],
-          'Xingbang Liu': [0.334, 6.87, 2.97]
+          'Christian Lussier': [10, 2, 5, 3],
+          'Cory Wiard': [12, 4, 4, 4],
+          'Devin Spitalny': [18, 13, 1, 4],
+          'Devin Ho': [11, 2, 8, 1],
+          'Jordan Wilson': [10, 3, 3, 4],
+          'Danny Reid': [14, 8, 3, 3],
+          'Anthony Baldeosingh': [16, 14, 1, 1],
+          'Xingbang Liu': [13, 4, 5, 4]
         })
 
         df = df.rename(columns={'commits':'index'}).set_index('index')  # set date as index
