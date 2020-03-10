@@ -15,7 +15,7 @@ def main(args):
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
     if repository is False:
         print("Cannot authenticate repository.")
-        break
+        return
     # allows the user to enter the CLI **needs to be uncommented when web interface is complete**
     if args["web"]:
         # print(web_interface.web_interface())
@@ -57,7 +57,11 @@ def retrieve_arguments():
         help="User's Repository name, start with root dirctory (user or organization name)",
     )
     a_parse.add_argument(
-        "-du", "--deleteusername ",
+        "-du",
+        "--deleteusername ",
+        required=True,
+        type=str,
+        help="Username that is merged into the kept username, then deleted.",
     )
     a_parse.add_argument(
         "-s",
