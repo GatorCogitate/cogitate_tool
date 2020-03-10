@@ -16,6 +16,7 @@ def main(args):
     if repository is False:
         print("Cannot authenticate repository.")
         return
+    # allows the user to merge duplicate usernames in the dictionary
     # allows the user to enter the CLI **needs to be uncommented when web interface is complete**
     if args["web"]:
         # print(web_interface.web_interface())
