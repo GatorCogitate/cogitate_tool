@@ -26,7 +26,7 @@ def test_retrieve_token_with_tokenfile(input_file):
     except FileNotFoundError:
         pytest.skip()
 
-    assert data_collection.retrieve_token("data/token.txt") is not None
+    assert data_collection.retrieve_token("data/token.txt") != None
 
 
 @pytest.mark.parametrize(

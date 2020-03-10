@@ -29,7 +29,7 @@ def retrieve_token(file_path=None):
     """Retrieve the token from the local token.txt file or from Travis."""
     if file_path is not None:  # pragma: no cover
         try:
-            token = open(file_path).read()[:-2]
+            token = open(file_path).read().rstrip()
         except FileNotFoundError:
             token = "NOT FOUND"
     else:
