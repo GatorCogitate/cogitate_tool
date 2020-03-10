@@ -84,7 +84,7 @@ def retrieve_arguments():
         required=False,
         type=bool_validator,
         default=False,
-        help="Whether to show the detailed result in web interface",
+        help="Whether to show the detailed result in web interface.",
     )
 
     args = vars(a_parse.parse_args())
