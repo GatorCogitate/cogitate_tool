@@ -2,8 +2,10 @@
 
 import argparse
 import validators
-# from web_interface import web_interface
 import data_collection
+
+# **uncomment web interface import statement when the web interface is complete**
+# import web_interface
 
 
 def main(args):
@@ -11,12 +13,15 @@ def main(args):
 
     # Currently only validates the PyGithub repository
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
+    # allows the user to enter the CLI **needs to be uncommented when web interface is complete**
     if args["web"] is True:
         # print(web_interface.web_interface())
         print("'web Link'")
     elif args["web"] is False:
-        print("Printing data in terminal...\nTo see the output in"
-              + "the web, simply add '-w yes' to your command line arguments")
+        print(
+            "Printing data in terminal...\nTo see the output in"
+            + "the web, simply add '-w yes' to your command line arguments"
+        )
         # Temporary structure given issue retrieval is the only function
         contributor_data = data_collection.initialize_contributor_data(
             "contributor_data_template"
