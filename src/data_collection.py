@@ -28,6 +28,7 @@ from prettytable import PrettyTable
 from github import Github
 import json_handler
 
+
 # Note: needs tested, likely not testable
 def authenticate_repository(user_token, repository_name):
     """Authenticate the Github repository using provided credentials."""
@@ -331,7 +332,6 @@ def find_repositories(repo):
     return miner
 
 
-# TODO: needs test case
 def merge_metric_and_issue_dicts(metrics_dict, issues_dict):
     """Receive two dicitionaries one for issues and the other for metrics.
 
