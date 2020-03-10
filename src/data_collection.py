@@ -153,34 +153,65 @@ def get_file_formats(files):
     return formats
 
 
-# NOTE: this function is temporary to test get_individual_metrics considering
-# there is not a main module that connects eerything yet
-def add_raw_data_to_json(path_to_repo, json_file_name):
-    """Check if raw data is in .json file and collects it if not."""
-    # get the data from .json file
-    current_data = json_handler.get_dict_from_json_file(json_file_name)
-    # check if data has not been collected and do so if it was not
-    if "RAW_DATA" not in current_data.keys():
-        print("Raw data has not been collected, collecting it now...")
-        # collects data from data_collection
-        raw_data = {"RAW_DATA": collect_commits_hash(path_to_repo)}
-        # Write raw data to .json file
+# This function simplifies gathering and writing raw data to json file
+# pylint: disable=C0330
+def collect_and_add_raw_data_to_json(
+    path_to_repo, json_file_name="raw_data_storage", overwrite=True
+):
+    """Use collect_commits_hash to collect data from the repository path.
+
+    Overwrite any data in the chosen file unless otherwise specified.
+
+    Default file is raw_data_storage unless otherwise specified.
+    """
+    # collects data from collect_commits_hash and reformat dicitionary
+    raw_data = {"RAW_DATA": collect_commits_hash(path_to_repo)}
+    # Write raw data to .json file
+    # Checks if overwriting the file was picked
+    if overwrite:
+        # use json handler to overwrite the old content
+        json_handler.write_dict_to_json_file(raw_data, json_file_name)
+    else:
+        # use json handler to update the old content
         json_handler.add_entry(raw_data, json_file_name)
-        print("Data collected")
 
 
-def calculate_individual_metrics(json_file_name):
+# pylint: disable=C0330
+def collect_and_add_individual_metrics_to_json(
+    read_file="raw_data_storage",
+    write_file="individual_metrics_storage",
+    overwrite=True,
+):
+    """Use calculate_individual_metrics to calculate metrics using read_file.
+
+    Write metrics to write_file.
+
+    Overwrite existing data in write_file unless otherwise specified.
+    """
+    # Call calculate_individual_metrics to get data dicitionary
+    metrics = calculate_individual_metrics(read_file)
+    # Write raw data to .json file
+    # Checks if overwriting the file was picked
+    if overwrite:
+        # use json handler to overwrite the old content
+        json_handler.write_dict_to_json_file(metrics, write_file)
+    else:
+        # use json handler to update the old content
+        json_handler.add_entry(metrics, write_file)
+
+
+def calculate_individual_metrics(json_file_name="raw_data_storage"):
     """Retrieve the data from .json file and create a dictionary keyed by user."""
+    # retreive data from raw data json
     current_data = json_handler.get_dict_from_json_file(json_file_name)
-    # creates a hashmap where the key is the authors username
+    # creates a dictionary where the key is the authors username
     data_dict = {}
-    # Check if RAW_DATA is in json
+    # Check if RAW_DATA is in json tp prevent a key error
     if "RAW_DATA" in current_data.keys():
         for key in current_data["RAW_DATA"]:
             author = key["author_name"]
             email = key["author_email"]
             # NOTE check date compatibility with json
-            # date = "N/A"
             # check if the key already in in the dicitionary
             if author in data_dict:
                 # condition passed, adds one to the number of commits
@@ -201,7 +232,6 @@ def calculate_individual_metrics(json_file_name):
 
             data_dict[author]["ADDED"] += key["line_added"]
             data_dict[author]["REMOVED"] += key["line_removed"]
-            # NOTE: consider adding lines of code from data
             # check if the explored file is not in the list in index seven
             current_files = key["filename"]
             # add the current_files to the user files list without duplicates
@@ -224,9 +254,8 @@ def calculate_individual_metrics(json_file_name):
             data_dict[key]["RATIO"] = average
             formats = get_file_formats(data_dict[key]["FILES"])
             data_dict[key]["FORMAT"] = formats
-        # Reformat the dictionary as a value of the key INDIVIDUAL_METRICS
-        indvividual_metrics_dict = {"INDIVIDUAL_METRICS": data_dict}
-        return indvividual_metrics_dict
+        return data_dict
+    # if RAW_DATA key was not found, empty dictionary will be returned
     return {}
     # NOTE: for printing the data please use the file print_table.py
 
@@ -238,11 +267,16 @@ def find_repositories(repo):
     return miner
 
 
-def print_individual_in_table(file_name):
-    """Create and print the table using prettytable."""
+def print_individual_in_table(file_name="individual_metrics_storage"):
+    """Create and print the table using prettytable.
+
+    Use individual_metrics_storage as default file unless otherwise chosen.
+    """
+    # Initialize pretty table object
     data_table = PrettyTable()
-    current_data = json_handler.get_dict_from_json_file(file_name)
-    dictionary = current_data["INDIVIDUAL_METRICS"]
+    # retreive data from the appropriate json file
+    dictionary = json_handler.get_dict_from_json_file(file_name)
+    # Add needed headings
     headings = [
         "Username",
         "Email",
@@ -287,16 +321,13 @@ def print_individual_in_table(file_name):
 if __name__ == "__main__":
     # NOTE: this supression needs to be resolved
     # pylint: disable=input-builtin
-    FILE_NAME = input("Enter the name of the file : ")
-    # FILE_NAME = "contributor_data_template"
-    DATA = calculate_individual_metrics(FILE_NAME)
+    # This call will use the default file names
+    DATA = calculate_individual_metrics()
+    # if statement will check if raw data was collected
     if DATA == {}:
         REPO_PATH = input("Enter the path to the repo : ")
-        add_raw_data_to_json(REPO_PATH, FILE_NAME)
-        print("processing data again")
-        DATA = calculate_individual_metrics(FILE_NAME)
+        # This call will use default options for file and overwrite condition
+        collect_and_add_raw_data_to_json(REPO_PATH)
     print("Adding processed data to selected json file...")
-    # Write reformatted dictionary to json
-    json_handler.add_entry(DATA, FILE_NAME)
-    print_individual_in_table(FILE_NAME)
-    print(DATA["INDIVIDUAL_METRICS"]["clussier"]["EMAIL"])
+    collect_and_add_individual_metrics_to_json()
+    print_individual_in_table()
