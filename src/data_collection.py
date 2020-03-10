@@ -29,9 +29,6 @@ from github import Github
 import json_handler
 
 
-# Note: Is this function needed if it's not called?
-
-
 def authenticate_repository(user_token, repository_name):
     """Authenticate the Github repository using provided credentials."""
     # Credentials for PyGithub functions and methods
@@ -290,15 +287,24 @@ def print_individual_in_table(
     headings=["EMAIL", "COMMITS", "ADDED", "REMOVED"],
 ):
     """Create and print the table using prettytable."""
+    # Default headings are mentioned above in the parameter
     dictionary = json_handler.get_dict_from_json_file(file_name)
+    # Initialize a PrettyTable instance
     data_table = PrettyTable()
+    # add the username as a category for teh headings
     data_table.field_names = ["Username"] + headings
+    # Loop through every author in the dictionary
     for author in dictionary:
+        # Add the authors name to the current row
         current_row = [author]
         for heading in headings:
+            # add the value from every heading to the current row
             current_row.append(dictionary[author][heading])
+        # add row to prettytable instance
         data_table.add_row(current_row)
+        # reset the current row to an empty list for the next iteration
         current_row = []
+    print(data_table)
 
 
 def find_repositories(repo):
