@@ -63,6 +63,12 @@ def test_collect_and_add_individual_metrics_to_json():
     json_handler.write_dict_to_json_file(default_dict, write_test_file)
 
 
+def test_raw_data_exists_in_testfile():
+    """Checks the existence of the key RAW_DATA in individual_metrics_testfile."""
+    test_dict = json_handler.get_dict_from_json_file("individual_metrics_testfile")
+    assert "RAW_DATA" in test_dict.keys()
+
+
 @pytest.mark.parametrize(
     "json_file_name", [("individual_metrics_testfile")],
 )
@@ -70,9 +76,49 @@ def test_calculate_individual_metrics(json_file_name):
     """Check that the individual metrics have been calculated."""
     data = data_collection.calculate_individual_metrics(json_file_name)
     assert len(data) != 0
-    # assert (data) != 0
 
 
+def test_get_individual_metrics_accuracy():
+    """Checks that individual_metrics data outputs correct values."""
+    test_dict = data_collection.calculate_individual_metrics(
+        "individual_metrics_testfile"
+    )
+    expected_dict = {
+        "EMAIL": "buchin@allegheny.edu",
+        "COMMITS": 1,
+        "ADDED": 694,
+        "REMOVED": 0,
+        "TOTAL": 0,
+        "MODIFIED": 0,
+        "RATIO": 0,
+        "FILES": ["Pipfile", "Pipfile.lock", "UsingPyGithub.py", "lint.sh", "test.sh"],
+        "FORMAT": [],
+        "issues_commented": [],
+        "issues_opened": [],
+        "pull_requests_commented": [],
+        "pull_requests_opened": [],
+    }
+    assert test_dict["noorbuchi"] == expected_dict
+
+
+def test_get_individual_metrics_populates_keys():
+    """Checks that individual_metrics data hass correct keys."""
+    test_dict = data_collection.calculate_individual_metrics(
+        "individual_metrics_testfile"
+    )
+    expected_keys = [
+        "schultzh",
+        "WonjoonC",
+        "Jordan-A",
+        "noorbuchi",
+        "Chris Stephenson",
+    ]
+    internal_keys = list(test_dict.keys())
+    assert internal_keys == expected_keys
+
+
+# The following two test cases use Pydriller to collect actual data from
+# Cogitate tool repository
 @pytest.mark.parametrize(
     "repository_url", [("https://github.com/GatorCogitate/cogitate_tool")],
 )
@@ -93,59 +139,6 @@ def test_collect_commits_hash(repository_url):
     assert len(list) == 0
     list = data_collection.collect_commits_hash(repository_url)
     assert len(list) != 0
-
-
-def test_raw_data_exists_in_testfile():
-    """Checks the existence of the key RAW_DATA in individual_metrics_testfile."""
-    test_dict = json_handler.get_dict_from_json_file("individual_metrics_testfile")
-    assert "RAW_DATA" in test_dict.keys()
-
-
-def test_calculate_individual_metrics_populates_data():
-    """Checks that the function retruns a populated dictionary."""
-    test_dict = {}
-    # pylint: disable=len-as-condition
-    assert len(test_dict) == 0
-    test_dict = data_collection.calculate_individual_metrics(
-        "individual_metrics_testfile"
-    )
-    assert len(test_dict) != 0
-
-
-def test_get_individual_metrics_accuracy():
-    """Checks that individual_metrics data outputs correct values."""
-    test_dict = data_collection.calculate_individual_metrics(
-        "individual_metrics_testfile"
-    )
-    expected_dict = {
-        "EMAIL": "buchin@allegheny.edu",
-        "COMMITS": 1,
-        "ADDED": 694,
-        "REMOVED": 0,
-        "TOTAL": 0,
-        "MODIFIED": 0,
-        "RATIO": 0,
-        "FILES": ["Pipfile", "Pipfile.lock", "UsingPyGithub.py", "lint.sh", "test.sh"],
-        "FORMAT": [],
-    }
-    assert test_dict["noorbuchi"] == expected_dict
-
-
-def test_get_individual_metrics_populates_keys():
-    """Checks that individual_metrics data hass correct keys."""
-    test_dict = data_collection.calculate_individual_metrics(
-        "individual_metrics_testfile"
-    )
-    assert "INDIVIDUAL_METRICS" in test_dict.keys()
-    expected_keys = [
-        "schultzh",
-        "WonjoonC",
-        "Jordan-A",
-        "noorbuchi",
-        "Chris Stephenson",
-    ]
-    internal_keys = list(test_dict["INDIVIDUAL_METRICS"].keys())
-    assert internal_keys == expected_keys
 
 
 @pytest.mark.parametrize(
