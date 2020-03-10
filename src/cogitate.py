@@ -14,10 +14,10 @@ def main(args):
     # Currently only validates the PyGithub repository
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
     # allows the user to enter the CLI **needs to be uncommented when web interface is complete**
-    if args["web"] is True:
+    if args["web"]:
         # print(web_interface.web_interface())
         print("'web Link'")
-    elif args["web"] is False:
+    elif not args["web"]:
         print(
             "Printing data in terminal...\nTo see the output in "
             + "the web, simply add '-w yes' to your command line arguments"
