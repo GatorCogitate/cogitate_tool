@@ -217,6 +217,7 @@ def collect_and_add_raw_data_to_json(
 def collect_and_add_individual_metrics_to_json(
     read_file="raw_data_storage",
     write_file="individual_metrics_storage",
+    data_path="./data/",
     overwrite=True,
 ):
     """Use calculate_individual_metrics to calculate metrics using read_file.
@@ -231,10 +232,10 @@ def collect_and_add_individual_metrics_to_json(
     # Checks if overwriting the file was picked
     if overwrite:
         # use json handler to overwrite the old content
-        json_handler.write_dict_to_json_file(metrics, write_file)
+        json_handler.write_dict_to_json_file(metrics, write_file, data_path)
     else:
         # use json handler to update the old content
-        json_handler.add_entry(metrics, write_file)
+        json_handler.add_entry(metrics, write_file, data_path)
 
 
 def calculate_individual_metrics(

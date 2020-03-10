@@ -258,13 +258,18 @@ def test_collect_and_add_raw_data_to_json_no_overwrite(tmp_path):
     assert "Keep this file empty" in data_from_file
 
 
-def test_collect_and_add_individual_metrics_to_json_no_overwrite():
+def test_collect_and_add_individual_metrics_to_json(tmp_path):
     """Check that calculated data was collected from the repository and was written."""
     read_test_file = "individual_metrics_testfile"
-    # TODO Change write file to temp file
-    write_test_file = "calculated_metrics_testfile"
+    d = tmp_path / "sub"
+    d.mkdir()
+    p1 = d / "calculated_metrics_testfile.json"
+    entry = '"Keep this file empty" : []'
+    p1.write_text("{" + entry + "}")
     # retreive the dictionaries from the test file
-    calculated_data_from_file = json_handler.get_dict_from_json_file(write_test_file)
+    calculated_data_from_file = json_handler.get_dict_from_json_file(
+        "calculated_metrics_testfile", d
+    )
     raw_data_from_file = json_handler.get_dict_from_json_file(read_test_file)
     # Makes sure that the default values are in the dicitionaries
     # The key is called "Keep this file empty"
@@ -273,10 +278,50 @@ def test_collect_and_add_individual_metrics_to_json_no_overwrite():
     assert "RAW_DATA" in raw_data_from_file
     # Call collect and write funciton
     data_collection.collect_and_add_individual_metrics_to_json(
-        read_test_file, write_test_file, overwrite=False
+        read_test_file, "calculated_metrics_testfile", d, overwrite=True
     )
     # Update dicitionary from the new data in the file
-    calculated_data_from_file = json_handler.get_dict_from_json_file(write_test_file)
+    calculated_data_from_file = json_handler.get_dict_from_json_file(
+        "calculated_metrics_testfile", d
+    )
+    # Make sure the correct keys are added
+    expected_keys = [
+        "schultzh",
+        "WonjoonC",
+        "Jordan-A",
+        "noorbuchi",
+        "Chris Stephenson",
+    ]
+    actual_keys = list(calculated_data_from_file.keys())
+    assert actual_keys == expected_keys
+
+
+def test_collect_and_add_individual_metrics_to_json_no_overwrite(tmp_path):
+    """Check that calculated data was collected from the repository and was written."""
+    read_test_file = "individual_metrics_testfile"
+    d = tmp_path / "sub"
+    d.mkdir()
+    p1 = d / "calculated_metrics_testfile.json"
+    entry = '"Keep this file empty" : []'
+    p1.write_text("{" + entry + "}")
+    # retreive the dictionaries from the test file
+    calculated_data_from_file = json_handler.get_dict_from_json_file(
+        "calculated_metrics_testfile", d
+    )
+    raw_data_from_file = json_handler.get_dict_from_json_file(read_test_file)
+    # Makes sure that the default values are in the dicitionaries
+    # The key is called "Keep this file empty"
+    assert "Keep this file empty" in calculated_data_from_file
+    # makes sure RAW_DATA is a key in the individual_metrics_testfile
+    assert "RAW_DATA" in raw_data_from_file
+    # Call collect and write funciton
+    data_collection.collect_and_add_individual_metrics_to_json(
+        read_test_file, "calculated_metrics_testfile", d, overwrite=False
+    )
+    # Update dicitionary from the new data in the file
+    calculated_data_from_file = json_handler.get_dict_from_json_file(
+        "calculated_metrics_testfile", d
+    )
     # Make sure the correct keys are added
     expected_keys = [
         "Keep this file empty",
@@ -288,9 +333,6 @@ def test_collect_and_add_individual_metrics_to_json_no_overwrite():
     ]
     actual_keys = list(calculated_data_from_file.keys())
     assert actual_keys == expected_keys
-    # Start teardown process to put file in default state
-    default_dict = {"Keep this file empty": []}
-    json_handler.write_dict_to_json_file(default_dict, write_test_file)
 
 
 def test_raw_data_exists_in_testfile():
