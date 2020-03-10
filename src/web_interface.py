@@ -68,8 +68,18 @@ def web_interface():
           'Jordan Wilson': [0.207, 9.87, 3.97],
           'Danny Reid': [0.760, 43.12, 3.97],
           'Anthony Baldeosingh': [0.210, 4.96, 2.17],
-          'Xingbang Liu': [0.334, 6.87, 2.97]
-        })
+          'Xingbang Liu': [0.324, 6.87, 2.97]
+        }) # create dataframe with sample data for files modified
+
+        df = df.rename(columns={'types of files modified':'index'}).set_index('index')
+
+        df # display chart for types of files modified
+
+        columns = st.multiselect(
+            label="Enter the names of specific contributors below:", options=df.columns
+        ) # allow users to display specific contributor information on dataframe graph
+
+        plot = df.plot.pie(y='types of files modified', figsize=(5,5)) # display graph for types of files modified
 
     ################### Feature 4 ###################
     # What is the overall score for an individual’s contribution to a team project?
@@ -108,7 +118,7 @@ def web_interface():
         st.title("Team Members Who Are Code Hoarders")
 
         df = pd.DataFrame({
-          'types of files modified': ['src', 'tests', 'scripts'],
+          'type': ['src', 'tests', 'scripts'],
           'Christian Lussier': [0.330, 4.87, 5.97],
           'Cory Wiard': [0.430, 5.87, 4.97],
           'Devin Spitalny': [0.230, 3.87, 6.97],
@@ -134,6 +144,28 @@ def web_interface():
     # Are there team members who contribute source code without also adding test cases?
     elif add_selectbox == 'Team Members Who Contribute Source Code Without Tests':
         st.title("Team Members Who Contribute Source Code Without Tests")
+        df = pd.DataFrame({
+          'date': ['10/1/2019','10/2/2019', '10/3/2019', '10/4/2019'],
+          'Christian Lussier': [8, 5, 9, 3],
+          'Cory Wiard': [5, 9, 3, 5],
+          'Devin Spitalny': [2, 5, 7, 3],
+          'Devin Ho': [8, 9, 2, 1],
+          'Jordan Wilson': [5, 9, 3, 8],
+          'Danny Reid': [5, 4, 3, 5],
+          'Anthony Baldeosingh': [1, 2, 1, 2],
+          'Xingbang Liu': [6, 9, 4, 7]
+        })  # create dataframe with sample dates and contributor commit numbers
+
+        df = df.rename(columns={'date':'index'}).set_index('index')  # set date as index
+
+        df  # display chart of sample commits
+
+        columns = st.multiselect(
+            label="Enter the names of specific contributors below:", options=df.columns
+        )  # allow users to display specific contributor information on dataframe graph
+
+        st.line_chart(df[columns])  # display dataframe/graph that vizualizes commit info
+
     ################### Feature 8 ###################
     # Are there team members who break the build or contribute to unusually high code churn?
     elif add_selectbox == 'Team Members Who Contribute To High Code Churn':
