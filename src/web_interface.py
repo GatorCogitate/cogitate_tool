@@ -67,6 +67,7 @@ def web_interface():
 
 
 def graph_commits_by_individual():
+    """Graph commit information by individuals for web interface."""
     st.title("Commit Information")  # dispaly relevant title for dataframe
 
     df = pd.DataFrame({
@@ -93,7 +94,7 @@ def graph_commits_by_individual():
 
 
 def graph_lines_of_code():
-    st.title("Lines of Code Added, Modified, Deleted by an Individual")  # dispaly relevant title for dataframe
+    """Graph lines of code added, modified, and deleted for web interface."""
     st.title("Lines of Code Added, Modified, Deleted by an Individual")  # dispaly relevant title for dataframe
     df = pd.DataFrame({
       'type': ['Lines Added', 'Lines Modified', 'Lines Deleted'],
@@ -119,6 +120,7 @@ def graph_lines_of_code():
     st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
 
 def graph_types_of_files():
+    """Graph to output types of files modified for web interface."""
     st.title("Types of Files Modified by an Individual")
 
     df = pd.DataFrame({
@@ -145,6 +147,7 @@ def graph_types_of_files():
 
 
 def graph_overall_contribution():
+    """Graphs an individuals overall contribution for web interface."""
     st.title("An individuals overall contribution to a team or project")
 
     df = pd.DataFrame({
@@ -170,6 +173,7 @@ def graph_overall_contribution():
     st.line_chart(df[columns])  # display dataframe/graph that vizualizes commit info
 
 def graph_collaboration_tendencies():
+    """Graphs the collaboration tendencies of individuals for web interface."""
     st.title("Collaboration Tendencies of Individuals")  # disp`aly relevant
     df = pd.DataFrame({
       'date': ['1/1/2020','1/2/2020', '1/3/2020', '10/4/2020'],
@@ -192,6 +196,7 @@ def graph_collaboration_tendencies():
     st.line_chart(df[columns])  # display dataframe/graph that vizualizes commit info
 
 def graph_code_hoarders():
+    """Graph what team members are code hoarders for web interface."""
     st.title("Team Members Who Are Code Hoarders")
 
     df = pd.DataFrame({
@@ -217,6 +222,7 @@ def graph_code_hoarders():
     st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
 
 def graph_test_contributions():
+    """Graph test contributions for web interface."""
     st.title("Team Members Who Contribute Source Code Without Tests")
     df = pd.DataFrame({
       'date': ['10/1/2019','10/2/2019', '10/3/2019', '10/4/2019'],
@@ -241,6 +247,7 @@ def graph_test_contributions():
     st.line_chart(df[columns])  # display dataframe/graph that vizualizes commit info
 
 def graph_code_churn():
+    """Graph code churn for web interface."""
     st.title("Team Members Code Churn Contributions")  # dispaly relevant title for dataframe
     df = pd.DataFrame({
       'type': ['Code Churn'],
@@ -266,9 +273,11 @@ def graph_code_churn():
     st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
 
 def graph_build_fix_rate():
+    """Graph about who frequently fixes the build for web interface."""
     st.title("Feature 9")  # dispaly relevant title for dataframe
 
 def graph_unable_to_contribute():
+    """Graph team members who are unable to contribute."""
     st.title("Team Members Who Are Unable To Contribute")  # dispaly relevant title for dataframe
     df = pd.DataFrame({
       'type': ['Unable To Contribute'],
