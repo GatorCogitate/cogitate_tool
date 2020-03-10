@@ -14,9 +14,6 @@ uvicorn = "*"
 PrettyTable = "*"
 devml = "*"
 gstats = "*"
-pyahocorasick = "*"
-nltk = "*"
-tensorflow = "*"
 
 [dev-packages]
 black = "*"
