@@ -16,7 +16,6 @@ def main(args):
     if not repository:
         print("Cannot authenticate repository.")
         return
-    # allows the user to do the merge usernames
     # allows the user to enter the CLI **needs to be uncommented when web interface is complete**
     elif args["web"]:
         # print(web_interface.web_interface())
@@ -30,6 +29,8 @@ def main(args):
             args["link"], "raw_data_storage.json"
         )
         data_collection.collect_and_add_individual_metrics_to_json()
+
+        # allows the user to enter the merge while loop if they specified to
 
 
 def retrieve_arguments():
