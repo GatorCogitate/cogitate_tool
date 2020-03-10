@@ -9,7 +9,6 @@ import data_collection
 
 def main(args):
     """Execute the CLI."""
-
     # Currently only validates the PyGithub repository
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
 
@@ -87,7 +86,6 @@ def retrieve_arguments():
     args = vars(a_parse.parse_args())
 
     # pprint(find_repositories(args["link"]))
-
     return args
 
 

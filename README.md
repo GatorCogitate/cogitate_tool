@@ -65,23 +65,23 @@ For example, if the `command_name` is `cogitate`, the we can use `pipenv run cog
 
 ##### The Token
 
-The purpose of a token in this context provides an alternate passwords that you can use
-to authenticate. The personal access tokens with Git allows you to authenticate with a
-token in place of your password. This is vital for our tool because it allows the user
-to be used for HTTPS Git operations.
+The purpose of a token in this context provides an alternate passwords that you
+can use to authenticate. The personal access tokens with Git allows you to authenticate
+with a token in place of your password. This is vital for our tool because it
+allows the user to be used for HTTPS Git operations.
 
-* How To Generate a token 
+* How To Generate a token
 
-The following will demonstrate step by step the process to generate a token in order to
-use the tool. 
-
+The following will demonstrate step by step the process to generate a token in
+order to use the tool:
   1. Cick your profile icon on GitHub and then click Settings
   2. On the sidebar, click the Developer settings and then Personal access tokens.
   3. Click Generate new token.
   4. Add a token description and click Generate token.
-  5. Save the token for future use. 
-  
-Do note that for security reasons, you will not be able to see the token again once logged off.
+  5. Save the token for future use.
+
+Do note that for security reasons, you will not be able to see the token again
+once logged off.
 
 * Datatype: String
 * Required: True
@@ -93,10 +93,10 @@ The [homepage](https://docs.python.org/3/howto/argparse.html) for `argparse`.
 
 The available attributes can be found at their homepage.
 
-- `-l` or `--link` Cogitate a repo by the url of the repo.
-- `-t` or `--token` Github user token.
-- `-r` or `--repo` User's repository.
-- `-s` or `--state` State of the issue.
+* `-l` or `--link` Cogitate a repo by the url of the repo.
+* `-t` or `--token` Github user token.
+* `-r` or `--repo` User's repository.
+* `-s` or `--state` State of the issue.
 
 ### 4. PyDriller
 
@@ -107,9 +107,9 @@ The available attributes can be found at their homepage.
 
 ## Steps to print out table
 
-- Must be in the `cogitate_tool` folder.
-- Before you run the program make sure you have installed the dev packages.
-- Run the following command `pipenv run python src/data_collection.py`
-- Enter the name of the `.json` you would like to write the data to.
-- If you want to use the current repository press `ENTER`, otherwise enter URL/path
+* Must be in the `cogitate_tool` folder.
+* Before you run the program make sure you have installed the dev packages.
+* Run the following command `pipenv run python src/data_collection.py`
+* Enter the name of the `.json` you would like to write the data to.
+* If you want to use the current repository press `ENTER`, otherwise enter URL/path
   to other repository.

@@ -321,7 +321,7 @@ def print_file(json_name, repo_path):
     """Print a json file as a table."""
     DATA = calculate_individual_metrics(json_name)
     if DATA == {}:
-        add_raw_data_to_json(repo_path, json_name)
+        collect_and_add_raw_data_to_json(repo_path, json_name)
         print("Processing data...")
         DATA = calculate_individual_metrics(json_name)
     print("Adding processed data to selected json file...")
