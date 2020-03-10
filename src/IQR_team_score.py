@@ -9,24 +9,13 @@ commit_data = []
 added_data = []
 removed_data = []
 modified_data = []
-# github_data = {}
+# total
+# modified 
+# ratio
+# files
 
-github_data = {
-    "noorbuchi": {"email": "email", "COMMITS": 28, "ADDED": 349, "REMOVED": 70},
-    "bagashvilit": {"email": "email","COMMITS": 22, "ADDED": 355, "REMOVED": 56},
-    "Jordan-A": {"email": "email","COMMITS": 23, "ADDED": 375, "REMOVED": 43},
-    "WonjoonC": {"email": "email","COMMITS": 27, "ADDED": 365, "REMOVED": 67},
-    "Hannah Schultz": {"email": "email","COMMITS": 25, "ADDED": 315, "REMOVED": 75},
-    "Alexander_Hamilton": {"email": "email","COMMITS": 41, "ADDED": 350, "REMOVED": 54},
-    "Karl_Marx": {"email": "email","COMMITS": 0, "ADDED": 0, "REMOVED": 0},
-    "Julius_Caesar": {"email": "email","COMMITS": 25, "ADDED": 363, "REMOVED": 35},
-    "Napoleon_Bonaparte": {"email": "email","COMMITS": 24, "ADDED": 540, "REMOVED": 2},
-    "Alexander_the_Great": {"email": "email","COMMITS": 42, "ADDED": 355, "REMOVED": 50},
-}
-# data_collection.add_raw_data_to_json(
-#     "/home/maddykapfhammer/Documents/Allegheny/2020/Spring/CS203/cogitate_tool", "team_score_test"
-# )
-# github_data = data_collection.calculate_individual_metrics("team_score_test")
+github_data = data_collection.calculate_individual_metrics("individual_score_test")
+
 
 def determine_datasets(dictionary):
     """Determine the datasets of the information in the dictionary and add them to the corresponding list."""
@@ -107,4 +96,5 @@ def calculate_average(dictionary):
 
 
 if __name__ == "__main__":
+    print(github_data)
     print(calculate_average(github_data), "%")
