@@ -9,6 +9,43 @@ import pytest
 from src import data_collection
 from src import json_handler
 
+# @pytest.mark.parametrize(
+#     "input_lines,input_commits,expected_output", [(50, 50, 1), (1, 1, 1), (0, 0, 0)],
+# )
+# def test_merge_metric_and_issue_dicts():
+#     """Uses parametrized testing to make sure mergin funciton is working properly"""
+
+
+@pytest.mark.parametrize(
+    "file_list,expected_list",
+    [
+        (["data_collection.py", "data_collection.py", "data_collection.py"], [".py"]),
+        (["data_collection.py", "data_collection.py", "json_handler.py"], [".py"]),
+        (["data_collection.py", "lint.sh", "travis.yml"], [".py", ".sh", ".yml"]),
+    ],
+)
+def test_get_file_formats(file_list, expected_list):
+    """Use parametrized testing to check duplicates are eliminated."""
+    actual_list = data_collection.get_file_formats(file_list)
+    assert actual_list == expected_list
+
+
+@pytest.mark.parametrize(
+    "file_name,expected_type",
+    [("Pipfile", "Pipfile"), ("test.sh", ".sh"), (".travis.yml", ".yml")],
+)
+def test_parse_for_type(file_name, expected_type):
+    """Use parametrized testing to check the file being parsed correctly."""
+    actual_name = data_collection.parse_for_type(file_name)
+    assert actual_name == expected_type
+
+
+def test_initialize_contributor_data():
+    """Check that the function returns a valid dictionary."""
+    data = data_collection.initialize_contributor_data("individual_metrics_testfile")
+    assert not len(data) == 0
+    assert "RAW_DATA" in data.keys()
+
 
 def test_collect_and_add_raw_data_to_json():
     """Check that raw data was collected from the repository and was written."""
@@ -20,7 +57,9 @@ def test_collect_and_add_raw_data_to_json():
     assert "Keep this file empty" in data_from_file
     repository = "https://github.com/GatorCogitate/cogitate_tool"
     # Call collect and write funciton
-    data_collection.collect_and_add_raw_data_to_json(repository, test_file)
+    data_collection.collect_and_add_raw_data_to_json(
+        repository, test_file, overwrite=True
+    )
     # Update dicitionary from the new data in the file
     data_from_file = json_handler.get_dict_from_json_file(test_file)
     # Make sure the correct key is added
@@ -44,7 +83,7 @@ def test_collect_and_add_individual_metrics_to_json():
     assert "RAW_DATA" in raw_data_from_file
     # Call collect and write funciton
     data_collection.collect_and_add_individual_metrics_to_json(
-        read_test_file, write_test_file
+        read_test_file, write_test_file, overwrite=True
     )
     # Update dicitionary from the new data in the file
     calculated_data_from_file = json_handler.get_dict_from_json_file(write_test_file)

@@ -28,7 +28,7 @@ from prettytable import PrettyTable
 from github import Github
 import json_handler
 
-
+# Note: needs tested, likely not testable
 def authenticate_repository(user_token, repository_name):
     """Authenticate the Github repository using provided credentials."""
     # Credentials for PyGithub functions and methods
@@ -48,6 +48,7 @@ def initialize_contributor_data(file_path):
     return contributor_data
 
 
+# NOTE: Test case for this function not counting in code coverage
 def retrieve_issue_data(repository, state, contributor_data):
     """Retrieve a contributor's involvement based upon issues and pull request threads."""
     issues = repository.get_issues(state=state)
@@ -186,6 +187,7 @@ def get_file_formats(files):
 
 
 # This function simplifies gathering and writing raw data to json file
+# NOTE: tests for this funciton not showing up on test coverage
 # pylint: disable=C0330
 def collect_and_add_raw_data_to_json(
     path_to_repo, json_file_name="raw_data_storage", overwrite=True
@@ -233,6 +235,7 @@ def collect_and_add_individual_metrics_to_json(
         json_handler.add_entry(metrics, write_file)
 
 
+# NOTE: test cases not counting in code coverage
 def calculate_individual_metrics(json_file_name="raw_data_storage"):
     """Retrieve the data from .json file and create a dictionary keyed by user."""
     # retreive data from raw data json
@@ -283,6 +286,9 @@ def calculate_individual_metrics(json_file_name="raw_data_storage"):
     # NOTE: for printing the data please use the file print_table.py
 
 
+# This pylint supression is regarding a potentially dangerous empty argument
+# Note: not testable
+# pylint: disable=W0102
 def print_individual_in_table(
     file_name="individual_metrics_storage",
     data_dict={},
@@ -317,6 +323,7 @@ def print_individual_in_table(
     print(data_table)
 
 
+# NOTE: not testable
 def find_repositories(repo):
     """Locates a Github repository with the URL provided by the user."""
     # ask the user for a URL of a Github repository
@@ -388,7 +395,6 @@ def merge_duplicate_usernames(dictionary, kept_entry, removed_entry):
 if __name__ == "__main__":
     # NOTE: this supression needs to be resolved
     # pylint: disable=input-builtin
-    # TODO: needs revised
     DATA = calculate_individual_metrics()
     # This condition checks if raw data was collected because
     # calculate_individual_metrics would return empty dictionary if no data was collected
