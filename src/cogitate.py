@@ -57,7 +57,7 @@ def retrieve_arguments():
         help="User's Repository name, start with root dirctory (user or organization name)",
     )
     a_parse.add_argument(
-        "-du",
+        "-d",
         "--deleteusername ",
         required=True,
         type=str,
