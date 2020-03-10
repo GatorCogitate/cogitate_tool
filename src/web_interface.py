@@ -16,7 +16,7 @@ import pandas as pd
 def web_interface():
     """Execute the web interface."""
 
-    # Sidebar menu:
+    # Sidebar menu:c
     add_selectbox = st.sidebar.selectbox(
         'What feature would you like to view?',
         ('Commits By An Individual', 'Lines of Code Added, Modified, Deleted by an Individual', 'Types of Files Modified by an Individual', 'Overall Contribution Score To Team Project by an Individual', 'Collaboration Tendencies of Individuals', 'Team Members Who Are Code Hoarders', 'Team Members Who Contribute Source Code Without Tests', 'Team Members Who Contribute To High Code Churn', 'Team Members Who Frequently Fix The Build', 'Team Members Who Are Unable To Contribute')
@@ -87,8 +87,8 @@ def web_interface():
         st.title("An individuals overall contribution to a team or project")
     ################### Feature 5 ###################
     # Are there individuals who collaborate together too frequently or not enough?
-    elif add_selectbox == 'Collaboration Tendencies of Individuals':
-        st.title("Collaboration Tendencies of Individuals")
+    if add_selectbox == 'Collaboration Tendencies of Individuals':
+        st.title("Collaboration Tendencies of Individuals")  # dispaly relevant title for dataframe
 
         df = pd.DataFrame({
           'type': ['Individuals overall contribution'],
@@ -102,7 +102,7 @@ def web_interface():
           'Xingbang Liu': [6, 100, 129]
         })  # create dataframe with sample dates and contributor commit numbers
 
-        df = df.rename(columns={'type':'index'}).set_index('index')  # set date as index
+        df = df.rename(columns={'date':'index'}).set_index('index')  # set date as index
 
         df  # display chart of sample commits
 
@@ -110,8 +110,8 @@ def web_interface():
             label="Enter the names of specific contributors below:", options=df.columns
         )  # allow users to display specific contributor information on dataframe graph
 
+        st.line_chart(df[columns])  # display dataframe/graph that vizualizes commit info
 
-        st.line_chart(df[columns])  # display dataframe/graph that vizualizes commit info # display dataframe/graph that vizualizes commit info
     ################### Feature 6 ###################
     # Are there team members who are “code hoarders” or “domain experts”?
     elif add_selectbox == 'Team Members Who Are Code Hoarders':
