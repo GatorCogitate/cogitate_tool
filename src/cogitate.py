@@ -17,20 +17,16 @@ def main(args):
         print("Cannot authenticate repository.")
         return
     # allows the user to enter the CLI **needs to be uncommented when web interface is complete**
-    if args["web"]:
+    elif args["web"] is True:
         # print(web_interface.web_interface())
         print("'web Link'")
-    elif not args["web"]:
+    elif args["web"] is False:
         print(
             "To see the output in the web, simply add '-w yes' to your command line arguments."
         )
         # Temporary structure given issue retrieval is the only function
-        data_collection.collect_and_add_raw_data_to_json(args["link"])
-        contributor_data = data_collection.initialize_contributor_data(
-            "contributor_data_template"
-        )
-        contributor_data = data_collection.retrieve_issue_data(
-            repository, args["state"], contributor_data
+        data_collection.collect_and_add_raw_data_to_json(
+            args["link"], "raw_data_storage.json"
         )
 
 
@@ -57,18 +53,25 @@ def retrieve_arguments():
         help="User's Repository name, start with root dirctory (user or organization name)",
     )
     a_parse.add_argument(
-        "-d",
+        "-du",
         "--deleteusername ",
         required=True,
         type=str,
-        help="Username that is merged into the kept username, then deleted.",
+        help="Username that is deleted after merged into the kept username.",
     )
     a_parse.add_argument(
         "-ku",
-        "--keptusername",
+        "--keptusername ",
         required=True,
         type=str,
-        help="Username that is kept into the merged username, then deleted.",
+        help="Usernme that is kept after merged.",
+    )
+    a_parse.add_argument(
+        "-em",
+        "--endmerge",
+        required=True,
+        type=str,
+        help="Ends the process of merging usernames.",
     )
     a_parse.add_argument(
         "-s",
