@@ -53,7 +53,11 @@ def retrieve_arguments():
         help="User's Repository name, start with root dirctory (user or organization name)",
     )
     a_parse.add_argument(
-        "-du", "--deleteusername ",
+        "-du",
+        "--deleteusername ",
+        required=True,
+        type=str,
+        help="Username that is deleted after merged into the kept username.",
     )
     a_parse.add_argument(
         "-em",
