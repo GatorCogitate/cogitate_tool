@@ -17,6 +17,12 @@ def main(args):
         print("Cannot authenticate repository.")
         return
     # allows the user to enter the CLI **needs to be uncommented when web interface is complete**
+
+    elif args["web"] is True:
+
+    while True:
+        print("Merges duplicated usernames in the dictionary.")
+        return
     if args["web"]:
         # print(web_interface.web_interface())
         print("'web Link'")
@@ -24,14 +30,11 @@ def main(args):
         print(
             "To see the output in the web, simply add '-w yes' to your command line arguments."
         )
-        # Temporary structure given issue retrieval is the only function
-        data_collection.collect_and_add_raw_data_to_json(args["link"])
-        contributor_data = data_collection.initialize_contributor_data(
-            "contributor_data_template"
+        # Populate json file
+        data_collection.collect_and_add_raw_data_to_json(
+            args["link"], "raw_data_storage.json"
         )
-        contributor_data = data_collection.retrieve_issue_data(
-            repository, args["state"], contributor_data
-        )
+        data_collection.collect_and_add_individual_metrics_to_json()
 
 
 def retrieve_arguments():
@@ -57,25 +60,11 @@ def retrieve_arguments():
         help="User's Repository name, start with root dirctory (user or organization name)",
     )
     a_parse.add_argument(
-        "-du",
-        "--deleteusername ",
-        required=True,
-        type=str,
-        help="Username that is merged into the kept username, then deleted.",
-    )
-    a_parse.add_argument(
-        "-ku",
-        "--keptusername",
-        required=True,
-        type=str,
-        help="Username that is kept into the merged username, then deleted.",
-    )
-    a_parse.add_argument(
-        "-em",
+        "-rm",
         "--endmerge",
         required=True,
         type=str,
-        help="Ends the process of merging usernames.",
+        help="Starts the process of merging usernames.",
     )
     a_parse.add_argument(
         "-s",
@@ -92,6 +81,14 @@ def retrieve_arguments():
         type=bool_validator,
         default=False,
         help="Whether to show the detailed result in web interface.",
+    )
+    a_parse.add_argument(
+        "-m",
+        "--metric",
+        required=False,
+        type=str,
+        default="both",
+        help="Invokes calculation of team or individual metrics. If not specified, both are run.",
     )
 
     args = vars(a_parse.parse_args())
