@@ -1,169 +1,77 @@
 {
     "stephensonc": {
         "commits": [],
-        "issues_opened": [
-            53,
-            4
-        ],
-        "issues_commented": [
-            30,
-            30,
-            4,
-            4,
-            4,
-            4
-        ],
-        "pull_requests_opened": [
-            50,
-            46,
-            42,
-            23
-        ],
-        "pull_requests_commented": [
-            58,
-            58,
-            58,
-            58,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            50,
-            31,
-            31,
-            31,
-            31,
-            23,
-            23
-        ]
+        "issues_opened": [],
+        "issues_commented": [],
+        "pull_requests_opened": [],
+        "pull_requests_commented": []
     },
     "koscinskic": {
         "commits": [],
-        "issues_opened": [
-            56,
-            30,
-            29,
-            15,
-            14,
-            7
-        ],
-        "issues_commented": [
-            68,
-            64,
-            56,
-            48,
-            30,
-            30,
-            30,
-            30,
-            24,
-            24,
-            24,
-            20,
-            15,
-            15,
-            15,
-            15,
-            15,
-            15,
-            15,
-            15,
-            15,
-            15,
-            15,
-            15,
-            15,
-            15,
-            15,
-            15,
-            15,
-            14,
-            14,
-            14,
-            9,
-            8,
-            8,
-            7,
-            4,
-            1
-        ],
-        "pull_requests_opened": [
-            39,
-            34,
-            6
-        ],
-        "pull_requests_commented": [
-            57,
-            57,
-            39,
-            39,
-            39,
-            39,
-            34,
-            34,
-            34,
-            34,
-            34,
-            6,
-            6
-        ]
+        "issues_opened": [],
+        "issues_commented": [],
+        "pull_requests_opened": [],
+        "pull_requests_commented": []
     },
     "schultzh": {
         "commits": [],
-        "issues_opened": [
-            66,
-            16
-        ],
-        "issues_commented": [
-            63,
-            53,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            30,
-            29,
-            27,
-            27,
-            26,
-            24,
-            22,
-            16,
-            12,
-            10,
-            7
-        ],
-        "pull_requests_opened": [
-            70,
-            58,
-            57,
-            31,
-            17
-        ],
-        "pull_requests_commented": [
-            58,
-            58,
-            58,
-            58,
-            57,
-            57,
-            57,
-            57,
-            50,
-            50,
-            50,
-            50,
-            39,
-            31,
-            31,
-            31,
-            6,
-            6
-        ]
+        "issues_opened": [],
+        "issues_commented": [],
+        "pull_requests_opened": [],
+        "pull_requests_commented": []
+    },
+    "RAW_DATA": [
+        {
+            "hash": "",
+            "author_msg": "",
+            "author_name": "",
+            "author_email": "",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "",
+            "author_msg": "",
+            "author_name": "",
+            "author_email": "",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        }
+    ],
+    "INDIVIDUAL_METRICS": {
+        "schultzh": {
+            "EMAIL": "",
+            "COMMITS": 0,
+            "ADDED": 0,
+            "REMOVED": 0,
+            "TOTAL": 0,
+            "MODIFIED": 0,
+            "RATIO": 0,
+            "FILES": [],
+            "FORMAT": []
+        },
+        "WonjoonC": {
+            "EMAIL": "",
+            "COMMITS": 0,
+            "ADDED": 0,
+            "REMOVED": 0,
+            "TOTAL": 0,
+            "MODIFIED": 0,
+            "RATIO": 0,
+            "FILES": [],
+            "FORMAT": []
+        }
     }
 }
