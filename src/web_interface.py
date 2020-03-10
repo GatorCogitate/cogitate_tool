@@ -1,13 +1,6 @@
 """Web Interface for interacting with Github repository info."""
 
-# from data_collection import collect_commits
 import argparse
-
-# from pprint import pprint
-
-# from driller import find_repositories
-
-
 import streamlit as st
 import numpy as np
 import pandas as pd
