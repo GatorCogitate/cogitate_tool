@@ -20,11 +20,13 @@ def test_retireve_token_with_travis():
 def test_retrieve_token_with_tokenfile(input_file):
     """Test to ensure the retrieval of the user token."""
     try:
+        # Arbitrary Check
         file = open(input_file).read()
+        file = "BLANK"
     except FileNotFoundError:
         pytest.skip()
 
-    assert data_collection.retrieve_token("data/token.txt") != None
+    assert data_collection.retrieve_token("data/token.txt") is not None
 
 
 @pytest.mark.parametrize(

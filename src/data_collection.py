@@ -8,7 +8,6 @@ Calculates statistics based on the data from Github.
 
 from __future__ import division
 import os
-import re
 from pydriller import RepositoryMining
 from prettytable import PrettyTable
 from github import Github
