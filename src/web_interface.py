@@ -88,18 +88,17 @@ def web_interface():
     ################### Feature 5 ###################
     # Are there individuals who collaborate together too frequently or not enough?
     if add_selectbox == 'Collaboration Tendencies of Individuals':
-        st.title("Collaboration Tendencies of Individuals")  # dispaly relevant title for dataframe
-
+        st.title("Collaboration Tendencies of Individuals")  # dispaly relevant
         df = pd.DataFrame({
-          'type': ['Individuals overall contribution'],
-          'Christian Lussier': [28, 255, 75],
-          'Cory Wiard': [6, 349, 50],
-          'Devin Spitalny': [22, 15, 48],
-          'Devin Ho': [8, 128, 2],
-          'Jordan Wilson': [10, 8, 28],
-          'Danny Reid': [25, 5, 15],
-          'Anthony Baldeosingh': [1, 1, 1],
-          'Xingbang Liu': [6, 100, 129]
+          'date': ['1/1/2020','1/2/2020', '1/3/2020', '10/4/2020'],
+          'Christian Lussier': [80, 5, 9, 3],
+          'Cory Wiard': [5, 90, 3, 5],
+          'Devin Spitalny': [23, 58, 70, 3],
+          'Devin Ho': [8, 62, 2, 11],
+          'Jordan Wilson': [5, 5, 3, 8],
+          'Danny Reid': [50, 41, 311, 5],
+          'Anthony Baldeosingh': [10, 200, 1, 22],
+          'Xingbang Liu': [60, 19, 14, 17]
         })  # create dataframe with sample dates and contributor commit numbers
 
         df = df.rename(columns={'date':'index'}).set_index('index')  # set date as index
