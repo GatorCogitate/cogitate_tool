@@ -13,17 +13,12 @@ def main(args):
 
     # Currently only validates the PyGithub repository
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
-    if repository is False:
+    if not repository:
         print("Cannot authenticate repository.")
         return
+    # allows the user to do the merge usernames
     # allows the user to enter the CLI **needs to be uncommented when web interface is complete**
-
-    elif args["web"] is True:
-
-    while True:
-        print("Merges duplicated usernames in the dictionary.")
-        return
-    if args["web"]:
+    elif args["web"]:
         # print(web_interface.web_interface())
         print("'web Link'")
     elif not args["web"]:
