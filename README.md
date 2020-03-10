@@ -60,39 +60,7 @@ When prompted, press `Enter` to leave the repository path as default.
 
 *Note: Any users that do not wish to develop the tool can stop reading here.*
 
-## Development Info
-
-### 1. File Structure
-
-```
-.
-├── Pipfile
-├── Pipfile.lock
-├── README.md
-├── .travis.yml
-├── .gitignore
-|
-├── data
-│   ├── demofile.json
-│   └── testfile.json
-|
-├── scripts
-│   ├── cogitate.sh
-│   └── test.sh
-├── src
-│   ├── cogitate.py
-│   ├── data_collection.py
-│   ├── data_processor.py
-│   ├── driller.py
-│   ├── json_handler.py
-│   └── __init__.py
-└── tests
-    ├── conftest.py
-    ├── __init__.py
-    ├── test_json_handler.py
-    └── test_driller.py
-
-```
+### Development Info
 
 #### 2.1 How To Install Packages
 
