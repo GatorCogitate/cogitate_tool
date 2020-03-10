@@ -7,7 +7,7 @@ import IQR_team_score
 
 @pytest.mark.parametrize(
     "input_list, expected_score",
-    [([32, 37, 34, 35, 33, 35, 33, 32, 4, 2, 55, 74, 102], 45.0),],
+    [([32, 37, 34, 35, 33, 35, 33, 32, 4, 2, 55, 74, 102], 45.0)],
 )
 def test_calculate_iqr_score(input_list, expected_score):
     """Function to determine the accuracy of an iqr score for a certain category."""
