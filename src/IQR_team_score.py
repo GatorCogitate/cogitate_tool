@@ -78,7 +78,7 @@ def calculate_team_score(dictionary):
     modified_score = 0
     total_score = 0
     average_team_score = 0
-    # files_data = []
+
     # iterate through nested dictionary
     for username, data in github_data.items():
         # for each key in the dictionary add its values to a list
@@ -93,8 +93,6 @@ def calculate_team_score(dictionary):
                 modified_data.append(data[key])
             if key == "TOTAL":
                 total_data.append(data[key])
-            # if key == "FILES":
-            #     files_data.append(len(data[key]))
 
     # calculate the team score for each list of data
     commits_score = calculate_iqr_score(commit_data)
@@ -102,7 +100,6 @@ def calculate_team_score(dictionary):
     removed_score = calculate_iqr_score(removed_data)
     modified_score = calculate_iqr_score(modified_data)
     total_score = calculate_iqr_score(total_score)
-    # modified_score = calculate_iqr_score(modified_data)
     # find the average team score for all of the categories
     average_team_score = (commits_score + added_score + removed_score + modified_score + total_score) / 5
 
