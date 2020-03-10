@@ -339,7 +339,7 @@ def find_repositories(repo):
 def merge_metric_and_issue_dicts(metrics_dict, issues_dict):
     """
     Receive two dicitionaries one for issues and the other for metrics.
-
+    
     Create empty fields for users existing in issues_dict and not in metrics.
     """
     for entry in issues_dict:

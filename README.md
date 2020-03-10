@@ -102,6 +102,8 @@ The available attributes can be found at their homepage.
 - Must be in the `cogitate_tool` folder.
 - Before you run the program make sure you have installed the dev packages.
 - Run the following command `pipenv run python src/data_collection.py`
-- Enter the name of the `.json` you would like to write the data to.
-- If you want to use the current repository press `ENTER`, otherwise enter URL/path
-  to other repository.
+- Enter your user token to collect PyGitHub data.
+- Enter repo name in this format: org/repo_name.
+- After table prints: Enter username to be merged then deleted.
+- (This is if you have two usernames within the table and want to combine them.)
+- Select yes or no if you would like to continue working with the graph.
