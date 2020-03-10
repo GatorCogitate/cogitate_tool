@@ -5,9 +5,11 @@ from __future__ import division
 import pprint
 import numpy as np
 import data_collection
+from collections import defaultdict
+from glom.tutorial import *
 
 
-github_data = data_collection.calculate_individual_metrics()
+# github_data = data_collection.calculate_individual_metrics()
 
 github_data = {
     "noorbuchi": {"COMMITS": 28, "ADDED": 349, "REMOVED": 70},
@@ -23,7 +25,21 @@ github_data = {
 }
 
 
-def calculate_iqr_score(data_list):
+def metrics_list(key, dictionary):
+    return list((d[key] for d in dictionary.values()))
+
+
+def iterate_nested_dictonary(dictionary):
+    category_lists = {}
+    # category_lists = defaultdict(dict)
+    for username, data in dictionary.items():
+        for metrics, value in data.items():
+            # category_lists[metrics] = data.values()
+            glom(dictionary, (username)
+    print(category_lists)
+
+
+def calculate_iqr_score(data_list, below_weight, above_weight, within_weight):
     """Calculate a team score for a data set according to outliers calculated with the interquartile range."""
     below_amount = 0
     above_amount = 0
@@ -56,9 +72,9 @@ def calculate_iqr_score(data_list):
 
     # print(below_amount, above_amount, within_amount)
     # calculate all areas with their weight measurement
-    weighted_below = round(0.20 * below_fraction, 2)
-    weighted_above = round(0.20 * above_fraction, 2)
-    weighted_within = round(0.60 * within_fraction, 2)
+    weighted_below = round(below_weight * below_fraction, 2)
+    weighted_above = round(above_weight * above_fraction, 2)
+    weighted_within = round(within_weight * within_fraction, 2)
     # add weighted scores together to calcuate overall team score as percentage
     category_score = (weighted_below + weighted_above + weighted_within) * 100
 
@@ -79,7 +95,11 @@ def calculate_team_score(dictionary):
     modified_score = 0
     total_score = 0
     average_team_score = 0
-
+    # generic_list = []
+    # data_score = 0
+    # total_score = 0
+    # amount_of_lists = 0
+    # team_score = 0
     # iterate through nested dictionary
     for username, data in github_data.items():
         # for each key in the dictionary add its values to a list
@@ -106,12 +126,6 @@ def calculate_team_score(dictionary):
 
     return average_team_score
 
-    # generic_list = []
-    # data_score = 0
-    # total_score = 0
-    # amount_of_lists = 0
-    # team_score = 0
-    # generic_list.append(data[key])
     # data_score = calculate_iqr_score(generic_list)
     # total_score = total_score + data_score
     # amount_of_lists = amount_of_lists + 1

@@ -15,6 +15,13 @@ def test_calculate_iqr_score(input_list, expected_score):
     assert score == expected_score
 
 
+# @pytest.mark.parametrize()
+# def test_calculate_team_score():
+# """This tests whether or not the calculate_team_score is accurate."""
+# IQR_team_score.calculate_team_score()
+# assert
+
+
 # @pytest.mark.parametrize(
 #     "input_dictionary, expected_list",
 #     [
