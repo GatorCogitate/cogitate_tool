@@ -35,7 +35,7 @@ def individual_contribution(dictionary):
                     value, sum_metrics_int(metrics,dictionary)),"%"
             if isinstance(value, list):
                 contributor_data[username][metrics] = percent_calculator(
-                    len(value), sum_metrics_list(metrics,dictionary)),"%"
+                    len(value), sum_metrics_list(metrics,dictionary)),"%",value
     return contributor_data
 
 
@@ -49,4 +49,4 @@ if __name__ == "__main__":
         data_collection.collect_and_add_raw_data_to_json(REPO_PATH)
     print("Adding processed data to selected json file...")
 
-    print(pd.DataFrame.from_dict(individual_contribution(DATA)))
+    print(pd.DataFrame.from_dict(individual_contribution(DATA)).T)
