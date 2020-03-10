@@ -7,9 +7,8 @@ import validators
 import data_collection
 
 
-def main():
+def main(args):
     """Execute the CLI."""
-    args = retrieve_arguments()
 
     # Currently only validates the PyGithub repository
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
@@ -125,4 +124,5 @@ def bool_validator(bool_str):
 
 
 if __name__ == "__main__":
-    main()
+    args = retrieve_arguments()
+    main(args)
