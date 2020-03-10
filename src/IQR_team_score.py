@@ -2,24 +2,25 @@
 
 # This import fixes a linting error with old division.
 from __future__ import division
+import pprint
 import numpy as np
 import data_collection
 
 
 github_data = data_collection.calculate_individual_metrics()
 
-# github_data = {
-#     "noorbuchi": {"COMMITS": 28, "ADDED": 349, "REMOVED": 70},
-#     "bagashvilit": {"COMMITS": 22, "ADDED": 355, "REMOVED": 56},
-#     "Jordan-A": {"COMMITS": 23, "ADDED": 375, "REMOVED": 43},
-#     "WonjoonC": {"COMMITS": 27, "ADDED": 365, "REMOVED": 67},
-#     "Hannah Schultz": {"COMMITS": 25, "ADDED": 315, "REMOVED": 75},
-#     "Alexander_Hamilton": {"COMMITS": 41, "ADDED": 350, "REMOVED": 54},
-#     "Karl_Marx": {"COMMITS": 0, "ADDED": 0, "REMOVED": 0},
-#     "Julius_Caesar": {"COMMITS": 25, "ADDED": 363, "REMOVED": 35},
-#     "Napoleon_Bonaparte": {"COMMITS": 24, "ADDED": 540, "REMOVED": 2},
-#     "Alexander_the_Great": {"COMMITS": 42, "ADDED": 355, "REMOVED": 50},
-# }
+github_data = {
+    "noorbuchi": {"COMMITS": 28, "ADDED": 349, "REMOVED": 70},
+    "bagashvilit": {"COMMITS": 22, "ADDED": 355, "REMOVED": 56},
+    "Jordan-A": {"COMMITS": 23, "ADDED": 375, "REMOVED": 43},
+    "WonjoonC": {"COMMITS": 27, "ADDED": 365, "REMOVED": 67},
+    "Hannah Schultz": {"COMMITS": 25, "ADDED": 315, "REMOVED": 75},
+    "Alexander_Hamilton": {"COMMITS": 41, "ADDED": 350, "REMOVED": 54},
+    "Karl_Marx": {"COMMITS": 0, "ADDED": 0, "REMOVED": 0},
+    "Julius_Caesar": {"COMMITS": 25, "ADDED": 363, "REMOVED": 35},
+    "Napoleon_Bonaparte": {"COMMITS": 24, "ADDED": 540, "REMOVED": 2},
+    "Alexander_the_Great": {"COMMITS": 42, "ADDED": 355, "REMOVED": 50},
+}
 
 
 def calculate_iqr_score(data_list):
@@ -119,6 +120,17 @@ def calculate_team_score(dictionary):
 
 
 if __name__ == "__main__":
-    # print(github_data)
-    # print(determine_datasets(github_data), "%")
-    calculate_team_score(github_data)
+    pp = pprint.PrettyPrinter(width=41, compact=True)
+    pp.pprint((github_data))
+    scores = {}
+    for user in github_data.keys():
+        print("user", user)
+        print("data", github_data[user])
+        for metric in github_data[user]:
+            if metric not in scores:
+                scores[metric] = [github_data[user][metric]]
+            else:
+                scores[metric].append(github_data[user][metric])
+            print("metric", metric)
+            print("value", github_data[user][metric])
+    print(scores)
