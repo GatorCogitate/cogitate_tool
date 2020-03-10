@@ -10,7 +10,7 @@ added_data = []
 removed_data = []
 modified_data = []
 # total
-# modified 
+# modified
 # ratio
 # files
 
