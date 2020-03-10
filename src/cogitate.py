@@ -13,16 +13,19 @@ def main(args):
 
     # Currently only validates the PyGithub repository
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
+    if repository is False:
+        print("Cannot authenticate repository.")
+        break
     # allows the user to enter the CLI **needs to be uncommented when web interface is complete**
     if args["web"]:
         # print(web_interface.web_interface())
         print("'web Link'")
     elif not args["web"]:
         print(
-            "Printing data in terminal...\nTo see the output in "
-            + "the web, simply add '-w yes' to your command line arguments"
+            "To see the output in the web, simply add '-w yes' to your command line arguments."
         )
         # Temporary structure given issue retrieval is the only function
+        data_collection.collect_and_add_raw_data_to_json(args["link"])
         contributor_data = data_collection.initialize_contributor_data(
             "contributor_data_template"
         )
@@ -52,6 +55,9 @@ def retrieve_arguments():
         required=True,
         type=str,
         help="User's Repository name, start with root dirctory (user or organization name)",
+    )
+    a_parse.add_argument(
+        "-du", "--deleteusername ",
     )
     a_parse.add_argument(
         "-s",
