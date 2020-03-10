@@ -155,6 +155,7 @@ The available attributes can be found at their homepage.
 * `-l` or `--link` Cogitate a repo by the url of the repo.
 * `-t` or `--token` Github user token.
 * `-r` or `--repo` User's repository.
+* `-rm` `-runmerge` (y/n). 
 * `-s` or `--state` State of the issue.
 
 ### 4. PyDriller
