@@ -16,15 +16,9 @@ def main(args):
     if repository is False:
         print("Cannot authenticate repository.")
         return
+    # allows the user to do the merge usernames
     # allows the user to enter the CLI **needs to be uncommented when web interface is complete**
-<<<<<<< Updated upstream
     elif args["web"] is True:
-=======
-    while True:
-        print("Merges duplicated usernames in the dictionary.")
-        return
-    if args["web"]:
->>>>>>> Stashed changes
         # print(web_interface.web_interface())
         print("'web Link'")
     elif args["web"] is False:
