@@ -15,7 +15,7 @@ def main(args):
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
     if repository is False:
         print("Cannot authenticate repository.")
-        break
+        return
     # allows the user to enter the CLI **needs to be uncommented when web interface is complete**
     elif args["web"] is True:
         # print(web_interface.web_interface())
