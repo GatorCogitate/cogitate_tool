@@ -7,19 +7,21 @@ Calculates statistics based on the data from Github.
 
 Steps to run data_collection.py and display the data table:
 
-Must be in the repository folder
+Must be in the repository folder.
 
-Run the python file using `pipenv run python src/data_collection.py`
+Run the python file using `pipenv run python src/data_collection.py`.
 
-Enter the name of the json file you want the data to be written to.
+Enter the URL/local path of the repository you would like to analyze.
 
-If prompted, due to data not being collected previously, enter the URL or path
-
-of the Repository you would like to analyze.
-
-If the current repository is the one you would like to analyze, simply
+If the current repository is the one you would like to analyze, simply.
 
 hit enter wihtout typing anything.
+
+Enter user token to collect Pygithub data.
+
+Enter the repository name similar to this example GatorCogitate/cogitate_tool
+
+Enter the entries you would like to merge in the data set.
 """
 from __future__ import division
 import os
