@@ -4,9 +4,11 @@
 [![codecov](https://codecov.io/gh/GatorCogitate/cogitate_tool/branch/master/graph/badge.svg)](https://codecov.io/gh/GatorCogitate/cogitate_tool)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-orange.svg)](https://www.python.org/)
 
-## About GatorCogitate
+# About GatorCogitate
 
-Cogitate is a free and open source tool written in Python. It is designed to evaluate the level of contributions for members of a GitHub repository. GatorCogitate generates a score for members based on a variety of metrics including:
+Cogitate is a free and open source tool written in Python. It is designed to
+evaluate the level of contributions for members of a GitHub repository. GatorCogitate
+generates a score for members based on a variety of metrics including:
 
 - Lines added
 - Lines removed
@@ -37,9 +39,7 @@ git clone git@github.com:GatorCogitate/cogitate_tool.git
 ```
 
 **2. Install Pipenv (Recommended)**
-
 Documentation for installing pipenv can be found [Here.](https://pipenv.kennethreitz.org/en/latest/#install-pipenv-today)
-
 After pulling the repo, use `pipenv shell` in `cogitate_tool/` to enter the virtual
 environment. Use `exit` to exit. Under the virtual environment, use
 `pipenv install <package_name> --dev` to install new packages for development.
@@ -60,7 +60,7 @@ When prompted, press `Enter` to leave the repository path as default.
 
 *Note: Any users that do not wish to develop the tool can stop reading here.*
 
-## Development Info:
+## Development Info
 
 ### 1. File Structure
 
