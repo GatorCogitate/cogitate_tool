@@ -24,10 +24,11 @@ def main(args):
         print(
             "To see the output in the web, simply add '-w yes' to your command line arguments."
         )
-        # Temporary structure given issue retrieval is the only function
+        # Populate json file
         data_collection.collect_and_add_raw_data_to_json(
             args["link"], "raw_data_storage.json"
         )
+        data_collection.collect_and_add_individual_metrics_to_json()
 
 
 def retrieve_arguments():
@@ -88,6 +89,14 @@ def retrieve_arguments():
         type=bool_validator,
         default=False,
         help="Whether to show the detailed result in web interface",
+    )
+    a_parse.add_argument(
+        "-m",
+        "--metric",
+        required=False,
+        type=str,
+        default="both",
+        help="Invokes calculation of team or individual metrics. If not specified, both are run.",
     )
 
     args = vars(a_parse.parse_args())
