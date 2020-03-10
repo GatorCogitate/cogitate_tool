@@ -8,6 +8,7 @@ Calculates statistics based on the data from Github.
 
 from __future__ import division
 import os
+import re
 from pydriller import RepositoryMining
 from prettytable import PrettyTable
 from github import Github
@@ -29,7 +30,7 @@ def retrieve_token(file_path=None):
     """Retrieve the token from the local token.txt file or from Travis."""
     if file_path is not None:  # pragma: no cover
         try:
-            token = open(file_path).read()
+            token = open(file_path).read()[:-2]
         except FileNotFoundError:
             token = "NOT FOUND"
     else:

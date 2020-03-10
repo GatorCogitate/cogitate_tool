@@ -14,10 +14,22 @@ def test_retireve_token_with_travis():
 
 
 @pytest.mark.parametrize(
+    "input_file",
+    ["data/token.txt"],
+)
+def test_retrieve_token_with_tokenfile(input_file):
+    """Test to ensure the retrieval of the user token."""
+    try:
+        file = open(input_file).read()
+    except FileNotFoundError:
+        pytest.skip()
+
+    assert data_collection.retrieve_token("data/token.txt") != None
+
+
+@pytest.mark.parametrize(
     "input_token,repository_name",
-    # Toggle the cases below to switch from a hard-coded to Travis key
-    # [("REDACTED","GatorCogitate/cogitate_tool")],
-    [(data_collection.retrieve_token(), "GatorCogitate/cogitate_tool")],
+    [(data_collection.retrieve_token("data/token.txt"), "GatorCogitate/cogitate_tool")],
 )
 def test_authenticate_repository_authenticates(input_token, repository_name):
     """Test to ensure the establishment of a repository."""
@@ -33,9 +45,7 @@ def test_authenticate_repository_authenticates(input_token, repository_name):
     "input_token,repository_name,state,contributor_data",
     [
         (
-            # Toggle the inputs below to switch from a hard-coded to Travis key
-            # "REDACTED",
-            data_collection.retrieve_token(),
+            data_collection.retrieve_token("data/token.txt"),
             "GatorCogitate/cogitate_tool",
             "all",
             json_handler.get_dict_from_json_file("contributor_data_template"),
