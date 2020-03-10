@@ -11,6 +11,65 @@ from src import json_handler
 
 
 @pytest.mark.parametrize(
+    "input_dict,kept_entry,removed_entry,expected_dict",
+    [
+        (
+            {
+                "Noor Buchi": {
+                    "EMAIL": "",
+                    "COMMITS": 7,
+                    "ADDED": 60,
+                    "REMOVED": 3,
+                    "FILES": ["README.md", "settings.json", "travis.yml", "Pipfile",],
+                    "issues_commented": [30, 30],
+                    "issues_opened": [25, 57],
+                    "pull_requests_commented": [58, 58, 58, 58],
+                    "pull_requests_opened": [],
+                },
+                "noorbuchi": {
+                    "EMAIL": "",
+                    "COMMITS": 3,
+                    "ADDED": 40,
+                    "REMOVED": 7,
+                    "FILES": ["README.md", "settings.json", "travis.yml"],
+                    "issues_commented": [63, 53],
+                    "issues_opened": [16],
+                    "pull_requests_commented": [58, 58, 58, 58],
+                    "pull_requests_opened": [58, 17],
+                },
+            },
+            "noorbuchi",
+            "Noor Buchi",
+            {
+                "noorbuchi": {
+                    "EMAIL": "",
+                    "COMMITS": 10,
+                    "ADDED": 100,
+                    "REMOVED": 10,
+                    "FILES": ["Pipfile", "README.md", "settings.json", "travis.yml"],
+                    "issues_commented": [63, 53, 30, 30],
+                    "issues_opened": [16, 25, 57],
+                    "pull_requests_commented": [58, 58, 58, 58, 58, 58, 58, 58],
+                    "pull_requests_opened": [58, 17],
+                }
+            },
+        )
+    ],
+)
+def test_merge_duplicate_usernames(
+    input_dict, kept_entry, removed_entry, expected_dict
+):
+    """Use parametrized testing to ensure entries are merged correctly and.
+
+    Unwanted entry is discarded.
+    """
+    actual_dict = data_collection.merge_duplicate_usernames(
+        input_dict, kept_entry, removed_entry
+    )
+    assert actual_dict == expected_dict
+
+
+@pytest.mark.parametrize(
     "metrics_dict,issues_dict,expected_dict",
     [
         (
@@ -109,7 +168,7 @@ from src import json_handler
 def test_merge_metric_and_issue_dicts_already_exists(
     metrics_dict, issues_dict, expected_dict
 ):
-    """Uses parametrized testing to make sure mergin funciton is working properly"""
+    """Uses parametrized testing to make sure merging funciton is working properly"""
     actual_dict = data_collection.merge_metric_and_issue_dicts(
         metrics_dict, issues_dict
     )

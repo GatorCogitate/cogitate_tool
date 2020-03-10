@@ -357,7 +357,6 @@ def merge_metric_and_issue_dicts(metrics_dict, issues_dict):
     return metrics_dict
 
 
-# TODO: needs test case
 def merge_duplicate_usernames(dictionary, kept_entry, removed_entry):
     """Take input from user and merge data in entries then delete one."""
     # Put the keys of mergable metrics in a list
@@ -379,6 +378,8 @@ def merge_duplicate_usernames(dictionary, kept_entry, removed_entry):
                 set(dictionary[kept_entry][category])
                 | set(dictionary[removed_entry][category])
             )
+            # sort the files for testing consistency
+            dictionary[kept_entry][category] = sorted(dictionary[kept_entry][category])
         else:
             # simple addition for all other metrics
             dictionary[kept_entry][category] += dictionary[removed_entry][category]
