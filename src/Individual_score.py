@@ -21,18 +21,18 @@ import data_collection
 
 
 # NOTE This is the fake data, it does not have key for the email for now, for tesing purposes
-github_data = {
-    "noorbuchi": {"email": "email", "COMMITS": 28, "ADDED": 349, "REMOVED": 70, "files": ['sting', 'strings']},
-    "bagashvilit": {"email": "email","COMMITS": 22, "ADDED": 355, "REMOVED": 56, "files": ['sting', 'strings']},
-    "Jordan-A": {"email": "email","COMMITS": 23, "ADDED": 375, "REMOVED": 43, "files": ['sting', 'strings']},
-    "WonjoonC": {"email": "email","COMMITS": 27, "ADDED": 365, "REMOVED": 67, "files": ['sting', 'strings']},
-    "Hannah Schultz": {"email": "email","COMMITS": 25, "ADDED": 315, "REMOVED": 75, "files": ['sting', 'strings']},
-    "Alexander_Hamilton": {"email": "email","COMMITS": 41, "ADDED": 350, "REMOVED": 54, "files": ['sting', 'strings']},
-    "Karl_Marx": {"email": "email","COMMITS": 0, "ADDED": 0, "REMOVED": 0, "files": ['sting', 'strings']},
-    "Julius_Caesar": {"email": "email","COMMITS": 25, "ADDED": 363, "REMOVED": 35, "files": ['sting', 'strings']},
-    "Napoleon_Bonaparte": {"email": "email","COMMITS": 24, "ADDED": 540, "REMOVED": 2, "files": ['sting', 'strings']},
-    "Alexander_the_Great": {"email": "email","COMMITS": 42, "ADDED": 355, "REMOVED": 50, "files": ['sting', 'strings']},
-}
+# github_data = {
+#     "noorbuchi": {"email": "email", "COMMITS": 28, "ADDED": 349, "REMOVED": 70, "files": ['sting', 'strings']},
+#     "bagashvilit": {"email": "email","COMMITS": 22, "ADDED": 355, "REMOVED": 56, "files": ['sting', 'strings']},
+#     "Jordan-A": {"email": "email","COMMITS": 23, "ADDED": 375, "REMOVED": 43, "files": ['sting', 'strings']},
+#     "WonjoonC": {"email": "email","COMMITS": 27, "ADDED": 365, "REMOVED": 67, "files": ['sting', 'strings']},
+#     "Hannah Schultz": {"email": "email","COMMITS": 25, "ADDED": 315, "REMOVED": 75, "files": ['sting', 'strings']},
+#     "Alexander_Hamilton": {"email": "email","COMMITS": 41, "ADDED": 350, "REMOVED": 54, "files": ['sting', 'strings']},
+#     "Karl_Marx": {"email": "email","COMMITS": 0, "ADDED": 0, "REMOVED": 0, "files": ['sting', 'strings']},
+#     "Julius_Caesar": {"email": "email","COMMITS": 25, "ADDED": 363, "REMOVED": 35, "files": ['sting', 'strings']},
+#     "Napoleon_Bonaparte": {"email": "email","COMMITS": 24, "ADDED": 540, "REMOVED": 2, "files": ['sting', 'strings']},
+#     "Alexander_the_Great": {"email": "email","COMMITS": 42, "ADDED": 355, "REMOVED": 50, "files": ['sting', 'strings']},
+# }
 
 # NOTE: The following code block still needs to be fixed in terms of variable
 # names and docstrings.
@@ -46,9 +46,9 @@ def percentage_contribution(individual, overal_branch):
     return round(individual * 100 / overal_branch)
 
 
-def sum_branch(key):
+def sum_branch(key,dictionary):
     """Sum up all the values in branch per key."""
-    return sum(d[key] for d in github_data.values())
+    return sum(d[key] for d in dictionary.values())
 
 
 def contribution(dictionary):
@@ -58,7 +58,7 @@ def contribution(dictionary):
         for category,value in data.items():
             if isinstance(value, int):
                 contributor_data[username][category] = percentage_contribution(
-                    value, sum_branch(category))
+                    value, sum_branch(category,dictionary)),"%"
             if isinstance(value, list):
                 contributor_data[username][category] = len(value)
     return contributor_data
@@ -72,9 +72,15 @@ if __name__ == "__main__":
     #     print (get_weighted(username))
     #print(data_collection.calculate_individual_metrics("individual_metrics_testfile"))
     #print_data()
+    DATA = data_collection.calculate_individual_metrics()
+    # if statement will check if raw data was collected
+    if DATA == {}:
+        REPO_PATH = input("Enter the path to the repo : ")
+        # This call will use default options for file and overwrite condition
+        data_collection.collect_and_add_raw_data_to_json(REPO_PATH)
+    print("Adding processed data to selected json file...")
 
-    print(contribution(github_data))
-    print(pd.DataFrame.from_dict(contribution(github_data)))
+    print(pd.DataFrame.from_dict(contribution(DATA)))
     (data_collection.calculate_individual_metrics("individual_score_test"))
     # def individual_commitmnet(username, category):
     #     """Get and send value for key."""
