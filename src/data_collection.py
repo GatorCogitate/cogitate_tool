@@ -209,6 +209,7 @@ def collect_and_add_raw_data_to_json(
 
 
 # pylint: disable=C0330
+# NOTE: this fucntion still needs to be modified to include merging duplicates
 def collect_and_add_individual_metrics_to_json(
     read_file="raw_data_storage",
     write_file="individual_metrics_storage",
@@ -284,11 +285,20 @@ def calculate_individual_metrics(json_file_name="raw_data_storage"):
 
 def print_individual_in_table(
     file_name="individual_metrics_storage",
+    data_dict={},
     headings=["EMAIL", "COMMITS", "ADDED", "REMOVED"],
 ):
-    """Create and print the table using prettytable."""
+    """Create and print the table using prettytable.
+
+    Unless specified be sending data_dict=DICT as a parameter, the function.
+
+    will print from the file.
+    """
     # Default headings are mentioned above in the parameter
-    dictionary = json_handler.get_dict_from_json_file(file_name)
+    if not len(data_dict) == 0:
+        dictionary = data_dict
+    else:
+        dictionary = json_handler.get_dict_from_json_file(file_name)
     # Initialize a PrettyTable instance
     data_table = PrettyTable()
     # add the username as a category for teh headings
@@ -314,90 +324,104 @@ def find_repositories(repo):
     return miner
 
 
-# TODO: needs revised
-# def merge_duplicate_usernames(current_data, kept_entry, removed_entry):
-#     """Take input from user and merge data in entries then delete one."""
-#     dictionary = current_data["INDIVIDUAL_METRICS"]
-#     categories = [
-#         "COMMITS",
-#         "ADDED",
-#         "REMOVED",
-#         "FILES",
-#         "issues_commented",
-#         "issues_opened",
-#         "pull_requests_opened",
-#         "pull_requests_commented",
-#     ]
-#     for category in categories:
-#         # Special case for merging files to avoid duplicates
-#         if category == "FILES":
-#             dictionary[kept_entry][category] = list(
-#                 set(dictionary[kept_entry][category])
-#                 | set(dictionary[removed_entry][category])
-#             )
-#         else:
-#             # simple addiyion for all other metrics
-#             dictionary[kept_entry][category] += dictionary[removed_entry][category]
-#     try:
-#         del dictionary[removed_entry]
-#     except KeyError:
-#         print("Key 'testing' not found")
-#     return {"INDIVIDUAL_METRICS": dictionary}
+# TODO: needs test case
+def merge_metric_and_issue_dicts(metrics_dict, issues_dict):
+    """Receive two dicitionaries one for issues and the other for metrics.
+
+    Create empty fields for users existing in issues_dict and not in metrics.
+    """
+    for entry in issues_dict:
+        # check if the issue/PR author does not exist in the metrics dicitionary
+        if entry not in metrics_dict.keys():
+            # Add empty data to their metrics
+            metrics_dict[entry] = {
+                "EMAIL": "N/A",
+                "COMMITS": 0,
+                "ADDED": 0,
+                "REMOVED": 0,
+                "TOTAL": 0,
+                "MODIFIED": 0,
+                "RATIO": 0,
+                "FILES": [],
+                "FORMAT": [],
+            }
+        # update the metrics dicitionary with the new keys
+        metrics_dict[entry].update(issues_dict[entry])
+    return metrics_dict
+
+
+# TODO: needs test case
+def merge_duplicate_usernames(dictionary, kept_entry, removed_entry):
+    """Take input from user and merge data in entries then delete one."""
+    # Put the keys of mergable metrics in a list
+    categories = [
+        "COMMITS",
+        "ADDED",
+        "REMOVED",
+        "FILES",
+        "issues_commented",
+        "issues_opened",
+        "pull_requests_opened",
+        "pull_requests_commented",
+    ]
+    # Loop through all the keys in the list
+    for category in categories:
+        # Special case for merging files to avoid duplicates
+        if category == "FILES":
+            dictionary[kept_entry][category] = list(
+                set(dictionary[kept_entry][category])
+                | set(dictionary[removed_entry][category])
+            )
+        else:
+            # simple addition for all other metrics
+            dictionary[kept_entry][category] += dictionary[removed_entry][category]
+    # Use exception handling to delete the duplicate from the dictionary
+    try:
+        del dictionary[removed_entry]
+    except KeyError:
+        print("Key 'testing' not found")
+    return dictionary
 
 
 # This main method is only for the purposes of testing
+# Main methods should only be in the cogitate.py file
 if __name__ == "__main__":
     # NOTE: this supression needs to be resolved
     # pylint: disable=input-builtin
     # TODO: needs revised
-    # FILE_NAME = input("Enter the name of the file to store data: ")
-    # DATA = calculate_individual_metrics(FILE_NAME)
-    # if DATA == {}:
-    #     REPO_PATH = input("Enter repository path URL/Local: ")
-    #     add_raw_data_to_json(REPO_PATH, FILE_NAME)
-    #     print("processing data again")
-    #     DATA = calculate_individual_metrics(FILE_NAME)
-    # token = input("Enter user token")
-    # repo_name = input("Enter repo name (org/repo_name): ")
-    # current_repo = authenticate_repository(token, repo_name)
-    # ISSUE_DATA = {}
-    # ISSUE_DATA = retrieve_issue_data(current_repo, "all", ISSUE_DATA)
-    # for key in ISSUE_DATA:
-    #     if key not in DATA["INDIVIDUAL_METRICS"].keys():
-    #         DATA["INDIVIDUAL_METRICS"][key] = {
-    #             "EMAIL": "N/A",
-    #             "COMMITS": 0,
-    #             "ADDED": 0,
-    #             "REMOVED": 0,
-    #             "TOTAL": 0,
-    #             "MODIFIED": 0,
-    #             "RATIO": 0,
-    #             "FILES": [],
-    #             "FORMAT": [],
-    #         }
-    #     DATA["INDIVIDUAL_METRICS"][key].update(ISSUE_DATA[key])
-    # print_individual_in_table(DATA)
-    # choice = True
-    # while choice:
-    #     remove = input("enter username to be merged then deleted: ")
-    #     keep = input("enter username to be merged into: ")
-    #     DATA = merge_duplicate_usernames(DATA, keep, remove)
-    #     print("data after this merge...")
-    #     print_individual_in_table(DATA)
-    #     pick = input("would you like to continue? y/n")
-    #     if pick == "n":
-    #         choice = False
-    # # Write reformatted dictionary to json
-    # json_handler.add_entry(DATA, FILE_NAME)
-    # print_individual_in_table(DATA)
-
-    # This call will use the default file names
     DATA = calculate_individual_metrics()
-    # if statement will check if raw data was collected
+    # This condition checks if raw data was collected because
+    # calculate_individual_metrics would return empty dictionary if no data was collected
     if DATA == {}:
-        REPO_PATH = input("Enter the path to the repo : ")
-        # This call will use default options for file and overwrite condition
+        print("Raw data was not previously collected, collecting it now...")
+        REPO_PATH = input(
+            "Enter repository path URL/Local to collect Pydriller data from: "
+        )
         collect_and_add_raw_data_to_json(REPO_PATH)
-    print("Adding processed data to selected json file...")
-    collect_and_add_individual_metrics_to_json()
-    print_individual_in_table()
+        # Retrieve the newely collected data from the default json file
+        DATA = calculate_individual_metrics()
+    # Process for PyGithub data
+    token = input("Enter user token to collect PyGitHub data: ")
+    repo_name = input("Enter repo name in this format: org/repo_name: ")
+    current_repo = authenticate_repository(token, repo_name)
+    ISSUE_DATA = {}
+    ISSUE_DATA = retrieve_issue_data(current_repo, "all", ISSUE_DATA)
+    DATA = merge_metric_and_issue_dicts(DATA, ISSUE_DATA)
+    # Prints table from dictionary, only the commits column
+    print_individual_in_table(data_dict=DATA, headings=["COMMITS"])
+    choice = True
+    while choice:
+        remove = input("enter username to be merged then deleted: ")
+        keep = input("enter username to be merged into: ")
+        # merge selected entries
+        DATA = merge_duplicate_usernames(DATA, keep, remove)
+        print("data after this merge...")
+        print_individual_in_table(data_dict=DATA, headings=["COMMITS"])
+        pick = input("would you like to continue? y/n: ")
+        if pick == "n":
+            choice = False
+    print("Writing data to json file...")
+    # Write reformatted dictionary to json, optional parameters not supported
+    json_handler.write_dict_to_json_file(DATA, "individual_metrics_storage")
+    # print default headings of data
+    print_individual_in_table(data_dict=DATA)
