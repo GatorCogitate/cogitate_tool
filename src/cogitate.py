@@ -60,6 +60,13 @@ def retrieve_arguments():
         help="Username that is deleted after merged into the kept username.",
     )
     a_parse.add_argument(
+        "-ku",
+        "--keptusername ",
+        required=True,
+        type=str,
+        help="Usernme that is kept after merged.",
+    )
+    a_parse.add_argument(
         "-em",
         "--endmerge",
         required=True,
