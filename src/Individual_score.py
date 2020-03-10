@@ -37,11 +37,11 @@ def individual_contribution(dictionary):
             #if data type is int use the appropriate function to sum up the values
             if isinstance(value, int):
                 contributor_data[username][metrics] = percent_calculator(
-                    value, sum_metrics_int(metrics, dictionary)), "%"
+                    value, sum_metrics_int(metrics, dictionary))
             #if data type is list use the appropriate function to sum up the values
             if isinstance(value, list):
                 contributor_data[username][metrics] = percent_calculator(
-                    len(value), sum_metrics_list(metrics, dictionary)), "%", value
+                    len(value), sum_metrics_list(metrics, dictionary)), value
     return contributor_data
 
 
