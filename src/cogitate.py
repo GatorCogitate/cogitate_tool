@@ -110,7 +110,7 @@ def link_validator(url_str):
 def bool_validator(bool_str):
     """Take a string and checks if user says yes or no."""
     positive_command_list = ["yes", "y", "t", "true", "1"]
-    negative_command_list = ["no", "n", "f", "flase", "0"]
+    negative_command_list = ["no", "n", "f", "false", "0"]
     if isinstance(bool_str, bool):
         return bool_str
     if bool_str.lower() in positive_command_list:
