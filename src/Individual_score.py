@@ -16,9 +16,13 @@ def percent_calculator(individual, overal_branch):
     return round(individual * 100 / overal_branch)
 
 
-def sum_metrics_values(key,dictionary):
+def sum_metrics_int(key,dictionary):
     """Sum up all the values in metrics per key."""
     return sum(d[key] for d in dictionary.values())
+
+def sum_metrics_list(key,dictionary):
+    """Sum up all the values in metrics per key."""
+    return sum(len(d[key]) for d in dictionary.values())
 
 
 def individual_contribution(dictionary):
@@ -28,9 +32,10 @@ def individual_contribution(dictionary):
         for metrics,value in data.items():
             if isinstance(value, int):
                 contributor_data[username][metrics] = percent_calculator(
-                    value, sum_metrics_values(metrics,dictionary)),"%"
+                    value, sum_metrics_int(metrics,dictionary)),"%"
             if isinstance(value, list):
-                contributor_data[username][metrics] = len(value), value
+                contributor_data[username][metrics] = percent_calculator(
+                    len(value), sum_metrics_list(metrics,dictionary)),"%"
     return contributor_data
 
 
