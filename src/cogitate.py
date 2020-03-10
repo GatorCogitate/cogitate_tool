@@ -54,6 +54,13 @@ def retrieve_arguments():
         "-du", "--deleteusername ",
     )
     a_parse.add_argument(
+        "-em",
+        "--endmerge",
+        required=True,
+        type=str,
+        help="Ends the process of merging usernames.",
+    )
+    a_parse.add_argument(
         "-s",
         "--state",
         required=False,
