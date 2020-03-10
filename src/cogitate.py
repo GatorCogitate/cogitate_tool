@@ -53,25 +53,11 @@ def retrieve_arguments():
         help="User's Repository name, start with root dirctory (user or organization name)",
     )
     a_parse.add_argument(
-        "-du",
-        "--deleteusername ",
-        required=True,
-        type=str,
-        help="Username that is deleted after merged into the kept username.",
-    )
-    a_parse.add_argument(
-        "-ku",
-        "--keptusername ",
-        required=True,
-        type=str,
-        help="Usernme that is kept after merged.",
-    )
-    a_parse.add_argument(
-        "-em",
+        "-rm",
         "--endmerge",
         required=True,
         type=str,
-        help="Ends the process of merging usernames.",
+        help="Starts the process of merging usernames.",
     )
     a_parse.add_argument(
         "-s",
