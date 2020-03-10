@@ -63,7 +63,11 @@ For example, if the `command_name` is `cogitate`, the we can use `pipenv run cog
 
 #### 2.3 The Parameters
 
-##### The Token
+##### Token
+
+* Datatype: String
+* Required: True
+* Flag: `-t` or `--token`
 
 The purpose of a token in this context provides an alternate passwords that you
 can use to authenticate. The personal access tokens with Git allows you to authenticate
@@ -83,9 +87,56 @@ order to use the tool:
 Do note that for security reasons, you will not be able to see the token again
 once logged off.
 
+##### Link
+
 * Datatype: String
 * Required: True
-* Flag: `-t` or `--token`
+* Flag: `-l` or `--link`
+
+The link is the URL of the targeted repository in GitHub. This can be find at
+GitHub website.
+
+##### Repo
+
+* Datatype: String
+* Required: True
+* Flag: `-r` or `--repo`
+
+The repo is the targeted repository name. It includes the root part and the
+name part. The root part is the username or organization name. The name part is
+the actual name of the repository. In our case, it would be `GatorCogitate/cogitate_tool`
+
+##### Delete Username
+
+* Datatype: String
+* Required: True
+* Flag: `-d` or `--deleteusername`
+
+Username that is merged into the kept username, then deleted.
+
+##### Kept Username
+
+* Datatype: String
+* Required: True
+* Flag: `-k` or `--keptusername`
+
+Username that is kept into the merged username, then deleted.
+
+##### State
+
+* Datatype: String
+* Required: False
+* Default: `both`
+
+State of the Issue, open or closed.
+
+##### Web
+
+* Datatype: String
+* Required: False
+* Default: False
+
+Whether to show the detailed result in web interface.
 
 ### 3. CLI
 
