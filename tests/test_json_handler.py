@@ -1,7 +1,7 @@
 """
 Test suite for JSON processing.
 
-The test case will take the current repository.
+The test case will take the data repository.
 
 Unless that path variable is changed.
 """
@@ -9,12 +9,24 @@ import os
 import pytest
 from src import json_handler
 
-# Checks if the method creates the JSON file.
-def test_write_dict_to_json():
+
+@pytest.mark.parametrize(
+    "test_dictionary,json_name",
+    [
+        ({"username": "test_data"}, "testfile"),
+        ({"username": "test_data"}, "testfile.json"),
+    ],
+)
+def test_write_dict_to_json(test_dictionary, json_name):
     """Ensure a dictionary is written to a specified file."""
-    test_dictionary = {"username": "test_data"}
-    json_handler.write_dict_to_json_file(test_dictionary, "testfile")
-    assert "testfile.json" in os.listdir("./data/")  # file is created
+    json_handler.write_dict_to_json_file(test_dictionary, json_name)
+    if ".json" in json_name:
+        assert json_name in os.listdir("./data/")  # file is created
+        assert json_name + ".json" not in os.listdir("./data/")
+        # Input handling created correct file
+    else:
+        assert json_name + ".json" in os.listdir("./data/")  # file is created
+        assert json_name + ".json.json" not in os.listdir("./data/")
     with open("./data/testfile.json") as file:
         file_contents = file.read()
         assert "username" in file_contents
@@ -22,14 +34,23 @@ def test_write_dict_to_json():
 
 
 @pytest.mark.parametrize(
-    "json_file,expected_contents",
-    [("contributor_data_template", ["stephensonc", "koscinskic", "schultzh"])],
+    "json_name,expected_contents",
+    [
+        ("contributor_data_template", ["stephensonc", "koscinskic", "schultzh"]),
+        ("contributor_data_template.json", ["stephensonc", "koscinskic", "schultzh"]),
+    ],
 )
-def test_get_dict_from_json(json_file, expected_contents):
+def test_get_dict_from_json(json_name, expected_contents):
     """Ensure data is correctly pulled from a json file."""
-    assert json_file + ".json" in os.listdir("./data/")
-    # demofile exists
-    test_dictionary = json_handler.get_dict_from_json_file("contributor_data_template")
+    if ".json" in json_name:
+        assert json_name in os.listdir("./data/")  # file is created
+        assert json_name + ".json" not in os.listdir("./data/")
+        # Input handling created correct file
+    else:
+        assert json_name + ".json" in os.listdir("./data/")  # file is created
+        assert json_name + ".json.json" not in os.listdir("./data/")
+    # file to test exists
+    test_dictionary = json_handler.get_dict_from_json_file(json_name)
     for user in expected_contents:
         assert user in test_dictionary.keys()
     # dictionary was populated correctly
