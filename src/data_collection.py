@@ -190,10 +190,9 @@ def get_file_formats(files):
 
 
 # This function simplifies gathering and writing raw data to json file
-# NOTE: tests for this funciton not showing up on test coverage
 # pylint: disable=C0330
 def collect_and_add_raw_data_to_json(
-    path_to_repo, json_file_name="raw_data_storage", overwrite=True
+    path_to_repo, json_file_name="raw_data_storage", data_path="./data/", overwrite=True
 ):
     """Use collect_commits_hash to collect data from the repository path.
 
@@ -207,10 +206,10 @@ def collect_and_add_raw_data_to_json(
     # Checks if overwriting the file was picked
     if overwrite:
         # use json handler to overwrite the old content
-        json_handler.write_dict_to_json_file(raw_data, json_file_name)
+        json_handler.write_dict_to_json_file(raw_data, json_file_name, data_path)
     else:
         # use json handler to update the old content
-        json_handler.add_entry(raw_data, json_file_name)
+        json_handler.add_entry(raw_data, json_file_name, data_path)
 
 
 # pylint: disable=C0330
@@ -238,11 +237,12 @@ def collect_and_add_individual_metrics_to_json(
         json_handler.add_entry(metrics, write_file)
 
 
-# NOTE: test cases not counting in code coverage
-def calculate_individual_metrics(json_file_name="raw_data_storage"):
+def calculate_individual_metrics(
+    json_file_name="raw_data_storage", data_path="./data/"
+):
     """Retrieve the data from .json file and create a dictionary keyed by user."""
     # retreive data from raw data json
-    current_data = json_handler.get_dict_from_json_file(json_file_name)
+    current_data = json_handler.get_dict_from_json_file(json_file_name, data_path)
     # creates a dictionary where the key is the authors username
     data_dict = {}
     # Check if RAW_DATA is in json tp prevent a key error

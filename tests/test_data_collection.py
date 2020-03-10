@@ -6,6 +6,7 @@ The test case will take the current repository.
 Unless that path variable is changed.
 """
 import pytest
+import os
 from src import data_collection
 from src import json_handler
 
@@ -206,87 +207,61 @@ def test_initialize_contributor_data():
     assert "RAW_DATA" in data.keys()
 
 
-def test_collect_and_add_raw_data_to_json():
+def test_collect_and_add_raw_data_to_json(tmp_path):
     """Check that raw data was collected from the repository and was written."""
-    test_file = "raw_data_testfile"
+    d = tmp_path / "sub"
+    d.mkdir()
+    p1 = d / "raw_data_testfile.json"
+    entry = '"Keep this file empty" : []'
+    p1.write_text("{" + entry + "}")
     # retreive the dictionary from the test file
-    data_from_file = json_handler.get_dict_from_json_file(test_file)
+    data_from_file = json_handler.get_dict_from_json_file("raw_data_testfile", d)
     # Makes sure that the default key is in the dicitionary
     # The key is called "Keep this file empty"
     assert "Keep this file empty" in data_from_file
     repository = "https://github.com/GatorCogitate/cogitate_tool"
     # Call collect and write funciton
     data_collection.collect_and_add_raw_data_to_json(
-        repository, test_file, overwrite=True
+        repository, "raw_data_testfile", d, overwrite=True
     )
     # Update dicitionary from the new data in the file
-    data_from_file = json_handler.get_dict_from_json_file(test_file)
+    data_from_file = json_handler.get_dict_from_json_file("raw_data_testfile", d)
     # Make sure the correct key is added
     assert "RAW_DATA" in data_from_file
-    # Start teardown process to put file in default state
-    default_dict = {"Keep this file empty": []}
-    json_handler.write_dict_to_json_file(default_dict, test_file)
 
 
-def test_collect_and_add_raw_data_to_json_no_overwrite():
+def test_collect_and_add_raw_data_to_json_no_overwrite(tmp_path):
     """Check that raw data was collected from the repository and was written."""
-    test_file = "raw_data_testfile"
+    d = tmp_path / "sub"
+    d.mkdir()
+    p1 = d / "raw_data_testfile_no_overwrite.json"
+    entry = '"Keep this file empty" : []'
+    p1.write_text("{" + entry + "}")
     # retreive the dictionary from the test file
-    data_from_file = json_handler.get_dict_from_json_file(test_file)
+    data_from_file = json_handler.get_dict_from_json_file(
+        "raw_data_testfile_no_overwrite", d
+    )
     # Makes sure that the default key is in the dicitionary
     # The key is called "Keep this file empty"
     assert "Keep this file empty" in data_from_file
     repository = "https://github.com/GatorCogitate/cogitate_tool"
     # Call collect and write funciton
     data_collection.collect_and_add_raw_data_to_json(
-        repository, test_file, overwrite=False
+        repository, "raw_data_testfile_no_overwrite", d, overwrite=False
     )
     # Update dicitionary from the new data in the file
-    data_from_file = json_handler.get_dict_from_json_file(test_file)
+    data_from_file = json_handler.get_dict_from_json_file(
+        "raw_data_testfile_no_overwrite", d
+    )
     # Make sure the correct key is added
     assert "RAW_DATA" in data_from_file
     assert "Keep this file empty" in data_from_file
-    # Start teardown process to put file in default state
-    default_dict = {"Keep this file empty": []}
-    json_handler.write_dict_to_json_file(default_dict, test_file)
-
-
-def test_collect_and_add_individual_metrics_to_json():
-    """Check that calculated data was collected from the repository and was written."""
-    read_test_file = "individual_metrics_testfile"
-    write_test_file = "calculated_metrics_testfile"
-    # retreive the dictionaries from the test file
-    calculated_data_from_file = json_handler.get_dict_from_json_file(write_test_file)
-    raw_data_from_file = json_handler.get_dict_from_json_file(read_test_file)
-    # Makes sure that the default values are in the dicitionaries
-    # The key is called "Keep this file empty"
-    assert "Keep this file empty" in calculated_data_from_file
-    # makes sure RAW_DATA is a key in the individual_metrics_testfile
-    assert "RAW_DATA" in raw_data_from_file
-    # Call collect and write funciton
-    data_collection.collect_and_add_individual_metrics_to_json(
-        read_test_file, write_test_file, overwrite=True
-    )
-    # Update dicitionary from the new data in the file
-    calculated_data_from_file = json_handler.get_dict_from_json_file(write_test_file)
-    # Make sure the correct keys are added
-    expected_keys = [
-        "schultzh",
-        "WonjoonC",
-        "Jordan-A",
-        "noorbuchi",
-        "Chris Stephenson",
-    ]
-    actual_keys = list(calculated_data_from_file.keys())
-    assert actual_keys == expected_keys
-    # Start teardown process to put file in default state
-    default_dict = {"Keep this file empty": []}
-    json_handler.write_dict_to_json_file(default_dict, write_test_file)
 
 
 def test_collect_and_add_individual_metrics_to_json_no_overwrite():
     """Check that calculated data was collected from the repository and was written."""
     read_test_file = "individual_metrics_testfile"
+    # TODO Change write file to temp file
     write_test_file = "calculated_metrics_testfile"
     # retreive the dictionaries from the test file
     calculated_data_from_file = json_handler.get_dict_from_json_file(write_test_file)
@@ -333,12 +308,13 @@ def test_calculate_individual_metrics_full(json_file_name):
     assert not len(data) == 0
 
 
-@pytest.mark.parametrize(
-    "json_file_name", [("testfile")],
-)
-def test_calculate_individual_metrics_empty(json_file_name):
+def test_calculate_individual_metrics_empty(tmp_path):
     """Check that the individual metrics have been calculated."""
-    data = data_collection.calculate_individual_metrics(json_file_name)
+    d = tmp_path / "sub"
+    d.mkdir()
+    p1 = d / "metrics_testfile.json"
+    p1.write_text("{}")
+    data = data_collection.calculate_individual_metrics("metrics_testfile", d)
     assert len(data) == 0
 
 
