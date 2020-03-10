@@ -7,6 +7,7 @@
 ## About GatorCogitate
 
 Cogitate is a free and open source tool written in Python. It is designed to evaluate the level of contributions for members of a GitHub repository. GatorCogitate generates a score for members based on a variety of metrics including:
+
 - Lines added
 - Lines removed
 - Lines Deleted
@@ -23,14 +24,18 @@ production.*
 
 **1. Clone the GatorCogitate source code onto your machine.**
 
-  With HTTPS:
+With HTTPS:
+
 ```
 git clone https://github.com/GatorCogitate/cogitate_tool.git
 ```
+
 Or with SSH:
+
 ```
 git clone git@github.com:GatorCogitate/cogitate_tool.git
 ```
+
 **2. Install Pipenv (Recommended)**
 
 Documentation for installing pipenv can be found [Here.](https://pipenv.kennethreitz.org/en/latest/#install-pipenv-today)
@@ -42,11 +47,11 @@ environment. Use `exit` to exit. Under the virtual environment, use
 Here is a good [tutorial](https://realpython.com/pipenv-guide/) on how to use `pipenv`.
 
 Otherwise, all dependencies will need to be installed locally with the commands:
+
 ```
 python3 -m pip install --upgrade pip
 python3 -m pip install -e
 ```
-
 
 ## Running GatorCogitate
 
