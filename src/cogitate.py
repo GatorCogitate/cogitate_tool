@@ -25,7 +25,9 @@ def main(args):
             "To see the output in the web, simply add '-w yes' to your command line arguments."
         )
         # Temporary structure given issue retrieval is the only function
-        data_collection.collect_and_add_raw_data_to_json(args["link"], "raw_data_storage.json")
+        data_collection.collect_and_add_raw_data_to_json(
+            args["link"], "raw_data_storage.json"
+        )
 
 
 def retrieve_arguments():
