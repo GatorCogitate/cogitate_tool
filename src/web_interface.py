@@ -9,7 +9,7 @@ import pandas as pd
 def web_interface():
     """Execute the web interface."""
 
-    # Sidebar menu:c
+    # Sidebar menu options:
     add_selectbox = st.sidebar.selectbox(
         "What feature would you like to view?",
         (
