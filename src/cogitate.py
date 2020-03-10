@@ -19,7 +19,7 @@ def main(args):
         print("'web Link'")
     elif args["web"] is False:
         print(
-            "Printing data in terminal...\nTo see the output in"
+            "Printing data in terminal...\nTo see the output in "
             + "the web, simply add '-w yes' to your command line arguments"
         )
         # Temporary structure given issue retrieval is the only function

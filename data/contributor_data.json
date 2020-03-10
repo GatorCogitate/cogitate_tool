@@ -8,16 +8,50 @@
     },
     "koscinskic": {
         "commits": [],
-        "issues_opened": [],
-        "issues_commented": [],
-        "pull_requests_opened": [],
+        "issues_opened": [
+            15,
+            14
+        ],
+        "issues_commented": [
+            68,
+            64,
+            48,
+            20,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            15,
+            14,
+            14,
+            14
+        ],
+        "pull_requests_opened": [
+            74
+        ],
         "pull_requests_commented": []
     },
     "schultzh": {
         "commits": [],
         "issues_opened": [],
-        "issues_commented": [],
-        "pull_requests_opened": [],
+        "issues_commented": [
+            12
+        ],
+        "pull_requests_opened": [
+            70
+        ],
         "pull_requests_commented": []
     },
     "RAW_DATA": [
@@ -51,20 +85,9 @@
         }
     ],
     "INDIVIDUAL_METRICS": {
-        "schultzh": {
+        "": {
             "EMAIL": "",
-            "COMMITS": 0,
-            "ADDED": 0,
-            "REMOVED": 0,
-            "TOTAL": 0,
-            "MODIFIED": 0,
-            "RATIO": 0,
-            "FILES": [],
-            "FORMAT": []
-        },
-        "WonjoonC": {
-            "EMAIL": "",
-            "COMMITS": 0,
+            "COMMITS": 2,
             "ADDED": 0,
             "REMOVED": 0,
             "TOTAL": 0,
@@ -73,16 +96,5 @@
             "FILES": [],
             "FORMAT": []
         }
-    },
-    "": {
-        "EMAIL": "",
-        "COMMITS": 2,
-        "ADDED": 0,
-        "REMOVED": 0,
-        "TOTAL": 0,
-        "MODIFIED": 0,
-        "RATIO": 0,
-        "FILES": [],
-        "FORMAT": []
     }
 }
