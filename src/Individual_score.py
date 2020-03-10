@@ -22,16 +22,16 @@ import data_collection
 
 # NOTE This is the fake data, it does not have key for the email for now, for tesing purposes
 github_data = {
-    "noorbuchi": {"email": "email", "COMMITS": 28, "ADDED": 349, "REMOVED": 70},
-    "bagashvilit": {"email": "email","COMMITS": 22, "ADDED": 355, "REMOVED": 56},
-    "Jordan-A": {"email": "email","COMMITS": 23, "ADDED": 375, "REMOVED": 43},
-    "WonjoonC": {"email": "email","COMMITS": 27, "ADDED": 365, "REMOVED": 67},
-    "Hannah Schultz": {"email": "email","COMMITS": 25, "ADDED": 315, "REMOVED": 75},
-    "Alexander_Hamilton": {"email": "email","COMMITS": 41, "ADDED": 350, "REMOVED": 54},
-    "Karl_Marx": {"email": "email","COMMITS": 0, "ADDED": 0, "REMOVED": 0},
-    "Julius_Caesar": {"email": "email","COMMITS": 25, "ADDED": 363, "REMOVED": 35},
-    "Napoleon_Bonaparte": {"email": "email","COMMITS": 24, "ADDED": 540, "REMOVED": 2},
-    "Alexander_the_Great": {"email": "email","COMMITS": 42, "ADDED": 355, "REMOVED": 50},
+    "noorbuchi": {"email": "email", "COMMITS": 28, "ADDED": 349, "REMOVED": 70, "files": ['sting', 'strings']},
+    "bagashvilit": {"email": "email","COMMITS": 22, "ADDED": 355, "REMOVED": 56, "files": ['sting', 'strings']},
+    "Jordan-A": {"email": "email","COMMITS": 23, "ADDED": 375, "REMOVED": 43, "files": ['sting', 'strings']},
+    "WonjoonC": {"email": "email","COMMITS": 27, "ADDED": 365, "REMOVED": 67, "files": ['sting', 'strings']},
+    "Hannah Schultz": {"email": "email","COMMITS": 25, "ADDED": 315, "REMOVED": 75, "files": ['sting', 'strings']},
+    "Alexander_Hamilton": {"email": "email","COMMITS": 41, "ADDED": 350, "REMOVED": 54, "files": ['sting', 'strings']},
+    "Karl_Marx": {"email": "email","COMMITS": 0, "ADDED": 0, "REMOVED": 0, "files": ['sting', 'strings']},
+    "Julius_Caesar": {"email": "email","COMMITS": 25, "ADDED": 363, "REMOVED": 35, "files": ['sting', 'strings']},
+    "Napoleon_Bonaparte": {"email": "email","COMMITS": 24, "ADDED": 540, "REMOVED": 2, "files": ['sting', 'strings']},
+    "Alexander_the_Great": {"email": "email","COMMITS": 42, "ADDED": 355, "REMOVED": 50, "files": ['sting', 'strings']},
 }
 
 # NOTE: The following code block still needs to be fixed in terms of variable
@@ -40,25 +40,27 @@ github_data = {
 #github_data = data_collection.calculate_individual_metrics("individual_metrics_testfile")
 # pylint: disable=round-builtin
 # data_collection.add_raw_data_to_json("/home/teona/Documents/CS203/project/cogitate_tool", "individual_score_test")
-# github_data = data_collection.calculate_individual_metrics("individual_score_test")
+
 def percentage_contribution(individual, overal_branch):
     """Calculate the individual contribution percentage."""
     return round(individual * 100 / overal_branch)
 
 
-def sum_value(key):
+def sum_branch(key):
     """Sum up all the values in branch per key."""
-    return sum(d[key] for d in github_data.values() if d)
+    return sum(d[key] for d in github_data.values())
 
 
-def contribution():
+def contribution(dictionary):
     contributor_data = {}
     contributor_data = defaultdict(dict)
-    for username, data in github_data.items():
+    for username, data in dictionary.items():
         for category,value in data.items():
             if isinstance(value, int):
                 contributor_data[username][category] = percentage_contribution(
-                    value, sum_value(category))
+                    value, sum_branch(category))
+            if isinstance(value, list):
+                contributor_data[username][category] = len(value)
     return contributor_data
 
 
@@ -70,8 +72,10 @@ if __name__ == "__main__":
     #     print (get_weighted(username))
     #print(data_collection.calculate_individual_metrics("individual_metrics_testfile"))
     #print_data()
-    print(contribution())
-    print(pd.DataFrame.from_dict(contribution()))
+
+    print(contribution(github_data))
+    print(pd.DataFrame.from_dict(contribution(github_data)))
+    (data_collection.calculate_individual_metrics("individual_score_test"))
     # def individual_commitmnet(username, category):
     #     """Get and send value for key."""
     #     return github_data.get(username).get(category)
