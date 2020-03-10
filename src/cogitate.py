@@ -17,16 +17,20 @@ def main(args):
         print("Cannot authenticate repository.")
         return
     # allows the user to enter the CLI **needs to be uncommented when web interface is complete**
-    elif args["web"] is True:
+    if args["web"]:
         # print(web_interface.web_interface())
         print("'web Link'")
-    elif args["web"] is False:
+    elif not args["web"]:
         print(
             "To see the output in the web, simply add '-w yes' to your command line arguments."
         )
         # Temporary structure given issue retrieval is the only function
-        data_collection.collect_and_add_raw_data_to_json(
-            args["link"], "raw_data_storage.json"
+        data_collection.collect_and_add_raw_data_to_json(args["link"])
+        contributor_data = data_collection.initialize_contributor_data(
+            "contributor_data_template"
+        )
+        contributor_data = data_collection.retrieve_issue_data(
+            repository, args["state"], contributor_data
         )
 
 
@@ -57,14 +61,14 @@ def retrieve_arguments():
         "--deleteusername ",
         required=True,
         type=str,
-        help="Username that is deleted after merged into the kept username.",
+        help="Username that is merged into the kept username, then deleted.",
     )
     a_parse.add_argument(
         "-ku",
-        "--keptusername ",
+        "--keptusername",
         required=True,
         type=str,
-        help="Usernme that is kept after merged.",
+        help="Username that is kept into the merged username, then deleted.",
     )
     a_parse.add_argument(
         "-em",

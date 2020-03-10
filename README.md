@@ -110,7 +110,7 @@ the actual name of the repository. In our case, it would be `GatorCogitate/cogit
 
 * Datatype: String
 * Required: True
-* Flag: `-d` or `--deleteusername`
+* Flag: `-du` or `--deleteusername`
 
 Username that is merged into the kept username, then deleted.
 
@@ -118,9 +118,17 @@ Username that is merged into the kept username, then deleted.
 
 * Datatype: String
 * Required: True
-* Flag: `-k` or `--keptusername`
+* Flag: `-ku` or `--keptusername`
 
 Username that is kept into the merged username, then deleted.
+
+##### End Merge
+
+* Datatype: String
+* Required: True
+* Flag: `-em` or `--endmerge`
+
+Ends the process of merging usernames.
 
 ##### State
 
