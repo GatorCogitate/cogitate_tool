@@ -56,7 +56,7 @@ def web_interface():
         graph_code_churn()
     ################### Feature 9 ###################
     # Are there team members who frequently fix the build right before merging a PR to master?
-    elif add_selectbox == `Team Members Who Frequently Fix The Build`
+    elif add_selectbox == 'Team Members Who Frequently Fix The Build':
         graph_build_fix_rate()
     ################### Feature 10 ###################
     # Are there team members who are unable to contribute or who seem stuck on finishing a task?
