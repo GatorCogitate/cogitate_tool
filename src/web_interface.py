@@ -53,28 +53,6 @@ def web_interface():
     # How many lines of code did an individual add, modify, and delete?
     elif add_selectbox == 'Lines of Code Added, Modified, Deleted by an Individual':
         st.title("Lines of Code Added, Modified, Deleted by an Individual")  # dispaly relevant title for dataframe
-        df = pd.DataFrame({
-          'type': ['Lines Added', 'Lines Modified', 'Lines Deleted'],
-          'Christian Lussier': [8, 10, 20],
-          'Cory Wiard': [5, 20, 18],
-          'Devin Spitalny': [20, 19, 299],
-          'Devin Ho': [8, 19, 10],
-          'Jordan Wilson': [50, 60, 90],
-          'Danny Reid': [54, 51, 20],
-          'Anthony Baldeosingh': [10, 20, 30],
-          'Xingbang Liu': [0, 0, 999]
-        })  # create dataframe with sample dates and contributor commit numbers
-
-        df = df.rename(columns={'type':'index'}).set_index('index')  # set date as index
-
-        df  # display chart of sample commits
-
-        columns = st.multiselect(
-            label="Enter the names of specific contributors below:", options=df.columns
-        )  # allow users to display specific contributor information on dataframe graph
-
-
-        st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
 
     ################### Feature 3 ###################
     # What types of files did an individual normally modify in a repository?
@@ -133,7 +111,7 @@ def web_interface():
     ################### Feature 5 ###################
     # Are there individuals who collaborate together too frequently or not enough?
     if add_selectbox == 'Collaboration Tendencies of Individuals':
-        st.title("Collaboration Tendencies of Individuals")  # dispaly relevant
+        st.title("Collaboration Tendencies of Individuals")  # disp`aly relevant
         df = pd.DataFrame({
           'date': ['1/1/2020','1/2/2020', '1/3/2020', '10/4/2020'],
           'Christian Lussier': [80, 5, 9, 3],
@@ -240,6 +218,30 @@ def web_interface():
 
     ################### Feature 10 ###################
     # Are there team members who are unable to contribute or who seem stuck on finishing a task?
+    elif add_selectbox == 'Team Members Who Are Unable To Contribute':
+            st.title("Team Members Who Are Unable To Contribute")  # dispaly relevant title for dataframe
+            df = pd.DataFrame({
+              'type': ['Unable To Contribute'],
+              'Christian Lussier': [yes],
+              'Cory Wiard': [no],
+              'Devin Spitalny': [yes],
+              'Devin Ho': [no],
+              'Jordan Wilson': [yes],
+              'Danny Reid': [no],
+              'Anthony Baldeosingh': [no],
+              'Xingbang Liu': [yes]
+            })  # create dataframe with sample dates and contributor commit numbers
+
+            df = df.rename(columns={'type':'index'}).set_index('index')  # set date as index
+
+            df  # display chart of sample commits
+
+            columns = st.multiselect(
+                label="Enter the names of specific contributors below:", options=df.columns
+            )  # allow users to display specific contributor information on dataframe graph
+
+
+            st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
     else:
         pass
 
