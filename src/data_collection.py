@@ -9,7 +9,7 @@ Steps to run data_collection.py and display the data table:
 
 Must be in the repository folder.
 
-Run the python file using `pipenv run python src/data_collection.py`.
+Run the python file using pipenv run python src/data_collection.py.
 
 Enter the URL/local path of the repository you would like to analyze.
 
@@ -214,6 +214,7 @@ def collect_and_add_raw_data_to_json(
 
 # pylint: disable=C0330
 # NOTE: this fucntion still needs to be modified to include merging duplicates
+# NOTE: DO NOT USE, instead, use manual calls to the needed functions
 def collect_and_add_individual_metrics_to_json(
     read_file="raw_data_storage",
     write_file="individual_metrics_storage",
@@ -311,7 +312,7 @@ def print_individual_in_table(
         dictionary = json_handler.get_dict_from_json_file(file_name)
     # Initialize a PrettyTable instance
     data_table = PrettyTable()
-    # add the username as a category for teh headings
+    # add the username as a category for the headings
     data_table.field_names = ["Username"] + headings
     # Loop through every author in the dictionary
     for author in dictionary:
@@ -336,7 +337,8 @@ def find_repositories(repo):
 
 
 def merge_metric_and_issue_dicts(metrics_dict, issues_dict):
-    """Receive two dicitionaries one for issues and the other for metrics.
+    """
+    Receive two dicitionaries one for issues and the other for metrics.
 
     Create empty fields for users existing in issues_dict and not in metrics.
     """

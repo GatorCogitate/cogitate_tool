@@ -6,6 +6,26 @@
 
 # About GatorCogitate
 
+Cogitate is a free and open source tool written in Python. It is designed to
+evaluate the level of contributions for members of a GitHub repository. GatorCogitate
+generates a score for members based on a variety of metrics including:
+
+- Lines added
+- Lines removed
+- Lines Deleted
+- Pull Requests
+- Issue Tracker
+- Teamwork Performance
+
+These metrics are combined into an overall score for the user.
+
+*Note: This tool is alpha software. Please contact us if you intend to run it in
+production.*
+
+## Installing GatorCogitate
+
+**1. Clone the GatorCogitate source code onto your machine.**
+
 With HTTPS:
 
 ```
