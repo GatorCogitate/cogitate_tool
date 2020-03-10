@@ -61,6 +61,32 @@ command_name = "./scripts/script_name.sh"
 Here the `command_name` is the command you want to use when running the project.
 For example, if the `command_name` is `cogitate`, the we can use `pipenv run cogitate`.
 
+#### 2.3 The Parameters
+
+##### The Token
+
+The purpose of a token in this context provides an alternate passwords that you can use
+to authenticate. The personal access tokens with Git allows you to authenticate with a
+token in place of your password. This is vital for our tool because it allows the user
+to be used for HTTPS Git operations.
+
+* How To Generate a token 
+
+The following will demonstrate step by step the process to generate a token in order to
+use the tool. 
+
+  1. Cick your profile icon on GitHub and then click Settings
+  2. On the sidebar, click the Developer settings and then Personal access tokens.
+  3. Click Generate new token.
+  4. Add a token description and click Generate token.
+  5. Save the token for future use. 
+  
+Do note that for security reasons, you will not be able to see the token again once logged off.
+
+* Datatype: String
+* Required: True
+* Flag: `-t` or `--token`
+
 ### 3. CLI
 
 The [homepage](https://docs.python.org/3/howto/argparse.html) for `argparse`.
