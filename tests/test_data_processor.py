@@ -84,6 +84,7 @@ def test_calculate_iqr_score(input_list, expected_score):
     ],
 )
 def test_iterate_nested_dictionary(input_dictionary, expected_dictionary):
+    """Determine if nested dictionary iteration creates correct new dictionary.""" 
     new_dictionary = dp.iterate_nested_dictionary(input_dictionary)
     assert new_dictionary == expected_dictionary
 
@@ -109,6 +110,7 @@ def test_iterate_nested_dictionary(input_dictionary, expected_dictionary):
     ],
 )
 def test_iterate_dictionary_with_lists(input_dictionary, expected_dictionary):
+    """Determine that dictionary with lists adds length to new dictionary values."""
     new_dictionary = dp.iterate_nested_dictionary(input_dictionary)
     assert new_dictionary == expected_dictionary
 
@@ -142,5 +144,6 @@ def test_iterate_dictionary_with_lists(input_dictionary, expected_dictionary):
     ],
 )
 def test_calculate_team_score(input_dictionary, expected_score):
+    """Determine that team score is calculated with category average."""
     team_score = dp.calculate_team_score(input_dictionary, 0.2, 0.2, 0.6)
     assert team_score == expected_score
