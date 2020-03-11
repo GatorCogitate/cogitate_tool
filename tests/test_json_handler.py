@@ -23,13 +23,13 @@ def test_write_dict_to_json():
 
 @pytest.mark.parametrize(
     "json_file,expected_contents",
-    [("contributor_data_template", ["stephensonc", "koscinskic", "schultzh"])],
+    [("individual_metrics_testfile", ["stephensonc", "koscinskic", "schultzh"])],
 )
 def test_get_dict_from_json(json_file, expected_contents):
     """Ensure data is correctly pulled from a json file."""
     assert json_file + ".json" in os.listdir("./data/")
     # demofile exists
-    test_dictionary = json_handler.get_dict_from_json_file("contributor_data_template")
+    test_dictionary = json_handler.get_dict_from_json_file(json_file)
     for user in expected_contents:
         assert user in test_dictionary.keys()
     # dictionary was populated correctly
