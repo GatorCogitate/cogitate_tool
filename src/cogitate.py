@@ -3,6 +3,7 @@
 import argparse
 import validators
 import data_collection
+import data_processor
 
 # **uncomment web interface import statement when the web interface is complete**
 # import web_interface
@@ -28,9 +29,15 @@ def main(args):
         data_collection.collect_and_add_raw_data_to_json(
             args["link"], "raw_data_storage.json"
         )
-        data_collection.collect_and_add_individual_metrics_to_json()
-
         # allows the user to enter the merge while loop if they specified to
+        data_collection.collect_and_add_individual_metrics_to_json()
+        # calculate metrics to be used for team evaluation
+        dict = data_collection.calculate_individual_metrics()
+        data_processor.iterate_nested_dictionary(dict)
+        # calculate iqr score
+        # data_processor.calculate_iqr_score(data_list, below, above, within)
+        # calculate team score
+        # data_processor.calculate_team_score(dict, below, above, within)
 
 
 def retrieve_arguments():
@@ -86,6 +93,8 @@ def retrieve_arguments():
         default="both",
         help="Invokes calculation of team or individual metrics. If not specified, both are run.",
     )
+
+    # add arguments for below/above/within weight
 
     args = vars(a_parse.parse_args())
 
