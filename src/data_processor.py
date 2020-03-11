@@ -4,6 +4,9 @@
 from __future__ import division
 import numpy as np
 import data_collection
+from __future__ import division
+from collections import defaultdict
+import pandas as pd
 
 
 github_data = data_collection.calculate_individual_metrics()
@@ -98,6 +101,60 @@ def calculate_team_score(dictionary, below_weight, above_weight, within_weight):
 
     return average_team_score
 
+# pylint: disable=round-builtin
+def percent_calculator(individual, overal_branch):
+    """Calculate the percentage."""
+    return round(individual * 100 / overal_branch)
+
+
+def sum_metrics_int(key, dictionary):
+    """Sum up all the int type values in metrics per key."""
+    return sum(d[key] for d in dictionary.values())
+
+
+def sum_metrics_list(key, dictionary):
+    """Sum up all the list type values in metrics per key."""
+    return sum(len(d[key]) for d in dictionary.values())
+
+def add_new_metrics(dictionary):
+    """Use existing metrics to calculate additional metrics and populate the dictionary.
+
+    with new values
+    """
+    for key in dictionary:
+        dictionary[key]["TOTAL"] = (
+            dictionary[key]["ADDED"] - dictionary[key]["REMOVED"]
+        )
+        dictionary[key]["MODIFIED"] = (
+            dictionary[key]["ADDED"] + dictionary[key]["REMOVED"]
+        )
+        average = data_collection.get_commit_average(
+            dictionary[key]["MODIFIED"], dictionary[key]["COMMITS"]
+        )
+        dictionary[key]["RATIO"] = average
+        formats = data_collection.get_file_formats(dictionary[key]["FILES"])
+        dictionary[key]["FORMAT"] = formats
+    return dictionary
+
+def individual_contribution(dictionary):
+    """Calculate the percentage of indivudual contribution."""
+    contributor_data = {}
+    # use default dictionary to provide default value for a nonexistent key
+    contributor_data = defaultdict(dict)
+    for username, data in dictionary.items():
+        for metrics, value in data.items():
+            # if data type is int use the appropriate function to sum up the values
+            if isinstance(value, int):
+                contributor_data[username][metrics] = percent_calculator(
+                    value, sum_metrics_int(metrics, dictionary))
+            # if data type is list use the appropriate function to sum up the values
+            if isinstance(value, list):
+                contributor_data[username][metrics] = percent_calculator(
+                    len(value), sum_metrics_list(metrics, dictionary)), value
+    return contributor_data
+
+
 
 if __name__ == "__main__":
     print(calculate_team_score(github_data, 0.2, 0.2, 0.6), "%")
+    print(pd.DataFrame.from_dict(individual_contribution(github_data)).T)
