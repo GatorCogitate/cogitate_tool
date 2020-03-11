@@ -38,12 +38,12 @@ def main(args):
         # calculate team score
         # data_processor.calculate_team_score(dict, args["below"], args["above"], args["within"])
         if args["metrics"] in ["i", "individual"]:
-            individual()
+            individual(dict, args)
         elif args["metrics"] in ["t", "team"]:
-            team()
+            team(dict, args)
         elif args["metrics"] == "both":
-            team()
-            individual()
+            team(dict, args)
+            individual(dict, args)
         else:
             print("unknown value given for '-m' '--metric' in command line arguments")
             return
@@ -124,7 +124,7 @@ def retrieve_arguments():
     return args
 
 
-def team():
+def team(dict, args):
     """Call all team-based funtions."""
     data_processor.calculate_team_score(
         dict, args["below"], args["above"], args["within"]
@@ -132,7 +132,7 @@ def team():
     print(pd.DataFrame.from_dict(dict).T)
 
 
-def individual():
+def individual(dict, args):
     """Call all individual-based funtions."""
     updated_dict = data_processor.individual_contribution(dict)
     print(pd.DataFrame.from_dict(updated_dict).T)
