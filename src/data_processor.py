@@ -8,9 +8,6 @@ from __future__ import division
 import numpy as np
 import data_collection
 from collections import defaultdict
-import pandas as pd
-
-
 
 
 def iterate_nested_dictionary(dictionary):
@@ -102,6 +99,7 @@ def calculate_team_score(dictionary, below_weight, above_weight, within_weight):
 
     return average_team_score
 
+
 # pylint: disable=round-builtin
 def percent_calculator(individual, overal_branch):
     """Calculate the percentage."""
@@ -116,6 +114,7 @@ def sum_metrics_int(key, dictionary):
 def sum_metrics_list(key, dictionary):
     """Sum up all the list type values in metrics per key."""
     return sum(len(d[key]) for d in dictionary.values())
+
 
 def add_new_metrics(dictionary):
     """Use existing metrics to calculate additional metrics and populate the dictionary.
@@ -136,6 +135,7 @@ def add_new_metrics(dictionary):
         formats = data_collection.get_file_formats(dictionary[key]["FILES"])
         dictionary[key]["FORMAT"] = formats
     return dictionary
+
 
 def individual_contribution(dictionary):
     """Calculate the percentage of indivudual contribution."""
