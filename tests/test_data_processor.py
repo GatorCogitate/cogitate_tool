@@ -85,6 +85,31 @@ def test_iterate_nested_dictionary(input_dictionary, expected_dictionary):
 
 
 @pytest.mark.parametrize(
+    "input_dictionary, expected_dictionary",
+    [
+        (
+            {
+                "noorbuchi": {
+                    "email": "email",
+                    "FORMAT": [".py", ".test"],
+                    "ISSUES": ["A", "B", "C", "D"],
+                },
+                "bagashvilit": {
+                    "email": "email",
+                    "FORMAT": [".py", ".test", ".md"],
+                    "ISSUES": ["A", "B"],
+                },
+            },
+            {"FORMAT": [2, 3], "ISSUES": [4, 2], },
+        ),
+    ],
+)
+def test_iterate_dictionary_with_lists(input_dictionary, expected_dictionary):
+    new_dictionary = dp.iterate_nested_dictionary(input_dictionary)
+    assert new_dictionary == expected_dictionary
+
+
+@pytest.mark.parametrize(
     "input_dictionary, expected_score",
     [
         (
