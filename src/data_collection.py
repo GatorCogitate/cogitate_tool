@@ -432,9 +432,9 @@ if __name__ == "__main__":
         # Retrieve the newely collected data from the default json file
         DATA = calculate_individual_metrics()
     # Process for PyGithub data
-    token = input("Enter user token to collect PyGitHub data: ")
+    user_token = input("Enter user token to collect PyGitHub data: ")
     repo_name = input("Enter repo name in this format: org/repo_name: ")
-    current_repo = authenticate_repository(token, repo_name)
+    current_repo = authenticate_repository(user_token, repo_name)
     ISSUE_DATA = {}
     ISSUE_DATA = retrieve_issue_data(current_repo, "all", ISSUE_DATA)
     DATA = merge_metric_and_issue_dicts(DATA, ISSUE_DATA)
