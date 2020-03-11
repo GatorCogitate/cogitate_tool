@@ -1,9 +1,6 @@
 """A file for testing the functions in data_processor.py."""
 
 import pytest
-import operator
-import math
-
 import data_processor as dp
 
 
