@@ -52,6 +52,7 @@ def iterate_nested_dictionary(dictionary):
 
 def calculate_iqr_score(data_list, below_weight, above_weight, within_weight):
     """Calculate a team score with interquartile range."""
+    # pylint: disable=too-many-locals
     below_amount = 0
     above_amount = 0
     within_amount = 0
@@ -77,6 +78,7 @@ def calculate_iqr_score(data_list, below_weight, above_weight, within_weight):
         if lower_bound <= d <= upper_bound:
             within_amount = within_amount + 1
     # create factions of above, below, and within IQR amounts (divide by size) and round
+    # pylint: disable=round-builtin
     below_fraction = round(below_amount / size, 2)
     above_fraction = round(above_amount / size, 2)
     within_fraction = round(within_amount / size, 2)
@@ -99,6 +101,7 @@ def calculate_team_score(dictionary, below_weight, above_weight, within_weight):
     average_team_score = 0
 
     # iterate through the dictionary and calculate the category score for each list
+    # pylint: disable=unused-variable
     for metric, values_list in metrics_dictionary.items():
         if not isinstance(values_list, str):
             total_score += calculate_iqr_score(
