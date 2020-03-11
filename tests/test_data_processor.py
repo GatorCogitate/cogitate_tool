@@ -46,6 +46,7 @@ def test_individual_contribution(input_dictionary, expected_dictionary):
     dictionary = dp.individual_contribution(input_dictionary)
     assert dictionary == expected_dictionary
 
+
 @pytest.mark.parametrize(
     "input_list, expected_score",
     [([32, 37, 34, 35, 33, 35, 33, 32, 4, 2, 55, 74, 102], 45.0)],
@@ -74,11 +75,7 @@ def test_calculate_iqr_score(input_list, expected_score):
                     "REMOVED": 56,
                 },
             },
-            {
-                "COMMITS": [28, 22],
-                "ADDED": [349, 355],
-                "REMOVED": [70, 56],
-            },
+            {"COMMITS": [28, 22], "ADDED": [349, 355], "REMOVED": [70, 56],},
         ),
     ],
 )
