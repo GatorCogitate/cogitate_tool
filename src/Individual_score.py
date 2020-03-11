@@ -65,7 +65,8 @@ def individual_contribution(dictionary):
     return contributor_data
 
 
-# This part of the program is for demonstration and debugging puproses
+# NOTE:This part of the program is for demonstration and debugging puproses and will
+# not be merged into the master branch
 if __name__ == "__main__":
 
     DATA = data_collection.calculate_individual_metrics()
