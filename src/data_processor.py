@@ -7,7 +7,6 @@ and calculate the individual contribution as a percentage of overall contributio
 from __future__ import division
 import numpy as np
 import data_collection
-from __future__ import division
 from collections import defaultdict
 import pandas as pd
 
