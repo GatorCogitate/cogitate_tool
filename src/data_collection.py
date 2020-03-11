@@ -305,11 +305,9 @@ def calculate_individual_metrics(
                 else:
                     pass
 
-            data_dict[author][
-                "COMMITS_ELSEWHERE"
-            ] = data_dict[author][
-                "COMMITS"
-            ] - data_dict[author]["COMMITS_TO_TESTING"]
+            data_dict[author]["COMMITS_ELSEWHERE"] = (
+                data_dict[author]["COMMITS"] - data_dict[author]["COMMITS_TO_TESTING"]
+            )
         return data_dict
     # if RAW_DATA key was not found, empty dictionary will be returned
     return {}
