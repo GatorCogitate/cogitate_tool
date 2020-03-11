@@ -2,7 +2,6 @@
 
 # This import fixes a linting error with old division.
 from __future__ import division
-import pprint
 import numpy as np
 import data_collection
 
@@ -48,7 +47,6 @@ def iterate_nested_dictionary(dictionary):
                         category_scores[metric] = [github_data[user][metric]]
                     else:
                         category_scores[metric].append(github_data[user][metric])
-
 
     # return the new dictionary
     return category_scores
@@ -107,7 +105,9 @@ def calculate_team_score(dictionary, below_weight, above_weight, within_weight):
         if isinstance(values_list, str):
             total_score = total_score
         else:
-            total_score += calculate_iqr_score(values_list, below_weight, above_weight, within_weight)
+            total_score += calculate_iqr_score(
+                values_list, below_weight, above_weight, within_weight
+            )
             count += 1
 
     average_team_score = total_score / count
