@@ -13,9 +13,9 @@ import data_collection
 def iterate_nested_dictionary(dictionary):
     """Iterate through the nested dictionary and create new dictionary."""
     # iterate through nested dictionary and add to new dictionary
-    # the new dictionary consists of the metric ("COMMITS", "ADDED" etc.) as the 
+    # the new dictionary consists of the metric ("COMMITS", "ADDED" etc.) as the
     # key and a list of those metrics values (from the nested dictionary) as the value
-    # this allows better iteration as the iqr score requires a 
+    # this allows better iteration as the iqr score requires a
     # list of data for calculations
     category_scores = {}
     amount = 0
@@ -69,7 +69,9 @@ def calculate_iqr_score(data_list, below_weight, above_weight, within_weight):
             above_amount = above_amount + 1
         if lower_bound <= d <= upper_bound:
             within_amount = within_amount + 1
-    # create factions of above, below, and wA calculated iqr score for the specific list of datapointsithin IQR amounts (divide by size) and round
+    # create factions of above, below, and calculated iqr
+    # score for the specific list of datapointsithin IQR amounts
+    # (divide by size) and round
     # pylint: disable=round-builtin
     below_fraction = round(below_amount / size, 2)
     above_fraction = round(above_amount / size, 2)
@@ -88,7 +90,7 @@ def calculate_team_score(dictionary, below_weight, above_weight, within_weight):
     """Calculate the average team score."""
     # create a new dictionary and assign it to the dictionary iteration
     # this new dictionary holds a list of values for a specific metric
-    # allowing iteration to determine the score for each category, 
+    # allowing iteration to determine the score for each category,
     # which contributes to the final team score
     metrics_dictionary = iterate_nested_dictionary(dictionary)
     total_score = 0
