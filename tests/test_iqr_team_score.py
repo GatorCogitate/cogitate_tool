@@ -11,7 +11,7 @@ import IQR_team_score
 )
 def test_calculate_iqr_score(input_list, expected_score):
     """Function to determine the accuracy of an iqr score for a certain category."""
-    score = IQR_team_score.calculate_iqr_score(input_list)
+    score = IQR_team_score.calculate_iqr_score(input_list, 0.2, 0.2, 0.6)
     assert score == expected_score
 
 
