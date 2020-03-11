@@ -25,18 +25,15 @@ github_data = {
 }
 
 
-def metrics_list(key, dictionary):
-    return list((d[key] for d in dictionary.values()))
-
-
 def iterate_nested_dictonary(dictionary):
-    category_lists = {}
-    # category_lists = defaultdict(dict)
-    for username, data in dictionary.items():
-        for metrics, value in data.items():
-            # category_lists[metrics] = data.values()
-            glom(dictionary, (username)
-    print(category_lists)
+    category_scores = {}
+    for user in github_data.keys():
+        for metric in github_data[user]:
+            if metric not in category_scores:
+                category_scores[metric] = [github_data[user][metric]]
+            else:
+                category_scores[metric].append(github_data[user][metric])
+    print(category_scores)
 
 
 def calculate_iqr_score(data_list, below_weight, above_weight, within_weight):
@@ -134,17 +131,4 @@ def calculate_team_score(dictionary):
 
 
 if __name__ == "__main__":
-    pp = pprint.PrettyPrinter(width=41, compact=True)
-    pp.pprint((github_data))
-    scores = {}
-    for user in github_data.keys():
-        print("user", user)
-        print("data", github_data[user])
-        for metric in github_data[user]:
-            if metric not in scores:
-                scores[metric] = [github_data[user][metric]]
-            else:
-                scores[metric].append(github_data[user][metric])
-            print("metric", metric)
-            print("value", github_data[user][metric])
-    print(scores)
+    iterate_nested_dictonary(github_data)
