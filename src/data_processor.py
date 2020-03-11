@@ -122,9 +122,7 @@ def add_new_metrics(dictionary):
     with new values
     """
     for key in dictionary:
-        dictionary[key]["TOTAL"] = (
-            dictionary[key]["ADDED"] - dictionary[key]["REMOVED"]
-        )
+        dictionary[key]["TOTAL"] = dictionary[key]["ADDED"] - dictionary[key]["REMOVED"]
         dictionary[key]["MODIFIED"] = (
             dictionary[key]["ADDED"] + dictionary[key]["REMOVED"]
         )
@@ -147,11 +145,16 @@ def individual_contribution(dictionary):
             # if data type is int use the appropriate function to sum up the values
             if isinstance(value, int):
                 contributor_data[username][metrics] = percent_calculator(
-                    value, sum_metrics_int(metrics, dictionary))
+                    value, sum_metrics_int(metrics, dictionary)
+                )
             # if data type is list use the appropriate function to sum up the values
             if isinstance(value, list):
-                contributor_data[username][metrics] = percent_calculator(
-                    len(value), sum_metrics_list(metrics, dictionary)), value
+                contributor_data[username][metrics] = (
+                    percent_calculator(
+                        len(value), sum_metrics_list(metrics, dictionary)
+                    ),
+                    value,
+                )
     return contributor_data
 
 
