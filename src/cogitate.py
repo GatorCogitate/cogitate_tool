@@ -1,6 +1,7 @@
 """Command Line Interface for the Cogitate tool."""
 
 import argparse
+import pandas as pd
 import validators
 import data_collection
 import data_processor
@@ -34,8 +35,10 @@ def main(args):
         # calculate metrics to be used for team evaluation
         dict = data_collection.calculate_individual_metrics()
         data_processor.iterate_nested_dictionary(dict)
-        # calculate team score
-        # data_processor.calculate_team_score(dict, args["below"], args["above"], args["within"])
+        if args["metric"] == "team" or "both":
+            team()
+        elif args["metric"] == "individual" or "both":
+            individual()
 
 
 def retrieve_arguments():
@@ -68,16 +71,16 @@ def retrieve_arguments():
         help="Starts the process of merging usernames.",
     )
     a_parse.add_argument(
-        "-b", "--below", required=True, type=double, help="Determines lower weight.",
+        "-b", "--below", required=True, type=float, help="Determines lower weight.",
     )
     a_parse.add_argument(
-        "-a", "--above", required=True, type=double, help="Determines higher weight.",
+        "-a", "--above", required=True, type=float, help="Determines higher weight.",
     )
     a_parse.add_argument(
         "-w",
         "--within",
         required=True,
-        type=double,
+        type=float,
         help="Determines value within weight.",
     )
     a_parse.add_argument(
@@ -115,10 +118,16 @@ def retrieve_arguments():
 
 def team():
     """Call all team-based funtions."""
+    data_processor.calculate_team_score(
+        dict, args["below"], args["above"], args["within"]
+    )
+    print(pd.DataFrame.from_dict(dict).T)
 
 
 def individual():
-    """Call all individual functions."""
+    """Call all individual-based funtions."""
+    updated_dict = data_processor.individual_contribution(dict)
+    print(pd.DataFrame.from_dict(updated_dict).T)
 
 
 def link_validator(url_str):
