@@ -57,3 +57,34 @@ def test_calculate_iqr_score(input_list, expected_score):
     """Function to determine the accuracy of an iqr score for a certain category."""
     score = dp.calculate_iqr_score(input_list, 0.2, 0.2, 0.6)
     assert score == expected_score
+
+
+@pytest.mark.parametrize(
+    "input_dictionary, expected_dictionary",
+    [
+        (
+            {
+                "noorbuchi": {
+                    "email": "email",
+                    "COMMITS": 28,
+                    "ADDED": 349,
+                    "REMOVED": 70,
+                },
+                "bagashvilit": {
+                    "email": "email",
+                    "COMMITS": 22,
+                    "ADDED": 355,
+                    "REMOVED": 56,
+                },
+            },
+            {
+                "COMMITS": [28, 22],
+                "ADDED": [349, 355],
+                "REMOVED": [70, 56],
+            },
+        ),
+    ],
+)
+def test_iterate_nested_dictionary(input_dictionary, expected_dictionary):
+    new_dictionary = dp.iterate_nested_dictionary(input_dictionary)
+    assert new_dictionary == expected_dictionary
