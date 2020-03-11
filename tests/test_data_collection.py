@@ -365,6 +365,7 @@ def test_get_individual_metrics_accuracy():
     test_dict = data_collection.calculate_individual_metrics(
         "individual_metrics_testfile"
     )
+    print(test_dict)
     expected_dict = {
         "EMAIL": "buchin@allegheny.edu",
         "COMMITS": 1,
@@ -373,14 +374,14 @@ def test_get_individual_metrics_accuracy():
         "TOTAL": 0,
         "MODIFIED": 0,
         "RATIO": 0,
-        "COMMITS_TO_TESTING": 1,
-        "COMMITS_ELSEWHERE": 0,
         "FILES": ["Pipfile", "Pipfile.lock", "UsingPyGithub.py", "lint.sh", "test.sh"],
         "FORMAT": [],
         "issues_commented": [],
         "issues_opened": [],
         "pull_requests_commented": [],
         "pull_requests_opened": [],
+        "COMMITS_TO_TESTING": 1,
+        "COMMITS_ELSEWHERE": 0,
     }
     assert test_dict["noorbuchi"] == expected_dict
 
