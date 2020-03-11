@@ -5,35 +5,53 @@ from __future__ import division
 import pprint
 import numpy as np
 import data_collection
-from collections import defaultdict
-from glom.tutorial import *
 
 
-# github_data = data_collection.calculate_individual_metrics()
+github_data = data_collection.calculate_individual_metrics()
 
-github_data = {
-    "noorbuchi": {"COMMITS": 28, "ADDED": 349, "REMOVED": 70},
-    "bagashvilit": {"COMMITS": 22, "ADDED": 355, "REMOVED": 56},
-    "Jordan-A": {"COMMITS": 23, "ADDED": 375, "REMOVED": 43},
-    "WonjoonC": {"COMMITS": 27, "ADDED": 365, "REMOVED": 67},
-    "Hannah Schultz": {"COMMITS": 25, "ADDED": 315, "REMOVED": 75},
-    "Alexander_Hamilton": {"COMMITS": 41, "ADDED": 350, "REMOVED": 54},
-    "Karl_Marx": {"COMMITS": 0, "ADDED": 0, "REMOVED": 0},
-    "Julius_Caesar": {"COMMITS": 25, "ADDED": 363, "REMOVED": 35},
-    "Napoleon_Bonaparte": {"COMMITS": 24, "ADDED": 540, "REMOVED": 2},
-    "Alexander_the_Great": {"COMMITS": 42, "ADDED": 355, "REMOVED": 50},
-}
+# github_data = {
+#     "noorbuchi": {"COMMITS": 28, "ADDED": 349, "REMOVED": 70},
+#     "bagashvilit": {"COMMITS": 22, "ADDED": 355, "REMOVED": 56},
+#     "Jordan-A": {"COMMITS": 23, "ADDED": 375, "REMOVED": 43},
+#     "WonjoonC": {"COMMITS": 27, "ADDED": 365, "REMOVED": 67},
+#     "Hannah Schultz": {"COMMITS": 25, "ADDED": 315, "REMOVED": 75},
+#     "Alexander_Hamilton": {"COMMITS": 41, "ADDED": 350, "REMOVED": 54},
+#     "Karl_Marx": {"COMMITS": 0, "ADDED": 0, "REMOVED": 0},
+#     "Julius_Caesar": {"COMMITS": 25, "ADDED": 363, "REMOVED": 35},
+#     "Napoleon_Bonaparte": {"COMMITS": 24, "ADDED": 540, "REMOVED": 2},
+#     "Alexander_the_Great": {"COMMITS": 42, "ADDED": 355, "REMOVED": 50},
+# }
 
 
-def iterate_nested_dictonary(dictionary):
+def iterate_nested_dictionary(dictionary):
+    """Iterate through the nested dictionary and access metrics and their values to add to a list."""
+    # iterate through nested dictionary and add to new dictionary
     category_scores = {}
+    amount = 0
     for user in github_data.keys():
         for metric in github_data[user]:
-            if metric not in category_scores:
-                category_scores[metric] = [github_data[user][metric]]
+            # disregard any instances of strings in dictionary
+            if isinstance(github_data[user][metric], str):
+                category_scores = category_scores
             else:
-                category_scores[metric].append(github_data[user][metric])
-    print(category_scores)
+                # if list, add the length of the list to new dictionary
+                if isinstance(github_data[user][metric], list):
+                    amount = len(github_data[user][metric])
+                    # print(amount)
+                    if metric not in category_scores:
+                        category_scores[metric] = [amount]
+                    else:
+                        category_scores[metric].append(amount)
+                # if not list, add values to new dictionary
+                else:
+                    if metric not in category_scores:
+                        category_scores[metric] = [github_data[user][metric]]
+                    else:
+                        category_scores[metric].append(github_data[user][metric])
+
+
+    # return the new dictionary
+    return category_scores
 
 
 def calculate_iqr_score(data_list, below_weight, above_weight, within_weight):
@@ -66,8 +84,6 @@ def calculate_iqr_score(data_list, below_weight, above_weight, within_weight):
     below_fraction = round(below_amount / size, 2)
     above_fraction = round(above_amount / size, 2)
     within_fraction = round(within_amount / size, 2)
-
-    # print(below_amount, above_amount, within_amount)
     # calculate all areas with their weight measurement
     weighted_below = round(below_weight * below_fraction, 2)
     weighted_above = round(above_weight * above_fraction, 2)
@@ -78,57 +94,28 @@ def calculate_iqr_score(data_list, below_weight, above_weight, within_weight):
     return category_score
 
 
-def calculate_team_score(dictionary):
-    """Determine the datasets of the information in the dictionary and add them to the corresponding list."""
+def calculate_team_score(dictionary, below_weight, above_weight, within_weight):
     """Calculate the average team score by totaling the team scores for each dataset and dividing by amount of datasets."""
-    commit_data = []
-    added_data = []
-    removed_data = []
-    modified_data = []
-    total_data = []
-    commits_score = 0
-    added_score = 0
-    removed_score = 0
-    modified_score = 0
+    # create a new dictionary and assign it to the dictionary iteration
+    metrics_dictionary = iterate_nested_dictionary(dictionary)
     total_score = 0
+    count = 0
     average_team_score = 0
-    # generic_list = []
-    # data_score = 0
-    # total_score = 0
-    # amount_of_lists = 0
-    # team_score = 0
-    # iterate through nested dictionary
-    for username, data in github_data.items():
-        # for each key in the dictionary add its values to a list
-        for key in data:
-            if key == "COMMITS":
-                commit_data.append(data[key])
-            if key == "ADDED":
-                added_data.append(data[key])
-            if key == "REMOVED":
-                removed_data.append(data[key])
-            if key == "MODIFIED":
-                modified_data.append(data[key])
-            if key == "TOTAL":
-                total_data.append(data[key])
 
-    # calculate the team score for each list of data
-    commits_score = calculate_iqr_score(commit_data)
-    added_score = calculate_iqr_score(added_data)
-    removed_score = calculate_iqr_score(removed_data)
-    modified_score = calculate_iqr_score(modified_data)
-    total_score = calculate_iqr_score(total_score)
-    # find the average team score for all of the categories
-    average_team_score = (commits_score + added_score + removed_score + modified_score + total_score) / 5
+    # iterate through the dictionary and calculate the category score for each list
+    for metric, values_list in metrics_dictionary.items():
+        if isinstance(values_list, str):
+            total_score = total_score
+        else:
+            total_score += calculate_iqr_score(values_list, below_weight, above_weight, within_weight)
+            count += 1
+
+    average_team_score = total_score / count
 
     return average_team_score
 
-    # data_score = calculate_iqr_score(generic_list)
-    # total_score = total_score + data_score
-    # amount_of_lists = amount_of_lists + 1
-    # team_score = total_score / amount_of_lists
-    # print(generic_list)
-
 
 if __name__ == "__main__":
-    iterate_nested_dictonary(github_data)
+    # print(github_data)
+    # print(iterate_nested_dictionary(github_data))
+    print(calculate_team_score(github_data, 0.2, 0.2, 0.6))
