@@ -22,21 +22,18 @@ github_data = data_collection.calculate_individual_metrics()
 # }
 
 
-def iterate_nested_dictionary():
-    """Iterate through the nested dictionary and access metrics and their values
-       to add to a list."""
+def iterate_nested_dictionary(dictionary):
+    """Iterate through the nested dictionary and create new dictionary."""
     # iterate through nested dictionary and add to new dictionary
     category_scores = {}
     amount = 0
-    for user in github_data.keys():
-        for metric in github_data[user]:
+    for user in dictionary.keys():
+        for metric in dictionary[user]:
             # disregard any instances of strings in dictionary
-            if isinstance(github_data[user][metric], str):
-                category_scores
-            else:
+            if not isinstance(dictionary[user][metric], str):
                 # if list, add the length of the list to new dictionary
-                if isinstance(github_data[user][metric], list):
-                    amount = len(github_data[user][metric])
+                if isinstance(dictionary[user][metric], list):
+                    amount = len(dictionary[user][metric])
                     # print(amount)
                     if metric not in category_scores:
                         category_scores[metric] = [amount]
@@ -45,17 +42,16 @@ def iterate_nested_dictionary():
                 # if not list, add values to new dictionary
                 else:
                     if metric not in category_scores:
-                        category_scores[metric] = [github_data[user][metric]]
+                        category_scores[metric] = [dictionary[user][metric]]
                     else:
-                        category_scores[metric].append(github_data[user][metric])
+                        category_scores[metric].append(dictionary[user][metric])
 
     # return the new dictionary
     return category_scores
 
 
 def calculate_iqr_score(data_list, below_weight, above_weight, within_weight):
-    """Calculate a team score for a data set according to outliers calculated with 
-       the interquartile range."""
+    """Calculate a team score with interquartile range."""
     below_amount = 0
     above_amount = 0
     within_amount = 0
@@ -95,19 +91,16 @@ def calculate_iqr_score(data_list, below_weight, above_weight, within_weight):
 
 
 def calculate_team_score(dictionary, below_weight, above_weight, within_weight):
-    """Calculate the average team score by totaling the team scores for 
-       each dataset and dividing by amount of datasets."""
+    """Calculate the average team score."""
     # create a new dictionary and assign it to the dictionary iteration
-    metrics_dictionary = iterate_nested_dictionary()
+    metrics_dictionary = iterate_nested_dictionary(dictionary)
     total_score = 0
     count = 0
     average_team_score = 0
 
     # iterate through the dictionary and calculate the category score for each list
     for metric, values_list in metrics_dictionary.items():
-        if isinstance(values_list, str):
-            total_score
-        else:
+        if not isinstance(values_list, str):
             total_score += calculate_iqr_score(
                 values_list, below_weight, above_weight, within_weight
             )
