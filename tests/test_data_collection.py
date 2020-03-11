@@ -365,7 +365,6 @@ def test_get_individual_metrics_accuracy():
     test_dict = data_collection.calculate_individual_metrics(
         "individual_metrics_testfile"
     )
-    print(test_dict)
     expected_dict = {
         "EMAIL": "buchin@allegheny.edu",
         "COMMITS": 1,
