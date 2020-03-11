@@ -7,7 +7,7 @@ import pytest
 import operator
 import math
 
-from src import Individual_score
+import data_processor
 
 
 @pytest.mark.parametrize(
@@ -49,5 +49,5 @@ from src import Individual_score
 )
 def test_individual_contribution(input_dictionary, expected_dictionary):
     """Function to determine the accuracy of individual contribution calculations."""
-    dictionary = Individual_score.individual_contribution(input_dictionary)
+    dictionary = data_processor.individual_contribution(input_dictionary)
     assert dictionary == expected_dictionary
