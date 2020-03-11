@@ -252,6 +252,7 @@ def calculate_individual_metrics(
         for commit in current_data["RAW_DATA"]:
             author = commit["author_name"]
             email = commit["author_email"]
+            filepaths = commit["filepath"]  # get filepaths of file modified
             # NOTE check date compatibility with json
             # check if the key already in in the dicitionary
             if author in data_dict:
@@ -273,6 +274,8 @@ def calculate_individual_metrics(
                     "issues_opened": [],
                     "pull_requests_commented": [],
                     "pull_requests_opened": [],
+                    "COMMITS_TO_TESTING": 0,
+                    "COMMITS_ELSEWHERE": 0,
                 }
 
             data_dict[author]["ADDED"] += commit["line_added"]
@@ -285,6 +288,26 @@ def calculate_individual_metrics(
             )
             # Sort list to ensure consistency when testing
             data_dict[author]["FILES"] = sorted(data_dict[author]["FILES"])
+
+            # get testing commit info:
+            count = 0  # when 0 the current commit has no changes to tests
+            for filepath in filepaths:
+                # when count == 0, current commit no testing changes
+                # if not 0, this commit already had testing changes
+                if count == 0:
+                    if filepath and "test" in filepath:
+                        data_dict[author][
+                            "COMMITS_TO_TESTING"
+                        ] += 1  # the current commit has a change to testing
+                        count = 1  # found a change to testing for this commit
+                    else:
+                        pass
+                else:
+                    pass
+
+            data_dict[author]["COMMITS_ELSEWHERE"] = (
+                data_dict[author]["COMMITS"] - data_dict[author]["COMMITS_TO_TESTING"]
+            )
         return data_dict
     # if RAW_DATA key was not found, empty dictionary will be returned
     return {}

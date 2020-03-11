@@ -379,6 +379,8 @@ def test_get_individual_metrics_accuracy():
         "issues_opened": [],
         "pull_requests_commented": [],
         "pull_requests_opened": [],
+        "COMMITS_TO_TESTING": 1,
+        "COMMITS_ELSEWHERE": 0,
     }
     assert test_dict["noorbuchi"] == expected_dict
 
