@@ -79,10 +79,68 @@ def test_calculate_iqr_score(input_list, expected_score):
                     "REMOVED": 56,
                 },
             },
-            {"COMMITS": [28, 22], "ADDED": [349, 355], "REMOVED": [70, 56],},
+            {"COMMITS": [28, 22], "ADDED": [349, 355], "REMOVED": [70, 56], },
         ),
     ],
 )
 def test_iterate_nested_dictionary(input_dictionary, expected_dictionary):
     new_dictionary = dp.iterate_nested_dictionary(input_dictionary)
     assert new_dictionary == expected_dictionary
+
+
+@pytest.mark.parametrize(
+    "input_dictionary, expected_dictionary",
+    [
+        (
+            {
+                "noorbuchi": {
+                    "email": "email",
+                    "FORMAT": [".py", ".test"],
+                    "ISSUES": ["A", "B", "C", "D"],
+                },
+                "bagashvilit": {
+                    "email": "email",
+                    "FORMAT": [".py", ".test", ".md"],
+                    "ISSUES": ["A", "B"],
+                },
+            },
+            {"FORMAT": [2, 3], "ISSUES": [4, 2], },
+        ),
+    ],
+)
+def test_iterate_dictionary_with_lists(input_dictionary, expected_dictionary):
+    new_dictionary = dp.iterate_nested_dictionary(input_dictionary)
+    assert new_dictionary == expected_dictionary
+
+
+@pytest.mark.parametrize(
+    "input_dictionary, expected_score",
+    [
+        (
+            {
+                "noorbuchi": {
+                    "email": "email",
+                    "COMMITS": 28,
+                    "ADDED": 349,
+                    "REMOVED": 70,
+                },
+                "bagashvilit": {
+                    "email": "email",
+                    "COMMITS": 22,
+                    "ADDED": 355,
+                    "REMOVED": 56,
+                },
+                "MaddyKapfhammer": {
+                    "email": "email",
+                    "COMMITS": 26,
+                    "ADDED": 350,
+                    "REMOVED": 63
+                }
+            },
+            60.0
+        ),
+    ],
+)
+def test_calculate_team_score(input_dictionary, expected_score):
+    team_score = dp.calculate_team_score(input_dictionary, 0.2, 0.2, 0.6)
+    assert team_score == expected_score
