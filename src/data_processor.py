@@ -38,6 +38,7 @@ def iterate_nested_dictionary(dictionary):
     return category_scores
 
 
+# pylint: disable=too-many-locals
 def calculate_iqr_score(data_list, below_weight, above_weight, within_weight):
     """Calculate a team score with interquartile range."""
     below_amount = 0
