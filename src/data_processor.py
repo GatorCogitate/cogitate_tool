@@ -5,9 +5,9 @@ and calculate the individual contribution as a percentage of overall contributio
 
 # This import fixes a linting error with old division.
 from __future__ import division
+from collections import defaultdict
 import numpy as np
 import data_collection
-from collections import defaultdict
 
 
 def iterate_nested_dictionary(dictionary):
@@ -88,6 +88,7 @@ def calculate_team_score(dictionary, below_weight, above_weight, within_weight):
     average_team_score = 0
 
     # iterate through the dictionary and calculate the category score for each list
+    # pylint: disable=unused-variable
     for metric, values_list in metrics_dictionary.items():
         if not isinstance(values_list, str):
             total_score += calculate_iqr_score(
