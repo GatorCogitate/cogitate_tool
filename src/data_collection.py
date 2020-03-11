@@ -4,6 +4,24 @@ Collects repository data for contributors of the master branch of a repo.
 Writes the data to a .json file.
 
 Calculates statistics based on the data from Github.
+
+Steps to run data_collection.py and display the data table:
+
+Must be in the repository folder.
+
+Run the python file using pipenv run python src/data_collection.py.
+
+Enter the URL/local path of the repository you would like to analyze.
+
+If the current repository is the one you would like to analyze, simply.
+
+hit enter wihtout typing anything.
+
+Enter user token to collect Pygithub data.
+
+Enter the repository name similar to this example GatorCogitate/cogitate_tool
+
+Enter the entries you would like to merge in the data set.
 """
 
 from __future__ import division
@@ -68,6 +86,22 @@ def retrieve_issue_data(repository, state, contributor_data):
                     contributor_data[comment.user.login][
                         "pull_requests_commented"
                     ].append(issue.number)
+            else:
+                contributor_data[comment.user.login] = {
+                    "issues_commented": [],
+                    "pull_requests_commented": [],
+                    "issues_opened": [],
+                    "pull_requests_opened": [],
+                }
+                if issue.pull_request is None:
+                    contributor_data[comment.user.login]["issues_commented"].append(
+                        issue.number
+                    )
+                else:
+                    contributor_data[comment.user.login][
+                        "pull_requests_commented"
+                    ].append(issue.number)
+
         if issue.user.login in contributor_data.keys():
             if issue.pull_request is None:
                 contributor_data[issue.user.login]["issues_opened"].append(issue.number)
@@ -177,7 +211,7 @@ def get_file_formats(files):
 # This function simplifies gathering and writing raw data to json file
 # pylint: disable=C0330
 def collect_and_add_raw_data_to_json(
-    path_to_repo, json_file_name="raw_data_storage", overwrite=True
+    path_to_repo, json_file_name="raw_data_storage", data_path="./data/", overwrite=True
 ):
     """Use collect_commits_hash to collect data from the repository path.
 
@@ -191,16 +225,19 @@ def collect_and_add_raw_data_to_json(
     # Checks if overwriting the file was picked
     if overwrite:
         # use json handler to overwrite the old content
-        json_handler.write_dict_to_json_file(raw_data, json_file_name)
+        json_handler.write_dict_to_json_file(raw_data, json_file_name, data_path)
     else:
         # use json handler to update the old content
-        json_handler.add_entry(raw_data, json_file_name)
+        json_handler.add_entry(raw_data, json_file_name, data_path)
 
 
 # pylint: disable=C0330
+# NOTE: this fucntion still needs to be modified to include merging duplicates
+# NOTE: DO NOT USE, instead, use manual calls to the needed functions
 def collect_and_add_individual_metrics_to_json(
     read_file="raw_data_storage",
     write_file="individual_metrics_storage",
+    data_path="./data/",
     overwrite=True,
 ):
     """Use calculate_individual_metrics to calculate metrics using read_file.
@@ -215,23 +252,25 @@ def collect_and_add_individual_metrics_to_json(
     # Checks if overwriting the file was picked
     if overwrite:
         # use json handler to overwrite the old content
-        json_handler.write_dict_to_json_file(metrics, write_file)
+        json_handler.write_dict_to_json_file(metrics, write_file, data_path)
     else:
         # use json handler to update the old content
-        json_handler.add_entry(metrics, write_file)
+        json_handler.add_entry(metrics, write_file, data_path)
 
 
-def calculate_individual_metrics(json_file_name="raw_data_storage"):
+def calculate_individual_metrics(
+    json_file_name="raw_data_storage", data_path="./data/"
+):
     """Retrieve the data from .json file and create a dictionary keyed by user."""
     # retreive data from raw data json
-    current_data = json_handler.get_dict_from_json_file(json_file_name)
+    current_data = json_handler.get_dict_from_json_file(json_file_name, data_path)
     # creates a dictionary where the key is the authors username
     data_dict = {}
     # Check if RAW_DATA is in json tp prevent a key error
     if "RAW_DATA" in current_data.keys():
-        for key in current_data["RAW_DATA"]:
-            author = key["author_name"]
-            email = key["author_email"]
+        for commit in current_data["RAW_DATA"]:
+            author = commit["author_name"]
+            email = commit["author_email"]
             # NOTE check date compatibility with json
             # check if the key already in in the dicitionary
             if author in data_dict:
@@ -249,38 +288,66 @@ def calculate_individual_metrics(json_file_name="raw_data_storage"):
                     "RATIO": 0,
                     "FILES": [],
                     "FORMAT": [],
+                    "issues_commented": [],
+                    "issues_opened": [],
+                    "pull_requests_commented": [],
+                    "pull_requests_opened": [],
                 }
 
-            data_dict[author]["ADDED"] += key["line_added"]
-            data_dict[author]["REMOVED"] += key["line_removed"]
+            data_dict[author]["ADDED"] += commit["line_added"]
+            data_dict[author]["REMOVED"] += commit["line_removed"]
             # check if the explored file is not in the list in index seven
-            current_files = key["filename"]
+            current_files = commit["filename"]
             # add the current_files to the user files list without duplicates
             data_dict[author]["FILES"] = list(
                 set(data_dict[author]["FILES"]) | set(current_files)
             )
             # Sort list to ensure consistency when testing
             data_dict[author]["FILES"] = sorted(data_dict[author]["FILES"])
-        # iterate through the data to do final calculations
-        for key in data_dict:
-            data_dict[key]["TOTAL"] = (
-                data_dict[key]["ADDED"] - data_dict[key]["REMOVED"]
-            )
-            data_dict[key]["MODIFIED"] = (
-                data_dict[key]["ADDED"] + data_dict[key]["REMOVED"]
-            )
-            average = get_commit_average(
-                data_dict[key]["MODIFIED"], data_dict[key]["COMMITS"]
-            )
-            data_dict[key]["RATIO"] = average
-            formats = get_file_formats(data_dict[key]["FILES"])
-            data_dict[key]["FORMAT"] = formats
         return data_dict
     # if RAW_DATA key was not found, empty dictionary will be returned
     return {}
     # NOTE: for printing the data please use the file print_table.py
 
 
+# This pylint supression is regarding a potentially dangerous empty argument
+# Note: not testable
+# pylint: disable=W0102
+def print_individual_in_table(
+    file_name="individual_metrics_storage",
+    data_dict={},
+    headings=["EMAIL", "COMMITS", "ADDED", "REMOVED"],
+):
+    """Create and print the table using prettytable.
+
+    Unless specified be sending data_dict=DICT as a parameter, the function.
+
+    will print from the file.
+    """
+    # Default headings are mentioned above in the parameter
+    if not len(data_dict) == 0:
+        dictionary = data_dict
+    else:
+        dictionary = json_handler.get_dict_from_json_file(file_name)
+    # Initialize a PrettyTable instance
+    data_table = PrettyTable()
+    # add the username as a category for the headings
+    data_table.field_names = ["Username"] + headings
+    # Loop through every author in the dictionary
+    for author in dictionary:
+        # Add the authors name to the current row
+        current_row = [author]
+        for heading in headings:
+            # add the value from every heading to the current row
+            current_row.append(dictionary[author][heading])
+        # add row to prettytable instance
+        data_table.add_row(current_row)
+        # reset the current row to an empty list for the next iteration
+        current_row = []
+    print(data_table)
+
+
+# NOTE: not testable
 def find_repositories(repo):
     """Locates a Github repository with the URL provided by the user."""
     # ask the user for a URL of a Github repository
@@ -288,67 +355,104 @@ def find_repositories(repo):
     return miner
 
 
-def print_individual_in_table(file_name="individual_metrics_storage"):
-    """Create and print the table using prettytable.
-
-    Use individual_metrics_storage as default file unless otherwise chosen.
+def merge_metric_and_issue_dicts(metrics_dict, issues_dict):
     """
-    # Initialize pretty table object
-    data_table = PrettyTable()
-    # retreive data from the appropriate json file
-    dictionary = json_handler.get_dict_from_json_file(file_name)
-    # Add needed headings
-    headings = [
-        "Username",
-        "Email",
-        "Commits",
-        "+",
-        "-",
-        "Total",
-        "Modified Lines",
-        "Lines/Commit",
-        "File Types",
+    Receive two dicitionaries one for issues and the other for metrics.
+
+    Create empty fields for users existing in issues_dict and not in metrics.
+    """
+    for entry in issues_dict:
+        # check if the issue/PR author does not exist in the metrics dicitionary
+        if entry not in metrics_dict.keys():
+            # Add empty data to their metrics
+            metrics_dict[entry] = {
+                "EMAIL": "N/A",
+                "COMMITS": 0,
+                "ADDED": 0,
+                "REMOVED": 0,
+                "TOTAL": 0,
+                "MODIFIED": 0,
+                "RATIO": 0,
+                "FILES": [],
+                "FORMAT": [],
+            }
+        # update the metrics dicitionary with the new keys
+        metrics_dict[entry].update(issues_dict[entry])
+    return metrics_dict
+
+
+def merge_duplicate_usernames(dictionary, kept_entry, removed_entry):
+    """Take input from user and merge data in entries then delete one."""
+    # Put the keys of mergable metrics in a list
+    categories = [
+        "COMMITS",
+        "ADDED",
+        "REMOVED",
+        "FILES",
+        "issues_commented",
+        "issues_opened",
+        "pull_requests_opened",
+        "pull_requests_commented",
     ]
-    data_table.field_names = headings
-    for key in dictionary:
-        data_table.add_row(
-            [
-                key,
-                dictionary[key]["EMAIL"],
-                dictionary[key]["COMMITS"],
-                dictionary[key]["ADDED"],
-                dictionary[key]["REMOVED"],
-                dictionary[key]["TOTAL"],
-                dictionary[key]["MODIFIED"],
-                dictionary[key]["RATIO"],
-                dictionary[key]["FORMAT"],
-            ]
-        )
-    print(data_table)
+    # Loop through all the keys in the list
+    for category in categories:
+        # Special case for merging files to avoid duplicates
+        if category == "FILES":
+            dictionary[kept_entry][category] = list(
+                set(dictionary[kept_entry][category])
+                | set(dictionary[removed_entry][category])
+            )
+            # sort the files for testing consistency
+            dictionary[kept_entry][category] = sorted(dictionary[kept_entry][category])
+        else:
+            # simple addition for all other metrics
+            dictionary[kept_entry][category] += dictionary[removed_entry][category]
+    # Use exception handling to delete the duplicate from the dictionary
+    try:
+        del dictionary[removed_entry]
+    except KeyError:
+        print("Key 'testing' not found")
+    return dictionary
 
 
-# NOTE: For the purposes of testing and demo
-
-# Steps to run data_collection.py and display the data table:
-
-# Must be in the repository folder
-# Run the python file using `pipenv run python src/data_collection.py`
-# Enter the name of the json file you want the data to be written to
-# If prompted, due to data not being collected previously, enter the URL
-# or path of the Repository you would like to analyze
-# If the current repository is the one you would like to analyze, simply
-# hit enter wihtout typing anything.
-
+# This main method is only for the purposes of testing
+# Main methods should only be in the cogitate.py file
 if __name__ == "__main__":
     # NOTE: this supression needs to be resolved
     # pylint: disable=input-builtin
-    # This call will use the default file names
     DATA = calculate_individual_metrics()
-    # if statement will check if raw data was collected
+    # This condition checks if raw data was collected because
+    # calculate_individual_metrics would return empty dictionary if no data was collected
     if DATA == {}:
-        REPO_PATH = input("Enter the path to the repo : ")
-        # This call will use default options for file and overwrite condition
+        print("Raw data was not previously collected, collecting it now...")
+        REPO_PATH = input(
+            "Enter repository path URL/Local to collect Pydriller data from: "
+        )
         collect_and_add_raw_data_to_json(REPO_PATH)
-    print("Adding processed data to selected json file...")
-    collect_and_add_individual_metrics_to_json()
-    print_individual_in_table()
+        # Retrieve the newely collected data from the default json file
+        DATA = calculate_individual_metrics()
+    # Process for PyGithub data
+    token = input("Enter user token to collect PyGitHub data: ")
+    repo_name = input("Enter repo name in this format: org/repo_name: ")
+    current_repo = authenticate_repository(token, repo_name)
+    ISSUE_DATA = {}
+    ISSUE_DATA = retrieve_issue_data(current_repo, "all", ISSUE_DATA)
+    DATA = merge_metric_and_issue_dicts(DATA, ISSUE_DATA)
+    # Prints table from dictionary, only the commits column
+    print_individual_in_table(data_dict=DATA, headings=["COMMITS"])
+    choice = True
+    while choice:
+        remove = input("enter username to be merged then deleted: ")
+        keep = input("enter username to be merged into: ")
+        # merge selected entries
+        DATA = merge_duplicate_usernames(DATA, keep, remove)
+        print("data after this merge...")
+        print_individual_in_table(data_dict=DATA, headings=["COMMITS"])
+        pick = input("would you like to continue? y/n: ")
+        if pick == "n":
+            choice = False
+    print("Writing data to json file...")
+    # Write reformatted dictionary to json, optional parameters not supported
+    json_handler.write_dict_to_json_file(DATA, "individual_metrics_storage")
+    # print default headings of data
+    print_individual_in_table(data_dict=DATA)
