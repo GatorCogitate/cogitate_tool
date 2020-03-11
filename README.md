@@ -107,3 +107,7 @@ The available attributes can be found at their homepage.
 - After table prints: Enter username to be merged then deleted.
 - (This is if you have two usernames within the table and want to combine them.)
 - Select yes or no if you would like to continue working with the graph.
+
+## Future Development
+
+## Limitations of GatorCogitate
