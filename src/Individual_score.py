@@ -27,14 +27,15 @@ def sum_metrics_list(key, dictionary):
     """Sum up all the list type values in metrics per key."""
     return sum(len(d[key]) for d in dictionary.values())
 
-
 def add_new_metrics(dictionary):
-    """Use previous metrics to calculate new metrics and populate the dictionary.
+    """Use existing metrics to calculate additional metrics and populate the dictionary.
 
     with new values
     """
     for key in dictionary:
-        dictionary[key]["TOTAL"] = dictionary[key]["ADDED"] - dictionary[key]["REMOVED"]
+        dictionary[key]["TOTAL"] = (
+            dictionary[key]["ADDED"] - dictionary[key]["REMOVED"]
+        )
         dictionary[key]["MODIFIED"] = (
             dictionary[key]["ADDED"] + dictionary[key]["REMOVED"]
         )
@@ -46,7 +47,6 @@ def add_new_metrics(dictionary):
         dictionary[key]["FORMAT"] = formats
     return dictionary
 
-
 def individual_contribution(dictionary):
     """Calculate the percentage of indivudual contribution."""
     contributor_data = {}
@@ -57,16 +57,11 @@ def individual_contribution(dictionary):
             # if data type is int use the appropriate function to sum up the values
             if isinstance(value, int):
                 contributor_data[username][metrics] = percent_calculator(
-                    value, sum_metrics_int(metrics, dictionary)
-                )
+                    value, sum_metrics_int(metrics, dictionary))
             # if data type is list use the appropriate function to sum up the values
             if isinstance(value, list):
-                contributor_data[username][metrics] = (
-                    percent_calculator(
-                        len(value), sum_metrics_list(metrics, dictionary)
-                    ),
-                    value,
-                )
+                contributor_data[username][metrics] = percent_calculator(
+                    len(value), sum_metrics_list(metrics, dictionary)), value
     return contributor_data
 
 
@@ -74,7 +69,7 @@ def individual_contribution(dictionary):
 if __name__ == "__main__":
 
     DATA = data_collection.calculate_individual_metrics()
-    new_dict = add_new_metrics(DATA)
+    new_dict  = add_new_metrics(DATA)
     # if statement will check if raw data was collected
     if DATA == {}:
         # pylint: disable=input-builtin
