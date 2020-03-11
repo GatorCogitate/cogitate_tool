@@ -146,15 +146,21 @@ def individual_contribution(dictionary):
         for metrics, value in data.items():
             # if data type is int use the appropriate function to sum up the values
             if isinstance(value, int):
-                contributor_data[username][metrics] = percent_calculator(
-                    value, sum_metrics_int(metrics, dictionary)
-                )
+                if sum_metrics_int(metrics, dictionary) == 0:
+                    contributor_data[username][metrics] = 0
+                else:
+                    contributor_data[username][metrics] = percent_calculator(
+                        value, sum_metrics_int(metrics, dictionary)
+                    )
             # if data type is list use the appropriate function to sum up the values
             if isinstance(value, list):
-                contributor_data[username][metrics] = (
-                    percent_calculator(
-                        len(value), sum_metrics_list(metrics, dictionary)
-                    ),
-                    value,
-                )
+                if sum_metrics_list(metrics, dictionary) == 0:
+                    contributor_data[username][metrics] = 0
+                else:
+                    contributor_data[username][metrics] = (
+                        percent_calculator(
+                            len(value), sum_metrics_list(metrics, dictionary)
+                        ),
+                        value,
+                    )
     return contributor_data
