@@ -23,7 +23,8 @@ github_data = data_collection.calculate_individual_metrics()
 
 
 def iterate_nested_dictionary():
-    """Iterate through the nested dictionary and access metrics and their values to add to a list."""
+    """Iterate through the nested dictionary and access metrics and their values
+       to add to a list."""
     # iterate through nested dictionary and add to new dictionary
     category_scores = {}
     amount = 0
@@ -31,7 +32,7 @@ def iterate_nested_dictionary():
         for metric in github_data[user]:
             # disregard any instances of strings in dictionary
             if isinstance(github_data[user][metric], str):
-                category_scores = category_scores
+                category_scores
             else:
                 # if list, add the length of the list to new dictionary
                 if isinstance(github_data[user][metric], list):
@@ -53,7 +54,8 @@ def iterate_nested_dictionary():
 
 
 def calculate_iqr_score(data_list, below_weight, above_weight, within_weight):
-    """Calculate a team score for a data set according to outliers calculated with the interquartile range."""
+    """Calculate a team score for a data set according to outliers calculated with 
+       the interquartile range."""
     below_amount = 0
     above_amount = 0
     within_amount = 0
@@ -93,7 +95,8 @@ def calculate_iqr_score(data_list, below_weight, above_weight, within_weight):
 
 
 def calculate_team_score(dictionary, below_weight, above_weight, within_weight):
-    """Calculate the average team score by totaling the team scores for each dataset and dividing by amount of datasets."""
+    """Calculate the average team score by totaling the team scores for 
+       each dataset and dividing by amount of datasets."""
     # create a new dictionary and assign it to the dictionary iteration
     metrics_dictionary = iterate_nested_dictionary()
     total_score = 0

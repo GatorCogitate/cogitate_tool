@@ -26,14 +26,13 @@ def sum_metrics_list(key, dictionary):
     """Sum up all the list type values in metrics per key."""
     return sum(len(d[key]) for d in dictionary.values())
 
+
 def add_new_metrics(dictionary):
     """Use previous metrics to calculate new metrics and populate the dictionary.
     with new values"""
 
     for key in dictionary:
-        dictionary[key]["TOTAL"] = (
-            dictionary[key]["ADDED"] - dictionary[key]["REMOVED"]
-        )
+        dictionary[key]["TOTAL"] = dictionary[key]["ADDED"] - dictionary[key]["REMOVED"]
         dictionary[key]["MODIFIED"] = (
             dictionary[key]["ADDED"] + dictionary[key]["REMOVED"]
         )
@@ -45,26 +44,32 @@ def add_new_metrics(dictionary):
         dictionary[key]["FORMAT"] = formats
     return dictionary
 
+
 def individual_contribution(dictionary):
     """Calculate the percentage of indivudual contribution."""
     contributor_data = {}
-    #use default dictionary to provide default value for a nonexistent key
+    # use default dictionary to provide default value for a nonexistent key
     dictionary = add_new_metrics(dictionary)
     contributor_data = defaultdict(dict)
     for username, data in dictionary.items():
         for metrics, value in data.items():
-            #if data type is int use the appropriate function to sum up the values
+            # if data type is int use the appropriate function to sum up the values
             if isinstance(value, int):
                 contributor_data[username][metrics] = percent_calculator(
-                    value, sum_metrics_int(metrics, dictionary))
-            #if data type is list use the appropriate function to sum up the values
+                    value, sum_metrics_int(metrics, dictionary)
+                )
+            # if data type is list use the appropriate function to sum up the values
             if isinstance(value, list):
-                contributor_data[username][metrics] = percent_calculator(
-                    len(value), sum_metrics_list(metrics, dictionary)), value
+                contributor_data[username][metrics] = (
+                    percent_calculator(
+                        len(value), sum_metrics_list(metrics, dictionary)
+                    ),
+                    value,
+                )
     return contributor_data
 
 
-#This part of the program is for demonstration and debugging puproses
+# This part of the program is for demonstration and debugging puproses
 if __name__ == "__main__":
 
     DATA = data_collection.calculate_individual_metrics()
@@ -75,5 +80,5 @@ if __name__ == "__main__":
         # This call will use default options for file and overwrite condition
         data_collection.collect_and_add_raw_data_to_json(REPO_PATH)
 
-    #display the dictionary of individual contributions
+    # display the dictionary of individual contributions
     print(pd.DataFrame.from_dict(individual_contribution(DATA)).T)
