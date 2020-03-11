@@ -1,4 +1,7 @@
-"""A file for calculating how well a team works together using the interquartile range."""
+"""A file for calculating how well a team works together using the interquartile range.
+
+and calculate the individual contribution as a percentage of overall contribution
+"""
 
 # This import fixes a linting error with old division.
 from __future__ import division
