@@ -1,92 +1,47 @@
 {
-    "stephensonc": {
-        "commits": [
-        ],
-        "issues_opened": [
-        ],
-        "issues_commented": [
-        ],
-        "pull_requests_opened": [
-        ],
-        "pull_requests_commented": [
-        ]
-    },
-    "koscinskic": {
-        "commits": [
-        ],
-        "issues_opened": [
-        ],
-        "issues_commented": [
-        ],
-        "pull_requests_opened": [
-        ],
-        "pull_requests_commented": [
-        ]
-    },
-    "schultzh": {
-        "commits": [
-        ],
-        "issues_opened": [
-        ],
-        "issues_commented": [
-        ],
-        "pull_requests_opened": [
-        ],
-        "pull_requests_commented": [
-        ]
-    },
     "RAW_DATA": [
-      {
-        "hash": "",
-        "author_msg": "",
-        "author_name": "",
-        "author_email": "",
-        "merge": false,
-        "line_added": 0,
-        "line_removed": 0,
-        "lines_of_code": 0,
-        "complexity": 0,
-        "methods": [],
-        "filename": [],
-        "filepath": []
-      },
-      {
-        "hash": "",
-        "author_msg": "",
-        "author_name": "",
-        "author_email": "",
-        "merge": true,
-        "line_added": 0,
-        "line_removed": 0,
-        "lines_of_code": 0,
-        "complexity": 0,
-        "methods": [],
-        "filename": [],
-        "filepath": []
-      }
-    ],
-    "INDIVIDUAL_METRICS": {
-        "schultzh": {
-            "EMAIL": "",
-            "COMMITS": 0,
-            "ADDED": 0,
-            "REMOVED": 0,
-            "TOTAL": 0,
-            "MODIFIED": 0,
-            "RATIO": 0,
-            "FILES": [],
-            "FORMAT": []
+        {
+            "hash": "",
+            "author_msg": "",
+            "author_name": "",
+            "author_email": "",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
         },
-        "WonjoonC": {
-            "EMAIL": "",
-            "COMMITS": 0,
-            "ADDED": 0,
-            "REMOVED": 0,
-            "TOTAL": 0,
-            "MODIFIED": 0,
-            "RATIO": 0,
-            "FILES": [],
-            "FORMAT": []
+        {
+            "hash": "",
+            "author_msg": "",
+            "author_name": "",
+            "author_email": "",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
         }
+    ],
+    "AUTHOR_USERNAME": {
+        "EMAIL": "",
+        "COMMITS": 0,
+        "ADDED": 0,
+        "REMOVED": 0,
+        "TOTAL": 0,
+        "MODIFIED": 0,
+        "RATIO": 0,
+        "FILES": [],
+        "FORMAT": [],
+        "issues_opened": [],
+        "issues_commented": [],
+        "pull_requests_opened": [],
+        "pull_requests_commented": []
     }
 }

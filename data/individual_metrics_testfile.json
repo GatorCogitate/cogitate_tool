@@ -4,7 +4,7 @@
             "hash": "ea1ce00850df54c0ec2cde3d13a03fa0166f8276",
             "author_msg": "Initial commit",
             "author_name": "schultzh",
-            "author_email": "42979565+schultzh@users.noreply.github.com",
+            "author_email": "schultzh@allegheny.edu",
             "merge": false,
             "line_added": 2,
             "line_removed": 0,
@@ -141,7 +141,7 @@
         {
             "hash": "cdbbab1e328ee1d27b7887b7f302a6ca030b0172",
             "author_msg": "Rename travis file with \".\"",
-            "author_name": "Hannah Schultz",
+            "author_name": "schultzh",
             "author_email": "schultzh@allegheny.edu",
             "merge": false,
             "line_added": 0,
@@ -286,146 +286,26 @@
                 "demo/json_demo.py"
             ]
         }
-    ],
-    "INDIVIDUAL_METRICS": {
-        "schultzh": {
-            "EMAIL": "42979565+schultzh@users.noreply.github.com",
-            "COMMITS": 3,
-            "ADDED": 60,
-            "REMOVED": 0,
-            "TOTAL": 60,
-            "MODIFIED": 60,
-            "RATIO": 20,
-            "FILES": [
-                "README.md",
-                "travis.yml"
-            ],
-            "FORMAT": [
-                ".md",
-                ".yml"
-            ],
-            "COMMITS_TO_TESTING": 0,
-            "COMMITS_ELSEWHERE": 3,
-            "PERCENT_TO_TESTING": 0.0,
-            "PERCENT_NOT_TO_TESTING": 100.0
-        },
-        "WonjoonC": {
-            "EMAIL": "chos@allegheny.edu",
-            "COMMITS": 4,
-            "ADDED": 876,
-            "REMOVED": 874,
-            "TOTAL": 2,
-            "MODIFIED": 1750,
-            "RATIO": 437,
-            "FILES": [
-                ".flake8",
-                ".gitignore",
-                ".mdlrc",
-                ".pylintrc",
-                ".style.yapf",
-                "Pipfile",
-                "README.md",
-                "demo.py",
-                "lint.sh",
-                "test.sh"
-            ],
-            "FORMAT": [
-                "",
-                ".md",
-                ".py",
-                ".sh",
-                ".yapf",
-                "Pipfile"
-            ],
-            "COMMITS_TO_TESTING": 1,
-            "COMMITS_ELSEWHERE": 3,
-            "PERCENT_TO_TESTING": 25.0,
-            "PERCENT_NOT_TO_TESTING": 75.0
-        },
-        "Hannah Schultz": {
-            "EMAIL": "schultzh@allegheny.edu",
-            "COMMITS": 1,
-            "ADDED": 0,
-            "REMOVED": 0,
-            "TOTAL": 0,
-            "MODIFIED": 0,
-            "RATIO": 0,
-            "FILES": [
-                ".travis.yml"
-            ],
-            "FORMAT": [
-                ".yml"
-            ],
-            "COMMITS_TO_TESTING": 0,
-            "COMMITS_ELSEWHERE": 1,
-            "PERCENT_TO_TESTING": 0.0,
-            "PERCENT_NOT_TO_TESTING": 100.0
-        },
-        "Jordan-A": {
-            "EMAIL": "jordanbyrne@Jordans-MacBook-Pro.local",
-            "COMMITS": 2,
-            "ADDED": 0,
-            "REMOVED": 0,
-            "TOTAL": 0,
-            "MODIFIED": 0,
-            "RATIO": 0,
-            "FILES": [
-                "Commits.py"
-            ],
-            "FORMAT": [
-                ".py"
-            ],
-            "COMMITS_TO_TESTING": 0,
-            "COMMITS_ELSEWHERE": 2,
-            "PERCENT_TO_TESTING": 0.0,
-            "PERCENT_NOT_TO_TESTING": 100.0
-        },
-        "noorbuchi": {
-            "EMAIL": "buchin@allegheny.edu",
-            "COMMITS": 1,
-            "ADDED": 694,
-            "REMOVED": 0,
-            "TOTAL": 694,
-            "MODIFIED": 694,
-            "RATIO": 694,
-            "FILES": [
-                "Pipfile",
-                "Pipfile.lock",
-                "UsingPyGithub.py",
-                "lint.sh",
-                "test.sh"
-            ],
-            "FORMAT": [
-                ".lock",
-                ".py",
-                ".sh",
-                "Pipfile"
-            ],
-            "COMMITS_TO_TESTING": 1,
-            "COMMITS_ELSEWHERE": 0,
-            "PERCENT_TO_TESTING": 100.0,
-            "PERCENT_NOT_TO_TESTING": 0.0
-        },
-        "Chris Stephenson": {
-            "EMAIL": "stephensonc@allegheny.edu",
-            "COMMITS": 2,
-            "ADDED": 89,
-            "REMOVED": 13,
-            "TOTAL": 76,
-            "MODIFIED": 102,
-            "RATIO": 51,
-            "FILES": [
-                "demofile.json",
-                "json_demo.py"
-            ],
-            "FORMAT": [
-                ".json",
-                ".py"
-            ],
-            "COMMITS_TO_TESTING": 0,
-            "COMMITS_ELSEWHERE": 2,
-            "PERCENT_TO_TESTING": 0.0,
-            "PERCENT_NOT_TO_TESTING": 100.0
-        }
-    }
+      ],
+      "stephensonc": {
+          "commits": [],
+          "issues_opened": [],
+          "issues_commented": [],
+          "pull_requests_opened": [],
+          "pull_requests_commented": []
+      },
+      "koscinskic": {
+          "commits": [],
+          "issues_opened": [],
+          "issues_commented": [],
+          "pull_requests_opened": [],
+          "pull_requests_commented": []
+      },
+      "schultzh": {
+          "commits": [],
+          "issues_opened": [],
+          "issues_commented": [],
+          "pull_requests_opened": [],
+          "pull_requests_commented": []
+      }
 }
