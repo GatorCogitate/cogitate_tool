@@ -1,5 +1,6 @@
 """
 This module's purpose is to calculate the individual contribution of software.
+
 developers in a Github repository. It will calculate a developer's contribution
 based on a data set gathered previously in a different module.
 """
@@ -13,7 +14,7 @@ import data_collection
 
 # pylint: disable=round-builtin
 def percent_calculator(individual, overal_branch):
-    """Function to calculate the percentage."""
+    """Calculate the percentage."""
     return round(individual * 100 / overal_branch)
 
 
@@ -29,8 +30,9 @@ def sum_metrics_list(key, dictionary):
 
 def add_new_metrics(dictionary):
     """Use previous metrics to calculate new metrics and populate the dictionary.
-    with new values"""
 
+    with new values
+    """
     for key in dictionary:
         dictionary[key]["TOTAL"] = dictionary[key]["ADDED"] - dictionary[key]["REMOVED"]
         dictionary[key]["MODIFIED"] = (
