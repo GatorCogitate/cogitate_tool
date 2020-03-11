@@ -34,10 +34,8 @@ def main(args):
         # calculate metrics to be used for team evaluation
         dict = data_collection.calculate_individual_metrics()
         data_processor.iterate_nested_dictionary(dict)
-        # calculate iqr score
-        # data_processor.calculate_iqr_score(data_list, below, above, within)
         # calculate team score
-        # data_processor.calculate_team_score(dict, below, above, within)
+        # data_processor.calculate_team_score(dict, args["below"], args["above"], args["within"])
 
 
 def retrieve_arguments():
@@ -68,6 +66,19 @@ def retrieve_arguments():
         required=True,
         type=str,
         help="Starts the process of merging usernames.",
+    )
+    a_parse.add_argument(
+        "-b", "--below", required=True, type=double, help="Determines lower weight.",
+    )
+    a_parse.add_argument(
+        "-a", "--above", required=True, type=double, help="Determines higher weight.",
+    )
+    a_parse.add_argument(
+        "-w",
+        "--within",
+        required=True,
+        type=double,
+        help="Determines value within weight.",
     )
     a_parse.add_argument(
         "-s",
