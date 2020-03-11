@@ -59,11 +59,11 @@ def retrieve_token(file_path=None):
     return token
 
 
-def authenticate_repository(user_token, repository_name):
+def authenticate_repository(entry_token, repository_name):
     """Authenticate the Github repository using provided credentials."""
     # Credentials for PyGithub functions and methods
     try:
-        ghub = Github(user_token)
+        ghub = Github(entry_token)
         repository = ghub.get_repo(repository_name)
     except GithubException:  # pragma: no cover
         repository = "INVALID"
