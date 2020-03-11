@@ -5,9 +5,12 @@ and calculate the individual contribution as a percentage of overall contributio
 
 # This import fixes a linting error with old division.
 from __future__ import division
-from collections import defaultdict
 import numpy as np
 import data_collection
+from collections import defaultdict
+import pandas as pd
+
+
 
 
 def iterate_nested_dictionary(dictionary):
@@ -38,7 +41,6 @@ def iterate_nested_dictionary(dictionary):
     return category_scores
 
 
-# pylint: disable=too-many-locals
 def calculate_iqr_score(data_list, below_weight, above_weight, within_weight):
     """Calculate a team score with interquartile range."""
     below_amount = 0
@@ -89,7 +91,6 @@ def calculate_team_score(dictionary, below_weight, above_weight, within_weight):
     average_team_score = 0
 
     # iterate through the dictionary and calculate the category score for each list
-    # pylint: disable=unused-variable
     for metric, values_list in metrics_dictionary.items():
         if not isinstance(values_list, str):
             total_score += calculate_iqr_score(
@@ -100,7 +101,6 @@ def calculate_team_score(dictionary, below_weight, above_weight, within_weight):
     average_team_score = total_score / count
 
     return average_team_score
-
 
 # pylint: disable=round-builtin
 def percent_calculator(individual, overal_branch):
@@ -117,14 +117,15 @@ def sum_metrics_list(key, dictionary):
     """Sum up all the list type values in metrics per key."""
     return sum(len(d[key]) for d in dictionary.values())
 
-
 def add_new_metrics(dictionary):
     """Use existing metrics to calculate additional metrics and populate the dictionary.
 
     with new values
     """
     for key in dictionary:
-        dictionary[key]["TOTAL"] = dictionary[key]["ADDED"] - dictionary[key]["REMOVED"]
+        dictionary[key]["TOTAL"] = (
+            dictionary[key]["ADDED"] - dictionary[key]["REMOVED"]
+        )
         dictionary[key]["MODIFIED"] = (
             dictionary[key]["ADDED"] + dictionary[key]["REMOVED"]
         )
@@ -136,7 +137,6 @@ def add_new_metrics(dictionary):
         dictionary[key]["FORMAT"] = formats
     return dictionary
 
-
 def individual_contribution(dictionary):
     """Calculate the percentage of indivudual contribution."""
     contributor_data = {}
@@ -147,21 +147,9 @@ def individual_contribution(dictionary):
             # if data type is int use the appropriate function to sum up the values
             if isinstance(value, int):
                 contributor_data[username][metrics] = percent_calculator(
-                    value, sum_metrics_int(metrics, dictionary)
-                )
+                    value, sum_metrics_int(metrics, dictionary))
             # if data type is list use the appropriate function to sum up the values
             if isinstance(value, list):
-                contributor_data[username][metrics] = (
-                    percent_calculator(
-                        len(value), sum_metrics_list(metrics, dictionary)
-                    ),
-                    value,
-                )
+                contributor_data[username][metrics] = percent_calculator(
+                    len(value), sum_metrics_list(metrics, dictionary)), value
     return contributor_data
-
-
-# github_data = data_collection.calculate_individual_metrics()
-
-# if __name__ == "__main__":
-#     print(calculate_team_score(github_data, 0.2, 0.2, 0.6), "%")
-#     print(pd.DataFrame.from_dict(individual_contribution(github_data)).T)
