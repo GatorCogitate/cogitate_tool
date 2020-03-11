@@ -26,6 +26,21 @@ def sum_metrics_list(key, dictionary):
     """Sum up all the list type values in metrics per key."""
     return sum(len(d[key]) for d in dictionary.values())
 
+def add_new_metrics(dictionary):
+    for key in dictionary:
+        dictionary[key]["TOTAL"] = (
+            dictionary[key]["ADDED"] - dictionary[key]["REMOVED"]
+        )
+        dictionary[key]["MODIFIED"] = (
+            dictionary[key]["ADDED"] + dictionary[key]["REMOVED"]
+        )
+        average = data_collection.get_commit_average(
+            dictionary[key]["MODIFIED"], dictionary[key]["COMMITS"]
+        )
+        dictionary[key]["RATIO"] = average
+        formats = data_collection.get_file_formats(dictionary[key]["FILES"])
+        dictionary[key]["FORMAT"] = formats
+    return dictionary
 
 def individual_contribution(dictionary):
     """Calculate the percentage of indivudual contribution."""
@@ -50,6 +65,8 @@ if __name__ == "__main__":
 
     DATA = data_collection.calculate_individual_metrics()
     # if statement will check if raw data was collected
+    new_data = add_new_metrics(DATA)
+    #print(DATA.update(add_new_metrics(DATA)))
     if DATA == {}:
         # pylint: disable=input-builtin
         REPO_PATH = input("Enter the path to the repo : ")
@@ -57,4 +74,5 @@ if __name__ == "__main__":
         data_collection.collect_and_add_raw_data_to_json(REPO_PATH)
 
     #display the dictionary of individual contributions
-    print(pd.DataFrame.from_dict(individual_contribution(DATA)).T)
+    print(pd.DataFrame.from_dict(new_data).T)
+    #print(pd.DataFrame.from_dict(individual_contribution(new_data)).T)
