@@ -35,10 +35,18 @@ def main(args):
         # calculate metrics to be used for team evaluation
         dict = data_collection.calculate_individual_metrics()
         data_processor.iterate_nested_dictionary(dict)
-        if args["metric"] == "team" or "both":
-            team()
-        elif args["metric"] == "individual" or "both":
+        # calculate team score
+        # data_processor.calculate_team_score(dict, args["below"], args["above"], args["within"])
+        if args["metrics"] in ["i", "individual"]:
             individual()
+        elif args["metrics"] in ["t", "team"]:
+            team()
+        elif args["metrics"] == "both":
+            team()
+            individual()
+        else:
+            print("unknown value given for '-m' '--metric' in command line arguments")
+            return
 
 
 def retrieve_arguments():
