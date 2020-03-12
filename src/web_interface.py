@@ -11,11 +11,10 @@ import json_handler
 def web_interface():
     """Execute the web interface."""
 
-    link = "https://github.com/lussierc/lussiercLaTeXResume"
+    link = "https://github.com/GatorIncubator/petition-pronto"
     token = "5ed034ab88d30ffce215e103a061045efb0c00fb"
-    repo = "lussierc/lussiercLaTeXResume"
+    repo = "GatorIncubator/petition-pronto"
     repository = data_collection.authenticate_repository(token, repo)
-    print("1")
     # Populate json file
     data_collection.collect_and_add_raw_data_to_json(
         link, "raw_data_storage"
@@ -24,6 +23,10 @@ def web_interface():
     data_collection.collect_and_add_individual_metrics_to_json()
     # calculate metrics to be used for team evaluation
     individual_metrics_dict = data_collection.calculate_individual_metrics()
+
+    ISSUE_DATA = {}
+    ISSUE_DATA = data_collection.retrieve_issue_data(repository, "all", ISSUE_DATA)
+    DATA = data_collection.merge_metric_and_issue_dicts(individual_metrics_dict, ISSUE_DATA)
 
     # Sidebar menu options:
     add_selectbox = st.sidebar.selectbox(
@@ -61,7 +64,7 @@ def web_interface():
     ################### Feature 5 ###################
     # Are there individuals who collaborate together too frequently or not enough?
     if add_selectbox == "Issues Contributed To By An Individual":
-        graph_issues()
+        graph_issues(individual_metrics_dict)
     ################### Feature 6 ###################
     # Are there team members who are “code hoarders” or “domain experts”?
     elif add_selectbox == "Team Members Who Are Code Hoarders":
@@ -91,7 +94,7 @@ def graph_commits_by_individual(dict):
     st.title("Commit Information")  # dispaly relevant title for dataframe
 
     updated_dict = data_processor.add_new_metrics(dict)
-
+    print(updated_dict)
     df = (pd.DataFrame.from_dict(updated_dict, orient='index').T)
 
     columns = st.multiselect(
@@ -99,6 +102,7 @@ def graph_commits_by_individual(dict):
     )  # allow users to display specific contributor information on dataframe graph
 
     st.bar_chart(df[columns][1:2])  # display dataframe/graph that vizualizes commit info
+
 
 def graph_lines_of_code(dict):
     """Graph lines of code added, modified, and deleted for web interface."""
@@ -164,30 +168,19 @@ def graph_overall_contribution():
     st.line_chart(df[columns])  # display dataframe/graph that vizualizes commit info
 
 
-def graph_issues():
+def graph_issues(dict):
     """Graphs the issues modified of individuals for web interface."""
-    st.title("Issues Contributed To")  # disp`aly relevant
-    df = pd.DataFrame(
-        {
-            "date": ["1/1/2020", "1/2/2020", "1/3/2020", "10/4/2020"],
-            "Christian Lussier": [80, 5, 9, 3],
-            "Cory Wiard": [5, 90, 3, 5],
-            "Devin Spitalny": [23, 58, 70, 3],
-            "Jordan Wilson": [5, 5, 3, 8],
-            "Danny Reid": [50, 41, 311, 5],
-            "Anthony Baldeosingh": [10, 200, 1, 22],
-        }
-    )  # create dataframe with sample dates and contributor commit numbers
+    st.title("Issues Contributed To By An Individual")  # disp`aly relevant
 
-    df = df.rename(columns={"date": "index"}).set_index("index")  # set date as index
+    updated_dict = data_processor.add_new_metrics(dict)
 
-    df  # display chart of sample commits
+    df = (pd.DataFrame.from_dict(updated_dict, orient='index').T)
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
 
-    st.line_chart(df[columns])  # display dataframe/graph that vizualizes commit info
+    st.bar_chart(df[columns][11:13])  # display dataframe/graph that vizualizes commit info
 
 
 def graph_code_hoarders():
