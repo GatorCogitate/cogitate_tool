@@ -188,33 +188,9 @@ def graph_issues(dict):
 
     st.bar_chart(df[columns][9:11])  # display dataframe/graph that vizualizes commit info
 
-def graph_code_hoarders():
+def graph_pull_request(dict):
     """Graph what team members are code hoarders for web interface."""
-    st.title("Team Members Who Are Code Hoarders")
-
-    df = pd.DataFrame(
-        {
-            "commits": ["total", "src", "tests", "scripts"],
-            "Christian Lussier": [10, 2, 5, 3],
-            "Cory Wiard": [12, 4, 4, 4],
-            "Devin Spitalny": [18, 13, 1, 4],
-            "Devin Ho": [11, 2, 8, 1],
-            "Jordan Wilson": [10, 3, 3, 4],
-            "Danny Reid": [14, 8, 3, 3],
-            "Anthony Baldeosingh": [16, 14, 1, 1],
-            "Xingbang Liu": [13, 4, 5, 4],
-        }
-    )
-
-    df = df.rename(columns={"commits": "index"}).set_index("index")  # set date as index
-
-    df  # display chart of sample commits
-
-    columns = st.multiselect(
-        label="Enter the names of specific contributors below:", options=df.columns
-    )  # allow users to display specific contributor information on dataframe graph
-
-    st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
+    st.title("Pull Requests Contributed to By An Individual")
 
 
 def graph_test_contributions(dict):
