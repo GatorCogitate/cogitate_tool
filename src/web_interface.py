@@ -186,8 +186,7 @@ def graph_issues(dict):
         issues_opened = len(df[name][10])
         df[name][10] = issues_opened
 
-    st.bar_chart(df[columns][11:13])  # display dataframe/graph that vizualizes commit info
-
+    st.bar_chart(df[columns][9:11])  # display dataframe/graph that vizualizes commit info
 
 def graph_code_hoarders():
     """Graph what team members are code hoarders for web interface."""
