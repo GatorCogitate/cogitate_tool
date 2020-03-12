@@ -94,22 +94,11 @@ def graph_commits_by_individual(dict):
 
     df = (pd.DataFrame.from_dict(updated_dict, orient='index').T)
 
-    # for k in updated_dict.keys():
-    #     print("KEYER   ", k)
-    # # print("\n\n\nDF")
-    # # print(df)
-
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
 
-    # print("COLUMNS:", columns)
-    # print("COMMITS: \t",df["COMMITS"])
     st.bar_chart(df[columns][1:2])  # display dataframe/graph that vizualizes commit info
-
-
-    edited_dict = data_processor.individual_contribution(updated_dict)
-
 
 def graph_lines_of_code(dict):
     """Graph lines of code added, modified, and deleted for web interface."""
@@ -120,17 +109,10 @@ def graph_lines_of_code(dict):
 
     df = (pd.DataFrame.from_dict(updated_dict, orient='index').T)
 
-    # for k in updated_dict.keys():
-    #     print("KEYER   ", k)
-    # # print("\n\n\nDF")
-    # # print(df)
-
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
 
-    # print("COLUMNS:", columns)
-    # print("COMMITS: \t",df["COMMITS"])
     st.bar_chart(df[columns][2:5])  # display dataframe/graph that vizualizes commit info
 
 
