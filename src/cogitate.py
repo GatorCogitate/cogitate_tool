@@ -87,16 +87,27 @@ def retrieve_arguments():
         help="Starts the process of merging usernames.",
     )
     a_parse.add_argument(
-        "-b", "--below", required=True, type=float, help="Determines lower weight.",
+        "-b",
+        "--below",
+        required=True,
+        type=float,
+        default=0.2,
+        help="Determines lower weight.",
     )
     a_parse.add_argument(
-        "-a", "--above", required=True, type=float, help="Determines higher weight.",
+        "-a",
+        "--above",
+        required=True,
+        type=float,
+        default=0.2,
+        help="Determines higher weight.",
     )
     a_parse.add_argument(
         "-wi",
         "--within",
         required=True,
         type=float,
+        default=0.6,
         help="Determines value within weight.",
     )
     a_parse.add_argument(
