@@ -143,10 +143,8 @@ committed, the creation of a pull request is needed, in order to receive feedbac
 on the proposed changes.
 
 1. To create a pull request that is ready for review, click "Create Pull Request".
-2. To create a draft pull request, use the drop-down and select "Create Draft Pull Request", then click "Draft Pull Request".
-3. Once a pull request is opened, you can discuss and review the potential changes with collaborators and add follow-up
-commits before your changes are merged into the base branch.
-4. If the developer is satisfied with the proposed changes, the pull request will be merged.<br />
-Note: Anyone with push access to the repository can complete the merge.
+2. Once a pull request is opened, you can discuss and review the potential changes with collaborators and add follow-up commits before your changes are merged into the base branch.
+3. If the developer is satisfied with the proposed changes, the pull request will be merged.
 
-Ultimately, a pull request is utilized to submit a working solution.
+Note: Anyone with push access to the repository can complete the merge. Ultimately,
+a pull request is utilized to submit a working solution.
