@@ -225,6 +225,10 @@ def graph_test_contributions(dict):
     updated_dict = data_processor.add_new_metrics(dict)
     df = (pd.DataFrame.from_dict(updated_dict, orient=‘index’).T)
 
+    columns = st.multiselect(
+    label=“Enter the names of specific contributors below:“, options=df.columns
+    )  # allow users to display specific contributor information on dataframe graph
+
 
 def graph_code_churn():
     """Graph code churn for web interface."""
