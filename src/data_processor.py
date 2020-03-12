@@ -102,9 +102,10 @@ def calculate_team_score(dictionary, below_weight, above_weight, within_weight):
                 values_list, below_weight, above_weight, within_weight
             )
             count += 1
-
-    average_team_score = total_score / count
-
+    if count != 0:
+        average_team_score = total_score / count
+    else:
+        average_team_score = 0
     return average_team_score
 
 

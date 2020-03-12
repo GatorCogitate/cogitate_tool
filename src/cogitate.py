@@ -6,20 +6,13 @@ import validators
 import data_collection
 import data_processor
 
-# import web_interface
-# from pprint import pprint
 # **uncomment web interface import statement when the web interface is complete**
 # import web_interface
 
 
 def main(args):
     """Execute the CLI."""
-    if args["testwithprintargs"] == "y":
-        for key, value in args.items():
-            print(key, ":", value)
-        return
-    else:
-        pass
+
     # Currently only validates the PyGithub repository
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
     if not repository:
@@ -40,34 +33,26 @@ def main(args):
         # allows the user to enter the merge while loop if they specified to
         data_collection.collect_and_add_individual_metrics_to_json()
         # calculate metrics to be used for team evaluation
-        individual_metrics_dict = data_collection.calculate_individual_metrics()
-        data_processor.iterate_nested_dictionary(individual_metrics_dict)
-        # calculate team score
-        # data_processor.calculate_team_score(
-        # individual_metrics_dict, args["below"], args["above"], args["within"])
-        if args["metrics"] in ["i", "individual"]:
-            individual(individual_metrics_dict, args)
-        elif args["metrics"] in ["t", "team"]:
-            team(individual_metrics_dict, args)
-        elif args["metrics"] == "both":
-            team(individual_metrics_dict, args)
-            individual(individual_metrics_dict, args)
-        else:
-            print("unknown value given for '-m' '--metric' in command line arguments")
-            return
+        dict = data_collection.calculate_individual_metrics()
+        data_processor.iterate_nested_dictionary(dict)
+        if args["metric"] == "team":
+            team(dict)
+        elif args["metric"] == "individual":
+            individual(dict)
+        elif args["metric"] == "both":
+            new = team(dict)
+            individual(new)
 
 
 def retrieve_arguments():
     """Retrieve the user arguments and return the args dictionary."""
-    # As no other functions exist in master as of this pull request, the args
-    # below are written to accomadate issual retrieval in data_collection.py
 
     a_parse = argparse.ArgumentParser()
     a_parse.add_argument(
         "-l",
         "--link",
         type=link_validator,
-        help="Cogitate a repo by the url of the repo, requires full link of the repo",
+        help="Cogitate a repo by the url of the repo, require full link of the repo",
     )
     a_parse.add_argument(
         "-t", "--token", required=True, type=str, help="Github User Token"
@@ -77,12 +62,11 @@ def retrieve_arguments():
         "--repo",
         required=True,
         type=str,
-        help="""User's Repository name, start with root dirctory (user or organization name)\n
-        Example: GatorCogitate/cogitate_tool""",
+        help="User's Repository name, start with root dirctory (user or organization name)",
     )
     a_parse.add_argument(
         "-rm",
-        "--runmerge",
+        "--endmerge",
         required=True,
         type=str,
         help="Starts the process of merging usernames.",
@@ -90,7 +74,7 @@ def retrieve_arguments():
     a_parse.add_argument(
         "-b",
         "--below",
-        required=True,
+        required=False,
         type=float,
         default=0.2,
         help="Determines lower weight.",
@@ -98,7 +82,7 @@ def retrieve_arguments():
     a_parse.add_argument(
         "-a",
         "--above",
-        required=True,
+        required=False,
         type=float,
         default=0.2,
         help="Determines higher weight.",
@@ -108,7 +92,6 @@ def retrieve_arguments():
         "--within",
         required=True,
         type=float,
-        default=0.6,
         help="Determines value within weight.",
     )
     a_parse.add_argument(
@@ -116,8 +99,8 @@ def retrieve_arguments():
         "--state",
         required=False,
         type=str,
-        default="all",
-        help="State of the Issue; open, closed, or all",
+        default="both",
+        help="State of the Issue, open or closed",
     )
     a_parse.add_argument(
         "-w",
@@ -135,14 +118,6 @@ def retrieve_arguments():
         default="both",
         help="Invokes calculation of team or individual metrics. If not specified, both are run.",
     )
-    a_parse.add_argument(
-        "-twpa",
-        "--testwithprintargs",
-        required=False,
-        type=str,
-        default="n",
-        help="To be used ONLY for testing purposes. Prints the args{} dict and closes program",
-    )
 
     # add arguments for below/above/within weight
 
@@ -152,21 +127,22 @@ def retrieve_arguments():
     return args
 
 
-def team(individual_metrics_dict, args):
+def team(dict):
     """Call all team-based funtions."""
-    data_processor.calculate_team_score(
-        individual_metrics_dict, args["below"], args["above"], args["within"]
+    new_dict = data_processor.calculate_team_score(
+        dict, args["below"], args["above"], args["within"]
     )
-    print(pd.DataFrame.from_dict(individual_metrics_dict).T)
+    updated = data_processor.add_new_metrics(new_dict)
+    print(pd.DataFrame.from_dict(updated).T)
+    return updated
 
 
-def individual(individual_metrics_dict, args):
+def individual(dict):
     """Call all individual-based funtions."""
-    updated_dict = data_processor.add_new_metrics(individual_metrics_dict)
-    edited_dict = data_processor.individual_contribution(updated_dict)
-    print(pd.DataFrame.from_dict(edited_dict).T)
-    # place holder for pylint
-    print(args)
+    new_dict = data_processor.individual_contribution(dict)
+    updated = data_processor.add_new_metrics(new_dict)
+    print(pd.DataFrame.from_dict(updated).T)
+    return updated
 
 
 def link_validator(url_str):
@@ -194,5 +170,5 @@ def bool_validator(bool_str):
 
 
 if __name__ == "__main__":
-    args_content = retrieve_arguments()
-    main(args_content)
+    args = retrieve_arguments()
+    main(args)
