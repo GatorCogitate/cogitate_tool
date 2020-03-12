@@ -191,6 +191,10 @@ def graph_issues(dict):
 def graph_pull_request(dict):
     """Pull Requests Contributed To By An Individual."""
     st.title("Pull Requests Contributed to By An Individual")
+    df = (pd.DataFrame.from_dict(updated_dict, orient=‘index’).T)
+    columns = st.multiselect(
+        label=“Enter the names of specific contributors below:“, options=df.columns
+    )  # allow users to display specific contributor information on dataframe graph
 
 
 def graph_test_contributions(dict):
