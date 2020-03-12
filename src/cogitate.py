@@ -15,7 +15,7 @@ def main(args):
     """Execute the CLI."""
     if args["testwithprintargs"] == "y":
         for key, value in args.items():
-            print(key, "-", value)
+            print(key, ":", value)
         return
     else:
         pass
