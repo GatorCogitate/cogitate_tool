@@ -75,7 +75,8 @@ scripts take effect, add the following code to the `Pipfile`:
 
 ```
 [scripts]
-command_name = "./scripts/script_name.sh"
+command_name = “./scripts/script_name.sh”
+
 ```
 
 Here the `command_name` is the command you want to use when running the project.
