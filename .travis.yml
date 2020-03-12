@@ -9,7 +9,6 @@ dist: xenial
 # run builds and tests on Linux and MacOS
 os:
   - linux
-  - osx
 
 # ignore the virtualenv that Travis creates
 # setup a secure login to CodeCov
