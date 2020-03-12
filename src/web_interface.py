@@ -12,7 +12,7 @@ def web_interface():
     """Execute the web interface."""
 
     link = "https://github.com/GatorIncubator/petition-pronto"
-    token = "5ed034ab88d30ffce215e103a061045efb0c00fb"
+    token = "2788c95ae4735678528c4ef982c35034a009d5c5"
     repo = "GatorIncubator/petition-pronto"
     repository = data_collection.authenticate_repository(token, repo)
     # Populate json file
@@ -67,7 +67,7 @@ def web_interface():
         graph_issues(individual_metrics_dict)
     ################### Feature 6 ###################
     # Are there team members who are “code hoarders” or “domain experts”?
-elif add_selectbox == "Pull Requests Contributed To By An Individual":
+    elif add_selectbox == "Pull Requests Contributed To By An Individual":
         graph_pull_request(individual_metrics_dict)
     ################### Feature 7 ###################
     # Are there team members who contribute source code without also adding test cases?
@@ -194,12 +194,12 @@ def graph_pull_request(dict):
 
     updated_dict = data_processor.add_new_metrics(dict)
 
-    df = (pd.DataFrame.from_dict(updated_dict, orient=‘index’).T)
+    df = (pd.DataFrame.from_dict(updated_dict, orient='index').T)
 
     columns = st.multiselect(
-        label=“Enter the names of specific contributors below:“, options=df.columns
+        label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
-     for name in columns:
+    for name in columns:
         prs_commented = len(df[name][11])
         df[name][11] = prs_commented
         prs_opened = len(df[name][12])
