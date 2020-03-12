@@ -5,6 +5,7 @@ import pandas as pd
 import validators
 import data_collection
 import data_processor
+
 # import web_interface
 # from pprint import pprint
 # **uncomment web interface import statement when the web interface is complete**
@@ -75,7 +76,8 @@ def retrieve_arguments():
         "--repo",
         required=True,
         type=str,
-        help="User's Repository name, start with root dirctory (user or organization name)\nExample: GatorCogitate/cogitate_tool",
+        help="""User's Repository name, start with root dirctory (user or organization name)\n
+        Example: GatorCogitate/cogitate_tool""",
     )
     a_parse.add_argument(
         "-rm",
