@@ -44,12 +44,11 @@ def test_bool_validator_xpass(true_string, false_string):
             ['pipenv', 'run', 'python', 'src/cogitate.py',
              '-l', 'https://github.com/GatorCogitate/cogitate_tool',
              '-t', 'test_token', '-r',
-             'GatorCogitate/cogitate_tool', '-rm', 'n', '-b', '5', '-a', '10',
-             '-wi', '2', '-twpa', 'y'],
+             'GatorCogitate/cogitate_tool', '-rm', 'n', '-twpa', 'y'],
             "link : https://github.com/GatorCogitate/cogitate_tool\r\n"
             + "token : test_token\r\n"
             + "repo : GatorCogitate/cogitate_tool\r\nrunmerge : n\r\n"
-            + "below : 5.0\r\nabove : 10.0\r\nwithin : 2.0\r\nstate : all\r\n"
+            + "below : 0.2\r\nabove : 0.2\r\nwithin : 0.6\r\nstate : all\r\n"
             + "web : False\r\nmetric : both\r\ntestwithprintargs : y\r\n"
         )
     ]

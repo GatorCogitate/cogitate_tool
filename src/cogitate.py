@@ -12,7 +12,12 @@ import data_processor
 
 def main(args):
     """Execute the CLI."""
-
+    if args["testwithprintargs"] == "y":
+        for key, value in args.items():
+            print(key, ":", value)
+        return
+    else:
+        pass
     # Currently only validates the PyGithub repository
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
     if not repository:
@@ -66,7 +71,7 @@ def retrieve_arguments():
     )
     a_parse.add_argument(
         "-rm",
-        "--endmerge",
+        "--runmerge",
         required=True,
         type=str,
         help="Starts the process of merging usernames.",
@@ -90,8 +95,9 @@ def retrieve_arguments():
     a_parse.add_argument(
         "-wi",
         "--within",
-        required=True,
+        required=False,
         type=float,
+        default=.6,
         help="Determines value within weight.",
     )
     a_parse.add_argument(
@@ -99,7 +105,7 @@ def retrieve_arguments():
         "--state",
         required=False,
         type=str,
-        default="both",
+        default="all",
         help="State of the Issue, open or closed",
     )
     a_parse.add_argument(
@@ -117,6 +123,14 @@ def retrieve_arguments():
         type=str,
         default="both",
         help="Invokes calculation of team or individual metrics. If not specified, both are run.",
+    )
+    a_parse.add_argument(
+        "-twpa",
+        "--testwithprintargs",
+        required=False,
+        type=str,
+        default="n",
+        help="To be used ONLY for testing purposes. Prints the args{} dict and closes program",
     )
 
     # add arguments for below/above/within weight
