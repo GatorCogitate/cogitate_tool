@@ -195,6 +195,12 @@ def graph_pull_request(dict):
     columns = st.multiselect(
         label=“Enter the names of specific contributors below:“, options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
+     for name in columns:
+        prs_commented = len(df[name][11])
+        df[name][11] = prs_commented
+        prs_opened = len(df[name][12])
+        df[name][12] = prs_opened
+    st.bar_chart(df[columns][11:13])  # display dataframe/graph that vizualizes commit info
 
 
 def graph_test_contributions(dict):
