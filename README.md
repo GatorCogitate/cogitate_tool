@@ -82,7 +82,7 @@ command_name = “./scripts/script_name.sh”
 Here the `command_name` is the command you want to use when running the project.
 For example, if the `command_name` is `cogitate`, the we can use `pipenv run cogitate`.
 
-### 3. CLI
+### 3. Command Line Interface
 
 The [homepage](https://docs.python.org/3/howto/argparse.html) for `argparse`.
 
@@ -94,7 +94,7 @@ The available attributes can be found at their homepage.
 * `-rm` `-runmerge` (y/n).
 * `-s` or `--state` State of the issue.
 
-#### The Parameters
+#### CLI Parameters
 
 ##### Token
 
@@ -111,7 +111,7 @@ allows the user to be used for HTTPS Git operations.
 
 The following will demonstrate step by step the process to generate a token in
 order to use the tool:
-  1. Cick your profile icon on GitHub and then click Settings
+  1. Click your profile icon on GitHub and then click Settings
   2. On the sidebar, click the Developer settings and then Personal access tokens.
   3. Click Generate new token.
   4. Add a token description and click Generate token.
@@ -126,8 +126,8 @@ once logged off.
 * Required: True
 * Flag: `-l` or `--link`
 
-The link is the URL of the targeted repository in GitHub. This can be find at
-GitHub website.
+The link is the URL of the targeted repository in GitHub. This can be found at
+the GitHub website.
 
 ##### Repo
 
