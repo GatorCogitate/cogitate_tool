@@ -143,9 +143,9 @@ the actual name of the repository. In our case, it would be `GatorCogitate/cogit
 
 * Datatype: String
 * Required: True
-* Flag: `-rm` or `--endmerge`
+* Flag: `-rm` or `--runmerge`
 
-Starts the process of merging usernames.
+
 
 ##### Below
 
