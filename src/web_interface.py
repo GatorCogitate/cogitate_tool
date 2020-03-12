@@ -180,6 +180,12 @@ def graph_issues(dict):
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
 
+    for name in columns:
+        issues_commented = len(df[name][9])
+        df[name][9] = issues_commented
+        issues_opened = len(df[name][10])
+        df[name][10] = issues_opened
+
     st.bar_chart(df[columns][11:13])  # display dataframe/graph that vizualizes commit info
 
 
