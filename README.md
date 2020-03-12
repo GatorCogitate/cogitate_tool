@@ -145,7 +145,8 @@ the actual name of the repository. In our case, it would be `GatorCogitate/cogit
 * Required: True
 * Flag: `-rm` or `--runmerge`
 
-Determines if the merge process will be run, based on the user's input.
+Determines if the process of merging duplicate Github usernames will be run,
+based on the user's input.
 
 ##### Below
 
@@ -178,7 +179,7 @@ Determines value within weight.
 * Default: `both`
 * Flag: `-s` or `--state`
 
-State of the Issue, open or closed.
+State of the Issue: open, closed, or all.
 
 ##### Web
 
