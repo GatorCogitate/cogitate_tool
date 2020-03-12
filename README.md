@@ -144,7 +144,7 @@ on the proposed changes.
 
 - To create a pull request that is ready for review, click "Create Pull Request".
 - Once a pull request is opened, you can discuss and review the potential changes.
-- If the developer is satisfied with the proposed changes, the pull request will be merged.
+- If the developer is satisfied with the proposed changes, the PR will be merged.
 
 Note: Anyone with push access to the repository can complete the merge. Ultimately,
 a pull request is utilized to submit a working solution.
