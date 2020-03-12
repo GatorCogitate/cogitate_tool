@@ -53,7 +53,7 @@ def web_interface():
     ################### Feature 3 ###################
     # What types of files did an individual normally modify in a repository?
     elif add_selectbox == "What Types of Files did an Individual":
-        graph_types_of_files()
+        graph_types_of_files(individual_metrics_dict)
     ################### Feature 4 ###################
     # What is the overall score for an individual’s contribution to a team project?
     elif add_selectbox == "An individuals overall contribution to a team or project":
@@ -118,7 +118,7 @@ def graph_lines_of_code(dict):
 
     edited_dict = data_processor.individual_contribution(updated_dict)
 
-def graph_types_of_files():
+def graph_types_of_files(dict):
     """Graph to output types of files modified for web interface."""
     st.title("Types of Files Modified by an Individual")
 
