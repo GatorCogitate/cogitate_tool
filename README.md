@@ -112,15 +112,15 @@ allows the user to be used for HTTPS Git operations.
 The following will demonstrate step by step the process to generate a token in
 order to use the tool:
 
-  1. Click your profile icon on GitHub and then click Settings
-  
-  2. On the sidebar, click the Developer settings and then Personal access tokens.
+1. Click your profile icon on GitHub and then click Settings.
 
-  3. Click Generate new token.
+2. On the sidebar, click the Developer settings and then Personal access tokens.
 
-  4. Add a token description and click Generate token.
+3. Click Generate new token.
 
-  5. Save the token for future use.
+4. Add a token description and click Generate token.
+
+5. Save the token for future use.
 
 Do note that for security reasons, you will not be able to see the token again
 once logged off.
