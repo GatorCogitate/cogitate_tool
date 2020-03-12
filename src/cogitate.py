@@ -148,8 +148,9 @@ def team(dict, args):
 
 def individual(dict, args):
     """Call all individual-based funtions."""
-    updated_dict = data_processor.individual_contribution(dict)
-    print(pd.DataFrame.from_dict(updated_dict).T)
+    updated_dict = data_processor.add_new_metrics(dict)
+    edited_dict = data_processor.individual_contribution(updated_dict)
+    print(pd.DataFrame.from_dict(edited_dict).T)
 
 
 def link_validator(url_str):
