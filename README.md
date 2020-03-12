@@ -90,7 +90,7 @@ The available attributes can be found at their homepage.
 * `-l` or `--link` Cogitate a repo by the url of the repo.
 * `-t` or `--token` Github user token.
 * `-r` or `--repo` User's repository.
-* `-rm` `-runmerge` (y/n). 
+* `-rm` `-runmerge` (y/n).
 * `-s` or `--state` State of the issue.
 
 #### The Parameters
@@ -138,11 +138,44 @@ The repo is the targeted repository name. It includes the root part and the
 name part. The root part is the username or organization name. The name part is
 the actual name of the repository. In our case, it would be `GatorCogitate/cogitate_tool`
 
+##### End Merge
+
+* Datatype: String
+* Required: True
+* Flag: `-rm` or `--endmerge`
+
+Starts the process of merging usernames.
+
+##### Below
+
+* Datatype: Float
+* Required: True
+* Flag: `-b` or `--below`
+
+Determines lower weight.
+
+##### Above
+
+* Datatype: Float
+* Required: True
+* Flag: `-a` or `--above`
+
+Determines higher weight.
+
+##### Within
+
+* Datatype: Float
+* Required: True
+* Flag: `-w` or `--within`
+
+Determines value within weight.
+
 ##### State
 
 * Datatype: String
 * Required: False
 * Default: `both`
+* Flag: `-s` or `--state`
 
 State of the Issue, open or closed.
 
@@ -151,8 +184,18 @@ State of the Issue, open or closed.
 * Datatype: String
 * Required: False
 * Default: False
+* Flag: `-w` or `--web`
 
 Whether to show the detailed result in web interface.
+
+##### Metric
+
+* Datatype: String
+* Required: False
+* Default: `both`
+* Flag: `-m` or `--metric`
+
+Invokes calculation of team or individual metrics. If not specified, both are run.
 
 ### 4. PyDriller
 
