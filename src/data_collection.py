@@ -23,6 +23,7 @@ Enter the repository name similar to this example GatorCogitate/cogitate_tool
 
 Enter the entries you would like to merge in the data set.
 """
+
 from __future__ import division
 import os
 from pydriller import RepositoryMining
@@ -95,22 +96,21 @@ def retrieve_issue_data(repository, state, contributor_data):
 
 
 def collect_commits_hash(repo):
-    """Create a list of dictionaries that contains commit info.
+    """Create a list of dictionaries that contains commit info."""
+    # hash (str): hash of the commit
+    # msg (str): commit message
+    # author_name (str): commit author name
+    # author_email (str): commit author email
+    # author_date (datetime): authored date
+    # merge (Bool): True if the commit is a merge commit
+    # added: number of lines added
+    # removed: number of lines removed
+    # nloc: Lines Of Code (LOC) of the file
+    # complexity: Cyclomatic Complexity of the file
+    # methods: list of methods of the file.
+    # filename: files modified by commit.
+    # filepath: filepaths of files modified by commit.
 
-    hash (str): hash of the commit
-    msg (str): commit message
-    author_name (str): commit author name
-    author_email (str): commit author email
-    author_date (datetime): authored date
-    merge (Bool): True if the commit is a merge commit
-    added: number of lines added
-    removed: number of lines removed
-    nloc: Lines Of Code (LOC) of the file
-    complexity: Cyclomatic Complexity of the file
-    methods: list of methods of the file.
-    filename: files modified by commit.
-    filepath: filepaths of files modified by commit.
-    """
     commit_list = []
 
     for commit in RepositoryMining(repo).traverse_commits():

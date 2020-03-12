@@ -66,9 +66,9 @@ When prompted, press `Enter` to leave the repository path as default.
 
 When under development, always install the virtual environment first by using
 `pipenv install --dev`, then run the developing program by using
-`pipenv run python 'program_name'`.
+`pipenv run python program_name`.
 
-#### 2.2 How To Setup Scripts
+#### 2.2 How to setup scripts
 
 The purpose of script is to automate the running or testing process. To make the
 scripts take effect, add the following code to the `Pipfile`:
