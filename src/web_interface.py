@@ -153,7 +153,7 @@ def graph_team_score(dict):
     team_score = data_processor.calculate_team_score(
         dict, .75, .25, .5
     )
-    print(team_score)
+    st.text("The team score is:" team_score)
 
 def graph_issues(dict):
     """Graphs the issues modified of individuals for web interface."""
