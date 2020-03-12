@@ -114,22 +114,21 @@ def retrieve_issue_data(repository, state, contributor_data):
 
 
 def collect_commits_hash(repo):
-    """Create a list of dictionaries that contains commit info.
+    """Create a list of dictionaries that contains commit info."""
+    # hash (str): hash of the commit
+    # msg (str): commit message
+    # author_name (str): commit author name
+    # author_email (str): commit author email
+    # author_date (datetime): authored date
+    # merge (Bool): True if the commit is a merge commit
+    # added: number of lines added
+    # removed: number of lines removed
+    # nloc: Lines Of Code (LOC) of the file
+    # complexity: Cyclomatic Complexity of the file
+    # methods: list of methods of the file.
+    # filename: files modified by commit.
+    # filepath: filepaths of files modified by commit.
 
-    hash (str): hash of the commit
-    msg (str): commit message
-    author_name (str): commit author name
-    author_email (str): commit author email
-    author_date (datetime): authored date
-    merge (Bool): True if the commit is a merge commit
-    added: number of lines added
-    removed: number of lines removed
-    nloc: Lines Of Code (LOC) of the file
-    complexity: Cyclomatic Complexity of the file
-    methods: list of methods of the file.
-    filename: files modified by commit.
-    filepath: filepaths of files modified by commit.
-    """
     commit_list = []
 
     for commit in RepositoryMining(repo).traverse_commits():
@@ -271,6 +270,7 @@ def calculate_individual_metrics(
         for commit in current_data["RAW_DATA"]:
             author = commit["author_name"]
             email = commit["author_email"]
+            filepaths = commit["filepath"]  # get filepaths of file modified
             # NOTE check date compatibility with json
             # check if the key already in in the dicitionary
             if author in data_dict:
@@ -283,7 +283,6 @@ def calculate_individual_metrics(
                     "COMMITS": 1,
                     "ADDED": 0,
                     "REMOVED": 0,
-                    "TOTAL": 0,
                     "MODIFIED": 0,
                     "RATIO": 0,
                     "FILES": [],
@@ -292,6 +291,8 @@ def calculate_individual_metrics(
                     "issues_opened": [],
                     "pull_requests_commented": [],
                     "pull_requests_opened": [],
+                    "COMMITS_TO_TESTING": 0,
+                    "COMMITS_ELSEWHERE": 0,
                 }
 
             data_dict[author]["ADDED"] += commit["line_added"]
@@ -304,6 +305,26 @@ def calculate_individual_metrics(
             )
             # Sort list to ensure consistency when testing
             data_dict[author]["FILES"] = sorted(data_dict[author]["FILES"])
+
+            # get testing commit info:
+            count = 0  # when 0 the current commit has no changes to tests
+            for filepath in filepaths:
+                # when count == 0, current commit no testing changes
+                # if not 0, this commit already had testing changes
+                if count == 0:
+                    if filepath and "test" in filepath:
+                        data_dict[author][
+                            "COMMITS_TO_TESTING"
+                        ] += 1  # the current commit has a change to testing
+                        count = 1  # found a change to testing for this commit
+                    else:
+                        pass
+                else:
+                    pass
+
+            data_dict[author]["COMMITS_ELSEWHERE"] = (
+                data_dict[author]["COMMITS"] - data_dict[author]["COMMITS_TO_TESTING"]
+            )
         return data_dict
     # if RAW_DATA key was not found, empty dictionary will be returned
     return {}
@@ -370,7 +391,6 @@ def merge_metric_and_issue_dicts(metrics_dict, issues_dict):
                 "COMMITS": 0,
                 "ADDED": 0,
                 "REMOVED": 0,
-                "TOTAL": 0,
                 "MODIFIED": 0,
                 "RATIO": 0,
                 "FILES": [],
@@ -413,46 +433,3 @@ def merge_duplicate_usernames(dictionary, kept_entry, removed_entry):
     except KeyError:
         print("Key 'testing' not found")
     return dictionary
-
-
-# This main method is only for the purposes of testing
-# Main methods should only be in the cogitate.py file
-if __name__ == "__main__":
-    # NOTE: this supression needs to be resolved
-    # pylint: disable=input-builtin
-    DATA = calculate_individual_metrics()
-    # This condition checks if raw data was collected because
-    # calculate_individual_metrics would return empty dictionary if no data was collected
-    if DATA == {}:
-        print("Raw data was not previously collected, collecting it now...")
-        REPO_PATH = input(
-            "Enter repository path URL/Local to collect Pydriller data from: "
-        )
-        collect_and_add_raw_data_to_json(REPO_PATH)
-        # Retrieve the newely collected data from the default json file
-        DATA = calculate_individual_metrics()
-    # Process for PyGithub data
-    user_token = input("Enter user token to collect PyGitHub data: ")
-    repo_name = input("Enter repo name in this format: org/repo_name: ")
-    current_repo = authenticate_repository(user_token, repo_name)
-    ISSUE_DATA = {}
-    ISSUE_DATA = retrieve_issue_data(current_repo, "all", ISSUE_DATA)
-    DATA = merge_metric_and_issue_dicts(DATA, ISSUE_DATA)
-    # Prints table from dictionary, only the commits column
-    print_individual_in_table(data_dict=DATA, headings=["COMMITS"])
-    choice = True
-    while choice:
-        remove = input("enter username to be merged then deleted: ")
-        keep = input("enter username to be merged into: ")
-        # merge selected entries
-        DATA = merge_duplicate_usernames(DATA, keep, remove)
-        print("data after this merge...")
-        print_individual_in_table(data_dict=DATA, headings=["COMMITS"])
-        pick = input("would you like to continue? y/n: ")
-        if pick == "n":
-            choice = False
-    print("Writing data to json file...")
-    # Write reformatted dictionary to json, optional parameters not supported
-    json_handler.write_dict_to_json_file(DATA, "individual_metrics_storage")
-    # print default headings of data
-    print_individual_in_table(data_dict=DATA)
