@@ -114,7 +114,7 @@ The available attributes can be found at their homepage.
 
 ## Contacting the Developers
 
-**IssueTracker**
+### IssueTracker
 
 The role of an issue is to starting a conversation or a discussion. Issues
 are located within the GitHub Issue tracker, which is where developers discuss
@@ -135,16 +135,16 @@ Therefore, people are less likely to duplicate your work.
 - Ask questions.
 - Respect decisions.
 
-**Pull Request Process**
+### Pull Request Process
 
 A pull request is created by a contributor to propose and collaborate on given
 updates to a repository. Once a branch or issue is created and the changes are
 committed, the creation of a pull request is needed, in order to receive feedback
 on the proposed changes.
 
-1. To create a pull request that is ready for review, click "Create Pull Request".
-2. Once a pull request is opened, you can discuss and review the potential changes with collaborators and add follow-up commits before your changes are merged into the base branch.
-3. If the developer is satisfied with the proposed changes, the pull request will be merged.
+- To create a pull request that is ready for review, click "Create Pull Request".
+- Once a pull request is opened, you can discuss and review the potential changes.
+- If the developer is satisfied with the proposed changes, the pull request will be merged.
 
 Note: Anyone with push access to the repository can complete the merge. Ultimately,
 a pull request is utilized to submit a working solution.
