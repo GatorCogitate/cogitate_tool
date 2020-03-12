@@ -49,7 +49,7 @@ def web_interface():
     ################### Feature 2 ###################
     # How many lines of code did an individual add, modify, and delete?
     elif add_selectbox == "Lines of Code Added, Modified, Deleted by an Individual":
-        graph_lines_of_code()
+        graph_lines_of_code(individual_metrics_dict)
     ################### Feature 3 ###################
     # What types of files did an individual normally modify in a repository?
     elif add_selectbox == "What Types of Files did an Individual":
@@ -91,7 +91,6 @@ def graph_commits_by_individual(dict):
     st.title("Commit Information")  # dispaly relevant title for dataframe
 
     updated_dict = data_processor.add_new_metrics(dict)
-    print(updated_dict)
 
     df = (pd.DataFrame.from_dict(updated_dict, orient='index').T)
 
@@ -112,35 +111,30 @@ def graph_commits_by_individual(dict):
     edited_dict = data_processor.individual_contribution(updated_dict)
 
 
-def graph_lines_of_code():
+def graph_lines_of_code(dict):
     """Graph lines of code added, modified, and deleted for web interface."""
     st.title(
         "Lines of Code Added, Modified, Deleted by an Individual"
     )  # dispaly relevant title for dataframe
-    df = pd.DataFrame(
-        {
-            "type": ["Lines Added", "Lines Modified", "Lines Deleted"],
-            "Christian Lussier": [8, 10, 20],
-            "Cory Wiard": [5, 20, 18],
-            "Devin Spitalny": [20, 19, 299],
-            "Devin Ho": [8, 19, 10],
-            "Jordan Wilson": [50, 60, 90],
-            "Danny Reid": [54, 51, 20],
-            "Anthony Baldeosingh": [10, 20, 30],
-            "Xingbang Liu": [0, 0, 9999],
-        }
-    )  # create dataframe with sample dates and contributor commit numbers
+    updated_dict = data_processor.add_new_metrics(dict)
 
-    df = df.rename(columns={"type": "index"}).set_index("index")  # set date as index
+    df = (pd.DataFrame.from_dict(updated_dict, orient='index').T)
 
-    df  # display chart of sample commits
+    # for k in updated_dict.keys():
+    #     print("KEYER   ", k)
+    # # print("\n\n\nDF")
+    # # print(df)
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
 
-    st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
+    # print("COLUMNS:", columns)
+    # print("COMMITS: \t",df["COMMITS"])
+    st.bar_chart(df[columns][2:5])  # display dataframe/graph that vizualizes commit info
 
+
+    edited_dict = data_processor.individual_contribution(updated_dict)
 
 def graph_types_of_files():
     """Graph to output types of files modified for web interface."""
