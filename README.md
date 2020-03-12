@@ -61,7 +61,19 @@ command_name = "./scripts/script_name.sh"
 Here the `command_name` is the command you want to use when running the project.
 For example, if the `command_name` is `cogitate`, the we can use `pipenv run cogitate`.
 
-#### 2.3 The Parameters
+### 3. CLI
+
+The [homepage](https://docs.python.org/3/howto/argparse.html) for `argparse`.
+
+The available attributes can be found at their homepage.
+
+* `-l` or `--link` Cogitate a repo by the url of the repo.
+* `-t` or `--token` Github user token.
+* `-r` or `--repo` User's repository.
+* `-rm` `-runmerge` (y/n). 
+* `-s` or `--state` State of the issue.
+
+#### The Parameters
 
 ##### Token
 
@@ -106,30 +118,6 @@ The repo is the targeted repository name. It includes the root part and the
 name part. The root part is the username or organization name. The name part is
 the actual name of the repository. In our case, it would be `GatorCogitate/cogitate_tool`
 
-##### Delete Username
-
-* Datatype: String
-* Required: True
-* Flag: `-du` or `--deleteusername`
-
-Username that is merged into the kept username, then deleted.
-
-##### Kept Username
-
-* Datatype: String
-* Required: True
-* Flag: `-ku` or `--keptusername`
-
-Username that is kept into the merged username, then deleted.
-
-##### End Merge
-
-* Datatype: String
-* Required: True
-* Flag: `-em` or `--endmerge`
-
-Ends the process of merging usernames.
-
 ##### State
 
 * Datatype: String
@@ -145,18 +133,6 @@ State of the Issue, open or closed.
 * Default: False
 
 Whether to show the detailed result in web interface.
-
-### 3. CLI
-
-The [homepage](https://docs.python.org/3/howto/argparse.html) for `argparse`.
-
-The available attributes can be found at their homepage.
-
-* `-l` or `--link` Cogitate a repo by the url of the repo.
-* `-t` or `--token` Github user token.
-* `-r` or `--repo` User's repository.
-* `-rm` `-runmerge` (y/n). 
-* `-s` or `--state` State of the issue.
 
 ### 4. PyDriller
 
