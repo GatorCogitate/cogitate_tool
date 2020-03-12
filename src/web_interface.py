@@ -122,32 +122,18 @@ def graph_types_of_files():
     """Graph to output types of files modified for web interface."""
     st.title("Types of Files Modified by an Individual")
 
-    df = pd.DataFrame(
-        {
-            "types of files modified": ["src", "tests", "scripts"],
-            "Christian Lussier": [0.330, 4.87, 5.97],
-            "Cory Wiard": [0.430, 5.87, 4.97],
-            "Devin Spitalny": [0.230, 3.87, 6.97],
-            "Devin Ho": [0.450, 5.77, 4.97],
-            "Jordan Wilson": [0.207, 9.87, 3.97],
-            "Danny Reid": [0.760, 43.12, 3.97],
-            "Anthony Baldeosingh": [0.210, 4.96, 2.17],
-            "Xingbang Liu": [0.324, 6.87, 2.97],
-        }
-    )  # create dataframe with sample data for files modified
+    updated_dict = data_processor.add_new_metrics(dict)
 
-    df = df.rename(columns={"types of files modified": "index"}).set_index("index")
-
-    df  # display chart for types of files modified
+    df = (pd.DataFrame.from_dict(updated_dict, orient='index').T)
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
 
-    plot = df.plot.pie(
-        y="types of files modified", figsize=(5, 5)
-    )  # display graph for types of files modified
+    st.bar_chart(df[columns][8:9])  # display dataframe/graph that vizualizes commit info
 
+
+    edited_dict = data_processor.individual_contribution(updated_dict)
 
 def graph_overall_contribution():
     """Graphs an individuals overall contribution for web interface."""
