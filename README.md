@@ -124,16 +124,16 @@ Therefore, people are less likely to duplicate your work.
 
 **An issue is usually opened under the following circumstances:**
 
-* Reporting an error you can’t solve yourself.
-* Discussing a high-level topic.
-* Proposing a new feature or necessary change.
+- Reporting an error you can’t solve yourself.
+- Discussing a high-level topic.
+- Proposing a new feature or necessary change.
 
 **Tips for effective communication:**
 
-* Keep requests short and direct.
-* Give context.
-* Ask questions.
-* Respect decisions.
+- Keep requests short and direct.
+- Give context.
+- Ask questions.
+- Respect decisions.
 
 **Pull Request Process**
 
