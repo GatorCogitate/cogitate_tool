@@ -96,8 +96,8 @@ def retrieve_arguments():
         "--state",
         required=False,
         type=str,
-        default="both",
-        help="State of the Issue, open or closed",
+        default="all",
+        help="State of the Issue; open, closed, or all",
     )
     a_parse.add_argument(
         "-w",
