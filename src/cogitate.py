@@ -180,5 +180,5 @@ def bool_validator(bool_str):
 
 
 if __name__ == "__main__":
-    args = retrieve_arguments()
-    main(args)
+    args_content = retrieve_arguments()
+    main(args_content)
