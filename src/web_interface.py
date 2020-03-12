@@ -8,6 +8,7 @@ import data_collection
 import data_processor
 import json_handler
 
+
 def web_interface():
     """Execute the web interface."""
 
@@ -16,9 +17,7 @@ def web_interface():
     repo = "GatorIncubator/petition-pronto"
     repository = data_collection.authenticate_repository(token, repo)
     # Populate json file
-    data_collection.collect_and_add_raw_data_to_json(
-        link, "raw_data_storage"
-    )
+    data_collection.collect_and_add_raw_data_to_json(link, "raw_data_storage")
     # allows the user to enter the merge while loop if they specified to
     data_collection.collect_and_add_individual_metrics_to_json()
     # calculate metrics to be used for team evaluation
@@ -26,7 +25,9 @@ def web_interface():
 
     ISSUE_DATA = {}
     ISSUE_DATA = data_collection.retrieve_issue_data(repository, "all", ISSUE_DATA)
-    DATA = data_collection.merge_metric_and_issue_dicts(individual_metrics_dict, ISSUE_DATA)
+    DATA = data_collection.merge_metric_and_issue_dicts(
+        individual_metrics_dict, ISSUE_DATA
+    )
 
     # Sidebar menu options:
     add_selectbox = st.sidebar.selectbox(
@@ -95,13 +96,15 @@ def graph_commits_by_individual(dict):
 
     updated_dict = data_processor.add_new_metrics(dict)
     print(updated_dict)
-    df = (pd.DataFrame.from_dict(updated_dict, orient='index').T)
+    df = pd.DataFrame.from_dict(updated_dict, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
 
-    st.bar_chart(df[columns][1:2])  # display dataframe/graph that vizualizes commit info
+    st.bar_chart(
+        df[columns][1:2]
+    )  # display dataframe/graph that vizualizes commit info
 
 
 def graph_lines_of_code(dict):
@@ -111,16 +114,18 @@ def graph_lines_of_code(dict):
     )  # dispaly relevant title for dataframe
     updated_dict = data_processor.add_new_metrics(dict)
 
-    df = (pd.DataFrame.from_dict(updated_dict, orient='index').T)
+    df = pd.DataFrame.from_dict(updated_dict, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
 
-    st.bar_chart(df[columns][2:5])  # display dataframe/graph that vizualizes commit info
-
+    st.bar_chart(
+        df[columns][2:5]
+    )  # display dataframe/graph that vizualizes commit info
 
     edited_dict = data_processor.individual_contribution(updated_dict)
+
 
 def graph_types_of_files(dict):
     """Graph to output types of files modified for web interface."""
@@ -128,16 +133,18 @@ def graph_types_of_files(dict):
 
     updated_dict = data_processor.add_new_metrics(dict)
 
-    df = (pd.DataFrame.from_dict(updated_dict, orient='index').T)
+    df = pd.DataFrame.from_dict(updated_dict, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
 
-    st.bar_chart(df[columns][8:9])  # display dataframe/graph that vizualizes commit info
-
+    st.bar_chart(
+        df[columns][8:9]
+    )  # display dataframe/graph that vizualizes commit info
 
     edited_dict = data_processor.individual_contribution(updated_dict)
+
 
 def graph_overall_contribution():
     """Graphs an individuals overall contribution for web interface."""
@@ -174,7 +181,7 @@ def graph_issues(dict):
 
     updated_dict = data_processor.add_new_metrics(dict)
 
-    df = (pd.DataFrame.from_dict(updated_dict, orient='index').T)
+    df = pd.DataFrame.from_dict(updated_dict, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -186,7 +193,10 @@ def graph_issues(dict):
         issues_opened = len(df[name][10])
         df[name][10] = issues_opened
 
-    st.bar_chart(df[columns][9:11])  # display dataframe/graph that vizualizes commit info
+    st.bar_chart(
+        df[columns][9:11]
+    )  # display dataframe/graph that vizualizes commit info
+
 
 def graph_pull_request(dict):
     """Pull Requests Contributed To By An Individual."""
@@ -194,7 +204,7 @@ def graph_pull_request(dict):
 
     updated_dict = data_processor.add_new_metrics(dict)
 
-    df = (pd.DataFrame.from_dict(updated_dict, orient='index').T)
+    df = pd.DataFrame.from_dict(updated_dict, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -204,19 +214,24 @@ def graph_pull_request(dict):
         df[name][11] = prs_commented
         prs_opened = len(df[name][12])
         df[name][12] = prs_opened
-    st.bar_chart(df[columns][11:13])  # display dataframe/graph that vizualizes commit info
+    st.bar_chart(
+        df[columns][11:13]
+    )  # display dataframe/graph that vizualizes commit info
 
 
 def graph_test_contributions(dict):
     """Graph test contributions for web interface."""
     st.title("Team Members Who Contribute Source Code Without Tests")
     updated_dict = data_processor.add_new_metrics(dict)
-    df = (pd.DataFrame.from_dict(updated_dict, orient='index').T)
+    df = pd.DataFrame.from_dict(updated_dict, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
-    st.bar_chart(df[columns][13:15])  # display dataframe/graph that vizualizes commit info
+    st.bar_chart(
+        df[columns][13:15]
+    )  # display dataframe/graph that vizualizes commit info
+
 
 def graph_code_churn():
     """Graph code churn for web interface."""
