@@ -114,13 +114,13 @@ order to use the tool:
 
 1. Click your profile icon on GitHub and then click Settings.
 
-2. On the sidebar, click the Developer settings and then Personal access tokens.
+1. On the sidebar, click the Developer settings and then Personal access tokens.
 
-3. Click Generate new token.
+1. Click Generate new token.
 
-4. Add a token description and click Generate token.
+1. Add a token description and click Generate token.
 
-5. Save the token for future use.
+1. Save the token for future use.
 
 Do note that for security reasons, you will not be able to see the token again
 once logged off.
