@@ -40,7 +40,7 @@ def main(args):
         # allows the user to enter the merge while loop if they specified to
         data_collection.collect_and_add_individual_metrics_to_json()
         # calculate metrics to be used for team evaluation
-        dict = data_collection.calculate_individual_metrics()
+        individual_metrics_dict = data_collection.calculate_individual_metrics()
         data_processor.iterate_nested_dictionary(dict)
         # calculate team score
         # data_processor.calculate_team_score(dict, args["below"], args["above"], args["within"])
