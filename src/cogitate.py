@@ -13,7 +13,12 @@ import data_processor
 
 def main(args):
     """Execute the CLI."""
-
+    if args["testwithprintargs"] == "y":
+        for key, value in args.items():
+            print(key, "-", value)
+        return
+    else:
+        pass
     # Currently only validates the PyGithub repository
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
     if not repository:
@@ -115,6 +120,14 @@ def retrieve_arguments():
         type=str,
         default="both",
         help="Invokes calculation of team or individual metrics. If not specified, both are run.",
+    )
+    a_parse.add_argument(
+        "-twpa",
+        "--testwithprintargs",
+        required=False,
+        type=str,
+        default="n",
+        help="To be used ONLY for testing purposes. Prints the args{} dict and closes program",
     )
 
     # add arguments for below/above/within weight
