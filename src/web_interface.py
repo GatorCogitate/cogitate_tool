@@ -12,7 +12,7 @@ def web_interface():
     """Execute the web interface."""
 
     link = "https://github.com/lussierc/lussiercLaTeXResume"
-    token = "0abec51ed0fd75a8f976f523a8fc7fd01e651091"
+    token = "21299f92f4b7bdf3e612fce45499b2d1b204bb90"
     repo = "lussierc/lussiercLaTeXResume"
     repository = data_collection.authenticate_repository(token, repo)
     print("1")
@@ -223,10 +223,10 @@ def graph_test_contributions(dict):
     """Graph test contributions for web interface."""
     st.title("Team Members Who Contribute Source Code Without Tests")
     updated_dict = data_processor.add_new_metrics(dict)
-    df = (pd.DataFrame.from_dict(updated_dict, orient=‘index’).T)
+    df = (pd.DataFrame.from_dict(updated_dict, orient='index').T)
 
     columns = st.multiselect(
-    label=“Enter the names of specific contributors below:“, options=df.columns
+        label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
     st.bar_chart(df[columns][13:15])  # display dataframe/graph that vizualizes commit info
 
