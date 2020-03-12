@@ -228,7 +228,7 @@ def graph_test_contributions(dict):
     columns = st.multiselect(
     label=“Enter the names of specific contributors below:“, options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
-
+    st.bar_chart(df[columns][13:15])  # display dataframe/graph that vizualizes commit info
 
 def graph_code_churn():
     """Graph code churn for web interface."""
