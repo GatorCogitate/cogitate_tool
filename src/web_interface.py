@@ -222,6 +222,7 @@ def graph_code_hoarders():
 def graph_test_contributions(dict):
     """Graph test contributions for web interface."""
     st.title("Team Members Who Contribute Source Code Without Tests")
+    updated_dict = data_processor.add_new_metrics(dict)
     df = pd.DataFrame(
         {
             "date": ["10/1/2019", "10/2/2019", "10/3/2019", "10/4/2019"],
