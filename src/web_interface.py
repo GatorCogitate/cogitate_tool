@@ -290,14 +290,14 @@ def graph_unable_to_contribute():
     df = pd.DataFrame(
         {
             "type": ["Unable To Contribute"],
-            "Christian Lussier": [yes],
-            "Cory Wiard": [no],
-            "Devin Spitalny": [yes],
-            "Devin Ho": [no],
-            "Jordan Wilson": [yes],
-            "Danny Reid": [no],
-            "Anthony Baldeosingh": [no],
-            "Xingbang Liu": [yes],
+            "Christian Lussier": [1],
+            "Cory Wiard": [1],
+            "Devin Spitalny": [1],
+            "Devin Ho": [2],
+            "Jordan Wilson": [1],
+            "Danny Reid": [1],
+            "Anthony Baldeosingh": [2],
+            "Xingbang Liu": [1],
         }
     )  # create dataframe with sample dates and contributor commit numbers
 
