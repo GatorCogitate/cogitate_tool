@@ -85,7 +85,7 @@ def retrieve_arguments():
         "-a", "--above", required=True, type=float, help="Determines higher weight.",
     )
     a_parse.add_argument(
-        "-w",
+        "-wi",
         "--within",
         required=True,
         type=float,
