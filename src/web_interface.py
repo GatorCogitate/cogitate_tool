@@ -52,7 +52,7 @@ def web_interface():
         graph_lines_of_code(individual_metrics_dict)
     ################### Feature 3 ###################
     # What types of files did an individual normally modify in a repository?
-    elif add_selectbox == "What Types of Files did an Individual":
+    elif add_selectbox == "Types of Files Modified by an Individual":
         graph_types_of_files(individual_metrics_dict)
     ################### Feature 4 ###################
     # What is the overall score for an individual’s contribution to a team project?
