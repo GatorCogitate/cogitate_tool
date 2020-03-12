@@ -139,13 +139,13 @@ The repo is the targeted repository name. It includes the root part and the
 name part. The root part is the username or organization name. The name part is
 the actual name of the repository. In our case, it would be `GatorCogitate/cogitate_tool`
 
-##### End Merge
+##### Run Merge
 
 * Datatype: String
 * Required: True
 * Flag: `-rm` or `--runmerge`
 
-
+Determines if the merge process will be run, based on the user's input.
 
 ##### Below
 
@@ -187,7 +187,8 @@ State of the Issue, open or closed.
 * Default: False
 * Flag: `-w` or `--web`
 
-Whether to show the detailed result in web interface.
+Determines if the detailed results of the tool's calculations will be shown in
+the web interface, based on the user's input.
 
 ##### Metric
 
