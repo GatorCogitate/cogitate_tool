@@ -41,16 +41,16 @@ def main(args):
         data_collection.collect_and_add_individual_metrics_to_json()
         # calculate metrics to be used for team evaluation
         individual_metrics_dict = data_collection.calculate_individual_metrics()
-        data_processor.iterate_nested_dictionary(dict)
+        data_processor.iterate_nested_dictionary(individual_metrics_dict)
         # calculate team score
-        # data_processor.calculate_team_score(dict, args["below"], args["above"], args["within"])
+        # data_processor.calculate_team_score(individual_metrics_dict, args["below"], args["above"], args["within"])
         if args["metrics"] in ["i", "individual"]:
-            individual(dict, args)
+            individual(individual_metrics_dict, args)
         elif args["metrics"] in ["t", "team"]:
-            team(dict, args)
+            team(individual_metrics_dict, args)
         elif args["metrics"] == "both":
-            team(dict, args)
-            individual(dict, args)
+            team(individual_metrics_dict, args)
+            individual(individual_metrics_dict, args)
         else:
             print("unknown value given for '-m' '--metric' in command line arguments")
             return
@@ -140,17 +140,17 @@ def retrieve_arguments():
     return args
 
 
-def team(dict, args):
+def team(individual_metrics_dict, args):
     """Call all team-based funtions."""
     data_processor.calculate_team_score(
-        dict, args["below"], args["above"], args["within"]
+        individual_metrics_dict, args["below"], args["above"], args["within"]
     )
-    print(pd.DataFrame.from_dict(dict).T)
+    print(pd.DataFrame.from_dict(individual_metrics_dict).T)
 
 
-def individual(dict, args):
+def individual(individual_metrics_dict, args):
     """Call all individual-based funtions."""
-    updated_dict = data_processor.add_new_metrics(dict)
+    updated_dict = data_processor.add_new_metrics(individual_metrics_dict)
     edited_dict = data_processor.individual_contribution(updated_dict)
     print(pd.DataFrame.from_dict(edited_dict).T)
 
