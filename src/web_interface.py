@@ -4,10 +4,26 @@ import argparse
 import streamlit as st
 import numpy as np
 import pandas as pd
-
+import data_collection
+import data_processor
+import json_handler
 
 def web_interface():
     """Execute the web interface."""
+
+    link = "https://github.com/lussierc/lussiercLaTeXResume"
+    token = "0abec51ed0fd75a8f976f523a8fc7fd01e651091"
+    repo = "lussierc/lussiercLaTeXResume"
+    repository = data_collection.authenticate_repository(token, repo)
+    print("1")
+    # Populate json file
+    data_collection.collect_and_add_raw_data_to_json(
+        link, "raw_data_storage"
+    )
+    # allows the user to enter the merge while loop if they specified to
+    data_collection.collect_and_add_individual_metrics_to_json()
+    # calculate metrics to be used for team evaluation
+    individual_metrics_dict = data_collection.calculate_individual_metrics()
 
     # Sidebar menu options:
     add_selectbox = st.sidebar.selectbox(
@@ -29,7 +45,7 @@ def web_interface():
     ################### Feature 1 ###################
     # How many commits did an individual make to a GitHub repository?
     if add_selectbox == "Commits By An Individual":
-        graph_commits_by_individual()
+        graph_commits_by_individual(individual_metrics_dict)
     ################### Feature 2 ###################
     # How many lines of code did an individual add, modify, and delete?
     elif add_selectbox == "Lines of Code Added, Modified, Deleted by an Individual":
@@ -70,33 +86,30 @@ def web_interface():
         pass
 
 
-def graph_commits_by_individual():
+def graph_commits_by_individual(dict):
     """Graph commit information by individuals for web interface."""
     st.title("Commit Information")  # dispaly relevant title for dataframe
 
-    df = pd.DataFrame(
-        {
-            "date": ["10/1/2019", "10/2/2019", "10/3/2019", "10/4/2019"],
-            "Christian Lussier": [8, 5, 9, 3],
-            "Cory Wiard": [5, 9, 3, 5],
-            "Devin Spitalny": [2, 5, 7, 3],
-            "Devin Ho": [8, 9, 2, 1],
-            "Jordan Wilson": [5, 9, 3, 8],
-            "Danny Reid": [5, 4, 3, 5],
-            "Anthony Baldeosingh": [1, 2, 1, 2],
-            "Xingbang Liu": [6, 9, 4, 7],
-        }
-    )  # create dataframe with sample dates and contributor commit numbers
+    updated_dict = data_processor.add_new_metrics(dict)
+    print(updated_dict)
 
-    df = df.rename(columns={"date": "index"}).set_index("index")  # set date as index
+    df = (pd.DataFrame.from_dict(updated_dict, orient='index').T)
 
-    df  # display chart of sample commits
+    # for k in updated_dict.keys():
+    #     print("KEYER   ", k)
+    # # print("\n\n\nDF")
+    # # print(df)
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
 
-    st.line_chart(df[columns])  # display dataframe/graph that vizualizes commit info
+    # print("COLUMNS:", columns)
+    # print("COMMITS: \t",df["COMMITS"])
+    st.bar_chart(df[columns][1:2])  # display dataframe/graph that vizualizes commit info
+
+
+    edited_dict = data_processor.individual_contribution(updated_dict)
 
 
 def graph_lines_of_code():
