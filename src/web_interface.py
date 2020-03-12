@@ -12,7 +12,7 @@ def web_interface():
     """Execute the web interface."""
 
     link = "https://github.com/lussierc/lussiercLaTeXResume"
-    token = "21299f92f4b7bdf3e612fce45499b2d1b204bb90"
+    token = "5ed034ab88d30ffce215e103a061045efb0c00fb"
     repo = "lussierc/lussiercLaTeXResume"
     repository = data_collection.authenticate_repository(token, repo)
     print("1")
@@ -33,7 +33,7 @@ def web_interface():
             "Lines of Code Added, Modified, Deleted by an Individual",
             "Types of Files Modified by an Individual",
             "Overall Contribution Score To Team Project by an Individual",
-            "Collaboration Tendencies of Individuals",
+            "Issues Contributed To By An Individual",
             "Team Members Who Are Code Hoarders",
             "Team Members Who Contribute Source Code Without Tests",
             "Team Members Who Contribute To High Code Churn",
@@ -60,8 +60,8 @@ def web_interface():
         graph_overall_contribution()
     ################### Feature 5 ###################
     # Are there individuals who collaborate together too frequently or not enough?
-    if add_selectbox == "Collaboration Tendencies of Individuals":
-        graph_collaboration_tendencies()
+    if add_selectbox == "Issues Contributed To By An Individual":
+        graph_issues()
     ################### Feature 6 ###################
     # Are there team members who are “code hoarders” or “domain experts”?
     elif add_selectbox == "Team Members Who Are Code Hoarders":
@@ -164,9 +164,9 @@ def graph_overall_contribution():
     st.line_chart(df[columns])  # display dataframe/graph that vizualizes commit info
 
 
-def graph_collaboration_tendencies():
-    """Graphs the collaboration tendencies of individuals for web interface."""
-    st.title("Collaboration Tendencies of Individuals")  # disp`aly relevant
+def graph_issues():
+    """Graphs the issues modified of individuals for web interface."""
+    st.title("Issues Contributed To")  # disp`aly relevant
     df = pd.DataFrame(
         {
             "date": ["1/1/2020", "1/2/2020", "1/3/2020", "10/4/2020"],
