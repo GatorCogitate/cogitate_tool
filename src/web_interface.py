@@ -69,7 +69,7 @@ def web_interface():
     ################### Feature 7 ###################
     # Are there team members who contribute source code without also adding test cases?
     elif add_selectbox == "Team Members Who Contribute Source Code Without Tests":
-        graph_test_contributions()
+        graph_test_contributions(individual_metrics_dict)
     ################### Feature 8 ###################
     # Are there team members who break the build or contribute to unusually high code churn?
     elif add_selectbox == "Team Members Who Contribute To High Code Churn":
@@ -219,7 +219,7 @@ def graph_code_hoarders():
     st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
 
 
-def graph_test_contributions():
+def graph_test_contributions(dict):
     """Graph test contributions for web interface."""
     st.title("Team Members Who Contribute Source Code Without Tests")
     df = pd.DataFrame(
