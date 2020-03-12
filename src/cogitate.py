@@ -43,7 +43,8 @@ def main(args):
         individual_metrics_dict = data_collection.calculate_individual_metrics()
         data_processor.iterate_nested_dictionary(individual_metrics_dict)
         # calculate team score
-        # data_processor.calculate_team_score(individual_metrics_dict, args["below"], args["above"], args["within"])
+        # data_processor.calculate_team_score(
+        # individual_metrics_dict, args["below"], args["above"], args["within"])
         if args["metrics"] in ["i", "individual"]:
             individual(individual_metrics_dict, args)
         elif args["metrics"] in ["t", "team"]:
@@ -164,6 +165,8 @@ def individual(individual_metrics_dict, args):
     updated_dict = data_processor.add_new_metrics(individual_metrics_dict)
     edited_dict = data_processor.individual_contribution(updated_dict)
     print(pd.DataFrame.from_dict(edited_dict).T)
+    # place holder for pylint
+    print(args)
 
 
 def link_validator(url_str):
