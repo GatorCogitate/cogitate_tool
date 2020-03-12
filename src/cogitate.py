@@ -40,8 +40,8 @@ def main(args):
         elif args["metric"] == "individual":
             individual(dict)
         elif args["metric"] == "both":
-            new = team(dict)
-            individual(new)
+            new = individual(dict)
+            team(new)
 
 
 def retrieve_arguments():
@@ -129,12 +129,11 @@ def retrieve_arguments():
 
 def team(dict):
     """Call all team-based funtions."""
-    new_dict = data_processor.calculate_team_score(
+    team_score = data_processor.calculate_team_score(
         dict, args["below"], args["above"], args["within"]
     )
-    updated = data_processor.add_new_metrics(new_dict)
-    print(pd.DataFrame.from_dict(updated).T)
-    return updated
+    print(team_score)
+    return team_score
 
 
 def individual(dict):
