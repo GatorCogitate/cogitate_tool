@@ -37,7 +37,7 @@ def web_interface():
             "Types of Files Modified by an Individual",
             "Overall Contribution Score To Team Project by an Individual",
             "Issues Contributed To By An Individual",
-            "Team Members Who Are Code Hoarders",
+            "Pull Requests Contributed To By An Individual",
             "Team Members Who Contribute Source Code Without Tests",
             "Team Members Who Contribute To High Code Churn",
             "Team Members Who Frequently Fix The Build",
@@ -67,8 +67,8 @@ def web_interface():
         graph_issues(individual_metrics_dict)
     ################### Feature 6 ###################
     # Are there team members who are “code hoarders” or “domain experts”?
-    elif add_selectbox == "Team Members Who Are Code Hoarders":
-        graph_code_hoarders()
+elif add_selectbox == "Pull Requests Contributed To By An Individual":
+        graph_pull_request(individual_metrics_dict)
     ################### Feature 7 ###################
     # Are there team members who contribute source code without also adding test cases?
     elif add_selectbox == "Team Members Who Contribute Source Code Without Tests":
@@ -189,7 +189,7 @@ def graph_issues(dict):
     st.bar_chart(df[columns][9:11])  # display dataframe/graph that vizualizes commit info
 
 def graph_pull_request(dict):
-    """Graph what team members are code hoarders for web interface."""
+    """Pull Requests Contributed To By An Individual."""
     st.title("Pull Requests Contributed to By An Individual")
 
 
