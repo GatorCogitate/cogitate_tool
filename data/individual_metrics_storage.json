@@ -1,3 +1,45 @@
 {
-
+    "Christian Lussier": {
+        "EMAIL": "32375724+lussierc@users.noreply.github.com",
+        "COMMITS": 2,
+        "ADDED": 3,
+        "REMOVED": 1,
+        "TOTAL": 0,
+        "MODIFIED": 0,
+        "RATIO": 0,
+        "FILES": [
+            "README.md"
+        ],
+        "FORMAT": [],
+        "issues_commented": [],
+        "issues_opened": [],
+        "pull_requests_commented": [],
+        "pull_requests_opened": [],
+        "COMMITS_TO_TESTING": 0,
+        "COMMITS_ELSEWHERE": 2
+    },
+    "clussier": {
+        "EMAIL": "lussierc@allegheny.edu",
+        "COMMITS": 32,
+        "ADDED": 249,
+        "REMOVED": 127,
+        "TOTAL": 0,
+        "MODIFIED": 0,
+        "RATIO": 0,
+        "FILES": [
+            ".DS_Store",
+            "README.md",
+            "Resume.pdf",
+            "Resume.synctex.gz",
+            "Resume.tex",
+            "resPic.png"
+        ],
+        "FORMAT": [],
+        "issues_commented": [],
+        "issues_opened": [],
+        "pull_requests_commented": [],
+        "pull_requests_opened": [],
+        "COMMITS_TO_TESTING": 0,
+        "COMMITS_ELSEWHERE": 32
+    }
 }

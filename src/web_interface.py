@@ -4,79 +4,109 @@ import argparse
 import streamlit as st
 import numpy as np
 import pandas as pd
-
+import data_collection
+import json_handler
 
 def web_interface():
     """Execute the web interface."""
-
-    # Sidebar menu options:
-    add_selectbox = st.sidebar.selectbox(
-        "What feature would you like to view?",
-        (
-            "Commits By An Individual",
-            "Lines of Code Added, Modified, Deleted by an Individual",
-            "Types of Files Modified by an Individual",
-            "Overall Contribution Score To Team Project by an Individual",
-            "Collaboration Tendencies of Individuals",
-            "Team Members Who Are Code Hoarders",
-            "Team Members Who Contribute Source Code Without Tests",
-            "Team Members Who Contribute To High Code Churn",
-            "Team Members Who Frequently Fix The Build",
-            "Team Members Who Are Unable To Contribute",
-        ),
+    link = "https://github.com/lussierc/lussiercLaTeXResume"
+    token = "726eef5d5fef42737eb721a841dc063d8b087c3a"
+    repo = "lussierc/lussiercLaTeXResume"
+    repository = data_collection.authenticate_repository(token, repo)
+    print("1")
+    # Populate json file
+    data_collection.collect_and_add_raw_data_to_json(
+        link, "raw_data_storage"
     )
+    print("2")
+    # allows the user to enter the merge while loop if they specified to
+    data_collection.collect_and_add_individual_metrics_to_json()
+    print("3")
+    # calculate metrics to be used for team evaluation
+    dict = data_collection.calculate_individual_metrics()
+    print(pd.DataFrame.from_dict(dict).T)
+    print("4")
+    #a_dict = data_processor.iterate_nested_dictionary(dict)
+    print("5")
+    # calculate team score
+    # data_processor.calculate_team_score(dict, args["below"], args["above"], args["within"])
+    updated_dict = data_processor.add_new_metrics(dict)
+    print("6")
+    edited_dict = data_processor.individual_contribution(updated_dict)
+    print("7")
+    print(pd.DataFrame.from_dict(edited_dict).T)
+    graph_commits_by_individual(dict)
+    # # Sidebar menu options:
+    # add_selectbox = st.sidebar.selectbox(
+    #     "What feature would you like to view?",
+    #     (
+    #         "Commits By An Individual",
+    #         "Lines of Code Added, Modified, Deleted by an Individual",
+    #         "Types of Files Modified by an Individual",
+    #         "Overall Contribution Score To Team Project by an Individual",
+    #         "Collaboration Tendencies of Individuals",
+    #         "Team Members Who Are Code Hoarders",
+    #         "Team Members Who Contribute Source Code Without Tests",
+    #         "Team Members Who Contribute To High Code Churn",
+    #         "Team Members Who Frequently Fix The Build",
+    #         "Team Members Who Are Unable To Contribute",
+    #     ),
+    # )
+    #
+    # ################### Feature 1 ###################
+    # # How many commits did an individual make to a GitHub repository?
+    # if add_selectbox == "Commits By An Individual":
+    #     graph_commits_by_individual(dict)
+    # ################### Feature 2 ###################
+    # # How many lines of code did an individual add, modify, and delete?
+    # elif add_selectbox == "Lines of Code Added, Modified, Deleted by an Individual":
+    #     graph_lines_of_code()
+    # ################### Feature 3 ###################
+    # # What types of files did an individual normally modify in a repository?
+    # elif add_selectbox == "What Types of Files did an Individual":
+    #     graph_types_of_files()
+    # ################### Feature 4 ###################
+    # # What is the overall score for an individual’s contribution to a team project?
+    # elif add_selectbox == "An individuals overall contribution to a team or project":
+    #     graph_overall_contribution()
+    # ################### Feature 5 ###################
+    # # Are there individuals who collaborate together too frequently or not enough?
+    # if add_selectbox == "Collaboration Tendencies of Individuals":
+    #     graph_collaboration_tendencies()
+    # ################### Feature 6 ###################
+    # # Are there team members who are “code hoarders” or “domain experts”?
+    # elif add_selectbox == "Team Members Who Are Code Hoarders":
+    #     graph_code_hoarders()
+    # ################### Feature 7 ###################
+    # # Are there team members who contribute source code without also adding test cases?
+    # elif add_selectbox == "Team Members Who Contribute Source Code Without Tests":
+    #     graph_test_contributions()
+    # ################### Feature 8 ###################
+    # # Are there team members who break the build or contribute to unusually high code churn?
+    # elif add_selectbox == "Team Members Who Contribute To High Code Churn":
+    #     graph_code_churn()
+    # ################### Feature 9 ###################
+    # # Are there team members who frequently fix the build right before merging a PR to master?
+    # elif add_selectbox == "Team Members Who Frequently Fix The Build":
+    #     graph_build_fix_rate()
+    # ################### Feature 10 ###################
+    # # Are there team members who are unable to contribute or who seem stuck on finishing a task?
+    # elif add_selectbox == "Team Members Who Are Unable To Contribute":
+    #     graph_unable_to_contribute()
+    # else:
+    #     pass
 
-    ################### Feature 1 ###################
-    # How many commits did an individual make to a GitHub repository?
-    if add_selectbox == "Commits By An Individual":
-        graph_commits_by_individual()
-    ################### Feature 2 ###################
-    # How many lines of code did an individual add, modify, and delete?
-    elif add_selectbox == "Lines of Code Added, Modified, Deleted by an Individual":
-        graph_lines_of_code()
-    ################### Feature 3 ###################
-    # What types of files did an individual normally modify in a repository?
-    elif add_selectbox == "What Types of Files did an Individual":
-        graph_types_of_files()
-    ################### Feature 4 ###################
-    # What is the overall score for an individual’s contribution to a team project?
-    elif add_selectbox == "An individuals overall contribution to a team or project":
-        graph_overall_contribution()
-    ################### Feature 5 ###################
-    # Are there individuals who collaborate together too frequently or not enough?
-    if add_selectbox == "Collaboration Tendencies of Individuals":
-        graph_collaboration_tendencies()
-    ################### Feature 6 ###################
-    # Are there team members who are “code hoarders” or “domain experts”?
-    elif add_selectbox == "Team Members Who Are Code Hoarders":
-        graph_code_hoarders()
-    ################### Feature 7 ###################
-    # Are there team members who contribute source code without also adding test cases?
-    elif add_selectbox == "Team Members Who Contribute Source Code Without Tests":
-        graph_test_contributions()
-    ################### Feature 8 ###################
-    # Are there team members who break the build or contribute to unusually high code churn?
-    elif add_selectbox == "Team Members Who Contribute To High Code Churn":
-        graph_code_churn()
-    ################### Feature 9 ###################
-    # Are there team members who frequently fix the build right before merging a PR to master?
-    elif add_selectbox == "Team Members Who Frequently Fix The Build":
-        graph_build_fix_rate()
-    ################### Feature 10 ###################
-    # Are there team members who are unable to contribute or who seem stuck on finishing a task?
-    elif add_selectbox == "Team Members Who Are Unable To Contribute":
-        graph_unable_to_contribute()
-    else:
-        pass
 
-
-def graph_commits_by_individual():
+def graph_commits_by_individual(dict):
     """Graph commit information by individuals for web interface."""
     st.title("Commit Information")  # dispaly relevant title for dataframe
+    print("testfucking")
+    updated_dict = data_processor.add_new_metrics(dict)
+    edited_dict = data_processor.individual_contribution(updated_dict)
+    print(pd.DataFrame.from_dict(edited_dict).T)
 
     df = pd.DataFrame(
         {
-            "date": ["10/1/2019", "10/2/2019", "10/3/2019", "10/4/2019"],
             "Christian Lussier": [8, 5, 9, 3],
             "Cory Wiard": [5, 9, 3, 5],
             "Devin Spitalny": [2, 5, 7, 3],
@@ -96,7 +126,7 @@ def graph_commits_by_individual():
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
 
-    st.line_chart(df[columns])  # display dataframe/graph that vizualizes commit info
+    st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
 
 
 def graph_lines_of_code():

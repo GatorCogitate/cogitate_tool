@@ -1,3 +1,758 @@
 {
-  
+    "RAW_DATA": [
+        {
+            "hash": "07e08dc63a8204d130002507d67c22d3d401ca83",
+            "author_msg": "Initial commit",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 0,
+            "lines_of_code": 1,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "README.md"
+            ],
+            "filepath": [
+                "README.md"
+            ]
+        },
+        {
+            "hash": "889e76013e2826f067953f8481fafdd24cf2a246",
+            "author_msg": "Adding first version of my resume.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 95,
+            "line_removed": 1,
+            "lines_of_code": 658,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                ".DS_Store",
+                "README.md",
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                ".DS_Store",
+                "README.md",
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "5d545a825fdb2822146e1387f683813ffbde160f",
+            "author_msg": "Added comments in code to better organize the sections.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 16,
+            "line_removed": 7,
+            "lines_of_code": 675,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "f5967dbf3dd969cb4d799ac4b43ca0b92801b3e7",
+            "author_msg": "Added comments in code regarding header.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 3,
+            "line_removed": 0,
+            "lines_of_code": 655,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "51d3ba2122791934cae87b520dc228f9e25aced8",
+            "author_msg": "Updated writing in summary section.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 1,
+            "lines_of_code": 524,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "dad2601dc64260e675d443d7d3433490aad15e3d",
+            "author_msg": "Added comments to code for individual sections.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 8,
+            "line_removed": 16,
+            "lines_of_code": 660,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "3b444ad4b451d926e29b5a7fe8e58fa3f91ca15f",
+            "author_msg": "Added some projects to projects section of my resume.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 3,
+            "lines_of_code": 679,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "a7e91991263b57296e6153587c52b55dd10443a6",
+            "author_msg": "Moved the education section to the top of the page.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 12,
+            "line_removed": 12,
+            "lines_of_code": 749,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "6fda4fbc0475a66634df252740500f03588fb687",
+            "author_msg": "Removed an item from list of interests.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 1,
+            "lines_of_code": 773,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "c8f80146072f36c6f3fb5c4f86b05de5a2d9cc11",
+            "author_msg": "Fixed a typo in interests section.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 1,
+            "lines_of_code": 777,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "26404d338a98b1603c0c628568ae805ea285c1fe",
+            "author_msg": "Fixed incorrect phone number.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 1,
+            "lines_of_code": 636,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Resume.pdf",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "3329df0e94e975f6ff30e79188736c3d12f6721c",
+            "author_msg": "Added another job & changed formatting with spacing between section headers and following line.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 7,
+            "line_removed": 7,
+            "lines_of_code": 746,
+            "complexity": 1,
+            "methods": [
+                "G"
+            ],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "1077e850c0eddfe1e0ec7a382c65505ca733e854",
+            "author_msg": "Updated the README.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 11,
+            "line_removed": 1,
+            "lines_of_code": 773,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                ".DS_Store",
+                "README.md",
+                "resPic.png"
+            ],
+            "filepath": [
+                ".DS_Store",
+                "README.md",
+                "images/resPic.png"
+            ]
+        },
+        {
+            "hash": "d7d45e6b157a4ff02450c7b135f2b44cefea5b8d",
+            "author_msg": "Removed phone number for privacy reasons.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 1,
+            "lines_of_code": 651,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                ".DS_Store",
+                "Resume.pdf",
+                "Resume.tex",
+                ".DS_Store"
+            ],
+            "filepath": [
+                ".DS_Store",
+                "Resume.pdf",
+                "Resume.tex",
+                "images/.DS_Store"
+            ]
+        },
+        {
+            "hash": "03448a054b16d791665435de3406ed175cb4aa45",
+            "author_msg": "Updated the README to reflect this change.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 4,
+            "line_removed": 1,
+            "lines_of_code": 758,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                ".DS_Store",
+                "README.md",
+                ".DS_Store",
+                "resPic.png"
+            ],
+            "filepath": [
+                ".DS_Store",
+                "README.md",
+                "images/.DS_Store",
+                "images/resPic.png"
+            ]
+        },
+        {
+            "hash": "89c17c4e1b6b96c08a7ec2e61fa5cd13ffa45f6d",
+            "author_msg": "Fixing grammatical errors in README.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 6,
+            "line_removed": 6,
+            "lines_of_code": 12,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "README.md",
+                ".DS_Store"
+            ],
+            "filepath": [
+                "README.md",
+                "images/.DS_Store"
+            ]
+        },
+        {
+            "hash": "f19fcf499c86665c668750df8ca8132ad4757755",
+            "author_msg": "Removed objective/summary section near top of page.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 2,
+            "lines_of_code": 686,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                ".DS_Store",
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                ".DS_Store",
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "f17402e0ca664b8dfb1492596d8d2d2539af227a",
+            "author_msg": "Removed high school from resume.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 2,
+            "lines_of_code": 763,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "f238131e9ac65890680fed4b0ee59a647a30a899",
+            "author_msg": "Updating website url to show my new one.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 2,
+            "lines_of_code": 603,
+            "complexity": 2,
+            "methods": [
+                "s"
+            ],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "47055c2e2a9b0087455373bde261bd1bc0a7cdcf",
+            "author_msg": "Adding comments in code to talk about information I have not disclosed in the resume's open source version.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 2,
+            "lines_of_code": 489,
+            "complexity": 2,
+            "methods": [
+                "s"
+            ],
+            "filename": [
+                "Resume.pdf",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "608f477b6585f75a976a9b40656dc044acd53ee0",
+            "author_msg": "Updating README to talk about removed elements for privacy reasons.",
+            "author_name": "Christian Lussier",
+            "author_email": "32375724+lussierc@users.noreply.github.com",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 1,
+            "lines_of_code": 10,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "README.md"
+            ],
+            "filepath": [
+                "README.md"
+            ]
+        },
+        {
+            "hash": "97c5bc490150a64de0e5e3a9d19949a56d5106f9",
+            "author_msg": "Changed formatting of the extra-curriculars section and made other minor changes.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 12,
+            "line_removed": 6,
+            "lines_of_code": 714,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "92bd280b0be56a18e89fc2daf3f92ee7b8efe65e",
+            "author_msg": "Removed large whitespace between header and education section.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 1,
+            "line_removed": 0,
+            "lines_of_code": 688,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "f954c28ff832a7dc1a980ee580e8422c746491f5",
+            "author_msg": "Changed formatting of notable projects.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": true,
+            "line_added": 0,
+            "line_removed": 0,
+            "lines_of_code": 0,
+            "complexity": 0,
+            "methods": [],
+            "filename": [],
+            "filepath": []
+        },
+        {
+            "hash": "fc5f645e64ba1478410e148d6947e95da9e7ab9d",
+            "author_msg": "Added better spacing between items in a variety of sections.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 7,
+            "line_removed": 1,
+            "lines_of_code": 725,
+            "complexity": 7,
+            "methods": [
+                "Ev"
+            ],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "305d081c441cbb3ac3a581b6c1f7cd1cea706b8c",
+            "author_msg": "Adding recent updates.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 16,
+            "line_removed": 18,
+            "lines_of_code": 737,
+            "complexity": 7,
+            "methods": [
+                "Ev"
+            ],
+            "filename": [
+                ".DS_Store",
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                ".DS_Store",
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "2c76e48639b6f45a27c334ce55922da569fa7dd4",
+            "author_msg": "Adding my second major (Economics) to the education section. Added other minor changes.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 17,
+            "line_removed": 2,
+            "lines_of_code": 727,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                ".DS_Store",
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                ".DS_Store",
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "a5b0e0ed3efa3fc4d629c69a62b982b03e775e8d",
+            "author_msg": "Removing unneeded command.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 0,
+            "line_removed": 12,
+            "lines_of_code": 679,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "10756cf874c3d5019e4606059bbdd9efd5fec32d",
+            "author_msg": "Updating wording in interests section.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 2,
+            "lines_of_code": 717,
+            "complexity": 7,
+            "methods": [
+                "Ev"
+            ],
+            "filename": [
+                ".DS_Store",
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                ".DS_Store",
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "3551332523622469ad9de70d45d66f86604d784c",
+            "author_msg": "Update header comments.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 2,
+            "lines_of_code": 761,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                ".DS_Store",
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                ".DS_Store",
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "a2cdfba1b6652df08e7e0b859d43f92e2e166058",
+            "author_msg": "Update the projects section with Data Analysis project.\n\nRemove the personal website from the Notable Projects section and replaced it with the Foodborne Illness Data Analysis project.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 2,
+            "lines_of_code": 775,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "7af21e7045ba1145a17b7d17db316f7cdffda555",
+            "author_msg": "Update projects and skills sections.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 4,
+            "line_removed": 5,
+            "lines_of_code": 646,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "48cc53f8d3c15124d9733446d56d80ae5944a036",
+            "author_msg": "Update projects section; education section.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 2,
+            "line_removed": 2,
+            "lines_of_code": 832,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                ".DS_Store",
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ],
+            "filepath": [
+                ".DS_Store",
+                "Resume.pdf",
+                "Resume.synctex.gz",
+                "Resume.tex"
+            ]
+        },
+        {
+            "hash": "a372ef144ca764cd97293c308bc72ca0cc82dabc",
+            "author_msg": "Resume updates.",
+            "author_name": "clussier",
+            "author_email": "lussierc@allegheny.edu",
+            "merge": false,
+            "line_added": 9,
+            "line_removed": 8,
+            "lines_of_code": 90,
+            "complexity": 0,
+            "methods": [],
+            "filename": [
+                "Resume.tex"
+            ],
+            "filepath": [
+                "Resume.tex"
+            ]
+        }
+    ]
 }
