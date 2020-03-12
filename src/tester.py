@@ -13,7 +13,7 @@ def web_interface():
     """Execute the web interface."""
 
     link = "https://github.com/GatorIncubator/petition-pronto"
-    token = "fa77f5d2fce4d780e68539cc987680b5626cc352"
+    token = "130bfe8bd0ed21841058282c08c1dcd4b67e234b"
     repo = "GatorIncubator/petition-pronto"
     repository = data_collection.authenticate_repository(token, repo)
     # Populate json file
@@ -29,33 +29,16 @@ def web_interface():
         individual_metrics_dict, ISSUE_DATA
     )
 
-    # Sidebar menu options:
-    add_selectbox = st.sidebar.selectbox(
-        "What feature would you like to view?",
-        (
-            "Commits By An Individual",
-            "Lines of Code Added, Modified, Deleted by an Individual",
-            "Types of Files Modified by an Individual",
-            "Overall Contribution Score To Team Project by an Individual",
-            "Issues Contributed To By An Individual",
-            "Pull Requests Contributed To By An Individual",
-            "Team Members Who Contribute Source Code Without Tests",
-            "Team Members Who Contribute To High Code Churn",
-            "Team Members Who Frequently Fix The Build",
-            "Team Members Who Are Unable To Contribute",
-        ),
-    )
 
     graph_team_score(individual_metrics_dict)
 
 def graph_team_score(dict):
     """Graphs an individuals overall contribution for web interface."""
-    st.title("An individuals overall contribution to a team or project")
 
-    team_score = data_processor.calculate_team_score(
-        dict, .75, .25, .5
-    )
-    print(team_score)
+    updated_dict = data_processor.individual_contribution(dict)
+    updated = data_processor.add_new_metrics(new_dict)
+    df = pd.DataFrame.from_dict(updated_dict, orient="index").T
+    print(df)
     #updated = data_processor.add_new_metrics(new_dict)
     #print(pd.DataFrame.from_dict(updated).T)
 
