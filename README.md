@@ -10,8 +10,8 @@ Cogitate is a free and open source tool written in Python. It is designed to
 evaluate the level of contributions for members of a GitHub repository. GatorCogitate
 generates a score for members based on a variety of metrics including:
 
-- Lines added
-- Lines removed
+- Lines Added
+- Lines Removed
 - Lines Deleted
 - Pull Requests
 - Issue Tracker
