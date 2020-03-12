@@ -111,3 +111,26 @@ The available attributes can be found at their homepage.
 ## Future Development
 
 ## Limitations of GatorCogitate
+
+## Contacting the Developers
+
+## IssueTracker
+
+The role of an issue is to starting a conversation or a discussion. Issues
+are located within the GitHub Issue tracker, which is where developers discuss
+changes or problems related to the project. If you see an open issue that you want
+to tackle, quickly comment on the issue to let others know you’re working on a solution.
+Therefore, people are less likely to duplicate your work.
+
+**An issue is usually opened under the following circumstances:**
+
+* Reporting an error you can’t solve yourself.
+* Discussing a high-level topic.
+* Proposing a new feature or necessary change.
+
+**Tips for effective communication:**
+
+* Keep requests short and direct.
+* Give context.
+* Ask questions.
+* Respect decisions.
