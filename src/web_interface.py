@@ -13,7 +13,7 @@ def web_interface():
     """Execute the web interface."""
 
     link = "https://github.com/GatorIncubator/petition-pronto"
-    token = "2788c95ae4735678528c4ef982c35034a009d5c5"
+    token = "fa77f5d2fce4d780e68539cc987680b5626cc352"
     repo = "GatorIncubator/petition-pronto"
     repository = data_collection.authenticate_repository(token, repo)
     # Populate json file
@@ -61,7 +61,7 @@ def web_interface():
     ################### Feature 4 ###################
     # What is the overall score for an individual’s contribution to a team project?
     elif add_selectbox == "An individuals overall contribution to a team or project":
-        graph_overall_contribution()
+        graph_team_score(individual_metrics_dict)
     ################### Feature 5 ###################
     # Are there individuals who collaborate together too frequently or not enough?
     if add_selectbox == "Issues Contributed To By An Individual":
@@ -146,34 +146,14 @@ def graph_types_of_files(dict):
     edited_dict = data_processor.individual_contribution(updated_dict)
 
 
-def graph_overall_contribution():
+def graph_team_score(dict):
     """Graphs an individuals overall contribution for web interface."""
-    st.title("An individuals overall contribution to a team or project")
+    st.title("Average Team Score")
 
-    df = pd.DataFrame(
-        {
-            "date": ["10/1/2019", "10/2/2019", "10/3/2019", "10/4/2019"],
-            "Christian Lussier": [7, 5, 5, 3],
-            "Cory Wiard": [2, 1, 3, 5],
-            "Devin Spitalny": [8, 1, 0, 7],
-            "Devin Ho": [9, 9, 2, 5],
-            "Jordan Wilson": [5, 9, 3, 8],
-            "Danny Reid": [1, 2, 3, 1],
-            "Anthony Baldeosingh": [7, 4, 3, 4],
-            "Xingbang Liu": [6, 6, 8, 2],
-        }
-    )  # create dataframe with sample data for files
-
-    df = df.rename(columns={"date": "index"}).set_index("index")  # set date as index
-
-    df  # display chart of sample commits
-
-    columns = st.multiselect(
-        label="Enter the names of specific contributors below:", options=df.columns
-    )  # allow users to display specific contributor information on dataframe graph
-
-    st.line_chart(df[columns])  # display dataframe/graph that vizualizes commit info
-
+    team_score = data_processor.calculate_team_score(
+        dict, .75, .25, .5
+    )
+    print(team_score)
 
 def graph_issues(dict):
     """Graphs the issues modified of individuals for web interface."""
