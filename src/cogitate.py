@@ -1,8 +1,10 @@
 """Command Line Interface for the Cogitate tool."""
 
 import argparse
+import pandas as pd
 import validators
 import data_collection
+import data_processor
 
 # **uncomment web interface import statement when the web interface is complete**
 # import web_interface
@@ -28,9 +30,23 @@ def main(args):
         data_collection.collect_and_add_raw_data_to_json(
             args["link"], "raw_data_storage.json"
         )
-        data_collection.collect_and_add_individual_metrics_to_json()
-
         # allows the user to enter the merge while loop if they specified to
+        data_collection.collect_and_add_individual_metrics_to_json()
+        # calculate metrics to be used for team evaluation
+        dict = data_collection.calculate_individual_metrics()
+        data_processor.iterate_nested_dictionary(dict)
+        # calculate team score
+        # data_processor.calculate_team_score(dict, args["below"], args["above"], args["within"])
+        if args["metrics"] in ["i", "individual"]:
+            individual(dict, args)
+        elif args["metrics"] in ["t", "team"]:
+            team(dict, args)
+        elif args["metrics"] == "both":
+            team(dict, args)
+            individual(dict, args)
+        else:
+            print("unknown value given for '-m' '--metric' in command line arguments")
+            return
 
 
 def retrieve_arguments():
@@ -63,6 +79,19 @@ def retrieve_arguments():
         help="Starts the process of merging usernames.",
     )
     a_parse.add_argument(
+        "-b", "--below", required=True, type=float, help="Determines lower weight.",
+    )
+    a_parse.add_argument(
+        "-a", "--above", required=True, type=float, help="Determines higher weight.",
+    )
+    a_parse.add_argument(
+        "-w",
+        "--within",
+        required=True,
+        type=float,
+        help="Determines value within weight.",
+    )
+    a_parse.add_argument(
         "-s",
         "--state",
         required=False,
@@ -87,18 +116,26 @@ def retrieve_arguments():
         help="Invokes calculation of team or individual metrics. If not specified, both are run.",
     )
 
+    # add arguments for below/above/within weight
+
     args = vars(a_parse.parse_args())
 
     # pprint(find_repositories(args["link"]))
     return args
 
 
-def team():
+def team(dict, args):
     """Call all team-based funtions."""
+    data_processor.calculate_team_score(
+        dict, args["below"], args["above"], args["within"]
+    )
+    print(pd.DataFrame.from_dict(dict).T)
 
 
-def individual():
-    """Call all individual functions."""
+def individual(dict, args):
+    """Call all individual-based funtions."""
+    updated_dict = data_processor.individual_contribution(dict)
+    print(pd.DataFrame.from_dict(updated_dict).T)
 
 
 def link_validator(url_str):

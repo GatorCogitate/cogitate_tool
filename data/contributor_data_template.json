@@ -1,25 +1,4 @@
 {
-    "stephensonc": {
-        "commits": [],
-        "issues_opened": [],
-        "issues_commented": [],
-        "pull_requests_opened": [],
-        "pull_requests_commented": []
-    },
-    "koscinskic": {
-        "commits": [],
-        "issues_opened": [],
-        "issues_commented": [],
-        "pull_requests_opened": [],
-        "pull_requests_commented": []
-    },
-    "schultzh": {
-        "commits": [],
-        "issues_opened": [],
-        "issues_commented": [],
-        "pull_requests_opened": [],
-        "pull_requests_commented": []
-    },
     "RAW_DATA": [
         {
             "hash": "",
@@ -50,39 +29,19 @@
             "filepath": []
         }
     ],
-    "INDIVIDUAL_METRICS": {
-        "schultzh": {
-            "EMAIL": "",
-            "COMMITS": 0,
-            "ADDED": 0,
-            "REMOVED": 0,
-            "TOTAL": 0,
-            "MODIFIED": 0,
-            "RATIO": 0,
-            "FILES": [],
-            "FORMAT": []
-        },
-        "WonjoonC": {
-            "EMAIL": "",
-            "COMMITS": 0,
-            "ADDED": 0,
-            "REMOVED": 0,
-            "TOTAL": 0,
-            "MODIFIED": 0,
-            "RATIO": 0,
-            "FILES": [],
-            "FORMAT": []
-        }
-    },
-    "": {
+    "AUTHOR_USERNAME": {
         "EMAIL": "",
-        "COMMITS": 2,
+        "COMMITS": 0,
         "ADDED": 0,
         "REMOVED": 0,
         "TOTAL": 0,
         "MODIFIED": 0,
         "RATIO": 0,
         "FILES": [],
-        "FORMAT": []
+        "FORMAT": [],
+        "issues_opened": [],
+        "issues_commented": [],
+        "pull_requests_opened": [],
+        "pull_requests_commented": []
     }
 }
