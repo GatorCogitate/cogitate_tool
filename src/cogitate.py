@@ -22,12 +22,9 @@ def main():
     contributor_data = data_collection.initialize_contributor_data(
         "contributor_data_template"
     )
-    if repository != "INVALID":
-        contributor_data = data_collection.retrieve_issue_data(
-            repository, args["state"], contributor_data
-        )
-    else:
-        print("\nUnable to connect to repository.")
+    contributor_data = data_collection.retrieve_issue_data(
+        repository, args["state"], contributor_data
+    )
 
     # Intermediate between data_collection and data_processor
     json_handler.write_dict_to_json_file(contributor_data, "contributor_data")
