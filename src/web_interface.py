@@ -14,7 +14,7 @@ def web_interface():
     """Execute the web interface."""
 
     link = "https://github.com/GatorIncubator/petition-pronto"
-    token = ""
+    token = "30166e354d198fb65aa7635819b3a4b358a2acf3"
     repo = "GatorIncubator/petition-pronto"
     repository = data_collection.authenticate_repository(token, repo)
     # Populate json file
@@ -34,7 +34,7 @@ def web_interface():
     add_selectbox = st.sidebar.selectbox(
         "What feature would you like to view?",
         (
-            "Home"
+            "Home",
             "Commits By An Individual",
             "Lines of Code Added, Modified, Deleted by an Individual",
             "Types of Files Modified by an Individual",
@@ -48,7 +48,8 @@ def web_interface():
 
     ################### Feature 1 ###################
     # How many commits did an individual make to a GitHub repository?
-    if add_selectbox == "Home"
+    if add_selectbox == "Home":
+        Home_page()
     elif add_selectbox == "Commits By An Individual":
         graph_commits_by_individual(individual_metrics_dict)
     ################### Feature 2 ###################
