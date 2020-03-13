@@ -20,7 +20,7 @@ def main(args):
     # Assess PyGithub access through token and repo path
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
     # Assess PyDriller access with link validator method
-    if not repository or link_validator(args["link"]) is False:
+    if repository == "INVALID" or link_validator(args["link"]) is False:
         print("Cannot authenticate repository.")
         return
     # allows the user to enter the CLI **needs to be uncommented when web interface is complete**
