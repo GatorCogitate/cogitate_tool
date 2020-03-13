@@ -1,12 +1,10 @@
 """Command Line Interface for the Cogitate tool."""
 
 import argparse
+import os
 import validators
 import data_collection
 import data_processor
-
-# **uncomment web interface import statement when the web interface is complete**
-# import web_interface
 
 
 def main(args):
@@ -23,9 +21,9 @@ def main(args):
     if repository == "INVALID" or link_validator(args["link"]) is False:
         print("Cannot authenticate repository.")
         return
-    # allows the user to enter the CLI **needs to be uncommented when web interface is complete**
+    # allows the user to enter the web interface
     elif args["web"]:
-        # print(web_interface.web_interface())
+        os.system("pipenv run streamlit run src/web_interface.py")
         print("'web Link'")
     elif not args["web"]:
         print(
@@ -45,6 +43,7 @@ def main(args):
             individual_metrics_dict, issue_dict
         )
         updated_dict = data_processor.add_new_metrics(merged_dict)
+        print(updated_dict)
         if args["metric"] in ["t", "team"]:
             team(updated_dict, args["below"], args["above"], args["within"])
         elif args["metric"] in ["i", "individual"]:
