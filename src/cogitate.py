@@ -33,7 +33,7 @@ def main(args):
         )
         # Populate json file
         data_collection.collect_and_add_raw_data_to_json(
-            args["link"], "raw_data_storage.json"
+            args["link"], "raw_data_storage"
         )
         # calculate metrics to be used for team evaluation
         issue_dict = {}
