@@ -55,6 +55,13 @@ python3 -m pip install -e
 
 ## Running GatorCogitate
 
+GatorCogitate uses `argparse` which allows a user to make arguments during program
+execution. The required arguments for the tool are as follows:
+- `-t, --token`: Input a Github user token to allow `Pygithub` access to information
+  such as the Issue Tracker.
+- `-r, --repo`: Input the Repository path that the User will be assessing.
+- `-s, --state`: Input the state of Issues that `PyGitHub` will be retrieving.
+
 Run the command `pipenv python run src/cogitate.py` in the root directory.
 When prompted, press `Enter` to leave the repository path as default.
 
