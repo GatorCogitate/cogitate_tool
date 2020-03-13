@@ -48,6 +48,7 @@ def web_interface():
 
     ################### Feature 1 ###################
     # How many commits did an individual make to a GitHub repository?
+    if add_selectbox == "Home"
     if add_selectbox == "Commits By An Individual":
         graph_commits_by_individual(individual_metrics_dict)
     ################### Feature 2 ###################
