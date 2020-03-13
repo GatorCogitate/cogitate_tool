@@ -1,10 +1,10 @@
 """Command Line Interface for the Cogitate tool."""
 
 import argparse
+import os
 import validators
 import data_collection
 import data_processor
-import os
 
 
 def main(args):
