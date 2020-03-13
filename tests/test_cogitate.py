@@ -101,35 +101,32 @@ def test_retrieve_arguments(run_arguments_dict, correct_args, capsys):
     pass
 
 
-# test cases commented out until program can produce terminal output
-
-# @pytest.mark.parametrize(
-#     "invalidToken",
-#     ["".join([random.choice(string.ascii_letters + string.digits) for n in range(15)])],
-# )
-# def test_terminal_output_invalid_token(invalidToken, capsys):
-#     """ Test correct output is produced with an invalid access token. """
-#     result = subprocess.run(
-#         [
-#             "pipenv",
-#             "run",
-#             "python",
-#             "src/cogitate.py",
-#             "-l https://github.com/GatorCogitate/cogitate_tool",
-#             "-t",
-#             invalidToken,
-#             "-r GatorCogitate/cogitate_tool",
-#             "-rm y",
-#         ],
-#         stdout=subprocess.PIPE,
-#     )
-#     stringResult = result.stdout.decode("utf-8")
-#     assert stringResult == "Cannot authenticate repository."
+@pytest.mark.parametrize(
+    "invalidToken",
+    ["".join([random.choice(string.ascii_letters + string.digits) for n in range(15)])],
+)
+def test_terminal_output_invalid_token(invalidToken, capsys):
+    """ Test correct output is produced with an invalid access token. """
+    result = subprocess.run(
+        [
+            "pipenv",
+            "run",
+            "python",
+            "src/cogitate.py",
+            "-l https://github.com/GatorCogitate/cogitate_tool",
+            "-t" + invalidToken,
+            "-r GatorCogitate/cogitate_tool",
+            "-rm y",
+        ],
+        stdout=subprocess.PIPE,
+    )
+    stringResult = result.stdout.decode("utf-8")
+    assert stringResult == "Cannot authenticate repository."
 
 
-# def test_terminal_output_req_arg(capsys):
-#     result = subprocess.run(
-#         ["pipenv", "run", "python", "src/cogitate.py",], stdout=subprocess.PIPE,
-#     )
-#     stringResult = result.stdout.decode("utf-8")
-#     assert "cogitate.py: error: the following arguments are required:" in stringResult
+def test_terminal_output_req_arg(capsys):
+    result = subprocess.run(
+        ["pipenv", "run", "python", "src/cogitate.py",], stderr=subprocess.PIPE,
+    )
+    stringResult = result.stderr.decode("utf-8")
+    assert "cogitate.py: error: the following arguments are required:" in stringResult
