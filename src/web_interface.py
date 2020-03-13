@@ -128,9 +128,7 @@ def graph_lines_of_code(dict):
         df[columns][2:6]
     )  # display dataframe/graph that vizualizes commit info
 
-    edited_dict = data_processor.individual_contribution(updated_dict)
-
-
+    return df
 def graph_types_of_files(dict):
     """Graph to output types of files modified for web interface."""
     st.title("Types of Files Modified by an Individual")
@@ -145,8 +143,7 @@ def graph_types_of_files(dict):
         df[columns][7:8]
     )  # display dataframe/graph that vizualizes commit info
 
-    edited_dict = data_processor.individual_contribution(updated_dict)
-
+    return df
 
 def graph_team_score(dict):
     """Displays the average team score for the web interface."""
@@ -156,6 +153,7 @@ def graph_team_score(dict):
 
     st.write("The calculated average team score for this repo is: ", team_score)
 
+    return team_score
 
 def graph_issues(dict):
     """Graphs the issues modified of individuals for web interface."""
@@ -176,6 +174,8 @@ def graph_issues(dict):
     st.bar_chart(
         df[columns][8:10]
     )  # display dataframe/graph that vizualizes commit info
+
+    return df
 
 
 def graph_pull_request(dict):
@@ -221,7 +221,8 @@ def graph_percent_individual_contribution(dict):
     new_dict = data_processor.individual_contribution(dict)
     print(new_dict)
 
-link = "https://github.com/GatorIncubator/petition-pronto"
-token = "7ec6647bf060d0fcbd8f3c72d68844fa99292a79"
-repo = "GatorIncubator/petition-pronto"
+link = input("-- Enter Link:")
+token = input("-- Enter Token:")
+repo = input("-- Enter Repo:")
+
 web_interface(link, token, repo)
