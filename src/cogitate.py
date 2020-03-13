@@ -38,14 +38,14 @@ def main(args):
         # allows the user to enter the merge while loop if they specified to
         data_collection.collect_and_add_individual_metrics_to_json()
         # calculate metrics to be used for team evaluation
-        dict = data_collection.calculate_individual_metrics()
+        data_dict = data_collection.calculate_individual_metrics()
         data_processor.iterate_nested_dictionary(dict)
         if args["metric"] == "team":
-            team(dict)
+            team(data_dict)
         elif args["metric"] == "individual":
-            individual(dict)
+            individual(data_dict)
         elif args["metric"] == "both":
-            new = individual(dict)
+            new = individual(data_dict)
             team(new)
 
 
@@ -97,7 +97,7 @@ def retrieve_arguments():
         "--within",
         required=False,
         type=float,
-        default=.6,
+        default=0.6,
         help="Determines value within weight.",
     )
     a_parse.add_argument(
@@ -152,10 +152,10 @@ def team(dict):
 
 def individual(dict):
     """Call all individual-based funtions."""
-    new_dict = data_processor.individual_contribution(dict)
-    updated = data_processor.add_new_metrics(new_dict)
-    print(pd.DataFrame.from_dict(updated).T)
-    return updated
+    updated = data_processor.add_new_metrics(dict)
+    new_dict = data_processor.individual_contribution(updated)
+    print(pd.DataFrame.from_dict(new_dict).T)
+    return new_dict
 
 
 def link_validator(url_str):
