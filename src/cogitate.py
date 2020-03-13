@@ -48,12 +48,9 @@ def main(args):
         elif args["metric"] in ["i", "individual"]:
             individual(updated_dict)
         elif args["metric"] == "both":
-            new_individual_metrics_dict = individual(updated_dict)
+            individual(updated_dict)
             team(
-                new_individual_metrics_dict,
-                args["below"],
-                args["above"],
-                args["within"],
+                updated_dict, args["below"], args["above"], args["within"],
             )
         else:
             print("unknown value given for '-m' '--metric' in command line arguments")
@@ -155,8 +152,11 @@ def retrieve_arguments():
 
 def team(individual_metrics_dict, below_float, above_float, within_float):
     """Call all team-based funtions."""
+    below = below_float
+    above = above_float
+    within = within_float
     team_score = data_processor.calculate_team_score(
-        individual_metrics_dict, below_float, above_float, within_float
+        individual_metrics_dict, below, above, within
     )
     print("Team Score:")
     print(team_score)
@@ -169,7 +169,6 @@ def individual(updated_dict):
         data_dict=new_dict,
         headings=["COMMITS", "ADDED", "REMOVED", "MODIFIED", "RATIO"],
     )
-    return new_dict
 
 
 def link_validator(url_str):
