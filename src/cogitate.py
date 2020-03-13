@@ -5,6 +5,7 @@ import os
 import validators
 import data_collection
 import data_processor
+import json_handler
 
 
 def main(args):
@@ -43,6 +44,7 @@ def main(args):
             individual_metrics_dict, issue_dict
         )
         updated_dict = data_processor.add_new_metrics(merged_dict)
+        json_handler.write_dict_to_json_file(updated_dict, "individual_metrics_storage.json")
         if args["metric"] in ["t", "team"]:
             team(updated_dict, args["below"], args["above"], args["within"])
         elif args["metric"] in ["i", "individual"]:
