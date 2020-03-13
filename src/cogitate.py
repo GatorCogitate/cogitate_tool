@@ -39,7 +39,6 @@ def main(args):
         data_collection.collect_and_add_individual_metrics_to_json()
         # calculate metrics to be used for team evaluation
         individual_metrics_dict = data_collection.calculate_individual_metrics()
-        data_processor.iterate_nested_dictionary(individual_metrics_dict)
         if args["metric"] == "team":
             team(individual_metrics_dict, args["below"], args["above"], args["within"])
         elif args["metric"] == "individual":
@@ -150,15 +149,15 @@ def team(individual_metrics_dict, below_float, above_float, within_float):
     team_score = data_processor.calculate_team_score(
         individual_metrics_dict, below_float, above_float, within_float
     )
+    print("Team Score:")
     print(team_score)
-    return team_score
 
 
 def individual(individual_metrics_dict):
     """Call all individual-based funtions."""
     updated = data_processor.add_new_metrics(individual_metrics_dict)
     new_dict = data_processor.individual_contribution(updated)
-    print(pd.DataFrame.from_dict(new_dict).T)
+    data_collection.print_individual_in_table()
     return new_dict
 
 
