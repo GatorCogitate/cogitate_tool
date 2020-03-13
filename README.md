@@ -57,6 +57,7 @@ python3 -m pip install -e
 
 GatorCogitate uses `argparse` which allows a user to make arguments during program
 execution. The required arguments for the tool are as follows:
+
 - `-t, --token`: Input a Github user token to allow `Pygithub` access to information
   such as the Issue Tracker.
 - `-r, --repo`: Input the Repository path that the User will be assessing.
