@@ -36,8 +36,8 @@ def test_write_dict_to_json(test_dictionary, json_name):
 @pytest.mark.parametrize(
     "json_name,expected_contents",
     [
-        ("contributor_data_template", ["stephensonc", "koscinskic", "schultzh"]),
-        ("contributor_data_template.json", ["stephensonc", "koscinskic", "schultzh"]),
+        ("individual_metrics_testfile", ["stephensonc", "koscinskic", "schultzh"]),
+        ("individual_metrics_testfile.json", ["stephensonc", "koscinskic", "schultzh"]),
     ],
 )
 def test_get_dict_from_json(json_name, expected_contents):

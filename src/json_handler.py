@@ -46,8 +46,8 @@ def add_user_to_users_dictionary(user_data_dict, to_add):
     user_data_dict.update(to_add)
 
 
-def add_entry(new_entry, json_file_name):
+def add_entry(new_entry, json_file_name, data_path="./data/"):
     """Append data to the users dictionary."""
-    data = get_dict_from_json_file(json_file_name)
+    data = get_dict_from_json_file(json_file_name, data_path)
     data.update(new_entry)
-    write_dict_to_json_file(data, json_file_name)
+    write_dict_to_json_file(data, json_file_name, data_path)
