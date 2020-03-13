@@ -13,7 +13,7 @@ def web_interface():
     """Execute the web interface."""
 
     link = "https://github.com/GatorIncubator/petition-pronto"
-    token = "130bfe8bd0ed21841058282c08c1dcd4b67e234b"
+    token = "025de6c1a15464b013972c8e058a2762f41ef048"
     repo = "GatorIncubator/petition-pronto"
     repository = data_collection.authenticate_repository(token, repo)
     # Populate json file
