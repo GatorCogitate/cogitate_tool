@@ -13,7 +13,7 @@ def web_interface():
     """Execute the web interface."""
 
     link = "https://github.com/GatorIncubator/petition-pronto"
-    token = "fa77f5d2fce4d780e68539cc987680b5626cc352"
+    token = "5f2b9e7f33399e527055c163e816d3382dec6859"
     repo = "GatorIncubator/petition-pronto"
     repository = data_collection.authenticate_repository(token, repo)
     # Populate json file
@@ -40,9 +40,7 @@ def web_interface():
             "Issues Contributed To By An Individual",
             "Pull Requests Contributed To By An Individual",
             "Team Members Who Contribute Source Code Without Tests",
-            "Team Members Who Contribute To High Code Churn",
-            "Team Members Who Frequently Fix The Build",
-            "Team Members Who Are Unable To Contribute",
+            "Percentage of Individual Contribution",
         ),
     )
 
@@ -76,16 +74,8 @@ def web_interface():
         graph_test_contributions(individual_metrics_dict)
     ################### Feature 8 ###################
     # Are there team members who break the build or contribute to unusually high code churn?
-    elif add_selectbox == "Team Members Who Contribute To High Code Churn":
-        graph_code_churn()
-    ################### Feature 9 ###################
-    # Are there team members who frequently fix the build right before merging a PR to master?
-    elif add_selectbox == "Team Members Who Frequently Fix The Build":
-        graph_build_fix_rate()
-    ################### Feature 10 ###################
-    # Are there team members who are unable to contribute or who seem stuck on finishing a task?
-    elif add_selectbox == "Team Members Who Are Unable To Contribute":
-        graph_unable_to_contribute()
+    elif add_selectbox == "Percentage of Individual Contribution":
+        graph_percent_individual_contribution(individual_metrics_dict)
     else:
         pass
 
@@ -147,13 +137,13 @@ def graph_types_of_files(dict):
 
 
 def graph_team_score(dict):
-    """Graphs an individuals overall contribution for web interface."""
+    """Displays the average team score for the web interface."""
     st.title("Average Team Score")
 
-    team_score = data_processor.calculate_team_score(
-        dict, .75, .25, .5
-    )
-    st.text("The team score is:" team_score)
+    team_score = data_processor.calculate_team_score(dict, 0.75, 0.25, 0.5)
+
+    st.text("The team score is")
+
 
 def graph_issues(dict):
     """Graphs the issues modified of individuals for web interface."""
@@ -179,7 +169,7 @@ def graph_issues(dict):
 
 
 def graph_pull_request(dict):
-    """Pull Requests Contributed To By An Individual."""
+    """Graph PRs contributed to by an individual for web interface."""
     st.title("Pull Requests Contributed to By An Individual")
 
     updated_dict = data_processor.add_new_metrics(dict)
@@ -213,69 +203,7 @@ def graph_test_contributions(dict):
     )  # display dataframe/graph that vizualizes commit info
 
 
-def graph_code_churn():
-    """Graph code churn for web interface."""
-    st.title(
-        "Team Members Code Churn Contributions"
-    )  # dispaly relevant title for dataframe
-    df = pd.DataFrame(
-        {
-            "type": ["Code Churn"],
-            "Christian Lussier": [8],
-            "Cory Wiard": [5],
-            "Devin Spitalny": [2],
-            "Devin Ho": [8],
-            "Jordan Wilson": [5],
-            "Danny Reid": [5],
-            "Anthony Baldeosingh": [1],
-            "Xingbang Liu": [6],
-        }
-    )  # create dataframe with sample dates and contributor commit numbers
+def graph_percent_individual_contribution(individual_metrics_dict):
+    """Graph percentage of individual contribution."""
 
-    df = df.rename(columns={"type": "index"}).set_index("index")  # set date as index
-
-    df  # display chart of sample commits
-
-    columns = st.multiselect(
-        label="Enter the names of specific contributors below:", options=df.columns
-    )  # allow users to display specific contributor information on dataframe graph
-
-    st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
-
-
-def graph_build_fix_rate():
-    """Graph about who frequently fixes the build for web interface."""
-    st.title("Feature 9")  # dispaly relevant title for dataframe
-
-
-def graph_unable_to_contribute():
-    """Graph team members who are unable to contribute."""
-    st.title(
-        "Team Members Who Are Unable To Contribute"
-    )  # dispaly relevant title for dataframe
-    df = pd.DataFrame(
-        {
-            "type": ["Unable To Contribute"],
-            "Christian Lussier": [1],
-            "Cory Wiard": [1],
-            "Devin Spitalny": [1],
-            "Devin Ho": [2],
-            "Jordan Wilson": [1],
-            "Danny Reid": [1],
-            "Anthony Baldeosingh": [2],
-            "Xingbang Liu": [1],
-        }
-    )  # create dataframe with sample dates and contributor commit numbers
-
-    df = df.rename(columns={"type": "index"}).set_index("index")  # set date as index
-
-    df  # display chart of sample commits
-
-    columns = st.multiselect(
-        label="Enter the names of specific contributors below:", options=df.columns
-    )  # allow users to display specific contributor information on dataframe graph
-
-    st.bar_chart(df[columns])  # display dataframe/graph that vizualizes commit info
-
-
-web_interface()  # call web interface main function
+    st.title("Team Members Who Contribute Source Code Without Tests")
