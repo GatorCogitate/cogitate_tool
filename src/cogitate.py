@@ -38,20 +38,24 @@ def main(args):
         # allows the user to enter the merge while loop if they specified to
         data_collection.collect_and_add_individual_metrics_to_json()
         # calculate metrics to be used for team evaluation
-        dict = data_collection.calculate_individual_metrics()
-        data_processor.iterate_nested_dictionary(dict)
+        individual_metrics_dict = data_collection.calculate_individual_metrics()
+        data_processor.iterate_nested_dictionary(individual_metrics_dict)
         if args["metric"] == "team":
-            team(dict)
+            team(individual_metrics_dict, args["below"], args["above"], args["within"])
         elif args["metric"] == "individual":
-            individual(dict)
+            individual(individual_metrics_dict)
         elif args["metric"] == "both":
-            new = individual(dict)
-            team(new)
+            new_individual_metrics_dict = individual(individual_metrics_dict)
+            team(
+                new_individual_metrics_dict,
+                args["below"],
+                args["above"],
+                args["within"],
+            )
 
 
 def retrieve_arguments():
     """Retrieve the user arguments and return the args dictionary."""
-
     a_parse = argparse.ArgumentParser()
     a_parse.add_argument(
         "-l",
@@ -97,7 +101,7 @@ def retrieve_arguments():
         "--within",
         required=False,
         type=float,
-        default=.6,
+        default=0.6,
         help="Determines value within weight.",
     )
     a_parse.add_argument(
@@ -141,18 +145,18 @@ def retrieve_arguments():
     return args
 
 
-def team(dict):
+def team(individual_metrics_dict, below_float, above_float, within_float):
     """Call all team-based funtions."""
     team_score = data_processor.calculate_team_score(
-        dict, args["below"], args["above"], args["within"]
+        individual_metrics_dict, below_float, above_float, within_float
     )
     print(team_score)
     return team_score
 
 
-def individual(dict):
+def individual(individual_metrics_dict):
     """Call all individual-based funtions."""
-    new_dict = data_processor.individual_contribution(dict)
+    new_dict = data_processor.individual_contribution(individual_metrics_dict)
     updated = data_processor.add_new_metrics(new_dict)
     print(pd.DataFrame.from_dict(updated).T)
     return updated
@@ -183,5 +187,5 @@ def bool_validator(bool_str):
 
 
 if __name__ == "__main__":
-    args = retrieve_arguments()
-    main(args)
+    args_dict = retrieve_arguments()
+    main(args_dict)
