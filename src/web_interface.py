@@ -19,14 +19,10 @@ def web_interface(link, token, repo):
 
     repository = data_collection.authenticate_repository(token, repo)
     # Populate json file
-    data_collection.collect_and_add_raw_data_to_json(
-        link, "raw_data_storage"
-    )
+    data_collection.collect_and_add_raw_data_to_json(link, "raw_data_storage")
     # calculate metrics to be used for team evaluation
     issue_dict = {}
-    issue_dict = data_collection.retrieve_issue_data(
-        repository, "all", issue_dict
-    )
+    issue_dict = data_collection.retrieve_issue_data(repository, "all", issue_dict)
     individual_metrics_dict = data_collection.calculate_individual_metrics()
     merged_dict = data_collection.merge_metric_and_issue_dicts(
         individual_metrics_dict, issue_dict
@@ -86,14 +82,15 @@ def web_interface(link, token, repo):
     else:
         pass
 
-def home_page():
-    image = Image.open('./images/logo.png')
 
-    st.image(image,
-             use_column_width=True)
+def home_page():
+    image = Image.open("./images/logo.png")
+
+    st.image(image, use_column_width=True)
 
     st.title("Welcome to Cogitate!")
     st.text("Use the sidebar on the left to navigate through Cogitate's features.")
+
 
 def graph_commits_by_individual(dict):
     """Graph commit information by individuals for web interface."""
@@ -129,6 +126,8 @@ def graph_lines_of_code(dict):
     )  # display dataframe/graph that vizualizes commit info
 
     return df
+
+
 def graph_types_of_files(dict):
     """Graph to output types of files modified for web interface."""
     st.title("Types of Files Modified by an Individual")
@@ -145,6 +144,7 @@ def graph_types_of_files(dict):
 
     return df
 
+
 def graph_team_score(dict):
     """Displays the average team score for the web interface."""
     st.title("Average Team Score")
@@ -154,6 +154,7 @@ def graph_team_score(dict):
     st.write("The calculated average team score for this repo is: ", team_score)
 
     return team_score
+
 
 def graph_issues(dict):
     """Graphs the issues modified of individuals for web interface."""
@@ -199,6 +200,7 @@ def graph_pull_request(dict):
 
     return df
 
+
 def graph_test_contributions(dict):
     """Graph test contributions for web interface."""
     st.title("Team Members Who Contribute Source Code Without Tests")
@@ -214,12 +216,14 @@ def graph_test_contributions(dict):
 
     return df
 
+
 def graph_percent_individual_contribution(dict):
     """Graph percentage of individual contribution."""
 
     st.title("Team Members Who Contribute Source Code Without Tests")
     new_dict = data_processor.individual_contribution(dict)
     print(new_dict)
+
 
 link = input("-- Enter Link:")
 token = input("-- Enter Token:")
