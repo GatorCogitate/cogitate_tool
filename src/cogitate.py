@@ -23,7 +23,7 @@ def main(args):
         return
     # allows the user to enter the web interface
     elif args["web"]:
-        # print(web_interface.web_interface())
+        os.system("pipenv run streamlit run src/web_interface.py")
         print("'web Link'")
     elif not args["web"]:
         print(
