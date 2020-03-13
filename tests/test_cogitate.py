@@ -119,15 +119,15 @@ def test_terminal_output_invalid_token(invalidToken, capsys):
             "-r GatorCogitate/cogitate_tool",
             "-rm y",
         ],
-        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
     )
-    stringResult = result.stdout.decode("utf-8")
+    stringResult = result.stderr.decode("utf-8")
     assert stringResult == "Cannot authenticate repository."
 
 
 def test_terminal_output_req_arg(capsys):
     result = subprocess.run(
-        ["pipenv", "run", "python", "src/cogitate.py",], stdout=subprocess.PIPE,
+        ["pipenv", "run", "python", "src/cogitate.py", ], stderr=subprocess.PIPE,
     )
-    stringResult = result.stdout.decode("utf-8")
+    stringResult = result.stderr.decode("utf-8")
     assert "cogitate.py: error: the following arguments are required:" in stringResult
