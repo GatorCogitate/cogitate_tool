@@ -10,12 +10,13 @@ import json_handler
 from PIL import Image
 
 
-def web_interface():
+def web_interface(link, token, repo):
     """Execute the web interface."""
 
-    link = "https://github.com/GatorIncubator/petition-pronto"
-    token = "7ec6647bf060d0fcbd8f3c72d68844fa99292a79"
-    repo = "GatorIncubator/petition-pronto"
+    # link = "https://github.com/GatorIncubator/petition-pronto"
+    # token = "7ec6647bf060d0fcbd8f3c72d68844fa99292a79"
+    # repo = "GatorIncubator/petition-pronto"
+
     repository = data_collection.authenticate_repository(token, repo)
     # Populate json file
     data_collection.collect_and_add_raw_data_to_json(
@@ -31,7 +32,6 @@ def web_interface():
         individual_metrics_dict, issue_dict
     )
     updated_dict = data_processor.add_new_metrics(merged_dict)
-    print(updated_dict)
 
     # Sidebar menu options:
     add_selectbox = st.sidebar.selectbox(
@@ -197,6 +197,7 @@ def graph_pull_request(dict):
         df[columns][11:13]
     )  # display dataframe/graph that vizualizes commit info
 
+    return df
 
 def graph_test_contributions(dict):
     """Graph test contributions for web interface."""
@@ -211,10 +212,16 @@ def graph_test_contributions(dict):
         df[columns][12:14]
     )  # display dataframe/graph that vizualizes commit info
 
+    return df
 
-def graph_percent_individual_contribution(individual_metrics_dict):
+def graph_percent_individual_contribution(dict):
     """Graph percentage of individual contribution."""
 
     st.title("Team Members Who Contribute Source Code Without Tests")
+    new_dict = data_processor.individual_contribution(dict)
+    print(new_dict)
 
-web_interface()
+link = "https://github.com/GatorIncubator/petition-pronto"
+token = "7ec6647bf060d0fcbd8f3c72d68844fa99292a79"
+repo = "GatorIncubator/petition-pronto"
+web_interface(link, token, repo)
