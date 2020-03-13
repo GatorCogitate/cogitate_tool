@@ -34,8 +34,6 @@ def main(args):
         data_collection.collect_and_add_raw_data_to_json(
             args["link"], "raw_data_storage.json"
         )
-        # allows the user to enter the merge while loop if they specified to
-        data_collection.collect_and_add_individual_metrics_to_json()
         # calculate metrics to be used for team evaluation
         individual_metrics_dict = data_collection.calculate_individual_metrics()
         if args["metric"] == "team":
