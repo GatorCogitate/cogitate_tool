@@ -95,9 +95,8 @@ def test_retrieve_arguments(run_arguments_dict, correct_args, capsys):
     Test run first with values for all possible arguments and then for all
     required arguments with unrequired arguments checked for their default values
     """
-    call = subprocess.Popen(run_arguments_dict, stdout=PIPE)
-    args, none = call.communicate()
-    args = str(args, "utf-8")
+    call = subprocess.run(run_arguments_dict, stdout=PIPE)
+    args = call.stdout.decode("utf-8")
     assert args == correct_args
 
 
