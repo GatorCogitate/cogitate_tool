@@ -37,9 +37,13 @@ def main(args):
         )
         # calculate metrics to be used for team evaluation
         issue_dict = {}
-        issue_dict = data_collection.retrieve_issue_data(repository, args["state"], issue_dict)
+        issue_dict = data_collection.retrieve_issue_data(
+            repository, args["state"], issue_dict
+        )
         individual_metrics_dict = data_collection.calculate_individual_metrics()
-        merged_dict = data_collection.merge_metric_and_issue_dicts(individual_metrics_dict, issue_dict)
+        merged_dict = data_collection.merge_metric_and_issue_dicts(
+            individual_metrics_dict, issue_dict
+        )
         updated_dict = data_processor.add_new_metrics(merged_dict)
         if args["metric"] in ["t", "team"]:
             team(updated_dict, args["below"], args["above"], args["within"])
@@ -76,7 +80,7 @@ def retrieve_arguments():
         required=True,
         type=str,
         help="User's Repository name, start with root dirctory (user or organization name)"
-             + "\nExample GatorCogitate/cogitate_tool",
+        + "\nExample GatorCogitate/cogitate_tool",
     )
     a_parse.add_argument(
         "-rm",
@@ -132,7 +136,7 @@ def retrieve_arguments():
         type=str,
         default="both",
         help="Invokes calculation of team or individual metrics. If not specified, both are run."
-             + "\n(t/i/team/individual/both)",
+        + "\n(t/i/team/individual/both)",
     )
     a_parse.add_argument(
         "-twpa",
