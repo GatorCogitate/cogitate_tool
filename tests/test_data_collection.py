@@ -26,6 +26,8 @@ from src import json_handler
                     "issues_opened": [25, 57],
                     "pull_requests_commented": [58, 58, 58, 58],
                     "pull_requests_opened": [],
+                    "COMMITS_TO_TESTING": 5,
+                    "COMMITS_ELSEWHERE": 5,
                 },
                 "noorbuchi": {
                     "EMAIL": "",
@@ -37,6 +39,8 @@ from src import json_handler
                     "issues_opened": [16],
                     "pull_requests_commented": [58, 58, 58, 58],
                     "pull_requests_opened": [58, 17],
+                    "COMMITS_TO_TESTING": 10,
+                    "COMMITS_ELSEWHERE": 10,
                 },
             },
             "noorbuchi",
@@ -52,6 +56,8 @@ from src import json_handler
                     "issues_opened": [16, 25, 57],
                     "pull_requests_commented": [58, 58, 58, 58, 58, 58, 58, 58],
                     "pull_requests_opened": [58, 17],
+                    "COMMITS_TO_TESTING": 15,
+                    "COMMITS_ELSEWHERE": 15,
                 }
             },
         )
@@ -84,6 +90,8 @@ def test_merge_duplicate_usernames(
                     "RATIO": 0,
                     "FILES": ["README.md", "settings.json", "travis.yml"],
                     "FORMAT": [],
+                    "COMMITS_TO_TESTING": 0,
+                    "COMMITS_ELSEWHERE": 0,
                 }
             },
             {
@@ -108,6 +116,8 @@ def test_merge_duplicate_usernames(
                     "issues_opened": [16],
                     "pull_requests_commented": [58, 58, 58, 58,],
                     "pull_requests_opened": [58, 17],
+                    "COMMITS_TO_TESTING": 0,
+                    "COMMITS_ELSEWHERE": 0,
                 }
             },
         ),
@@ -122,6 +132,8 @@ def test_merge_duplicate_usernames(
                     "RATIO": 0,
                     "FILES": ["README.md", "settings.json", "travis.yml"],
                     "FORMAT": [],
+                    "COMMITS_TO_TESTING": 0,
+                    "COMMITS_ELSEWHERE": 0,
                 }
             },
             {
@@ -142,6 +154,8 @@ def test_merge_duplicate_usernames(
                     "RATIO": 0,
                     "FILES": ["README.md", "settings.json", "travis.yml"],
                     "FORMAT": [],
+                    "COMMITS_TO_TESTING": 0,
+                    "COMMITS_ELSEWHERE": 0,
                 },
                 "schultzh": {
                     "EMAIL": "N/A",
@@ -152,6 +166,8 @@ def test_merge_duplicate_usernames(
                     "RATIO": 0,
                     "FILES": [],
                     "FORMAT": [],
+                    "COMMITS_TO_TESTING": 0,
+                    "COMMITS_ELSEWHERE": 0,
                     "issues_commented": [63, 53, 30, 30, 30,],
                     "issues_opened": [16],
                     "pull_requests_commented": [58, 58, 58, 58,],
