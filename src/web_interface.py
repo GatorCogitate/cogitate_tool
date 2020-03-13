@@ -99,9 +99,7 @@ def graph_commits_by_individual(dict):
     """Graph commit information by individuals for web interface."""
     st.title("Commit Information")  # dispaly relevant title for dataframe
 
-    updated_dict = data_processor.add_new_metrics(dict)
-    print(updated_dict)
-    df = pd.DataFrame.from_dict(updated_dict, orient="index").T
+    df = pd.DataFrame.from_dict(dict, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -128,7 +126,7 @@ def graph_lines_of_code(dict):
     )  # allow users to display specific contributor information on dataframe graph
 
     st.bar_chart(
-        df[columns][2:5]
+        df[columns][2:6]
     )  # display dataframe/graph that vizualizes commit info
 
     edited_dict = data_processor.individual_contribution(updated_dict)
@@ -147,7 +145,7 @@ def graph_types_of_files(dict):
     )  # allow users to display specific contributor information on dataframe graph
 
     st.bar_chart(
-        df[columns][8:9]
+        df[columns][7:8]
     )  # display dataframe/graph that vizualizes commit info
 
     edited_dict = data_processor.individual_contribution(updated_dict)
@@ -175,13 +173,13 @@ def graph_issues(dict):
     )  # allow users to display specific contributor information on dataframe graph
 
     for name in columns:
-        issues_commented = len(df[name][9])
-        df[name][9] = issues_commented
-        issues_opened = len(df[name][10])
-        df[name][10] = issues_opened
+        issues_commented = len(df[name][8])
+        df[name][8] = issues_commented
+        issues_opened = len(df[name][9])
+        df[name][9] = issues_opened
 
     st.bar_chart(
-        df[columns][9:11]
+        df[columns][8:10]
     )  # display dataframe/graph that vizualizes commit info
 
 
@@ -197,8 +195,11 @@ def graph_pull_request(dict):
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
     for name in columns:
-        print("COMMENT",(df[name][11]))
-        print("OPENED",(df[name][12]))
+        prs_commented = len(df[name][10])
+        df[name][10] = prs_commented
+        prs_opened = len(df[name][11])
+        df[name][11] = prs_opened
+
     st.bar_chart(
         df[columns][11:13]
     )  # display dataframe/graph that vizualizes commit info
@@ -214,7 +215,7 @@ def graph_test_contributions(dict):
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
     st.bar_chart(
-        df[columns][13:15]
+        df[columns][12:14]
     )  # display dataframe/graph that vizualizes commit info
 
 
