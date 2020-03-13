@@ -105,7 +105,7 @@ def test_retrieve_arguments(run_arguments_dict, correct_args, capsys):
     "invalidToken",
     ["".join([random.choice(string.ascii_letters + string.digits) for n in range(15)])],
 )
-def test_terminal_output_invalid_token(invalidToken):
+def test_terminal_output_invalid_token(invalidToken, capsys):
     """ Test correct output is produced with an invalid access token. """
     result = subprocess.run(
         [
@@ -125,7 +125,7 @@ def test_terminal_output_invalid_token(invalidToken):
     assert stringResult == "Cannot authenticate repository."
 
 
-def test_terminal_output_req_arg():
+def test_terminal_output_req_arg(capsys):
     result = subprocess.run(
         ["pipenv", "run", "python", "src/cogitate.py",], stdout=subprocess.PIPE,
     )
