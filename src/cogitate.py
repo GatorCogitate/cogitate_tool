@@ -43,7 +43,6 @@ def main(args):
             individual_metrics_dict, issue_dict
         )
         updated_dict = data_processor.add_new_metrics(merged_dict)
-        print(updated_dict)
         if args["metric"] in ["t", "team"]:
             team(updated_dict, args["below"], args["above"], args["within"])
         elif args["metric"] in ["i", "individual"]:
@@ -166,7 +165,10 @@ def team(individual_metrics_dict, below_float, above_float, within_float):
 def individual(updated_dict):
     """Call all individual-based funtions."""
     new_dict = data_processor.individual_contribution(updated_dict)
-    data_collection.print_individual_in_table(data_dict=updated_dict)
+    data_collection.print_individual_in_table(
+        data_dict=new_dict,
+        headings=["COMMITS", "ADDED", "REMOVED", "MODIFIED", "RATIO"],
+    )
     return new_dict
 
 
