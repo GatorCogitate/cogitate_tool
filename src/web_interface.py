@@ -49,7 +49,7 @@ def web_interface():
     ################### Feature 1 ###################
     # How many commits did an individual make to a GitHub repository?
     if add_selectbox == "Home"
-    if add_selectbox == "Commits By An Individual":
+    elif add_selectbox == "Commits By An Individual":
         graph_commits_by_individual(individual_metrics_dict)
     ################### Feature 2 ###################
     # How many lines of code did an individual add, modify, and delete?
@@ -82,6 +82,14 @@ def web_interface():
     else:
         pass
 
+def Home_page():
+    image = Image.open('./images/logo.png')
+
+    st.image(image,
+             use_column_width=True)
+
+    st.title("Welcome to Cogitate!")
+    st.text("Use the sidebar on the left to navigate through Cogitate's features.")
 
 def graph_commits_by_individual(dict):
     """Graph commit information by individuals for web interface."""
