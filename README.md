@@ -108,9 +108,44 @@ The available attributes can be found at their homepage.
 - (This is if you have two usernames within the table and want to combine them.)
 - Select yes or no if you would like to continue working with the graph.
 
+## Limitations of GatorCogitate
+
+GatorCogitate is a tool that allows a user to determine how well both individuals and teams are
+contributing to a GitHub repository. This tool offers a lot of great features, but currently has some
+limitations that the developers would like users to be aware of.
+
+- Currently GatorCogitate determines an individuals contribution as a percentage of their
+  contribution to the overall total of a certain metric. For individuals who commit the `.gitignore`
+  and `pipfile.lock` files, their contribution for lines added will most likely be much higher than
+  their teammates. Please be aware that high amounts of lines of code added could be due to generated
+  files.
+
+- The tools that the developers have used for accessing data from GitHub offer a lot of possibilites
+  for information mining. GatorCogitate does utilize some of these possibilites, but not all. At this
+  time, not all information about **all** aspects of a GitHub repositiory will be available with
+  GatorCogitate.
+
+- GatorCogitate gives information about which files and file formats an invidiual edits. The file
+  formats are not completely comprehensive, but do give an idea of what types of files a teammember
+  worked on in a GitHub repository.
+
 ## Future Development
 
-## Limitations of GatorCogitate
+The developers would like to develop even more features to our tool in the future. These ideas
+include:
+
+- Allow the user to determine which branch of their GitHub repository they would like to analyze.
+
+- Include the dates of commits in returned information, which would allow the filtration of data in a
+  timeline.
+
+- Create line graphs which display commits over time to allow a user to see daily or weekly
+  contribution for each individual in a team.
+
+- Give information to the user regarding comments; including how many comments are in a file, and
+  also how many comments are written per commit, and the ratio of comments to lines of source code.
+
+- Continue refactoring our tool to reduce limitations and improve both efficiency and run time.
 
 ## Contacting the Developers
 
