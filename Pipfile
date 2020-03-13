@@ -22,7 +22,6 @@ flake8 = "*"
 pydocstyle = "*"
 pytest = "*"
 pytest-cov = "*"
-pytest-sugar = "*"
 pytest-clarity = "*"
 
 [requires]
