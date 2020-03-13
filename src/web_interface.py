@@ -108,6 +108,8 @@ def graph_commits_by_individual(dict):
         df[columns][1:2]
     )  # display dataframe/graph that vizualizes commit info
 
+    return df
+
 
 def graph_lines_of_code(dict):
     """Graph lines of code added, modified, and deleted for web interface."""
