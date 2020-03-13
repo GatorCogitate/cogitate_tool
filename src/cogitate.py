@@ -36,11 +36,11 @@ def main(args):
         )
         # calculate metrics to be used for team evaluation
         individual_metrics_dict = data_collection.calculate_individual_metrics()
-        if args["metric"] == "team":
+        if args["metric"] in ["t", "team"]:
             team(individual_metrics_dict, args["below"], args["above"], args["within"])
-        elif args["metric"] == "individual":
+        elif args["metric"] in ["i", "individual"]:
             individual(individual_metrics_dict)
-        elif args["metric"] == "both":
+        elif args["metric"] == "all":
             new_individual_metrics_dict = individual(individual_metrics_dict)
             team(
                 new_individual_metrics_dict,
@@ -48,6 +48,9 @@ def main(args):
                 args["above"],
                 args["within"],
             )
+        else:
+            print("unknown value given for '-m' '--metric' in command line arguments")
+            return
 
 
 def retrieve_arguments():
