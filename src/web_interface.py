@@ -117,9 +117,8 @@ def graph_lines_of_code(dict):
     st.title(
         "Lines of Code Added, Modified, Deleted by an Individual"
     )  # dispaly relevant title for dataframe
-    updated_dict = data_processor.add_new_metrics(dict)
 
-    df = pd.DataFrame.from_dict(updated_dict, orient="index").T
+    df = pd.DataFrame.from_dict(dict, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -136,9 +135,7 @@ def graph_types_of_files(dict):
     """Graph to output types of files modified for web interface."""
     st.title("Types of Files Modified by an Individual")
 
-    updated_dict = data_processor.add_new_metrics(dict)
-
-    df = pd.DataFrame.from_dict(updated_dict, orient="index").T
+    df = pd.DataFrame.from_dict(dict, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -164,9 +161,7 @@ def graph_issues(dict):
     """Graphs the issues modified of individuals for web interface."""
     st.title("Issues Contributed To By An Individual")  # disp`aly relevant
 
-    updated_dict = data_processor.add_new_metrics(dict)
-
-    df = pd.DataFrame.from_dict(updated_dict, orient="index").T
+    df = pd.DataFrame.from_dict(dict, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -187,9 +182,7 @@ def graph_pull_request(dict):
     """Graph PRs contributed to by an individual for web interface."""
     st.title("Pull Requests Contributed to By An Individual")
 
-    updated_dict = data_processor.add_new_metrics(dict)
-
-    df = pd.DataFrame.from_dict(updated_dict, orient="index").T
+    df = pd.DataFrame.from_dict(dict, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -208,8 +201,8 @@ def graph_pull_request(dict):
 def graph_test_contributions(dict):
     """Graph test contributions for web interface."""
     st.title("Team Members Who Contribute Source Code Without Tests")
-    updated_dict = data_processor.add_new_metrics(dict)
-    df = pd.DataFrame.from_dict(updated_dict, orient="index").T
+
+    df = pd.DataFrame.from_dict(dict, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
