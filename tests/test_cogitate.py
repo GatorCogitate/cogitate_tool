@@ -1,5 +1,7 @@
 """ Test suite for the command line interface functions in cogitate.py. """
 
+import random
+import string
 import subprocess
 from subprocess import PIPE
 import pytest
@@ -97,3 +99,35 @@ def test_retrieve_arguments(run_arguments_dict, correct_args, capsys):
     args, none = call.communicate()
     args = str(args, "utf-8")
     assert args == correct_args
+
+
+@pytest.mark.parametrize(
+    "invalidToken",
+    ["".join([random.choice(string.ascii_letters + string.digits) for n in range(15)])],
+)
+def test_terminal_output_invalid_token(invalidToken):
+    """ Test correct output is produced with an invalid access token. """
+    result = subprocess.run(
+        [
+            "pipenv",
+            "run",
+            "python",
+            "src/cogitate.py",
+            "-l https://github.com/GatorCogitate/cogitate_tool",
+            "-t",
+            invalidToken,
+            "-r GatorCogitate/cogitate_tool",
+            "-rm y",
+        ],
+        stdout=subprocess.PIPE,
+    )
+    stringResult = result.stdout.decode("utf-8")
+    assert stringResult == "Cannot authenticate repository."
+
+
+def test_terminal_output_req_arg():
+    result = subprocess.run(
+        ["pipenv", "run", "python", "src/cogitate.py",], stdout=subprocess.PIPE,
+    )
+    stringResult = result.stdout.decode("utf-8")
+    assert "cogitate.py: error: the following arguments are required:" in stringResult
