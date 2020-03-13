@@ -43,6 +43,7 @@ def main(args):
             individual_metrics_dict, issue_dict
         )
         updated_dict = data_processor.add_new_metrics(merged_dict)
+        print(updated_dict)
         if args["metric"] in ["t", "team"]:
             team(updated_dict, args["below"], args["above"], args["within"])
         elif args["metric"] in ["i", "individual"]:
