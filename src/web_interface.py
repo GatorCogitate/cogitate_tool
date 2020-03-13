@@ -14,21 +14,24 @@ def web_interface():
     """Execute the web interface."""
 
     link = "https://github.com/GatorIncubator/petition-pronto"
-    token = "30166e354d198fb65aa7635819b3a4b358a2acf3"
+    token = "7ec6647bf060d0fcbd8f3c72d68844fa99292a79"
     repo = "GatorIncubator/petition-pronto"
     repository = data_collection.authenticate_repository(token, repo)
     # Populate json file
-    data_collection.collect_and_add_raw_data_to_json(link, "raw_data_storage")
-    # allows the user to enter the merge while loop if they specified to
-    data_collection.collect_and_add_individual_metrics_to_json()
-    # calculate metrics to be used for team evaluation
-    individual_metrics_dict = data_collection.calculate_individual_metrics()
-
-    ISSUE_DATA = {}
-    ISSUE_DATA = data_collection.retrieve_issue_data(repository, "all", ISSUE_DATA)
-    DATA = data_collection.merge_metric_and_issue_dicts(
-        individual_metrics_dict, ISSUE_DATA
+    data_collection.collect_and_add_raw_data_to_json(
+        link, "raw_data_storage"
     )
+    # calculate metrics to be used for team evaluation
+    issue_dict = {}
+    issue_dict = data_collection.retrieve_issue_data(
+        repository, "all", issue_dict
+    )
+    individual_metrics_dict = data_collection.calculate_individual_metrics()
+    merged_dict = data_collection.merge_metric_and_issue_dicts(
+        individual_metrics_dict, issue_dict
+    )
+    updated_dict = data_processor.add_new_metrics(merged_dict)
+    print(updated_dict)
 
     # Sidebar menu options:
     add_selectbox = st.sidebar.selectbox(
@@ -49,41 +52,41 @@ def web_interface():
     ################### Feature 1 ###################
     # How many commits did an individual make to a GitHub repository?
     if add_selectbox == "Home":
-        Home_page()
+        home_page()
     elif add_selectbox == "Commits By An Individual":
-        graph_commits_by_individual(individual_metrics_dict)
+        graph_commits_by_individual(updated_dict)
     ################### Feature 2 ###################
     # How many lines of code did an individual add, modify, and delete?
     elif add_selectbox == "Lines of Code Added, Modified, Deleted by an Individual":
-        graph_lines_of_code(individual_metrics_dict)
+        graph_lines_of_code(updated_dict)
     ################### Feature 3 ###################
     # What types of files did an individual normally modify in a repository?
     elif add_selectbox == "Types of Files Modified by an Individual":
-        graph_types_of_files(individual_metrics_dict)
+        graph_types_of_files(updated_dict)
     ################### Feature 4 ###################
     # What is the overall score for an individual’s contribution to a team project?
     elif add_selectbox == "Overall Contribution Score To Team Project by an Individual":
-        graph_team_score(individual_metrics_dict)
+        graph_team_score(updated_dict)
     ################### Feature 5 ###################
     # Are there individuals who collaborate together too frequently or not enough?
     if add_selectbox == "Issues Contributed To By An Individual":
-        graph_issues(individual_metrics_dict)
+        graph_issues(updated_dict)
     ################### Feature 6 ###################
     # Are there team members who are “code hoarders” or “domain experts”?
     elif add_selectbox == "Pull Requests Contributed To By An Individual":
-        graph_pull_request(individual_metrics_dict)
+        graph_pull_request(updated_dict)
     ################### Feature 7 ###################
     # Are there team members who contribute source code without also adding test cases?
     elif add_selectbox == "Team Members Who Contribute Source Code Without Tests":
-        graph_test_contributions(individual_metrics_dict)
+        graph_test_contributions(updated_dict)
     ################### Feature 8 ###################
     # Are there team members who break the build or contribute to unusually high code churn?
     elif add_selectbox == "Percentage of Individual Contribution":
-        graph_percent_individual_contribution(individual_metrics_dict)
+        graph_percent_individual_contribution(updated_dict)
     else:
         pass
 
-def Home_page():
+def home_page():
     image = Image.open('./images/logo.png')
 
     st.image(image,
@@ -194,10 +197,8 @@ def graph_pull_request(dict):
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
     for name in columns:
-        prs_commented = len(df[name][11])
-        df[name][11] = prs_commented
-        prs_opened = len(df[name][12])
-        df[name][12] = prs_opened
+        print("COMMENT",(df[name][11]))
+        print("OPENED",(df[name][12]))
     st.bar_chart(
         df[columns][11:13]
     )  # display dataframe/graph that vizualizes commit info
