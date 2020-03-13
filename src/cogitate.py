@@ -156,7 +156,7 @@ def team(individual_metrics_dict, below_float, above_float, within_float):
 
 def individual(individual_metrics_dict):
     """Call all individual-based funtions."""
-    updated = data_processor.add_new_metrics(dict)
+    updated = data_processor.add_new_metrics(individual_metrics_dict)
     new_dict = data_processor.individual_contribution(updated)
     print(pd.DataFrame.from_dict(new_dict).T)
     return new_dict

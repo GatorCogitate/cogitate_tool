@@ -29,29 +29,64 @@ def test_bool_validator_xpass(true_string, false_string):
     "run_arguments_dict, correct_args",
     [
         (
-            ['pipenv', 'run', 'python', 'src/cogitate.py',
-             '-l', 'https://github.com/GatorCogitate/cogitate_tool',
-             '-t', 'test_token', '-r',
-             'GatorCogitate/cogitate_tool', '-rm', 'n', '-b', '5', '-a', '10',
-             '-wi', '2', '-s', 'open', '-w', 'y', '-m', 'i', '-twpa', 'y'],
+            [
+                "pipenv",
+                "run",
+                "python",
+                "src/cogitate.py",
+                "-l",
+                "https://github.com/GatorCogitate/cogitate_tool",
+                "-t",
+                "test_token",
+                "-r",
+                "GatorCogitate/cogitate_tool",
+                "-rm",
+                "n",
+                "-b",
+                "5",
+                "-a",
+                "10",
+                "-wi",
+                "2",
+                "-s",
+                "open",
+                "-w",
+                "y",
+                "-m",
+                "i",
+                "-twpa",
+                "y",
+            ],
             "link : https://github.com/GatorCogitate/cogitate_tool\r\n"
             + "token : test_token\r\n"
             + "repo : GatorCogitate/cogitate_tool\r\nrunmerge : n\r\n"
             + "below : 5.0\r\nabove : 10.0\r\nwithin : 2.0\r\nstate : open\r\n"
-            + "web : True\r\nmetric : i\r\ntestwithprintargs : y\r\n"
+            + "web : True\r\nmetric : i\r\ntestwithprintargs : y\r\n",
         ),
         (
-            ['pipenv', 'run', 'python', 'src/cogitate.py',
-             '-l', 'https://github.com/GatorCogitate/cogitate_tool',
-             '-t', 'test_token', '-r',
-             'GatorCogitate/cogitate_tool', '-rm', 'n', '-twpa', 'y'],
+            [
+                "pipenv",
+                "run",
+                "python",
+                "src/cogitate.py",
+                "-l",
+                "https://github.com/GatorCogitate/cogitate_tool",
+                "-t",
+                "test_token",
+                "-r",
+                "GatorCogitate/cogitate_tool",
+                "-rm",
+                "n",
+                "-twpa",
+                "y",
+            ],
             "link : https://github.com/GatorCogitate/cogitate_tool\r\n"
             + "token : test_token\r\n"
             + "repo : GatorCogitate/cogitate_tool\r\nrunmerge : n\r\n"
             + "below : 0.2\r\nabove : 0.2\r\nwithin : 0.6\r\nstate : all\r\n"
-            + "web : False\r\nmetric : both\r\ntestwithprintargs : y\r\n"
-        )
-    ]
+            + "web : False\r\nmetric : both\r\ntestwithprintargs : y\r\n",
+        ),
+    ],
 )
 def test_retrieve_arguments(run_arguments_dict, correct_args, capsys):
     """
@@ -60,5 +95,5 @@ def test_retrieve_arguments(run_arguments_dict, correct_args, capsys):
     """
     call = subprocess.Popen(run_arguments_dict, stdout=PIPE)
     args, none = call.communicate()
-    args = str(args, 'utf-8')
+    args = str(args, "utf-8")
     assert args == correct_args
