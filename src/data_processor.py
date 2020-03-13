@@ -131,7 +131,6 @@ def add_new_metrics(dictionary):
     with new values
     """
     for key in dictionary:
-        dictionary[key]["TOTAL"] = dictionary[key]["ADDED"] - dictionary[key]["REMOVED"]
         dictionary[key]["MODIFIED"] = (
             dictionary[key]["ADDED"] + dictionary[key]["REMOVED"]
         )
