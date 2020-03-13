@@ -9,8 +9,7 @@ import data_processor
 import json_handler
 from PIL import Image
 
-
-def web_interface(link, token, repo):
+def web_interface(link, token, repo, updated_dict):
     """Execute the web interface."""
 
     # link = "https://github.com/GatorIncubator/petition-pronto"
@@ -37,11 +36,10 @@ def web_interface(link, token, repo):
             "Commits By An Individual",
             "Lines of Code Added, Modified, Deleted by an Individual",
             "Types of Files Modified by an Individual",
-            "Overall Contribution Score To Team Project by an Individual",
+            "Average Overall Team Score",
             "Issues Contributed To By An Individual",
             "Pull Requests Contributed To By An Individual",
             "Team Members Who Contribute Source Code Without Tests",
-            "Percentage of Individual Contribution",
         ),
     )
 
@@ -61,24 +59,20 @@ def web_interface(link, token, repo):
         graph_types_of_files(updated_dict)
     ################### Feature 4 ###################
     # What is the overall score for an individual’s contribution to a team project?
-    elif add_selectbox == "Overall Contribution Score To Team Project by an Individual":
+elif add_selectbox == "Average Overall Team Score":
         graph_team_score(updated_dict)
     ################### Feature 5 ###################
-    # Are there individuals who collaborate together too frequently or not enough?
+    # Issue info
     if add_selectbox == "Issues Contributed To By An Individual":
         graph_issues(updated_dict)
     ################### Feature 6 ###################
-    # Are there team members who are “code hoarders” or “domain experts”?
+    # PR info
     elif add_selectbox == "Pull Requests Contributed To By An Individual":
         graph_pull_request(updated_dict)
     ################### Feature 7 ###################
     # Are there team members who contribute source code without also adding test cases?
     elif add_selectbox == "Team Members Who Contribute Source Code Without Tests":
         graph_test_contributions(updated_dict)
-    ################### Feature 8 ###################
-    # Are there team members who break the build or contribute to unusually high code churn?
-    elif add_selectbox == "Percentage of Individual Contribution":
-        graph_percent_individual_contribution(updated_dict)
     else:
         pass
 
@@ -215,18 +209,3 @@ def graph_test_contributions(dict):
     )  # display dataframe/graph that vizualizes commit info
 
     return df
-
-
-def graph_percent_individual_contribution(dict):
-    """Graph percentage of individual contribution."""
-
-    st.title("Team Members Who Contribute Source Code Without Tests")
-    new_dict = data_processor.individual_contribution(dict)
-    print(new_dict)
-
-
-link = input("-- Enter Link:")
-token = input("-- Enter Token:")
-repo = input("-- Enter Repo:")
-
-web_interface(link, token, repo)
