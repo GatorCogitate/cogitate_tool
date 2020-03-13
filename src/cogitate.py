@@ -1,7 +1,6 @@
 """Command Line Interface for the Cogitate tool."""
 
 import argparse
-import pandas as pd
 import validators
 import data_collection
 import data_processor
