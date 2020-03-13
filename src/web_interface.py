@@ -7,6 +7,7 @@ import pandas as pd
 import data_collection
 import data_processor
 import json_handler
+from PIL import Image
 
 
 def web_interface():
