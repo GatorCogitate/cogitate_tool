@@ -106,17 +106,6 @@ for `PyDriller`.
 
 The available attributes can be found at their homepage.
 
-## Steps to print out table
-
-- Must be in the `cogitate_tool` folder.
-- Before you run the program make sure you have installed the dev packages.
-- Run the following command `pipenv run python src/data_collection.py`
-- Enter your user token to collect PyGitHub data.
-- Enter repo name in this format: org/repo_name.
-- After table prints: Enter username to be merged then deleted.
-- (This is if you have two usernames within the table and want to combine them.)
-- Select yes or no if you would like to continue working with the graph.
-
 ## Limitations of GatorCogitate
 
 GatorCogitate is a tool that allows a user to determine how well both individuals
