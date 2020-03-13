@@ -7,8 +7,8 @@ import argparse
 
 # from driller import find_repositories
 
-import data_collection
-import json_handler
+from src import data_collection
+from src import json_handler
 
 
 def main():
