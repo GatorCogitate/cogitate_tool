@@ -110,42 +110,45 @@ The available attributes can be found at their homepage.
 
 ## Limitations of GatorCogitate
 
-GatorCogitate is a tool that allows a user to determine how well both individuals and teams are
-contributing to a GitHub repository. This tool offers a lot of great features, but currently has some
-limitations that the developers would like users to be aware of.
+GatorCogitate is a tool that allows a user to determine how well both individuals
+and teams are contributing to a GitHub repository. This tool offers a lot of great
+features, but currently has some limitations that the developers would like users
+to be aware of.
 
-- Currently GatorCogitate determines an individuals contribution as a percentage of their
-  contribution to the overall total of a certain metric. For individuals who commit the `.gitignore`
-  and `pipfile.lock` files, their contribution for lines added will most likely be much higher than
-  their teammates. Please be aware that high amounts of lines of code added could be due to generated
-  files.
+- Currently GatorCogitate determines an individuals contribution as a percentage  
+  of their contribution to the overall total of a certain metric. For individuals
+  who commit the `.gitignore` and `pipfile.lock` files, their contribution for
+  lines added will most likely be much higher than their teammates. Please be
+  aware that high amounts of lines of code added could be due to generated files.
 
-- The tools that the developers have used for accessing data from GitHub offer a lot of possibilites
-  for information mining. GatorCogitate does utilize some of these possibilites, but not all. At this
-  time, not all information about **all** aspects of a GitHub repositiory will be available with
-  GatorCogitate.
+- The tools that the developers have used for accessing data from GitHub offer a
+  lot of possibilites for information mining. GatorCogitate does utilize some of
+  these possibilites, but not all. At this time, not all information about **all** aspects of a GitHub repositiory will be available with GatorCogitate.
 
-- GatorCogitate gives information about which files and file formats an invidiual edits. The file
-  formats are not completely comprehensive, but do give an idea of what types of files a teammember
-  worked on in a GitHub repository.
+- GatorCogitate gives information about which files and file formats an invidiual 
+  edits. The file formats are not completely comprehensive, but do give an idea of
+  what types of files a team member worked on in a GitHub repository.
 
 ## Future Development
 
-The developers would like to develop even more features to our tool in the future. These ideas
-include:
+The developers would like to develop even more features to our tool in the future. 
+These ideas include:
 
-- Allow the user to determine which branch of their GitHub repository they would like to analyze.
+- Allow the user to determine which branch of their GitHub repository they would
+  like to analyze.
 
-- Include the dates of commits in returned information, which would allow the filtration of data in a
-  timeline.
+- Include the dates of commits in returned information, which would allow the  
+  filtration of data in a timeline.
 
-- Create line graphs which display commits over time to allow a user to see daily or weekly
-  contribution for each individual in a team.
+- Create line graphs which display commits over time to allow a user to see daily
+  or weekly contribution for each individual in a team.
 
-- Give information to the user regarding comments; including how many comments are in a file, and
-  also how many comments are written per commit, and the ratio of comments to lines of source code.
+- Give information to the user regarding comments; including how many comments are
+  in a file, and also how many comments are written per commit, and the ratio of
+  comments to lines of source code.
 
-- Continue refactoring our tool to reduce limitations and improve both efficiency and run time.
+- Continue refactoring our tool to reduce limitations and improve both efficiency
+  and run time.
 
 ## Contacting the Developers
 
@@ -154,20 +157,25 @@ include:
 The role of an issue is to starting a conversation or a discussion. Issues
 are located within the GitHub Issue tracker, which is where developers discuss
 changes or problems related to the project. If you see an open issue that you want
-to tackle, quickly comment on the issue to let others know you’re working on a solution.
-Therefore, people are less likely to duplicate your work.
+to tackle, quickly comment on the issue to let others know you’re working on a
+solution. Therefore, people are less likely to duplicate your work.
 
 **An issue is usually opened under the following circumstances:**
 
 - Reporting an error you can’t solve yourself.
+
 - Discussing a high-level topic.
+
 - Proposing a new feature or necessary change.
 
 **Tips for effective communication:**
 
 - Keep requests short and direct.
+
 - Give context.
+
 - Ask questions.
+
 - Respect decisions.
 
 ### Pull Request Process
@@ -178,7 +186,9 @@ committed, the creation of a pull request is needed, in order to receive feedbac
 on the proposed changes.
 
 - To create a pull request that is ready for review, click "Create Pull Request".
+
 - Once a pull request is opened, you can discuss and review the potential changes.
+
 - If the developer is satisfied with the proposed changes, the PR will be merged.
 
 Note: Anyone with push access to the repository can complete the merge. Ultimately,
