@@ -44,7 +44,14 @@ def main(args):
             individual_metrics_dict, issue_dict
         )
         updated_dict = data_processor.add_new_metrics(merged_dict)
+        # write dictionary to the json file.
         json_handler.write_dict_to_json_file(updated_dict, "individual_metrics_storage.json")
+        # merge duplicate usernames if user requests to
+        if args["runmerge"]:
+            pass
+        elif not args["runmerge"]:
+            print("Merging duplicate usernames is suggested, "
+                  + "\nTo do so change '-rm' to 'y' in your command line arguments")
         if args["metric"] in ["t", "team"]:
             team(updated_dict, args["below"], args["above"], args["within"])
         elif args["metric"] in ["i", "individual"]:
@@ -83,8 +90,8 @@ def retrieve_arguments():
         "-rm",
         "--runmerge",
         required=True,
-        type=str,
-        help="Starts the process of merging usernames.",
+        type=bool_validator,
+        help="Starts the process of merging usernames. (y/no)",
     )
     a_parse.add_argument(
         "-b",
@@ -92,7 +99,7 @@ def retrieve_arguments():
         required=False,
         type=float,
         default=0.2,
-        help="Determines lower weight.",
+        help="Determines lower weight. Example : 0.2",
     )
     a_parse.add_argument(
         "-a",
@@ -100,7 +107,7 @@ def retrieve_arguments():
         required=False,
         type=float,
         default=0.2,
-        help="Determines higher weight.",
+        help="Determines higher weight. Example : 0.2",
     )
     a_parse.add_argument(
         "-wi",
@@ -108,7 +115,7 @@ def retrieve_arguments():
         required=False,
         type=float,
         default=0.6,
-        help="Determines value within weight.",
+        help="Determines value within weight. Example : 0.6",
     )
     a_parse.add_argument(
         "-s",

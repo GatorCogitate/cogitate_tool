@@ -61,7 +61,7 @@ def test_bool_validator_xpass(true_string, false_string):
             ],
             "link : https://github.com/GatorCogitate/cogitate_tool\r\n"
             + "token : test_token\r\n"
-            + "repo : GatorCogitate/cogitate_tool\r\nrunmerge : n\r\n"
+            + "repo : GatorCogitate/cogitate_tool\r\nrunmerge : False\r\n"
             + "below : 5.0\r\nabove : 10.0\r\nwithin : 2.0\r\nstate : open\r\n"
             + "web : True\r\nmetric : i\r\ntestwithprintargs : y\r\n",
         ),
@@ -84,7 +84,7 @@ def test_bool_validator_xpass(true_string, false_string):
             ],
             "link : https://github.com/GatorCogitate/cogitate_tool\r\n"
             + "token : test_token\r\n"
-            + "repo : GatorCogitate/cogitate_tool\r\nrunmerge : n\r\n"
+            + "repo : GatorCogitate/cogitate_tool\r\nrunmerge : False\r\n"
             + "below : 0.2\r\nabove : 0.2\r\nwithin : 0.6\r\nstate : all\r\n"
             + "web : False\r\nmetric : both\r\ntestwithprintargs : y\r\n",
         ),
