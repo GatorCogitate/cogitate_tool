@@ -35,13 +35,17 @@ def main(args):
             args["link"], "raw_data_storage.json"
         )
         # calculate metrics to be used for team evaluation
+        issue_dict = {}
+        issue_dict = data_collection.retrieve_issue_data(repository, args["state"], issue_dict)
         individual_metrics_dict = data_collection.calculate_individual_metrics()
+        merged_dict = data_collection.merge_metric_and_issue_dicts(individual_metrics_dict, issue_dict)
+        updated_dict = data_processor.add_new_metrics(merged_dict)
         if args["metric"] in ["t", "team"]:
-            team(individual_metrics_dict, args["below"], args["above"], args["within"])
+            team(updated_dict, args["below"], args["above"], args["within"])
         elif args["metric"] in ["i", "individual"]:
-            individual(individual_metrics_dict)
+            individual(updated_dict)
         elif args["metric"] == "both":
-            new_individual_metrics_dict = individual(individual_metrics_dict)
+            new_individual_metrics_dict = individual(updated_dict)
             team(
                 new_individual_metrics_dict,
                 args["below"],
@@ -71,7 +75,7 @@ def retrieve_arguments():
         required=True,
         type=str,
         help="User's Repository name, start with root dirctory (user or organization name)"
-        + "\nExample GatorCogitate/cogitate_tool",
+             + "\nExample GatorCogitate/cogitate_tool",
     )
     a_parse.add_argument(
         "-rm",
@@ -110,7 +114,7 @@ def retrieve_arguments():
         required=False,
         type=str,
         default="all",
-        help="State of the Issue, open or closed",
+        help="State of the Issues to be retrieved; open, closed, or all",
     )
     a_parse.add_argument(
         "-w",
@@ -118,7 +122,7 @@ def retrieve_arguments():
         required=False,
         type=bool_validator,
         default=False,
-        help="Whether to show the detailed result in web interface.",
+        help="Whether to show the detailed result in web interface. (y/n)",
     )
     a_parse.add_argument(
         "-m",
@@ -126,7 +130,8 @@ def retrieve_arguments():
         required=False,
         type=str,
         default="both",
-        help="Invokes calculation of team or individual metrics. If not specified, both are run.",
+        help="Invokes calculation of team or individual metrics. If not specified, both are run."
+             + "\n(t/i/team/individual/both)",
     )
     a_parse.add_argument(
         "-twpa",
@@ -154,10 +159,9 @@ def team(individual_metrics_dict, below_float, above_float, within_float):
     print(team_score)
 
 
-def individual(individual_metrics_dict):
+def individual(updated_dict):
     """Call all individual-based funtions."""
-    updated = data_processor.add_new_metrics(individual_metrics_dict)
-    new_dict = data_processor.individual_contribution(updated)
+    new_dict = data_processor.individual_contribution(updated_dict)
     data_collection.print_individual_in_table()
     return new_dict
 
