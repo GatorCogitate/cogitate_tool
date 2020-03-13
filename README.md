@@ -43,10 +43,11 @@ Documentation for installing pipenv can be found [Here.](https://pipenv.kennethr
 After pulling the repo, use `pipenv shell` in `cogitate_tool/` to enter the virtual
 environment. Use `exit` to exit. Under the virtual environment, use
 `pipenv install <package_name> --dev` to install new packages for development.
+Otherwise use `pipenv install --dev` to install all dependencies.
 
 Here is a good [tutorial](https://realpython.com/pipenv-guide/) on how to use `pipenv`.
 
-Otherwise, all dependencies will need to be installed locally with the commands:
+Alternatively, all dependencies will need to be installed locally with the commands:
 
 ```
 python3 -m pip install --upgrade pip
@@ -61,10 +62,10 @@ execution. The required arguments for the tool are as follows:
 - `-t, --token`: Input a Github user token to allow `Pygithub` access to information
   such as the Issue Tracker.
 - `-r, --repo`: Input the Repository path that the User will be assessing.
-- `-s, --state`: Input the state of Issues that `PyGitHub` will be retrieving.
 
-Run the command `pipenv python run src/cogitate.py` in the root directory.
-When prompted, press `Enter` to leave the repository path as default.
+Run the command `pipenv python run src/cogitate.py -t [GitHub Token] -r [Path]`
+in the root directory.
+Check out `cogitate.py` to see additional arguments that can be used..
 
 *Note: Any users that do not wish to develop the tool can stop reading here.*
 
