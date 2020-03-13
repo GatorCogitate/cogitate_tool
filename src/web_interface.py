@@ -34,6 +34,7 @@ def web_interface():
     add_selectbox = st.sidebar.selectbox(
         "What feature would you like to view?",
         (
+            "Home"
             "Commits By An Individual",
             "Lines of Code Added, Modified, Deleted by an Individual",
             "Types of Files Modified by an Individual",
