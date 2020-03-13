@@ -377,6 +377,8 @@ def merge_metric_and_issue_dicts(metrics_dict, issues_dict):
                 "RATIO": 0,
                 "FILES": [],
                 "FORMAT": [],
+                "COMMITS_TO_TESTING": 0,
+                "COMMITS_ELSEWHERE": 0,
             }
         # update the metrics dicitionary with the new keys
         metrics_dict[entry].update(issues_dict[entry])
@@ -395,6 +397,8 @@ def merge_duplicate_usernames(dictionary, kept_entry, removed_entry):
         "issues_opened",
         "pull_requests_opened",
         "pull_requests_commented",
+        "COMMITS_TO_TESTING",
+        "COMMITS_ELSEWHERE",
     ]
     # Loop through all the keys in the list
     for category in categories:
