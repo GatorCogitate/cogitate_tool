@@ -13,7 +13,7 @@ def web_interface():
     """Execute the web interface."""
 
     link = "https://github.com/GatorIncubator/petition-pronto"
-    token = "5f2b9e7f33399e527055c163e816d3382dec6859"
+    token = ""
     repo = "GatorIncubator/petition-pronto"
     repository = data_collection.authenticate_repository(token, repo)
     # Populate json file
@@ -58,7 +58,7 @@ def web_interface():
         graph_types_of_files(individual_metrics_dict)
     ################### Feature 4 ###################
     # What is the overall score for an individual’s contribution to a team project?
-    elif add_selectbox == "An individuals overall contribution to a team or project":
+    elif add_selectbox == "Overall Contribution Score To Team Project by an Individual":
         graph_team_score(individual_metrics_dict)
     ################### Feature 5 ###################
     # Are there individuals who collaborate together too frequently or not enough?
@@ -142,7 +142,7 @@ def graph_team_score(dict):
 
     team_score = data_processor.calculate_team_score(dict, 0.75, 0.25, 0.5)
 
-    st.text("The team score is")
+    st.write("The calculated average team score for this repo is: ", team_score)
 
 
 def graph_issues(dict):
@@ -207,3 +207,5 @@ def graph_percent_individual_contribution(individual_metrics_dict):
     """Graph percentage of individual contribution."""
 
     st.title("Team Members Who Contribute Source Code Without Tests")
+
+web_interface()
