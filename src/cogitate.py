@@ -4,9 +4,7 @@ import argparse
 import validators
 import data_collection
 import data_processor
-
-# **uncomment web interface import statement when the web interface is complete**
-# import web_interface
+import os
 
 
 def main(args):
@@ -23,7 +21,7 @@ def main(args):
     if repository == "INVALID" or link_validator(args["link"]) is False:
         print("Cannot authenticate repository.")
         return
-    # allows the user to enter the CLI **needs to be uncommented when web interface is complete**
+    # allows the user to enter the web interface
     elif args["web"]:
         # print(web_interface.web_interface())
         print("'web Link'")
