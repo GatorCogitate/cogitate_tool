@@ -11,14 +11,17 @@ def get_dict_from_json_file(json_name, data_path="./data/"):
     - data_path: Default/optional argument that stores the relative path
       to the directory containing the file.
     """
-    with open(os.path.join(data_path, json_name + ".json"), "r") as json_file:
+    json_name = json_name if ".json" in json_name else json_name + ".json"
+    # This line ensures that the entered file name has only one ".json"
+
+    with open(os.path.join(data_path, json_name), "r") as json_file:
         # In the open() function, "r" specifies read-only access
         user_data_dict = json.load(json_file)
         # json.load() converts a json file into a python dictionary
     return user_data_dict
 
 
-def write_dict_to_json_file(user_data_dict, json_file_name, data_path="./data/"):
+def write_dict_to_json_file(user_data_dict, json_name, data_path="./data/"):
     """Overwrite specified json file with data from a given dictionary.
 
     Arguments:
@@ -27,7 +30,10 @@ def write_dict_to_json_file(user_data_dict, json_file_name, data_path="./data/")
     - data_path: Default/optional argument that stores the relative path
       to the directory containing the file.
     """
-    with open(os.path.join(data_path, json_file_name + ".json"), "w") as json_file:
+    json_name = json_name if ".json" in json_name else json_name + ".json"
+    # This line ensures that the entered file name has only one ".json"
+
+    with open(os.path.join(data_path, json_name), "w") as json_file:
         # In the open() function, "w" specifies write access
         json.dump(user_data_dict, json_file, indent=4)
         # json.dump() converts a dictionary into a json-formatted string.
