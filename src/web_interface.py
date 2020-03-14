@@ -9,7 +9,6 @@ from PIL import Image
 
 def web_interface():
     """Execute the web interface."""
-
     # link = "https://github.com/GatorIncubator/petition-pronto"
     # token = "7ec6647bf060d0fcbd8f3c72d68844fa99292a79"
     # repo = "GatorIncubator/petition-pronto"
@@ -70,6 +69,7 @@ def web_interface():
 
 
 def home_page(updated_dict):
+    """Display home page graphics or data missing error message."""
     image = Image.open("./images/logo.png")
 
     st.image(image, use_column_width=True)
@@ -161,7 +161,7 @@ def graph_types_of_files(dict):
 
 
 def graph_team_score(dict):
-    """Displays the average team score for the web interface."""
+    """Display the average team score for the web interface."""
     st.title("Average Team Score")
 
     team_score = data_processor.calculate_team_score(dict, 0.75, 0.25, 0.5)
@@ -234,7 +234,6 @@ def graph_test_contributions(dict):
 
 def graph_percent_individual_contribution(dict):
     """Graph percentage of individual contribution."""
-
     st.title("Team Members Who Contribute Source Code Without Tests")
     new_dict = data_processor.individual_contribution(dict)
     print(new_dict)
