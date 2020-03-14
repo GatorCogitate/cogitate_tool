@@ -14,8 +14,6 @@ def main(args):
         for key, value in args.items():
             print(key, ":", value)
         return
-    else:
-        pass
     # Assess PyGithub access through token and repo path
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
     # Assess PyDriller access with link validator method

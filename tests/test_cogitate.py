@@ -39,15 +39,23 @@ def test_link_validator_raise_argparse_error(non_url_value, capsys):
             "run",
             "python",
             "src/cogitate.py",
-            "-l", non_url_value,
-            "-t", "token",
-            "-r", "GatorCogitate/cogitate_tool",
-            "-rm", "n",
+            "-l",
+            non_url_value,
+            "-t",
+            "token",
+            "-r",
+            "GatorCogitate/cogitate_tool",
+            "-rm",
+            "n",
         ],
         stderr=subprocess.PIPE,
     )
     stringResult = result.stderr.decode("utf-8")
-    assert "cogitate.py: error: argument -l/--link " and non_url_value and "is not an URL" in stringResult
+    assert (
+        "cogitate.py: error: argument -l/--link "
+        and non_url_value
+        and "is not an URL" in stringResult
+    )
 
 
 # @pytest.mark.parametrize(
@@ -78,8 +86,7 @@ def test_link_validator_raise_argparse_error(non_url_value, capsys):
 
 
 @pytest.mark.parametrize(
-    "non_bool_value",
-    ["5", "fgh", "?", "~~~", "y5"],
+    "non_bool_value", ["5", "fgh", "?", "~~~", "y5"],
 )
 def test_bool_validator_raise_argparse_error(non_bool_value, capsys):
     result = subprocess.run(
@@ -88,15 +95,22 @@ def test_bool_validator_raise_argparse_error(non_bool_value, capsys):
             "run",
             "python",
             "src/cogitate.py",
-            "-l", "https://github.com/GatorCogitate/cogitate_tool",
-            "-t", "token",
-            "-r", "GatorCogitate/cogitate_tool",
-            "-rm", non_bool_value,
+            "-l",
+            "https://github.com/GatorCogitate/cogitate_tool",
+            "-t",
+            "token",
+            "-r",
+            "GatorCogitate/cogitate_tool",
+            "-rm",
+            non_bool_value,
         ],
         stderr=subprocess.PIPE,
     )
     stringResult = result.stderr.decode("utf-8")
-    assert "cogitate.py: error: argument -rm/--runmerge: Boolean value expected, for example, yes, y, t, true" in stringResult
+    assert (
+        "cogitate.py: error: argument -rm/--runmerge: Boolean value expected, for example, yes, y, t, true"
+        in stringResult
+    )
 
 
 @pytest.mark.parametrize(
@@ -195,10 +209,14 @@ def test_terminal_output_invalid_token(invalidToken, capsys):
             "run",
             "python",
             "src/cogitate.py",
-            "-l", "https://github.com/GatorCogitate/cogitate_tool",
-            "-t", invalidToken,
-            "-r", "GatorCogitate/cogitate_tool",
-            "-rm", "n",
+            "-l",
+            "https://github.com/GatorCogitate/cogitate_tool",
+            "-t",
+            invalidToken,
+            "-r",
+            "GatorCogitate/cogitate_tool",
+            "-rm",
+            "n",
         ],
         stdout=subprocess.PIPE,
     )
@@ -208,7 +226,7 @@ def test_terminal_output_invalid_token(invalidToken, capsys):
 
 def test_terminal_output_req_arg(capsys):
     result = subprocess.run(
-        ["pipenv", "run", "python", "src/cogitate.py", ], stderr=subprocess.PIPE,
+        ["pipenv", "run", "python", "src/cogitate.py",], stderr=subprocess.PIPE,
     )
     stringResult = result.stderr.decode("utf-8")
     assert "cogitate.py: error: the following arguments are required:" in stringResult
