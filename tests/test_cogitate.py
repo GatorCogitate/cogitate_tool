@@ -59,11 +59,11 @@ def test_bool_validator_xpass(true_string, false_string):
                 "-twpa",
                 "y",
             ],
-            "link : https://github.com/GatorCogitate/cogitate_tool\r\n"
-            + "token : test_token\r\n"
-            + "repo : GatorCogitate/cogitate_tool\r\nrunmerge : False\r\n"
-            + "below : 5.0\r\nabove : 10.0\r\nwithin : 2.0\r\nstate : open\r\n"
-            + "web : True\r\nmetric : i\r\ntestwithprintargs : y\r\n",
+            "link : https://github.com/GatorCogitate/cogitate_tool\n"
+            + "token : test_token\n"
+            + "repo : GatorCogitate/cogitate_tool\nrunmerge : False\n"
+            + "below : 5.0\nabove : 10.0\nwithin : 2.0\nstate : open\n"
+            + "web : True\nmetric : i\ntestwithprintargs : y\n",
         ),
         (
             [
@@ -82,11 +82,11 @@ def test_bool_validator_xpass(true_string, false_string):
                 "-twpa",
                 "y",
             ],
-            "link : https://github.com/GatorCogitate/cogitate_tool\r\n"
-            + "token : test_token\r\n"
-            + "repo : GatorCogitate/cogitate_tool\r\nrunmerge : False\r\n"
-            + "below : 0.2\r\nabove : 0.2\r\nwithin : 0.6\r\nstate : all\r\n"
-            + "web : False\r\nmetric : both\r\ntestwithprintargs : y\r\n",
+            "link : https://github.com/GatorCogitate/cogitate_tool\n"
+            + "token : test_token\n"
+            + "repo : GatorCogitate/cogitate_tool\nrunmerge : False\n"
+            + "below : 0.2\nabove : 0.2\nwithin : 0.6\nstate : all\n"
+            + "web : False\nmetric : both\ntestwithprintargs : y\n",
         ),
     ],
 )
@@ -94,6 +94,10 @@ def test_retrieve_arguments(run_arguments_dict, correct_args, capsys):
     """
     Test run first with values for all possible arguments and then for all
     required arguments with unrequired arguments checked for their default values
+                        NOTICE
+    For this test case to run correctly in travis each line in the above correct_args
+    must befollowed by a \n.
+    To run this test in the command line interface, place a \r before every \n
     """
     call = subprocess.run(run_arguments_dict, stdout=PIPE)
     args = call.stdout.decode("utf-8")
@@ -106,7 +110,13 @@ def test_retrieve_arguments(run_arguments_dict, correct_args, capsys):
     ["".join([random.choice(string.ascii_letters + string.digits) for n in range(15)])],
 )
 def test_terminal_output_invalid_token(invalidToken, capsys):
-    """ Test correct output is produced with an invalid access token. """
+    """
+    Test correct output is produced with an invalid access token.
+    For this test to work in Travis the stringReslt below must be compared to:
+    "Cannot authenticate repository.\n"
+    For this test to work in the command line it must be compared to:
+    "Cannot authenticate repository.\r\n"
+    """
     result = subprocess.run(
         [
             "pipenv",
