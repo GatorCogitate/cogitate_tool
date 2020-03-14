@@ -2,11 +2,12 @@
 
 import streamlit as st
 import pandas as pd
+from PIL import Image
 import data_processor
 import json_handler
-from PIL import Image
 
 
+# pylint: disable=E1120
 def web_interface():
     """Execute the web interface."""
     # link = "https://github.com/GatorIncubator/petition-pronto"
