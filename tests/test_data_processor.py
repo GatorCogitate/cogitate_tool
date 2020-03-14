@@ -79,12 +79,12 @@ def test_calculate_iqr_score(input_list, expected_score):
                     "REMOVED": 56,
                 },
             },
-            {"COMMITS": [28, 22], "ADDED": [349, 355], "REMOVED": [70, 56], },
+            {"COMMITS": [28, 22], "ADDED": [349, 355], "REMOVED": [70, 56],},
         ),
     ],
 )
 def test_iterate_nested_dictionary(input_dictionary, expected_dictionary):
-    """Determine if nested dictionary iteration creates correct new dictionary.""" 
+    """Determine if nested dictionary iteration creates correct new dictionary."""
     new_dictionary = dp.iterate_nested_dictionary(input_dictionary)
     assert new_dictionary == expected_dictionary
 
@@ -105,7 +105,7 @@ def test_iterate_nested_dictionary(input_dictionary, expected_dictionary):
                     "ISSUES": ["A", "B"],
                 },
             },
-            {"FORMAT": [2, 3], "ISSUES": [4, 2], },
+            {"FORMAT": [2, 3], "ISSUES": [4, 2],},
         ),
     ],
 )
@@ -136,10 +136,10 @@ def test_iterate_dictionary_with_lists(input_dictionary, expected_dictionary):
                     "email": "email",
                     "COMMITS": 26,
                     "ADDED": 350,
-                    "REMOVED": 63
-                }
+                    "REMOVED": 63,
+                },
             },
-            60.0
+            60.0,
         ),
     ],
 )
