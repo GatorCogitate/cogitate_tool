@@ -57,22 +57,22 @@ def test_link_validator_raise_argparse_error(non_url_value, capsys):
 )
 def test_link_validator_valid_link_invalid_repo(non_url_value, capsys):
     token = data_collection.retrieve_token("data/token.txt")
-    try:
-        result = subprocess.run(
-            [
-                "pipenv",
-                "run",
-                "python",
-                "src/cogitate.py",
-                "-l", non_url_value,
-                "-t", token,
-                "-r", "GatorCogitate/cogitate_tool",
-                "-rm", "n",
-            ],
-            stdout=subprocess.PIPE,
-        )
-    except BaseException:
-        pytest.skip("Rate Limit Exceeded.")
+    if token == ("NOT FOUND" or ""):
+        pytest.skip()
+    result = subprocess.run(
+        [
+            "pipenv",
+            "run",
+            "python",
+            "src/cogitate.py",
+            "-l", non_url_value,
+            "-t", token,
+            "-r", "GatorCogitate/cogitate_tool",
+            "-rm", "n",
+        ],
+        stdout=subprocess.PIPE,
+    )
+
     stringResult = result.stdout.decode("utf-8")
     assert "Invalid repository link: " + non_url_value in stringResult
 
