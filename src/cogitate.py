@@ -48,7 +48,23 @@ def main(args):
         json_handler.write_dict_to_json_file(updated_dict, "individual_metrics_storage.json")
         # merge duplicate usernames if user requests to
         if args["runmerge"]:
-            pass
+            while True:
+                data_collection.print_individual_in_table(
+                    data_dict=updated_dict,
+                    headings=[],
+                )
+                name_to_keep = input("Please enter the username to keep")
+                name_to_merge = input("Please enter the username to merge")
+                updated_dict = data_collection.merge_duplicate_usernames(
+                    updated_dict, name_to_keep, name_to_merge
+                )
+                cont = input("Merge another username? (y/n)")
+                if cont.lower() == "y":
+                    pass
+                else:
+                    "Ending Username merge..."
+                    break
+
         elif not args["runmerge"]:
             print("Merging duplicate usernames is suggested, "
                   + "\nTo do so change '-rm' to 'y' in your command line arguments")
