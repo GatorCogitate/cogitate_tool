@@ -7,6 +7,7 @@ import pandas as pd
 import data_processor
 import json_handler
 from PIL import Image
+import os
 
 
 def web_interface():
@@ -87,7 +88,8 @@ def home_page(updated_dict):
             "### please run the following command in your terminal window and try again."
         )
         st.markdown(
-            "`pipenv run python src/cogitate.py -l repository_link -t user_token -r repository_name -rm y`"
+            "`pipenv run python src/cogitate.py -l repository_link -t user_token"
+            + " -r repository_name -rm y`"
         )
         st.markdown("### Where :")
         st.markdown(
@@ -97,6 +99,15 @@ def home_page(updated_dict):
         st.markdown(
             "- `repository_name` is the name of the repository in this format `org/name`"
         )
+    with open("README.md") as readme_file:
+        file_text = readme_file.read()
+        logo_reference = "![Cogitate Logo](/images/logo.png)"
+        if logo_reference in file_text:
+            print("REMOVING LOGO")
+            new_text = file_text.replace(logo_reference, "")
+            st.markdown(new_text)
+        else:
+            st.markdown(file_text)
 
 
 def graph_commits_by_individual(dict):
