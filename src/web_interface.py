@@ -5,6 +5,7 @@ import pandas as pd
 from PIL import Image
 import data_processor
 import json_handler
+import data_collection
 
 
 # pylint: disable=E1120
@@ -101,7 +102,6 @@ def home_page(updated_dict):
         file_text = readme_file.read()
         logo_reference = "![Cogitate Logo](/images/logo.png)"
         if logo_reference in file_text:
-            print("REMOVING LOGO")
             new_text = file_text.replace(logo_reference, "")
             st.markdown(new_text)
         else:
@@ -236,8 +236,18 @@ def graph_test_contributions(dictionary):
 def graph_percent_individual_contribution(dictionary):
     """Graph percentage of individual contribution."""
     st.title("Team Members Who Contribute Source Code Without Tests")
+    print("Old dict")
+    data_collection.print_individual_in_table(
+        data_dict=dictionary,
+        headings=["COMMITS", "ADDED", "REMOVED", "MODIFIED", "RATIO", "FORMAT"],
+    )
+    print("\n ##################### \n")
+    print("new dict")
     new_dict = data_processor.individual_contribution(dictionary)
-    print(new_dict)
+    data_collection.print_individual_in_table(
+        data_dict=new_dict,
+        headings=["COMMITS", "ADDED", "REMOVED", "MODIFIED", "RATIO", "FORMAT"],
+    )
 
 
 web_interface()
