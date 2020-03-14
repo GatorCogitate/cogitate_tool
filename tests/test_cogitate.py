@@ -57,7 +57,7 @@ def test_link_validator_raise_argparse_error(non_url_value, capsys):
 )
 def test_link_validator_valid_link_invalid_repo(non_url_value, capsys):
     token = data_collection.retrieve_token("data/token.txt")
-    if token == ("NOT FOUND" or ""):
+    if token == ("NOT FOUND" or "" or "REDACTED"):
         pytest.skip()
     result = subprocess.run(
         [
