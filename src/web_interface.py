@@ -1,13 +1,10 @@
 """Web Interface for interacting with Github repository info."""
 
-import argparse
 import streamlit as st
-import numpy as np
 import pandas as pd
 import data_processor
 import json_handler
 from PIL import Image
-import os
 
 
 def web_interface():
