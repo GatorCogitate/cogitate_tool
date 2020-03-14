@@ -352,7 +352,7 @@ def print_individual_in_table(
     else:
         dictionary = json_handler.get_dict_from_json_file(file_name)
     # Create the condition for percentage sign
-    if percentage == True:
+    if percentage is True:
         percent = "%"
     else:
         percent = ""
