@@ -22,14 +22,7 @@ def main(args):
     if repository == "INVALID" or link_validator(args["link"]) is False:
         print("Cannot authenticate repository.")
         return
-    # allows the user to enter the web interface
-    elif args["web"]:
-        os.system("pipenv run streamlit run src/web_interface.py")
-        print("'web Link'")
-    elif not args["web"]:
-        print(
-            "To see the output in the web, simply add '-w yes' to your command line arguments."
-        )
+    else:
         # Populate json file
         data_collection.collect_and_add_raw_data_to_json(
             args["link"], "raw_data_storage"
@@ -45,13 +38,14 @@ def main(args):
         )
         updated_dict = data_processor.add_new_metrics(merged_dict)
         # write dictionary to the json file.
-        json_handler.write_dict_to_json_file(updated_dict, "individual_metrics_storage.json")
+        json_handler.write_dict_to_json_file(
+            updated_dict, "individual_metrics_storage.json"
+        )
         # merge duplicate usernames if user requests to
         if args["runmerge"]:
             while True:
                 data_collection.print_individual_in_table(
-                    data_dict=updated_dict,
-                    headings=[],
+                    data_dict=updated_dict, headings=[],
                 )
                 name_to_keep = input("Please enter the username to keep")
                 name_to_merge = input("Please enter the username to merge")
@@ -62,12 +56,14 @@ def main(args):
                 if cont.lower() == "y":
                     pass
                 else:
-                    "Ending Username merge..."
+                    print("Ending Username merge...")
                     break
 
         elif not args["runmerge"]:
-            print("Merging duplicate usernames is suggested, "
-                  + "\nTo do so change '-rm' to 'y' in your command line arguments")
+            print(
+                "Merging duplicate usernames is suggested, "
+                + "\nTo do so change '-rm' to 'y' in your command line arguments"
+            )
         if args["metric"] in ["t", "team"]:
             team(updated_dict, args["below"], args["above"], args["within"])
         elif args["metric"] in ["i", "individual"]:
@@ -80,6 +76,14 @@ def main(args):
         else:
             print("unknown value given for '-m' '--metric' in command line arguments")
             return
+        # allows the user to enter the web interface
+        if not args["web"]:
+            print(
+                "To see the output in the web, simply add '-w yes' to your command line arguments."
+            )
+            return
+        os.system("pipenv run streamlit run src/web_interface.py")
+        print("'web Link'")
 
 
 def retrieve_arguments():
