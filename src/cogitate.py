@@ -24,9 +24,13 @@ def main(args):
         return
     else:
         # Populate json file
-        data_collection.collect_and_add_raw_data_to_json(
-            args["link"], "raw_data_storage"
-        )
+        try:
+            data_collection.collect_and_add_raw_data_to_json(
+                args["link"], "raw_data_storage"
+            )
+        except BaseException:
+            print("Invalid repository link: " + args["link"])
+            return
         # calculate metrics to be used for team evaluation
         issue_dict = {}
         issue_dict = data_collection.retrieve_issue_data(

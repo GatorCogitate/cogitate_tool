@@ -6,6 +6,7 @@ import subprocess
 from subprocess import PIPE
 import pytest
 from src import cogitate
+from src import data_collection
 
 
 @pytest.mark.parametrize("valid_input", ["https://allegheny.edu"])
@@ -25,6 +26,77 @@ def link_validator_invalid_str(invalid_input):
 def test_bool_validator_xpass(true_string, false_string):
     assert cogitate.bool_validator(true_string)
     assert not cogitate.bool_validator(false_string)
+
+
+@pytest.mark.parametrize(
+    "non_url_value",
+    ["https://5", "https://fgh", "https://?", "https://~~~", "https://y5"],
+)
+def test_link_validator_raise_argparse_error(non_url_value, capsys):
+    result = subprocess.run(
+        [
+            "pipenv",
+            "run",
+            "python",
+            "src/cogitate.py",
+            "-l", non_url_value,
+            "-t", "token",
+            "-r", "GatorCogitate/cogitate_tool",
+            "-rm", "n",
+        ],
+        stderr=subprocess.PIPE,
+    )
+    stringResult = result.stderr.decode("utf-8")
+    assert "cogitate.py: error: argument -l/--link " and non_url_value and "is not an URL" in stringResult
+
+
+@pytest.mark.parametrize(
+    "non_url_value",
+    ["https://github.com", "https://github.com/affsadf", "https://github.com/?",
+     "https://github.com/~~~", "https://github.com/y5"],
+)
+def test_link_validator_valid_link_invalid_repo(non_url_value, capsys):
+    token = data_collection.retrieve_token("data/token.txt")
+    try:
+        result = subprocess.run(
+            [
+                "pipenv",
+                "run",
+                "python",
+                "src/cogitate.py",
+                "-l", non_url_value,
+                "-t", token,
+                "-r", "GatorCogitate/cogitate_tool",
+                "-rm", "n",
+            ],
+            stdout=subprocess.PIPE,
+        )
+    except BaseException:
+        pytest.skip("Rate Limit Exceeded.")
+    stringResult = result.stdout.decode("utf-8")
+    assert "Invalid repository link: " + non_url_value in stringResult
+
+
+@pytest.mark.parametrize(
+    "non_bool_value",
+    ["5", "fgh", "?", "~~~", "y5"],
+)
+def test_bool_validator_raise_argparse_error(non_bool_value, capsys):
+    result = subprocess.run(
+        [
+            "pipenv",
+            "run",
+            "python",
+            "src/cogitate.py",
+            "-l", "https://github.com/GatorCogitate/cogitate_tool",
+            "-t", "token",
+            "-r", "GatorCogitate/cogitate_tool",
+            "-rm", non_bool_value,
+        ],
+        stderr=subprocess.PIPE,
+    )
+    stringResult = result.stderr.decode("utf-8")
+    assert "cogitate.py: error: argument -rm/--runmerge: Boolean value expected, for example, yes, y, t, true" in stringResult
 
 
 @pytest.mark.parametrize(
