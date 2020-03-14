@@ -108,11 +108,11 @@ def home_page(updated_dict):
             st.markdown(file_text)
 
 
-def graph_commits_by_individual(dict):
+def graph_commits_by_individual(dictionary):
     """Graph commit information by individuals for web interface."""
     st.title("Commit Information")  # dispaly relevant title for dataframe
 
-    df = pd.DataFrame.from_dict(dict, orient="index").T
+    df = pd.DataFrame.from_dict(dictionary, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -125,13 +125,13 @@ def graph_commits_by_individual(dict):
     return df
 
 
-def graph_lines_of_code(dict):
+def graph_lines_of_code(dictionary):
     """Graph lines of code added, modified, and deleted for web interface."""
     st.title(
         "Lines of Code Added, Modified, Deleted by an Individual"
     )  # dispaly relevant title for dataframe
 
-    df = pd.DataFrame.from_dict(dict, orient="index").T
+    df = pd.DataFrame.from_dict(dictionary, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -144,11 +144,11 @@ def graph_lines_of_code(dict):
     return df
 
 
-def graph_types_of_files(dict):
+def graph_types_of_files(dictionary):
     """Graph to output types of files modified for web interface."""
     st.title("Types of Files Modified by an Individual")
 
-    df = pd.DataFrame.from_dict(dict, orient="index").T
+    df = pd.DataFrame.from_dict(dictionary, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -161,22 +161,22 @@ def graph_types_of_files(dict):
     return df
 
 
-def graph_team_score(dict):
+def graph_team_score(dictionary):
     """Display the average team score for the web interface."""
     st.title("Average Team Score")
 
-    team_score = data_processor.calculate_team_score(dict, 0.75, 0.25, 0.5)
+    team_score = data_processor.calculate_team_score(dictionary, 0.75, 0.25, 0.5)
 
     st.write("The calculated average team score for this repo is: ", team_score)
 
     return team_score
 
 
-def graph_issues(dict):
+def graph_issues(dictionary):
     """Graphs the issues modified of individuals for web interface."""
     st.title("Issues Contributed To By An Individual")  # disp`aly relevant
 
-    df = pd.DataFrame.from_dict(dict, orient="index").T
+    df = pd.DataFrame.from_dict(dictionary, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -195,11 +195,11 @@ def graph_issues(dict):
     return df
 
 
-def graph_pull_request(dict):
+def graph_pull_request(dictionary):
     """Graph PRs contributed to by an individual for web interface."""
     st.title("Pull Requests Contributed to By An Individual")
 
-    df = pd.DataFrame.from_dict(dict, orient="index").T
+    df = pd.DataFrame.from_dict(dictionary, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -211,17 +211,17 @@ def graph_pull_request(dict):
         df[name][11] = prs_opened
 
     st.bar_chart(
-        df[columns][11:13]
+        df[columns][10:12]
     )  # display dataframe/graph that vizualizes commit info
 
     return df
 
 
-def graph_test_contributions(dict):
+def graph_test_contributions(dictionary):
     """Graph test contributions for web interface."""
     st.title("Team Members Who Contribute Source Code Without Tests")
 
-    df = pd.DataFrame.from_dict(dict, orient="index").T
+    df = pd.DataFrame.from_dict(dictionary, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -233,10 +233,10 @@ def graph_test_contributions(dict):
     return df
 
 
-def graph_percent_individual_contribution(dict):
+def graph_percent_individual_contribution(dictionary):
     """Graph percentage of individual contribution."""
     st.title("Team Members Who Contribute Source Code Without Tests")
-    new_dict = data_processor.individual_contribution(dict)
+    new_dict = data_processor.individual_contribution(dictionary)
     print(new_dict)
 
 
