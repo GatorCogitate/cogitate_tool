@@ -29,17 +29,8 @@ import os
 from pydriller import RepositoryMining
 from prettytable import PrettyTable
 from github import Github
+from github import GithubException
 import json_handler
-
-
-# Note: needs tested, likely not testable
-def authenticate_repository(user_token, repository_name):
-    """Authenticate the Github repository using provided credentials."""
-    # Credentials for PyGithub functions and methods
-    ghub = Github(user_token)
-    repository = ghub.get_repo(repository_name)
-
-    return repository
 
 
 # Written as a temporary pass-through in case this variable is converted to a global
@@ -52,7 +43,34 @@ def initialize_contributor_data(file_path):
     return contributor_data
 
 
-# NOTE: Test case for this function not counting in code coverage
+def retrieve_token(file_path=None):
+    """Retrieve the token from the local token.txt file or from Travis."""
+    if file_path is not None:  # pragma: no cover
+        try:
+            token = open(file_path).read().rstrip()
+        except FileNotFoundError:
+            token = "NOT FOUND"
+    else:
+        try:
+            token = os.environ.get("PYGITHUB_TOKEN")
+        except ValueError:  # pragma: no cover
+            token = "INVALID TRAVIS TOKEN"
+
+    return token
+
+
+def authenticate_repository(entry_token, repository_name):
+    """Authenticate the Github repository using provided credentials."""
+    # Credentials for PyGithub functions and methods
+    try:
+        ghub = Github(entry_token)
+        repository = ghub.get_repo(repository_name)
+    except GithubException:  # pragma: no cover
+        repository = "INVALID"
+
+    return repository
+
+
 def retrieve_issue_data(repository, state, contributor_data):
     """Retrieve a contributor's involvement based upon issues and pull request threads."""
     issues = repository.get_issues(state=state)

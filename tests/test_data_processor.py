@@ -9,6 +9,52 @@ import data_processor as dp
     [
         (
             {
+                "Noor Buchi": {
+                    "EMAIL": "",
+                    "COMMITS": 10,
+                    "ADDED": 100,
+                    "REMOVED": 10,
+                    "FILES": ["Pipfile", "README.md", "settings.json", "travis.yml"],
+                    "issues_commented": [63, 53, 30, 30],
+                    "issues_opened": [16, 25, 57],
+                    "pull_requests_commented": [58, 58, 58, 58, 58, 58, 58, 58],
+                    "pull_requests_opened": [58, 17],
+                    "MODIFIED": 0,
+                    "FORMAT": [],
+                    "RATIO": 0,
+                },
+            },
+            {
+                "Noor Buchi": {
+                    "EMAIL": "",
+                    "COMMITS": 10,
+                    "ADDED": 100,
+                    "REMOVED": 10,
+                    "FILES": ["Pipfile", "README.md", "settings.json", "travis.yml"],
+                    "issues_commented": [63, 53, 30, 30],
+                    "issues_opened": [16, 25, 57],
+                    "pull_requests_commented": [58, 58, 58, 58, 58, 58, 58, 58],
+                    "pull_requests_opened": [58, 17],
+                    "MODIFIED": 110,
+                    "FORMAT": [".json", ".md", ".yml", "Pipfile"],
+                    "RATIO": 11,
+                }
+            },
+        )
+    ],
+)
+def test_add_new_metrics(input_dictionary, expected_dictionary):
+    """Test that calculated metrics are done correctly"""
+    input_dictionary = dp.add_new_metrics(input_dictionary)
+    # print(input_dictionary)
+    assert input_dictionary == expected_dictionary
+
+
+@pytest.mark.parametrize(
+    "input_dictionary, expected_dictionary",
+    [
+        (
+            {
                 "noorbuchi": {
                     "email": "email",
                     "COMMITS": 0,
