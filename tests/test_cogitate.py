@@ -121,7 +121,7 @@ def test_terminal_output_invalid_token(invalidToken, capsys):
         stdout=subprocess.PIPE,
     )
     stringResult = result.stdout.decode("utf-8")
-    assert stringResult == "Cannot authenticate repository.\r\n"
+    assert stringResult == "Cannot authenticate repository.\n"
 
 
 def test_terminal_output_req_arg(capsys):
