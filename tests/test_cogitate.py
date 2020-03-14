@@ -50,31 +50,31 @@ def test_link_validator_raise_argparse_error(non_url_value, capsys):
     assert "cogitate.py: error: argument -l/--link " and non_url_value and "is not an URL" in stringResult
 
 
-@pytest.mark.parametrize(
-    "non_url_value",
-    ["https://github.com", "https://github.com/affsadf", "https://github.com/?",
-     "https://github.com/~~~", "https://github.com/y5"],
-)
-def test_link_validator_valid_link_invalid_repo(non_url_value, capsys):
-    token = data_collection.retrieve_token("data/token.txt")
-    if token == ("NOT FOUND" or "" or "REDACTED"):
-        pytest.skip()
-    result = subprocess.run(
-        [
-            "pipenv",
-            "run",
-            "python",
-            "src/cogitate.py",
-            "-l", non_url_value,
-            "-t", token,
-            "-r", "GatorCogitate/cogitate_tool",
-            "-rm", "n",
-        ],
-        stdout=subprocess.PIPE,
-    )
+# @pytest.mark.parametrize(
+#    "non_url_value",
+#    ["https://github.com", "https://github.com/affsadf", "https://github.com/?",
+#     "https://github.com/~~~", "https://github.com/y5"],
+# )
+# def test_link_validator_valid_link_invalid_repo(non_url_value, capsys):
+#    token = data_collection.retrieve_token("data/token.txt")
+#    if token == ("NOT FOUND" or "" or "REDACTED"):
+#        pytest.skip()
+#    result = subprocess.run(
+#        [
+#            "pipenv",
+#            "run",
+#            "python",
+#            "src/cogitate.py",
+#            "-l", non_url_value,
+#            "-t", token,
+#            "-r", "GatorCogitate/cogitate_tool",
+#            "-rm", "n",
+#        ],
+#        stdout=subprocess.PIPE,
+#    )
 
-    stringResult = result.stdout.decode("utf-8")
-    assert "Invalid repository link: " + non_url_value in stringResult
+#    stringResult = result.stdout.decode("utf-8")
+#    assert "Invalid repository link: " + non_url_value in stringResult
 
 
 @pytest.mark.parametrize(
