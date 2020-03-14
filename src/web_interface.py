@@ -4,30 +4,18 @@ import argparse
 import streamlit as st
 import numpy as np
 import pandas as pd
-import data_collection
 import data_processor
 import json_handler
 from PIL import Image
 
 
-def web_interface(link, token, repo):
+def web_interface():
     """Execute the web interface."""
 
     # link = "https://github.com/GatorIncubator/petition-pronto"
     # token = "7ec6647bf060d0fcbd8f3c72d68844fa99292a79"
     # repo = "GatorIncubator/petition-pronto"
-
-    repository = data_collection.authenticate_repository(token, repo)
-    # Populate json file
-    data_collection.collect_and_add_raw_data_to_json(link, "raw_data_storage")
-    # calculate metrics to be used for team evaluation
-    issue_dict = {}
-    issue_dict = data_collection.retrieve_issue_data(repository, "all", issue_dict)
-    individual_metrics_dict = data_collection.calculate_individual_metrics()
-    merged_dict = data_collection.merge_metric_and_issue_dicts(
-        individual_metrics_dict, issue_dict
-    )
-    updated_dict = data_processor.add_new_metrics(merged_dict)
+    updated_dict = json_handler.get_dict_from_json_file("individual_metrics_storage")
 
     # Sidebar menu options:
     add_selectbox = st.sidebar.selectbox(
@@ -48,7 +36,7 @@ def web_interface(link, token, repo):
     ################### Feature 1 ###################
     # How many commits did an individual make to a GitHub repository?
     if add_selectbox == "Home":
-        home_page()
+        home_page(updated_dict)
     elif add_selectbox == "Commits By An Individual":
         graph_commits_by_individual(updated_dict)
     ################### Feature 2 ###################
@@ -83,13 +71,32 @@ def web_interface(link, token, repo):
         pass
 
 
-def home_page():
+def home_page(updated_dict):
     image = Image.open("./images/logo.png")
 
     st.image(image, use_column_width=True)
 
-    st.title("Welcome to Cogitate!")
-    st.text("Use the sidebar on the left to navigate through Cogitate's features.")
+    st.markdown("# Welcome to Cogitate!")
+    if not len(updated_dict) == 0:
+        st.markdown(
+            "## Use the sidebar on the left to navigate through Cogitate's features."
+        )
+    else:
+        st.markdown("## Error, data was not collected!")
+        st.markdown(
+            "### please run the following command in your terminal window and try again."
+        )
+        st.markdown(
+            "`pipenv run python src/cogitate.py -l repository_link -t user_token -r repository_name -rm y`"
+        )
+        st.markdown("### Where :")
+        st.markdown(
+            "- `repository_link` is the link of the GitHub repository you want to analyze"
+        )
+        st.markdown("- `user_token` is your personal Github token")
+        st.markdown(
+            "- `repository_name` is the name of the repository in this format `org/name`"
+        )
 
 
 def graph_commits_by_individual(dict):
@@ -225,8 +232,4 @@ def graph_percent_individual_contribution(dict):
     print(new_dict)
 
 
-link = input("-- Enter Link:")
-token = input("-- Enter Token:")
-repo = input("-- Enter Repo:")
-
-web_interface(link, token, repo)
+web_interface()
