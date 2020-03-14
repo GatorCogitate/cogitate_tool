@@ -197,6 +197,7 @@ def individual(updated_dict):
     data_collection.print_individual_in_table(
         data_dict=new_dict,
         headings=["COMMITS", "ADDED", "REMOVED", "MODIFIED", "RATIO"],
+        percentage=True,
     )
 
 
