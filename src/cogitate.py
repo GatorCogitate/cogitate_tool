@@ -6,16 +6,23 @@ import validators
 import data_collection
 import data_processor
 import json_handler
+from progress.bar import IncrementalBar
 
 
 def main(args):
     """Execute the CLI."""
+    bar = IncrementalBar("Processing", max=10)
+    bar.next()
+    print("  Starting process...")
     if args["testwithprintargs"] == "y":
         for key, value in args.items():
             print(key, ":", value)
+        bar.finish()
         return
     # Assess PyGithub access through token and repo path
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
+    bar.next()
+    print("  Repository authenticated")
     # Assess PyDriller access with link validator method
     if repository == "INVALID" or link_validator(args["link"]) is False:
         print("Cannot authenticate repository.")
@@ -26,6 +33,8 @@ def main(args):
             data_collection.collect_and_add_raw_data_to_json(
                 args["link"], "raw_data_storage"
             )
+            bar.next()
+            print("  Raw Data Collected")
         except BaseException:
             print("Invalid repository link: " + args["link"])
             return
@@ -34,23 +43,35 @@ def main(args):
         issue_dict = data_collection.retrieve_issue_data(
             repository, args["state"], issue_dict
         )
+        bar.next()
+        print("  Issue Data Collected")
         individual_metrics_dict = data_collection.calculate_individual_metrics()
+        bar.next()
+        print("  Individual Data Calculated")
         merged_dict = data_collection.merge_metric_and_issue_dicts(
             individual_metrics_dict, issue_dict
         )
+        bar.next()
+        print("  Processing Data")
         updated_dict = data_processor.add_new_metrics(merged_dict)
+        bar.next()
+        print("  Making Calculations")
         # write dictionary to the json file.
         json_handler.write_dict_to_json_file(
             updated_dict, "individual_metrics_storage.json"
         )
+        bar.next()
+        print("  Writing Data to JSON")
         # merge duplicate usernames if user requests to
         if args["runmerge"]:
+            bar.next()
+            print("  Merging Duplicates")
             while True:
                 data_collection.print_individual_in_table(
                     data_dict=updated_dict, headings=[],
                 )
-                name_to_keep = input("Please enter the username to keep")
-                name_to_merge = input("Please enter the username to merge")
+                name_to_keep = input("Please enter the username to keep:  ")
+                name_to_merge = input("Please enter the username to merge:  ")
                 updated_dict = data_collection.merge_duplicate_usernames(
                     updated_dict, name_to_keep, name_to_merge
                 )
@@ -62,15 +83,24 @@ def main(args):
                     break
 
         elif not args["runmerge"]:
+            bar.next()
             print(
-                "Merging duplicate usernames is suggested, "
+                "  Merging duplicate usernames is suggested, "
                 + "\nTo do so change '-rm' to 'y' in your command line arguments"
             )
         if args["metric"] in ["t", "team"]:
             team(updated_dict, args["below"], args["above"], args["within"])
+            bar.next()
+            print("  Calculating Team Scores")
         elif args["metric"] in ["i", "individual"]:
+            bar.next()
+            print("  Calculating Individual Scores")
+            bar.finish()
             individual(updated_dict)
         elif args["metric"] == "both":
+            bar.next()
+            print("  Calculating Scores")
+            bar.finish()
             individual(updated_dict)
             team(
                 updated_dict, args["below"], args["above"], args["within"],
