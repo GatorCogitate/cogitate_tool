@@ -12,14 +12,13 @@ import json_handler
 # pylint: disable=R0915
 def main(args):
     """Execute the CLI."""
-    progress_bar = IncrementalBar("Processing", max=9)
-    progress_bar.next(1)
-    print("  Starting process...")
     if args["testwithprintargs"] == "y":
         for key, value in args.items():
             print(key, ":", value)
-        progress_bar.finish()
         return
+    progress_bar = IncrementalBar("Processing", max=9)
+    progress_bar.next(1)
+    print("  Starting process...")
     # Assess PyGithub access through token and repo path
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
     # Assess PyDriller access with link validator method
