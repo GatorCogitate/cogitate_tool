@@ -6,7 +6,7 @@ import subprocess
 from subprocess import PIPE
 import pytest
 from src import cogitate
-from src import data_collection
+# from src import data_collection
 
 
 @pytest.mark.parametrize("valid_input", ["https://allegheny.edu"])
@@ -221,7 +221,7 @@ def test_terminal_output_invalid_token(invalidToken, capsys):
         stdout=subprocess.PIPE,
     )
     stringResult = result.stdout.decode("utf-8")
-    assert stringResult == "Cannot authenticate repository.\n"
+    assert "Cannot authenticate repository.\n" in stringResult
 
 
 def test_terminal_output_req_arg(capsys):
