@@ -1,32 +1,17 @@
 """Web Interface for interacting with Github repository info."""
 
-import argparse
 import streamlit as st
-import numpy as np
 import pandas as pd
-import data_collection
+from PIL import Image
 import data_processor
 import json_handler
-from PIL import Image
+import data_collection
 
-def web_interface(link, token, repo, updated_dict):
+
+# pylint: disable=E1120
+def web_interface():
     """Execute the web interface."""
-
-    # link = "https://github.com/GatorIncubator/petition-pronto"
-    # token = "7ec6647bf060d0fcbd8f3c72d68844fa99292a79"
-    # repo = "GatorIncubator/petition-pronto"
-
-    repository = data_collection.authenticate_repository(token, repo)
-    # Populate json file
-    data_collection.collect_and_add_raw_data_to_json(link, "raw_data_storage")
-    # calculate metrics to be used for team evaluation
-    issue_dict = {}
-    issue_dict = data_collection.retrieve_issue_data(repository, "all", issue_dict)
-    individual_metrics_dict = data_collection.calculate_individual_metrics()
-    merged_dict = data_collection.merge_metric_and_issue_dicts(
-        individual_metrics_dict, issue_dict
-    )
-    updated_dict = data_processor.add_new_metrics(merged_dict)
+    updated_dict = json_handler.get_dict_from_json_file("individual_metrics_storage")
 
     # Sidebar menu options:
     add_selectbox = st.sidebar.selectbox(
@@ -46,7 +31,7 @@ def web_interface(link, token, repo, updated_dict):
     ################### Feature 1 ###################
     # How many commits did an individual make to a GitHub repository?
     if add_selectbox == "Home":
-        home_page()
+        home_page(updated_dict)
     elif add_selectbox == "Commits By An Individual":
         graph_commits_by_individual(updated_dict)
     ################### Feature 2 ###################
@@ -59,7 +44,7 @@ def web_interface(link, token, repo, updated_dict):
         graph_types_of_files(updated_dict)
     ################### Feature 4 ###################
     # What is the overall score for an individual’s contribution to a team project?
-elif add_selectbox == "Average Overall Team Score":
+    elif add_selectbox == "Average Overall Team Score":
         graph_team_score(updated_dict)
     ################### Feature 5 ###################
     # Issue info
@@ -77,20 +62,49 @@ elif add_selectbox == "Average Overall Team Score":
         pass
 
 
-def home_page():
+def home_page(updated_dict):
+    """Display home page graphics or data missing error message."""
     image = Image.open("./images/logo.png")
 
     st.image(image, use_column_width=True)
 
-    st.title("Welcome to Cogitate!")
-    st.text("Use the sidebar on the left to navigate through Cogitate's features.")
+    st.markdown("# Welcome to Cogitate!")
+    if not len(updated_dict) == 0:
+        st.markdown(
+            "## Use the sidebar on the left to navigate through Cogitate's features."
+        )
+    else:
+        st.markdown("## Error, data was not collected!")
+        st.markdown(
+            "### please run the following command in your terminal window and try again."
+        )
+        st.markdown(
+            "`pipenv run python src/cogitate.py -l repository_link -t user_token"
+            + " -r repository_name -rm y`"
+        )
+        st.markdown("### Where :")
+        st.markdown(
+            "- `repository_link` is the link of the GitHub repository you want to analyze"
+        )
+        st.markdown("- `user_token` is your personal Github token")
+        st.markdown(
+            "- `repository_name` is the name of the repository in this format `org/name`"
+        )
+    with open("README.md") as readme_file:
+        file_text = readme_file.read()
+        logo_reference = "![Cogitate Logo](/images/logo.png)"
+        if logo_reference in file_text:
+            new_text = file_text.replace(logo_reference, "")
+            st.markdown(new_text)
+        else:
+            st.markdown(file_text)
 
 
-def graph_commits_by_individual(dict):
+def graph_commits_by_individual(dictionary):
     """Graph commit information by individuals for web interface."""
     st.title("Commit Information")  # dispaly relevant title for dataframe
 
-    df = pd.DataFrame.from_dict(dict, orient="index").T
+    df = pd.DataFrame.from_dict(dictionary, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -103,13 +117,13 @@ def graph_commits_by_individual(dict):
     return df
 
 
-def graph_lines_of_code(dict):
+def graph_lines_of_code(dictionary):
     """Graph lines of code added, modified, and deleted for web interface."""
     st.title(
         "Lines of Code Added, Modified, Deleted by an Individual"
     )  # dispaly relevant title for dataframe
 
-    df = pd.DataFrame.from_dict(dict, orient="index").T
+    df = pd.DataFrame.from_dict(dictionary, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -122,11 +136,11 @@ def graph_lines_of_code(dict):
     return df
 
 
-def graph_types_of_files(dict):
+def graph_types_of_files(dictionary):
     """Graph to output types of files modified for web interface."""
     st.title("Types of Files Modified by an Individual")
 
-    df = pd.DataFrame.from_dict(dict, orient="index").T
+    df = pd.DataFrame.from_dict(dictionary, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -139,22 +153,22 @@ def graph_types_of_files(dict):
     return df
 
 
-def graph_team_score(dict):
-    """Displays the average team score for the web interface."""
+def graph_team_score(dictionary):
+    """Display the average team score for the web interface."""
     st.title("Average Team Score")
 
-    team_score = data_processor.calculate_team_score(dict, 0.75, 0.25, 0.5)
+    team_score = data_processor.calculate_team_score(dictionary, 0.75, 0.25, 0.5)
 
     st.write("The calculated average team score for this repo is: ", team_score)
 
     return team_score
 
 
-def graph_issues(dict):
+def graph_issues(dictionary):
     """Graphs the issues modified of individuals for web interface."""
     st.title("Issues Contributed To By An Individual")  # disp`aly relevant
 
-    df = pd.DataFrame.from_dict(dict, orient="index").T
+    df = pd.DataFrame.from_dict(dictionary, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -173,11 +187,11 @@ def graph_issues(dict):
     return df
 
 
-def graph_pull_request(dict):
+def graph_pull_request(dictionary):
     """Graph PRs contributed to by an individual for web interface."""
     st.title("Pull Requests Contributed to By An Individual")
 
-    df = pd.DataFrame.from_dict(dict, orient="index").T
+    df = pd.DataFrame.from_dict(dictionary, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -189,17 +203,17 @@ def graph_pull_request(dict):
         df[name][11] = prs_opened
 
     st.bar_chart(
-        df[columns][11:13]
+        df[columns][10:12]
     )  # display dataframe/graph that vizualizes commit info
 
     return df
 
 
-def graph_test_contributions(dict):
+def graph_test_contributions(dictionary):
     """Graph test contributions for web interface."""
     st.title("Team Members Who Contribute Source Code Without Tests")
 
-    df = pd.DataFrame.from_dict(dict, orient="index").T
+    df = pd.DataFrame.from_dict(dictionary, orient="index").T
 
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
@@ -209,3 +223,23 @@ def graph_test_contributions(dict):
     )  # display dataframe/graph that vizualizes commit info
 
     return df
+
+
+def graph_percent_individual_contribution(dictionary):
+    """Graph percentage of individual contribution."""
+    st.title("Team Members Who Contribute Source Code Without Tests")
+    print("Old dict")
+    data_collection.print_individual_in_table(
+        data_dict=dictionary,
+        headings=["COMMITS", "ADDED", "REMOVED", "MODIFIED", "RATIO", "FORMAT"],
+    )
+    print("\n ##################### \n")
+    print("new dict")
+    new_dict = data_processor.individual_contribution(dictionary)
+    data_collection.print_individual_in_table(
+        data_dict=new_dict,
+        headings=["COMMITS", "ADDED", "REMOVED", "MODIFIED", "RATIO", "FORMAT"],
+    )
+
+
+web_interface()
