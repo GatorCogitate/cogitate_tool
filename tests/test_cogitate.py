@@ -7,6 +7,7 @@ from subprocess import PIPE
 import pytest
 from src import cogitate
 
+from data import raw_data_storage
 from src import data_collection
 
 
@@ -297,7 +298,7 @@ def test_team_terminal_output_wrong_input(not_nested_dictionary):
 
 def test_team_return_type():
     data_collection.collect_and_add_raw_data_to_json(
-        "https://github.com/GatorCogitate/cogitate_tool/pull/89", "raw_data_storage"
+        "https://github.com/GatorCogitate/cogitate_tool", "raw_data_storage"
     )
     issue_dict = {}
     issue_dict = data_collection.retrieve_issue_data(
