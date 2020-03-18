@@ -8,6 +8,7 @@ import pytest
 from src import cogitate
 
 from src import data_collection
+from src import data_processor
 
 
 @pytest.mark.xfail(raises=TypeError)
