@@ -16,7 +16,7 @@ def main(args):
         for key, value in args.items():
             print(key, ":", value)
         return
-    progress_bar = IncrementalBar("Processing", max=9)
+    progress_bar = IncrementalBar("Processing", max=10)
     progress_bar.next(1)
     print("  Starting process...")
     # Assess PyGithub access through token and repo path
@@ -48,25 +48,17 @@ def main(args):
         )
         progress_bar.next(1)
         print("  Issue Data Collected")
+        # calculate individual metrics
         individual_metrics_dict = data_collection.calculate_individual_metrics()
-        updated_metrics_dict = data_processor.add_new_metrics(individual_metrics_dict)
         progress_bar.next(1)
         print("  Individual Data Calculated")
         merged_dict = data_collection.merge_metric_and_issue_dicts(
-            updated_metrics_dict, issue_dict
+            individual_metrics_dict, issue_dict
         )
-        progress_bar.next(1)
-        print("  Processing Data")
-        # write dictionary to the json file.
-        json_handler.write_dict_to_json_file(
-            merged_dict, "individual_metrics_storage.json"
-        )
-        progress_bar.next(1)
-        print("  Writing Data to JSON")
         # merge duplicate usernames if user requests to
         if args["runmerge"]:
             progress_bar.next(1)
-            print("  Merging Duplicates")
+            print("  Merging Duplicate Usernames")
             while True:
                 data_collection.print_individual_in_table(
                     data_dict=merged_dict, headings=[],
@@ -86,27 +78,42 @@ def main(args):
         elif not args["runmerge"]:
             progress_bar.next(1)
             print(
-                "Duplicate usernames unmerged"
+                "  Duplicate usernames unmerged"
                 + "\nMerging duplicate usernames is suggested, "
                 + "\nTo do so change '-rm' to 'y' in your command line arguments"
             )
+        progress_bar.next(1)
+        print("  Merged Data Sets")
+        updated_metrics_dict = data_processor.add_new_metrics(merged_dict)
+        progress_bar.next(1)
+        print("  Added secondary metrics")
+        json_handler.write_dict_to_json_file(
+            updated_metrics_dict, "individual_metrics_storage.json"
+        )
+        progress_bar.next(1)
+        print("  Writing Data to JSON")
+
         if args["metric"] in ["t", "team"]:
-            team(merged_dict, args["below"], args["above"], args["within"])
             progress_bar.next(1)
             print("  Calculating Team Scores")
+            team(updated_metrics_dict, args["below"], args["above"], args["within"])
+            progress_bar.finish()
+
         elif args["metric"] in ["i", "individual"]:
             progress_bar.next(1)
             print("  Calculating Individual Scores")
             progress_bar.finish()
-            individual(merged_dict)
+            individual(updated_metrics_dict)
+
         elif args["metric"] == "both":
             progress_bar.next(1)
             print("  Calculating Scores")
             progress_bar.finish()
-            individual(merged_dict)
+            individual(updated_metrics_dict)
             team(
-                merged_dict, args["below"], args["above"], args["within"],
+                updated_metrics_dict, args["below"], args["above"], args["within"],
             )
+
         else:
             print("unknown value given for '-m' '--metric' in command line arguments")
             progress_bar.finish()
@@ -118,6 +125,7 @@ def main(args):
             )
             return
         os.system("pipenv run streamlit run src/web_interface.py")
+        # write dictionary to the json file.
 
 
 def retrieve_arguments():
