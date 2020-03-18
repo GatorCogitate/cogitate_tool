@@ -21,6 +21,7 @@ def web_interface():
         "What feature would you like to view?",
         (
             "Home",
+            "Merge Duplicate Usernames (Recommended)",
             "Commits By An Individual",
             "Lines of Code Added, Modified, Deleted by an Individual",
             "Types of Files Modified by an Individual",
@@ -36,6 +37,11 @@ def web_interface():
     # How many commits did an individual make to a GitHub repository?
     if add_selectbox == "Home":
         home_page(updated_dict)
+
+    elif add_selectbox == "Merge Duplicate Usernames (Recommended)":
+        # while add_selectbox == "Merge Duplicate Usernames (Recommended)":
+        merge_duplicate_users(updated_dict)
+
     elif add_selectbox == "Commits By An Individual":
         graph_commits_by_individual(updated_dict)
     ################### Feature 2 ###################
@@ -123,6 +129,46 @@ def graph_commits_by_individual(dictionary):
     )  # display dataframe/graph that vizualizes commit info
 
     return df
+
+
+def merge_duplicate_users(input_dict):
+    """Prompts the user to choose two usernames from the dictionary to merge."""
+    # Create needed select boxes with the dictionary keys as options
+    keep = st.selectbox(
+        label="Enter a username to keep:", options=list(input_dict.keys()), key="keep",
+    )
+    remove = st.selectbox(
+        label="Enter a username to remove:",
+        options=list(input_dict.keys()),
+        key="remove",
+    )
+    # Add a button with the text merge
+    merge = st.button("Merge")
+    # Initialize placeholders for error messages and data text
+    message_placehodler = st.empty()
+    data_placeholder = st.empty()
+    # Print the keys of the dictionary as a table in the appropriate placeholder
+    data_placeholder.table(list(input_dict.keys()))
+    # check if the merge button was clicked
+    if merge:
+        # check if the chosen usernames are the same and displays error
+        if keep == remove:
+            message_placehodler.markdown("__*ERROR: Identical users can't be merged*__")
+        else:
+            # shows a success message for the merge
+            message_placehodler.markdown("__*Merge successfull*__")
+            # Call the merge duplicate function and write to json
+            # Writing on the json would change the dictionary state for all of
+            # The web interface. It is necessary because the input for this
+            # Is taken directly from the dictionary
+            temp_dict = data_collection.merge_duplicate_usernames(
+                input_dict, keep, remove
+            )
+            json_handler.write_dict_to_json_file(
+                temp_dict, "individual_metrics_storage"
+            )
+            # Reprint the merged data
+            data_placeholder.table(list(temp_dict.keys()))
 
 
 def graph_lines_of_code(dictionary):
