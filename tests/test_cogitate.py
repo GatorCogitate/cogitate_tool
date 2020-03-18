@@ -51,12 +51,12 @@ from src import data_collection
     ],
 )
 def test_main_pop_json(run_arguments_dict):
-    main(run_arguments_dict)
+    cogitate.main(run_arguments_dict)
     # unable to access .json file to check if populated
     pass
 
 
-@pytest.mark.xfail(raises=NameError)
+@pytest.mark.xfail(raises=TypeError)
 def test_main_no_input():
     cogitate.main()
 
