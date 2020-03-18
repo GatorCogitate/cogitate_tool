@@ -164,6 +164,9 @@ def merge_duplicate_users(input_dict):
             temp_dict = data_collection.merge_duplicate_usernames(
                 input_dict, keep, remove
             )
+            # recalculate the metrics to fix any discrepencies in modified lines
+            # and format
+            temp_dict = data_processor.add_new_metrics(temp_dict)
             json_handler.write_dict_to_json_file(
                 temp_dict, "individual_metrics_storage"
             )
