@@ -244,9 +244,10 @@ def test_terminal_output_req_arg(capsys):
 
 @pytest.mark.parametrize("not_nested_dictionary", {"key": "value", "key_2": "value_2"})
 def test_team_terminal_output_wrong_input(not_nested_dictionary):
-    result = subprocess.run(cogitate.team(not_nested_dictionary, 0.2, 0.2, 0.6))
-    stringResult = result.stderr.decode("utf-8")
-    assert "TypeError" in stringResult
+    assert (
+        subprocess.run(cogitate.team(not_nested_dictionary, 0.2, 0.2, 0.6))
+        is "AttributeError"
+    )
 
 
 @pytest.mark.parametrize("not_nested_dictionary", {"key": "value", "key_2": "value_2"})
