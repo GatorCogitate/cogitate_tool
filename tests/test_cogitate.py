@@ -7,7 +7,7 @@ from subprocess import PIPE
 import pytest
 from src import cogitate
 
-from data import raw_data_storage
+import data
 from src import data_collection
 
 
