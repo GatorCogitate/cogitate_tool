@@ -10,52 +10,6 @@ from src import cogitate
 from src import data_collection
 
 
-@pytest.mark.parametrize(
-    "run_arguments_dict",
-    [
-        (
-            [
-                "pipenv",
-                "run",
-                "python",
-                "src/cogitate.py",
-                "-l",
-                "https://github.com/GatorCogitate/cogitate_tool",
-                "-t",
-                "test_token",
-                "-r",
-                "GatorCogitate/cogitate_tool",
-                "-rm",
-                "n",
-                "-b",
-                "5",
-                "-a",
-                "10",
-                "-wi",
-                "2",
-                "-s",
-                "open",
-                "-w",
-                "y",
-                "-m",
-                "i",
-                "-twpa",
-                "y",
-            ],
-            "link : https://github.com/GatorCogitate/cogitate_tool\n"
-            + "token : test_token\n"
-            + "repo : GatorCogitate/cogitate_tool\nrunmerge : False\n"
-            + "below : 5.0\nabove : 10.0\nwithin : 2.0\nstate : open\n"
-            + "web : True\nmetric : i\ntestwithprintargs : y\n",
-        ),
-    ],
-)
-def test_main_pop_json(run_arguments_dict):
-    cogitate.main(run_arguments_dict)
-    # unable to access .json file to check if populated
-    pass
-
-
 @pytest.mark.xfail(raises=TypeError)
 def test_main_no_input():
     cogitate.main()
@@ -303,16 +257,8 @@ def test_team_return_type():
     data_collection.collect_and_add_raw_data_to_json(
         "https://github.com/GatorCogitate/cogitate_tool", "raw_data_storage"
     )
-    repository = data_collection.authenticate_repository(
-        test_token, "GatorCogitate/cogitate_tool"
-    )
-    issue_dict = {}
-    issue_dict = data_collection.retrieve_issue_data(repository, "open", issue_dict)
     individual_metrics_dict = data_collection.calculate_individual_metrics()
-    merged_dict = data_collection.merge_metric_and_issue_dicts(
-        individual_metrics_dict, issue_dict
-    )
-    updated_metrics_dict = data_processor.add_new_metrics(merged_dict)
+    updated_metrics_dict = data_processor.add_new_metrics(individual_metrics_dict)
     assert isinstance(cogitate.team(updated_metrics_dict, 0.2, 0.2, 0.6), float)
 
 
