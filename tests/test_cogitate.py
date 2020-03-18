@@ -10,6 +10,53 @@ from src import cogitate
 from src import data_collection
 
 
+@pytest.mark.parametrize(
+    "run_arguments_dict",
+    [
+        (
+            [
+                "pipenv",
+                "run",
+                "python",
+                "src/cogitate.py",
+                "-l",
+                "https://github.com/GatorCogitate/cogitate_tool",
+                "-t",
+                "test_token",
+                "-r",
+                "GatorCogitate/cogitate_tool",
+                "-rm",
+                "n",
+                "-b",
+                "5",
+                "-a",
+                "10",
+                "-wi",
+                "2",
+                "-s",
+                "open",
+                "-w",
+                "y",
+                "-m",
+                "i",
+                "-twpa",
+                "y",
+            ],
+            "link : https://github.com/GatorCogitate/cogitate_tool\n"
+            + "token : test_token\n"
+            + "repo : GatorCogitate/cogitate_tool\nrunmerge : False\n"
+            + "below : 5.0\nabove : 10.0\nwithin : 2.0\nstate : open\n"
+            + "web : True\nmetric : i\ntestwithprintargs : y\n",
+        ),
+    ],
+)
+def test_main_pop_json(run_arguments_dict):
+    json_file = open("/data/raw_data_storage.json")
+    subprocess.run(run_arguments_dict, stdout=PIPE)
+    pop_json_file = open("/data/raw_data_storage.json")
+    assert pop_json_file > json_file
+
+
 @pytest.mark.parametrize("valid_input", ["https://allegheny.edu"])
 def link_validator_valid_url(valid_input):
     assert cogitate.link_validator(valid_input) is True
@@ -246,6 +293,22 @@ def test_terminal_output_req_arg(capsys):
 @pytest.mark.xfail(raises=AttributeError)
 def test_team_terminal_output_wrong_input(not_nested_dictionary):
     cogitate.team(not_nested_dictionary, 0.2, 0.2, 0.6)
+
+
+def test_team_return_type():
+    data_collection.collect_and_add_raw_data_to_json(
+        "https://github.com/GatorCogitate/cogitate_tool/pull/89", "raw_data_storage"
+    )
+    issue_dict = {}
+    issue_dict = data_collection.retrieve_issue_data(
+        repository, args["state"], issue_dict
+    )
+    individual_metrics_dict = data_collection.calculate_individual_metrics()
+    merged_dict = data_collection.merge_metric_and_issue_dicts(
+        individual_metrics_dict, issue_dict
+    )
+    updated_metrics_dict = data_processor.add_new_metrics(merged_dict)
+    assert isinstance(cogitate.team(updated_metrics_dict, 0.2, 0.2, 0.6), float)
 
 
 @pytest.mark.parametrize("not_nested_dictionary", {"key": "value", "key_2": "value_2"})
