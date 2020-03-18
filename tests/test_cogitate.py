@@ -35,12 +35,6 @@ def test_bool_validator_xpass(true_string, false_string):
     assert not cogitate.bool_validator(false_string)
 
 
-@pytest.mark.parametrize("not_bool", ["idk"])
-@pytest.mark.xfail(raises=TypeError)
-def test_bool_validator_xfail(not_bool):
-    cogitate.bool_validator(not_bool)
-
-
 @pytest.mark.parametrize(
     "non_url_value",
     ["https://5", "https://fgh", "https://?", "https://~~~", "https://y5"],
