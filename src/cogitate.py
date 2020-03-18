@@ -228,9 +228,9 @@ def team(individual_metrics_dict, below_float, above_float, within_float):
     team_score = data_processor.calculate_team_score(
         individual_metrics_dict, below, above, within
     )
-    return team_score
     print("Team Score:")
     print(team_score)
+    return team_score
 
 
 def individual(updated_dict):
