@@ -9,7 +9,6 @@ import data_processor
 import json_handler
 
 
-# pylint: disable=R0915
 def main(args):
     """Execute the CLI."""
     if args["testwithprintargs"] == "y":
@@ -75,7 +74,7 @@ def main(args):
 
 
 def collect_process_merge_data(args, progress_bar):
-    # Collect Data and overwrite json file
+    """Collects data and overwrites json file. Updates progress bar."""
     # Assess PyGithub access through token and repo path
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
     # Assess PyDriller access with link validator method
@@ -129,12 +128,14 @@ def collect_process_merge_data(args, progress_bar):
                 data_collection.print_individual_in_table(
                     data_dict=merged_dict, headings=[],
                 )
-                while name_to_keep and name_to_merge not in merged_dict:
-                    name_to_keep = input("Please enter the username to keep:  ")
-                    name_to_merge = input("Please enter the username to merge:  ")
-                merged_dict = data_collection.merge_duplicate_usernames(
-                    merged_dict, name_to_keep, name_to_merge
-                )
+                name_to_keep = input("Please enter the username to keep:  ")
+                name_to_merge = input("Please enter the username to merge:  ")
+                if name_to_keep and name_to_merge in merged_dict:
+                    merged_dict = data_collection.merge_duplicate_usernames(
+                        merged_dict, name_to_keep, name_to_merge
+                    )
+                else:
+                    print("Unable to find username in dictionary.")
                 cont = input("Merge another username? (y/n)")
                 if cont.lower() == "y":
                     pass
