@@ -55,6 +55,8 @@ def main(args):
         merged_dict = data_collection.merge_metric_and_issue_dicts(
             individual_metrics_dict, issue_dict
         )
+        progress_bar.next(1)
+        print("  Merged Data Sets")
         # merge duplicate usernames if user requests to
         if args["runmerge"]:
             progress_bar.next(1)
@@ -82,8 +84,7 @@ def main(args):
                 + "\nMerging duplicate usernames is suggested, "
                 + "\nTo do so change '-rm' to 'y' in your command line arguments"
             )
-        progress_bar.next(1)
-        print("  Merged Data Sets")
+
         updated_metrics_dict = data_processor.add_new_metrics(merged_dict)
         progress_bar.next(1)
         print("  Added secondary metrics")
