@@ -218,7 +218,6 @@ def retrieve_arguments():
 
     args = vars(a_parse.parse_args())
 
-    # pprint(find_repositories(args["link"]))
     return args
 
 
@@ -232,6 +231,7 @@ def team(individual_metrics_dict, below_float, above_float, within_float):
     )
     print("Team Score:")
     print(team_score)
+    return team_score
 
 
 def individual(updated_dict):

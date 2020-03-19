@@ -8,6 +8,12 @@ import pytest
 from src import cogitate
 
 from src import data_collection
+from src import data_processor
+
+
+@pytest.mark.xfail(raises=TypeError)
+def test_main_no_input():
+    cogitate.main()
 
 
 @pytest.mark.parametrize("valid_input", ["https://allegheny.edu"])
@@ -240,3 +246,24 @@ def test_terminal_output_req_arg(capsys):
     )
     stringResult = result.stderr.decode("utf-8")
     assert "cogitate.py: error: the following arguments are required:" in stringResult
+
+
+@pytest.mark.parametrize("not_nested_dictionary", {"key": "value", "key_2": "value_2"})
+@pytest.mark.xfail(raises=AttributeError)
+def test_team_terminal_output_wrong_input(not_nested_dictionary):
+    cogitate.team(not_nested_dictionary, 0.2, 0.2, 0.6)
+
+
+def test_team_return_type():
+    data_collection.collect_and_add_raw_data_to_json(
+        "https://github.com/GatorCogitate/cogitate_tool", "raw_data_storage"
+    )
+    individual_metrics_dict = data_collection.calculate_individual_metrics()
+    updated_metrics_dict = data_processor.add_new_metrics(individual_metrics_dict)
+    assert isinstance(cogitate.team(updated_metrics_dict, 0.2, 0.2, 0.6), float)
+
+
+@pytest.mark.parametrize("not_nested_dictionary", {"key": "value", "key_2": "value_2"})
+@pytest.mark.xfail(raises=AttributeError)
+def test_individual_terminal_output_wrong_input(not_nested_dictionary):
+    subprocess.run(cogitate.individual(not_nested_dictionary))
