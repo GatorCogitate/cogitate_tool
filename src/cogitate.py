@@ -63,8 +63,9 @@ def main(args):
                 data_collection.print_individual_in_table(
                     data_dict=merged_dict, headings=[],
                 )
-                name_to_keep = input("Please enter the username to keep:  ")
-                name_to_merge = input("Please enter the username to merge:  ")
+                while name_to_keep and name_to_merge not in merged_dict:
+                    name_to_keep = input("Please enter the username to keep:  ")
+                    name_to_merge = input("Please enter the username to merge:  ")
                 merged_dict = data_collection.merge_duplicate_usernames(
                     merged_dict, name_to_keep, name_to_merge
                 )
