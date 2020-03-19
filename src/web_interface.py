@@ -26,7 +26,7 @@ def web_interface():
             "Issues Contributed To By An Individual",
             "Pull Requests Contributed To By An Individual",
             "Team Members Who Contribute Source Code Without Tests",
-            "Individual Contribution Percantages",
+            "Individual Contribution Percentages",
         ),
     )
 
@@ -65,7 +65,7 @@ def web_interface():
     # Are there team members who contribute source code without also adding test cases?
     elif add_selectbox == "Team Members Who Contribute Source Code Without Tests":
         graph_test_contributions(updated_dict)
-    elif add_selectbox == "Individual Contribution Percantages":
+    elif add_selectbox == "Individual Contribution Percentages":
         graph_percent_individual_contribution(updated_dict)
     else:
         pass
