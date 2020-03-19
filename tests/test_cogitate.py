@@ -198,7 +198,7 @@ def test_retrieve_arguments(run_arguments_dict, correct_args, capsys):
     required arguments with unrequired arguments checked for their default values
                         NOTICE
     For this test case to run correctly in travis each line in the above correct_args
-    must befollowed by a \n.
+    must befollowed by only a \n.
     To run this test in the command line interface, place a \r before every \n
     """
     call = subprocess.run(run_arguments_dict, stdout=PIPE)
@@ -216,7 +216,7 @@ def test_terminal_output_invalid_token(invalidToken, capsys):
     Test correct output is produced with an invalid access token.
     For this test to work in Travis the stringReslt below must be compared to:
     "Cannot authenticate repository.\n"
-    For this test to work in the command line it must be compared to:
+    For this test to work in the command line the stringReslt must be compared to:
     "Cannot authenticate repository.\r\n"
     """
     result = subprocess.run(
