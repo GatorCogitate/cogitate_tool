@@ -279,20 +279,9 @@ def graph_test_contributions(dictionary):
 
 def graph_percent_individual_contribution(dictionary):
     """Graph percentage of individual contribution."""
-    st.title("Commits, Added, Removed")
-    print("Old dict")
-    data_collection.print_individual_in_table(
-        data_dict=dictionary,
-        headings=["COMMITS", "ADDED", "REMOVED", "MODIFIED", "RATIO", "FORMAT"],
-    )
-    print("\n ##################### \n")
-    print("new dict")
+    st.title("Percentages of Individual Contribution")
+
     new_dict = data_processor.individual_contribution(dictionary)
-    print(new_dict)
-    data_collection.print_individual_in_table(
-        data_dict=new_dict,
-        headings=["COMMITS", "ADDED", "REMOVED", "MODIFIED", "RATIO", "FORMAT"],
-    )
 
     df = pd.DataFrame.from_dict(new_dict, orient="index").T
 
@@ -300,15 +289,16 @@ def graph_percent_individual_contribution(dictionary):
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
 
+    st.title("Percentages of Commits, Added, & Removed:")
+
     st.bar_chart(#3
         df[columns][0:3]
-    )  # display dataframe/graph that vizualizes commit info
+    )  # display dataframe/graph
 
-    st.title("Modified & Ratio")
+    st.title("Percentages of Modified & Ratio:")
     st.bar_chart(#3
         df[columns][4:6]
-    )  # display dataframe/graph that vizualizes commit info
-
+    )  # display dataframe/graph
 
 
 web_interface()
