@@ -279,7 +279,7 @@ def graph_test_contributions(dictionary):
 
 def graph_percent_individual_contribution(dictionary):
     """Graph percentage of individual contribution."""
-    st.title("Team Members Who Contribute Source Code Without Tests")
+    st.title("Commits, Added, Removed")
     print("Old dict")
     data_collection.print_individual_in_table(
         data_dict=dictionary,
@@ -304,7 +304,11 @@ def graph_percent_individual_contribution(dictionary):
         df[columns][0:3]
     )  # display dataframe/graph that vizualizes commit info
 
-    return df
+    st.title("Modified & Ratio")
+    st.bar_chart(#3
+        df[columns][4:6]
+    )  # display dataframe/graph that vizualizes commit info
+
 
 
 web_interface()
