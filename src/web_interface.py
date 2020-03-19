@@ -290,11 +290,12 @@ def graph_percent_individual_contribution(dictionary):
     )  # allow users to display specific contributor information on dataframe graph
 
     st.title("Percentages of Commits, Added, & Removed:")
-
     st.bar_chart(df[columns][0:3])  # 3  # display dataframe/graph
 
     st.title("Percentages of Modified & Ratio:")
     st.bar_chart(df[columns][4:6])  # 3  # display dataframe/graph
+
+    return df
 
 
 web_interface()
