@@ -66,13 +66,15 @@ def main(args):
         progress_bar.finish()
         return
     # allows the user to enter the web interface
-    if not args["web"]:
+    if args["web"] is True:
+        os.system("streamlit run src/web_interface.py")
+    else:
         print(
             "To see the output in the web, simply add '-w yes' to your command line arguments."
         )
-        return
 
 
+# pylint: disable=R0915
 def collect_process_merge_data(args, progress_bar):
     """Collects data and overwrites json file. Updates progress bar."""
     # Assess PyGithub access through token and repo path
