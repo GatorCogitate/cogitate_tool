@@ -35,90 +35,11 @@ def main(args):
         progress_bar = IncrementalBar("Processing", max=10)
         progress_bar.next(1)
         print("  Starting process...")
-        # Collect Data and overwrite json file
-        # Assess PyGithub access through token and repo path
-        repository = data_collection.authenticate_repository(
-            args["token"], args["repo"]
-        )
-        # Assess PyDriller access with link validator method
-        if repository == "INVALID" or link_validator(args["link"]) is False:
-            print("Cannot authenticate repository.")
-            progress_bar.finish()
+        updated_metrics_dict = collect_process_merge_data(args, progress_bar)
+        if ("INVALID REPO/LINK" or "INVALID LINK") in updated_metrics_dict:
             return
         else:
-            # Populate json file
-            try:
-                data_collection.collect_and_add_raw_data_to_json(
-                    args["link"], "raw_data_storage"
-                )
-                progress_bar.next(1)
-                print("  Repository authenticated")
-                progress_bar.next(1)
-                print("  Raw Data Collected")
-            except BaseException:
-                print("Invalid repository link: " + args["link"])
-                progress_bar.finish()
-                return
-            # end of repository authentication
-            # calculate metrics to be used for team evaluation
-            issue_dict = {}
-            issue_dict = data_collection.retrieve_issue_data(
-                repository, args["state"], issue_dict
-            )
-            progress_bar.next(1)
-            print("  Issue Data Collected")
-
-            # calculate individual metrics
-            individual_metrics_dict = data_collection.calculate_individual_metrics()
-            progress_bar.next(1)
-            print("  Individual Data Calculated")
-            merged_dict = data_collection.merge_metric_and_issue_dicts(
-                individual_metrics_dict, issue_dict
-            )
-            progress_bar.next(1)
-            print("  Merged Data Sets")
-            # merge duplicate usernames if user requests to
-            if args["web"]:
-                json_handler.write_dict_to_json_file(
-                    merged_dict, "individual_metrics_storage.json"
-                )
-                os.system("pipenv run streamlit run src/web_interface.py")
-
-            if args["runmerge"]:
-                progress_bar.next(1)
-                print("  Merging Duplicate Usernames")
-                while True:
-                    data_collection.print_individual_in_table(
-                        data_dict=merged_dict, headings=[],
-                    )
-                    name_to_keep = input("Please enter the username to keep:  ")
-                    name_to_merge = input("Please enter the username to merge:  ")
-                    merged_dict = data_collection.merge_duplicate_usernames(
-                        merged_dict, name_to_keep, name_to_merge
-                    )
-                    cont = input("Merge another username? (y/n)")
-                    if cont.lower() == "y":
-                        pass
-                    else:
-                        print("Ending Username merge...")
-                        break
-            elif not args["runmerge"]:
-                progress_bar.next(1)
-                print(
-                    "  Duplicate usernames unmerged"
-                    + "\nMerging duplicate usernames is suggested, "
-                    + "\nTo do so change '-rm' to 'y' in your command line arguments"
-                )
-
-            updated_metrics_dict = data_processor.add_new_metrics(merged_dict)
-            progress_bar.next(1)
-            print("  Added secondary metrics")
-            # write dictionary to the json file.
-            json_handler.write_dict_to_json_file(
-                updated_metrics_dict, "individual_metrics_storage.json"
-            )
-            progress_bar.next(1)
-            print("  Writing Data to JSON")
+            pass
 
     if args["metric"] in ["t", "team"]:
         progress_bar.next(1)
@@ -151,6 +72,92 @@ def main(args):
             "To see the output in the web, simply add '-w yes' to your command line arguments."
         )
         return
+
+
+def collect_process_merge_data(args, progress_bar):
+    # Collect Data and overwrite json file
+    # Assess PyGithub access through token and repo path
+    repository = data_collection.authenticate_repository(args["token"], args["repo"])
+    # Assess PyDriller access with link validator method
+    if repository == "INVALID" or link_validator(args["link"]) is False:
+        print("Cannot authenticate repository.")
+        progress_bar.finish()
+        return "INVALID REPO/LINK"
+    else:
+        # Populate json file
+        try:
+            data_collection.collect_and_add_raw_data_to_json(
+                args["link"], "raw_data_storage"
+            )
+            progress_bar.next(1)
+            print("  Repository authenticated")
+            progress_bar.next(1)
+            print("  Raw Data Collected")
+        except BaseException:
+            print("Invalid repository link: " + args["link"])
+            progress_bar.finish()
+            return "INVALID LINK"
+        # end of repository authentication
+        # calculate metrics to be used for team evaluation
+        issue_dict = {}
+        issue_dict = data_collection.retrieve_issue_data(
+            repository, args["state"], issue_dict
+        )
+        progress_bar.next(1)
+        print("  Issue Data Collected")
+
+        # calculate individual metrics
+        individual_metrics_dict = data_collection.calculate_individual_metrics()
+        progress_bar.next(1)
+        print("  Individual Data Calculated")
+        merged_dict = data_collection.merge_metric_and_issue_dicts(
+            individual_metrics_dict, issue_dict
+        )
+        progress_bar.next(1)
+        print("  Merged Data Sets")
+        # merge duplicate usernames if user requests to
+        if args["web"]:
+            json_handler.write_dict_to_json_file(
+                merged_dict, "individual_metrics_storage.json"
+            )
+            os.system("pipenv run streamlit run src/web_interface.py")
+
+        if args["runmerge"]:
+            progress_bar.next(1)
+            print("  Merging Duplicate Usernames")
+            while True:
+                data_collection.print_individual_in_table(
+                    data_dict=merged_dict, headings=[],
+                )
+                name_to_keep = input("Please enter the username to keep:  ")
+                name_to_merge = input("Please enter the username to merge:  ")
+                merged_dict = data_collection.merge_duplicate_usernames(
+                    merged_dict, name_to_keep, name_to_merge
+                )
+                cont = input("Merge another username? (y/n)")
+                if cont.lower() == "y":
+                    pass
+                else:
+                    print("Ending Username merge...")
+                    break
+        elif not args["runmerge"]:
+            progress_bar.next(1)
+            print(
+                "  Duplicate usernames unmerged"
+                + "\nMerging duplicate usernames is suggested, "
+                + "\nTo do so change '-rm' to 'y' in your command line arguments"
+            )
+
+        updated_metrics_dict = data_processor.add_new_metrics(merged_dict)
+        progress_bar.next(1)
+        print("  Added secondary metrics")
+        # write dictionary to the json file.
+        json_handler.write_dict_to_json_file(
+            updated_metrics_dict, "individual_metrics_storage.json"
+        )
+        progress_bar.next(1)
+        print("  Writing Data to JSON")
+    return updated_metrics_dict
 
 
 def retrieve_arguments():
