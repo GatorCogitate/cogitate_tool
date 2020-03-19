@@ -160,12 +160,14 @@ def test_bool_validator_raise_argparse_error(non_bool_value, capsys):
                 "i",
                 "-twpa",
                 "y",
+                "-cj",
+                "n",
             ],
             "link : https://github.com/GatorCogitate/cogitate_tool\n"
             + "token : test_token\n"
             + "repo : GatorCogitate/cogitate_tool\nrunmerge : False\n"
             + "below : 5.0\nabove : 10.0\nwithin : 2.0\nstate : open\n"
-            + "web : True\nmetric : i\ntestwithprintargs : y\n",
+            + "web : True\nmetric : i\ntestwithprintargs : y\nclearJson : False\n",
         ),
         (
             [
@@ -188,7 +190,7 @@ def test_bool_validator_raise_argparse_error(non_bool_value, capsys):
             + "token : test_token\n"
             + "repo : GatorCogitate/cogitate_tool\nrunmerge : False\n"
             + "below : 0.2\nabove : 0.2\nwithin : 0.6\nstate : all\n"
-            + "web : False\nmetric : both\ntestwithprintargs : y\n",
+            + "web : False\nmetric : both\ntestwithprintargs : y\nclearJson : True\n",
         ),
     ],
 )
@@ -198,7 +200,7 @@ def test_retrieve_arguments(run_arguments_dict, correct_args, capsys):
     required arguments with unrequired arguments checked for their default values
                         NOTICE
     For this test case to run correctly in travis each line in the above correct_args
-    must befollowed by a \n.
+    must befollowed by only a \n.
     To run this test in the command line interface, place a \r before every \n
     """
     call = subprocess.run(run_arguments_dict, stdout=PIPE)
@@ -216,7 +218,7 @@ def test_terminal_output_invalid_token(invalidToken, capsys):
     Test correct output is produced with an invalid access token.
     For this test to work in Travis the stringReslt below must be compared to:
     "Cannot authenticate repository.\n"
-    For this test to work in the command line it must be compared to:
+    For this test to work in the command line the stringReslt must be compared to:
     "Cannot authenticate repository.\r\n"
     """
     result = subprocess.run(

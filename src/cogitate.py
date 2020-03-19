@@ -16,16 +16,73 @@ def main(args):
         for key, value in args.items():
             print(key, ":", value)
         return
-    progress_bar = IncrementalBar("Processing", max=10)
-    progress_bar.next(1)
-    print("  Starting process...")
+    # check for data in json file to catch user error in use of --clearJson
+    check_Json = json_handler.get_dict_from_json_file("raw_data_storage")
+    if len(check_Json) == 0:
+        print("\n\n     Json empty: Collecting raw data from repo\n\n")
+        args["clearJson"] = True
+
+    if not args["clearJson"]:
+        progress_bar = IncrementalBar("Processing", max=3)
+        progress_bar.next(1)
+        print("  Starting process...")
+        updated_metrics_dict = json_handler.get_dict_from_json_file(
+            "individual_metrics_storage"
+        )
+        progress_bar.next(1)
+        print("  Retrieved json data")
+    else:
+        progress_bar = IncrementalBar("Processing", max=10)
+        progress_bar.next(1)
+        print("  Starting process...")
+        updated_metrics_dict = collect_process_merge_data(args, progress_bar)
+        if ("INVALID REPO/LINK" or "INVALID LINK") in updated_metrics_dict:
+            return
+        else:
+            pass
+
+    if args["metric"] in ["t", "team"]:
+        progress_bar.next(1)
+        print("  Calculating Team Scores")
+        team(updated_metrics_dict, args["below"], args["above"], args["within"])
+        progress_bar.finish()
+
+    elif args["metric"] in ["i", "individual"]:
+        progress_bar.next(1)
+        print("  Calculating Individual Scores")
+        progress_bar.finish()
+        individual(updated_metrics_dict)
+
+    elif args["metric"] == "both":
+        progress_bar.next(1)
+        print("  Calculating Scores")
+        progress_bar.finish()
+        individual(updated_metrics_dict)
+        team(
+            updated_metrics_dict, args["below"], args["above"], args["within"],
+        )
+
+    else:
+        print("unknown value given for '-m' '--metric' in command line arguments")
+        progress_bar.finish()
+        return
+    # allows the user to enter the web interface
+    if not args["web"]:
+        print(
+            "To see the output in the web, simply add '-w yes' to your command line arguments."
+        )
+        return
+
+
+def collect_process_merge_data(args, progress_bar):
+    # Collect Data and overwrite json file
     # Assess PyGithub access through token and repo path
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
     # Assess PyDriller access with link validator method
     if repository == "INVALID" or link_validator(args["link"]) is False:
         print("Cannot authenticate repository.")
         progress_bar.finish()
-        return
+        return "INVALID REPO/LINK"
     else:
         # Populate json file
         try:
@@ -39,7 +96,7 @@ def main(args):
         except BaseException:
             print("Invalid repository link: " + args["link"])
             progress_bar.finish()
-            return
+            return "INVALID LINK"
         # end of repository authentication
         # calculate metrics to be used for team evaluation
         issue_dict = {}
@@ -48,6 +105,7 @@ def main(args):
         )
         progress_bar.next(1)
         print("  Issue Data Collected")
+
         # calculate individual metrics
         individual_metrics_dict = data_collection.calculate_individual_metrics()
         progress_bar.next(1)
@@ -55,7 +113,15 @@ def main(args):
         merged_dict = data_collection.merge_metric_and_issue_dicts(
             individual_metrics_dict, issue_dict
         )
+        progress_bar.next(1)
+        print("  Merged Data Sets")
         # merge duplicate usernames if user requests to
+        if args["web"]:
+            json_handler.write_dict_to_json_file(
+                merged_dict, "individual_metrics_storage.json"
+            )
+            os.system("pipenv run streamlit run src/web_interface.py")
+
         if args["runmerge"]:
             progress_bar.next(1)
             print("  Merging Duplicate Usernames")
@@ -75,7 +141,6 @@ def main(args):
                 else:
                     print("Ending Username merge...")
                     break
-
         elif not args["runmerge"]:
             progress_bar.next(1)
             print(
@@ -83,50 +148,17 @@ def main(args):
                 + "\nMerging duplicate usernames is suggested, "
                 + "\nTo do so change '-rm' to 'y' in your command line arguments"
             )
-        progress_bar.next(1)
-        print("  Merged Data Sets")
+
         updated_metrics_dict = data_processor.add_new_metrics(merged_dict)
         progress_bar.next(1)
         print("  Added secondary metrics")
+        # write dictionary to the json file.
         json_handler.write_dict_to_json_file(
             updated_metrics_dict, "individual_metrics_storage.json"
         )
         progress_bar.next(1)
         print("  Writing Data to JSON")
-
-        if args["metric"] in ["t", "team"]:
-            progress_bar.next(1)
-            print("  Calculating Team Scores")
-            team(updated_metrics_dict, args["below"], args["above"], args["within"])
-            progress_bar.finish()
-
-        elif args["metric"] in ["i", "individual"]:
-            progress_bar.next(1)
-            print("  Calculating Individual Scores")
-            progress_bar.finish()
-            individual(updated_metrics_dict)
-
-        elif args["metric"] == "both":
-            progress_bar.next(1)
-            print("  Calculating Scores")
-            progress_bar.finish()
-            individual(updated_metrics_dict)
-            team(
-                updated_metrics_dict, args["below"], args["above"], args["within"],
-            )
-
-        else:
-            print("unknown value given for '-m' '--metric' in command line arguments")
-            progress_bar.finish()
-            return
-        # allows the user to enter the web interface
-        if not args["web"]:
-            print(
-                "To see the output in the web, simply add '-w yes' to your command line arguments."
-            )
-            return
-        os.system("pipenv run streamlit run src/web_interface.py")
-        # write dictionary to the json file.
+    return updated_metrics_dict
 
 
 def retrieve_arguments():
@@ -154,7 +186,7 @@ def retrieve_arguments():
         "--runmerge",
         required=True,
         type=bool_validator,
-        help="Starts the process of merging usernames. (y/no)",
+        help="Starts the process of merging usernames. (y/n)",
     )
     a_parse.add_argument(
         "-b",
@@ -213,7 +245,15 @@ def retrieve_arguments():
         default="n",
         help="To be used ONLY for testing purposes. Prints the args{} dict and closes program",
     )
-
+    a_parse.add_argument(
+        "-cj",
+        "--clearJson",
+        required=False,
+        type=bool_validator,
+        default=True,
+        help="Allows the user to specify not to overwrite data currently in the"
+        + "json files, so that calculations can be rerun with different modifiers",
+    )
     # add arguments for below/above/within weight
 
     args = vars(a_parse.parse_args())
