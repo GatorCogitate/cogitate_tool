@@ -26,6 +26,7 @@ def web_interface():
             "Issues Contributed To By An Individual",
             "Pull Requests Contributed To By An Individual",
             "Team Members Who Contribute Source Code Without Tests",
+            "Individual Contribution Percantages"
         ),
     )
 
@@ -64,6 +65,8 @@ def web_interface():
     # Are there team members who contribute source code without also adding test cases?
     elif add_selectbox == "Team Members Who Contribute Source Code Without Tests":
         graph_test_contributions(updated_dict)
+    elif add_selectbox == "Individual Contribution Percantages":
+        graph_percent_individual_contribution(updated_dict)
     else:
         pass
 
@@ -285,6 +288,7 @@ def graph_percent_individual_contribution(dictionary):
     print("\n ##################### \n")
     print("new dict")
     new_dict = data_processor.individual_contribution(dictionary)
+    print(new_dict)
     data_collection.print_individual_in_table(
         data_dict=new_dict,
         headings=["COMMITS", "ADDED", "REMOVED", "MODIFIED", "RATIO", "FORMAT"],
