@@ -26,7 +26,7 @@ def web_interface():
             "Issues Contributed To By An Individual",
             "Pull Requests Contributed To By An Individual",
             "Team Members Who Contribute Source Code Without Tests",
-            "Individual Contribution Percantages"
+            "Individual Contribution Percantages",
         ),
     )
 
@@ -291,14 +291,10 @@ def graph_percent_individual_contribution(dictionary):
 
     st.title("Percentages of Commits, Added, & Removed:")
 
-    st.bar_chart(#3
-        df[columns][0:3]
-    )  # display dataframe/graph
+    st.bar_chart(df[columns][0:3])  # 3  # display dataframe/graph
 
     st.title("Percentages of Modified & Ratio:")
-    st.bar_chart(#3
-        df[columns][4:6]
-    )  # display dataframe/graph
+    st.bar_chart(df[columns][4:6])  # 3  # display dataframe/graph
 
 
 web_interface()
