@@ -58,6 +58,12 @@ def main(args):
         progress_bar.next(1)
         print("  Merged Data Sets")
         # merge duplicate usernames if user requests to
+        if args["web"]:
+            json_handler.write_dict_to_json_file(
+                merged_dict, "individual_metrics_storage.json"
+            )
+            os.system("pipenv run streamlit run src/web_interface.py")
+
         if args["runmerge"]:
             progress_bar.next(1)
             print("  Merging Duplicate Usernames")
@@ -88,6 +94,7 @@ def main(args):
         updated_metrics_dict = data_processor.add_new_metrics(merged_dict)
         progress_bar.next(1)
         print("  Added secondary metrics")
+        # write dictionary to the json file.
         json_handler.write_dict_to_json_file(
             updated_metrics_dict, "individual_metrics_storage.json"
         )
@@ -125,8 +132,6 @@ def main(args):
                 "To see the output in the web, simply add '-w yes' to your command line arguments."
             )
             return
-        os.system("pipenv run streamlit run src/web_interface.py")
-        # write dictionary to the json file.
 
 
 def retrieve_arguments():
