@@ -294,5 +294,17 @@ def graph_percent_individual_contribution(dictionary):
         headings=["COMMITS", "ADDED", "REMOVED", "MODIFIED", "RATIO", "FORMAT"],
     )
 
+    df = pd.DataFrame.from_dict(new_dict, orient="index").T
+
+    columns = st.multiselect(
+        label="Enter the names of specific contributors below:", options=df.columns
+    )  # allow users to display specific contributor information on dataframe graph
+
+    st.bar_chart(#3
+        df[columns][0:3]
+    )  # display dataframe/graph that vizualizes commit info
+
+    return df
+
 
 web_interface()
