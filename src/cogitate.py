@@ -150,10 +150,15 @@ def collect_process_merge_data(args, progress_bar):
                     except TypeError:
                         print("  Invalid username ")
                     else:
-                        if name_to_merge in merged_dict:
+                        if (
+                            name_to_merge in merged_dict
+                            and name_to_merge != name_to_keep
+                        ):
                             break
                         else:
-                            print("Unable to find the username to merge in dictionary")
+                            print(
+                                "Username is either not in dictionary, or is a copy of username to keep"
+                            )
 
                 merged_dict = data_collection.merge_duplicate_usernames(
                     merged_dict, name_to_keep, name_to_merge
