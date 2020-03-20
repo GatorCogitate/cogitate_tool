@@ -74,9 +74,7 @@ def main(args):
 
 
 # pylint: disable=R0915
-# pylint: disable=R0912
-# pylint: disable=R1723
-# pylint disable=R1702
+# pylint: disable=C0330
 def collect_process_merge_data(args, progress_bar):
     """Collect data and overwrite json file. Updates progress bar."""
     # Assess PyGithub access through token and repo path
@@ -133,35 +131,19 @@ def collect_process_merge_data(args, progress_bar):
                     data_dict=merged_dict, headings=[],
                 )
                 while True:
-                    try:
-                        name_to_keep = str(
-                            input("\nPlease enter the username to keep:  ")
-                        )
-                    except TypeError:
-                        print("  Invalid username ")
-                    else:
-                        if name_to_keep in merged_dict:
-                            break
-                        else:
-                            print("Unable to find the username to keep in dictionary")
+                    name_to_keep = str(input("\nPlease enter the username to keep: "))
+                    if name_to_keep in merged_dict:
+                        break
+                    print("Unable to find the username to keep in dictionary")
 
                 while True:
-                    try:
-                        name_to_merge = str(
-                            input("\nPlease enter the username to merge:  ")
-                        )
-                    except TypeError:
-                        print("  Invalid username ")
-                    else:
-                        if (
-                            name_to_merge in merged_dict
-                            and name_to_merge != name_to_keep
-                        ):
-                            break
-                        else:
-                            print(
-                                "Username is either not in dictionary, or is a copy of username to keep"
-                            )
+                    name_to_merge = str(input("\nPlease enter the username to merge: "))
+                    if name_to_merge in merged_dict and name_to_merge != name_to_keep:
+                        break
+                    print(
+                        "Username is either not in dictionary, "
+                        + " or is a copy of username to keep"
+                    )
 
                 merged_dict = data_collection.merge_duplicate_usernames(
                     merged_dict, name_to_keep, name_to_merge
