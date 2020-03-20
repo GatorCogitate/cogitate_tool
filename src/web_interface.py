@@ -184,7 +184,11 @@ def graph_lines_of_code(dictionary):
     st.bar_chart(
         df[columns][2:6]
     )  # display dataframe/graph that vizualizes commit info
-
+    st.subheader("Key:")
+    st.markdown("- `ADDED`: total lines added by a user")
+    st.markdown("- `REMOVED`: total lines removed by a user")
+    st.markdown("- `MODIFIED`: lines added plus lines removed")
+    st.markdown("- `RATIO`: modified lines divided by total commits")
     return df
 
 
@@ -235,7 +239,11 @@ def graph_issues(dictionary):
     st.bar_chart(
         df[columns][8:10]
     )  # display dataframe/graph that vizualizes commit info
-
+    st.subheader("Key:")
+    st.markdown(
+        "- `issues_commented`: number of comments the user made on an issue tracker"
+    )
+    st.markdown("- `issues_opened`: number of issue trackers opened by the user")
     return df
 
 
@@ -257,7 +265,11 @@ def graph_pull_request(dictionary):
     st.bar_chart(
         df[columns][10:12]
     )  # display dataframe/graph that vizualizes commit info
-
+    st.subheader("Key:")
+    st.markdown(
+        "- `pull_requests_commented`: number of comments the user made on a pull request"
+    )
+    st.markdown("- `pull_requests_opened`: number of pull requests opened by the user")
     return df
 
 
@@ -273,7 +285,13 @@ def graph_test_contributions(dictionary):
     st.bar_chart(
         df[columns][12:14]
     )  # display dataframe/graph that vizualizes commit info
-
+    st.subheader("Key:")
+    st.markdown(
+        "- `COMMITS_ELSEWHERE`: number of commits that did not include changes to testing"
+    )
+    st.markdown(
+        "- `COMMITS_TO_TESTING`: number of commits that included changes to testing"
+    )
     return df
 
 
@@ -290,11 +308,12 @@ def graph_percent_individual_contribution(dictionary):
     )  # allow users to display specific contributor information on dataframe graph
 
     st.title("Percentages of Commits, Added, & Removed:")
-    st.bar_chart(df[columns][0:3])  # 3  # display dataframe/graph
-
-    st.title("Percentages of Modified & Ratio:")
-    st.bar_chart(df[columns][4:6])  # 3  # display dataframe/graph
-
+    st.bar_chart(df[columns][0:4])  # 3  # display dataframe/graph
+    st.subheader("Key:")
+    st.markdown("- `COMMITS`: percenage of contribution towards commits")
+    st.markdown("- `ADDED`: percenage of contribution towards added lines")
+    st.markdown("- `REMOVED`: percenage of contribution towards removed lines")
+    st.markdown("- `MODIFIED`: percenage of contribution towards modified lines")
     return df
 
 
