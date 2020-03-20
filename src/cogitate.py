@@ -75,7 +75,7 @@ def main(args):
 
 # pylint: disable=R0915
 def collect_process_merge_data(args, progress_bar):
-    """Collects data and overwrites json file. Updates progress bar."""
+    """Collect data and overwrite json file. Updates progress bar."""
     # Assess PyGithub access through token and repo path
     repository = data_collection.authenticate_repository(args["token"], args["repo"])
     # Assess PyDriller access with link validator method
