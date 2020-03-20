@@ -129,19 +129,40 @@ def collect_process_merge_data(args, progress_bar):
                 data_collection.print_individual_in_table(
                     data_dict=merged_dict, headings=[],
                 )
-                name_to_keep = input("Please enter the username to keep:  ")
-                name_to_merge = input("Please enter the username to merge:  ")
-                if name_to_keep and name_to_merge in merged_dict:
-                    merged_dict = data_collection.merge_duplicate_usernames(
-                        merged_dict, name_to_keep, name_to_merge
-                    )
-                else:
-                    print("Unable to find username in dictionary.")
-                cont = input("Merge another username? (y/n)")
+                while True:
+                    try:
+                        name_to_keep = str(
+                            input("\nPlease enter the username to keep:  ")
+                        )
+                    except TypeError:
+                        print("  Invalid username ")
+                    else:
+                        if name_to_keep in merged_dict:
+                            break
+                        else:
+                            print("Unable to find the username to keep in dictionary")
+
+                while True:
+                    try:
+                        name_to_merge = str(
+                            input("\nPlease enter the username to merge:  ")
+                        )
+                    except TypeError:
+                        print("  Invalid username ")
+                    else:
+                        if name_to_merge in merged_dict:
+                            break
+                        else:
+                            print("Unable to find the username to merge in dictionary")
+
+                merged_dict = data_collection.merge_duplicate_usernames(
+                    merged_dict, name_to_keep, name_to_merge
+                )
+                cont = input("\nMerge another username? (y/n)")
                 if cont.lower() == "y":
                     pass
                 else:
-                    print("Ending Username merge...")
+                    print("\nEnding Username merge...")
                     break
         elif not args["runmerge"]:
             progress_bar.next(1)
