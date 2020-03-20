@@ -15,19 +15,18 @@ def main(args):
         for key, value in args.items():
             print(key, ":", value)
         return
-    # check for data in json file to catch user error in use of --clearJson
-    check_Json = json_handler.get_dict_from_json_file("raw_data_storage")
-    if len(check_Json) == 0:
-        print("\n\n     Json empty: Collecting raw data from repo\n\n")
-        args["clearJson"] = True
 
     if not args["clearJson"]:
         progress_bar = IncrementalBar("Processing", max=3)
-        progress_bar.next(1)
-        print("  Starting process...")
         updated_metrics_dict = json_handler.get_dict_from_json_file(
             "individual_metrics_storage"
         )
+        # check for data in json file to catch user error in use of --
+        if len(updated_metrics_dict) == 0:
+            print("\n\n     Json empty: no data to retreive\n\n")
+            return
+        progress_bar.next(1)
+        print("  Starting process...")
         progress_bar.next(1)
         print("  Retrieved json data")
     else:
@@ -170,6 +169,7 @@ def retrieve_arguments():
     a_parse.add_argument(
         "-l",
         "--link",
+        required=True,
         type=link_validator,
         help="Cogitate a repo by the url of the repo, require full link of the repo",
     )
