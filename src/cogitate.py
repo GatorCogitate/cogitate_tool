@@ -74,6 +74,9 @@ def main(args):
 
 
 # pylint: disable=R0915
+# pylint: disable=R0912
+# pylint: disable=R1723
+# pylint disable=R1702
 def collect_process_merge_data(args, progress_bar):
     """Collect data and overwrite json file. Updates progress bar."""
     # Assess PyGithub access through token and repo path
