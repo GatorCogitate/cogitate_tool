@@ -117,12 +117,6 @@ def collect_process_merge_data(args, progress_bar):
         progress_bar.next(1)
         print("  Merged Data Sets")
         # merge duplicate usernames if user requests to
-        if args["web"]:
-            json_handler.write_dict_to_json_file(
-                merged_dict, "individual_metrics_storage.json"
-            )
-            os.system("pipenv run streamlit run src/web_interface.py")
-
         if args["runmerge"]:
             progress_bar.next(1)
             print("  Merging Duplicate Usernames")
