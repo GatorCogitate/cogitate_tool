@@ -217,12 +217,25 @@ def graph_types_of_files(dictionary):
 def graph_team_score(dictionary):
     """Display the average team score for the web interface."""
     st.title("Average Team Score")
-
-    team_score = data_processor.calculate_team_score(dictionary, 0.75, 0.25, 0.5)
-
-    st.write("The calculated average team score for this repo is: ", team_score)
-
-    return team_score
+    below = st.slider(
+        "Enter the below weight:", min_value=0.0, max_value=1.0, value=0.75, step=0.01
+    )
+    above = st.slider(
+        "Enter the above weight:", min_value=0.0, max_value=1.0, value=0.25, step=0.01
+    )
+    within = st.slider(
+        "Enter the within weight:", min_value=0.0, max_value=1.0, value=0.5, step=0.01
+    )
+    text_placeholder = st.empty()
+    calculate = st.button("Calculate")
+    if calculate:
+        if above >= 0 and below >= 0 and within >= 0:
+            team_score = data_processor.calculate_team_score(
+                dictionary, below, above, within
+            )
+            st.write("The calculated average team score for this repo is: ", team_score)
+        else:
+            text_placeholder.markdown("__*ERROR: Invalid values*__")
 
 
 def graph_issues(dictionary):
