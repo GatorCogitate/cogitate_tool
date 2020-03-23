@@ -15,6 +15,7 @@ PrettyTable = "*"
 devml = "*"
 gstats = "*"
 Pillow = "*"
+progress = "*"
 
 [dev-packages]
 black = "*"

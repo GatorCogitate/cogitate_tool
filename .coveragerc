@@ -6,3 +6,5 @@ include=src/*
 exclude_lines =
   pragma: no cover
   def retrieve_issue_data
+  if __name__ == .__main__.:
+  def main(args):
