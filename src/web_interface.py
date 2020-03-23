@@ -118,11 +118,16 @@ def graph_commits_by_individual(dictionary):
     columns = st.multiselect(
         label="Enter the names of specific contributors below:", options=df.columns
     )  # allow users to display specific contributor information on dataframe graph
-
+    st.subheader("Stacked column chart:")
     st.bar_chart(
         df[columns][1:2]
     )  # display dataframe/graph that vizualizes commit info
-
+    data_dict = {}
+    for user in columns:
+        data_dict[user] = dictionary[user]["COMMITS"]
+    data_frame = pd.DataFrame.from_dict(data_dict, orient="index")
+    st.subheader("Bar chart:")
+    st.bar_chart(data_frame)  # display dataframe/graph that vizualizes commit info
     return df
 
 
