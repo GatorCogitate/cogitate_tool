@@ -338,6 +338,7 @@ def print_individual_in_table(
     file_name="individual_metrics_storage",
     data_dict={},
     headings=["EMAIL", "COMMITS", "ADDED", "REMOVED"],
+    percentage=False,
 ):
     """Create and print the table using prettytable.
 
@@ -350,6 +351,11 @@ def print_individual_in_table(
         dictionary = data_dict
     else:
         dictionary = json_handler.get_dict_from_json_file(file_name)
+    # Create the condition for percentage sign
+    if percentage is True:
+        percent = "%"
+    else:
+        percent = ""
     # Initialize a PrettyTable instance
     data_table = PrettyTable()
     # add the username as a category for the headings
@@ -359,8 +365,12 @@ def print_individual_in_table(
         # Add the authors name to the current row
         current_row = [author]
         for heading in headings:
-            # add the value from every heading to the current row
-            current_row.append(dictionary[author][heading])
+            # check if the type of value is not a list
+            if not isinstance(dictionary[author][heading], list):
+                # add the value from every heading to the current row
+                current_row.append(str(dictionary[author][heading]) + percent)
+            else:
+                current_row.append(dictionary[author][heading])
         # add row to prettytable instance
         data_table.add_row(current_row)
         # reset the current row to an empty list for the next iteration
@@ -395,6 +405,8 @@ def merge_metric_and_issue_dicts(metrics_dict, issues_dict):
                 "RATIO": 0,
                 "FILES": [],
                 "FORMAT": [],
+                "COMMITS_TO_TESTING": 0,
+                "COMMITS_ELSEWHERE": 0,
             }
         # update the metrics dicitionary with the new keys
         metrics_dict[entry].update(issues_dict[entry])
@@ -413,6 +425,8 @@ def merge_duplicate_usernames(dictionary, kept_entry, removed_entry):
         "issues_opened",
         "pull_requests_opened",
         "pull_requests_commented",
+        "COMMITS_TO_TESTING",
+        "COMMITS_ELSEWHERE",
     ]
     # Loop through all the keys in the list
     for category in categories:

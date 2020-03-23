@@ -10,8 +10,8 @@ Cogitate is a free and open source tool written in Python. It is designed to
 evaluate the level of contributions for members of a GitHub repository. GatorCogitate
 generates a score for members based on a variety of metrics including:
 
-- Lines added
-- Lines removed
+- Lines Added
+- Lines Removed
 - Lines Deleted
 - Pull Requests
 - Issue Tracker
@@ -84,20 +84,135 @@ scripts take effect, add the following code to the `Pipfile`:
 
 ```
 [scripts]
-command_name = "./scripts/script_name.sh"
+command_name = “./scripts/script_name.sh”
+
 ```
 
 Here the `command_name` is the command you want to use when running the project.
 For example, if the `command_name` is `cogitate`, the we can use `pipenv run cogitate`.
 
-### 3. CLI
+### 3. Command Line Interface
 
 The [homepage](https://docs.python.org/3/howto/argparse.html) for `argparse`.
+
+The available attributes can be found at their homepage.
 
 - `-l` or `--link` Cogitate a repo by the url of the repo.
 - `-t` or `--token` Github user token.
 - `-r` or `--repo` User's repository.
+- `-rm` `-runmerge` (y/n).
 - `-s` or `--state` State of the issue.
+
+#### CLI Parameters
+
+##### Token
+
+- Datatype: String
+- Required: True
+- Flag: `-t` or `--token`
+
+The purpose of a token in this context provides an alternate passwords that you
+can use to authenticate. The personal access tokens with Git allows you to authenticate
+with a token in place of your password. This is vital for our tool because it
+allows the user to be used for HTTPS Git operations.
+
+- How To Generate a token
+
+The following will demonstrate step by step the process to generate a token in
+order to use the tool:
+
+1. Click your profile icon on GitHub and then click Settings.
+
+1. On the sidebar, click the Developer settings and then Personal access tokens.
+
+1. Click Generate new token.
+
+1. Add a token description and click Generate token.
+
+1. Save the token for future use.
+
+Do note that for security reasons, you will not be able to see the token again
+once logged off.
+
+##### Link
+
+- Datatype: String
+- Required: True
+- Flag: `-l` or `--link`
+
+The link is the URL of the targeted repository in GitHub. This can be found at
+the GitHub website.
+
+##### Repo
+
+- Datatype: String
+- Required: True
+- Flag: `-r` or `--repo`
+
+The repo is the targeted repository name. It includes the root part and the
+name part. The root part is the username or organization name. The name part is
+the actual name of the repository. In our case, it would be `GatorCogitate/cogitate_tool`
+
+##### Run Merge
+
+- Datatype: String
+- Required: True
+- Flag: `-rm` or `--runmerge`
+
+Determines if the process of merging duplicate Github usernames will be run,
+based on the user's input.
+
+##### Below
+
+- Datatype: Float
+- Required: True
+- Flag: `-b` or `--below`
+
+Determines lower weight.
+
+##### Above
+
+- Datatype: Float
+- Required: True
+- Flag: `-a` or `--above`
+
+Determines higher weight.
+
+##### Within
+
+- Datatype: Float
+- Required: True
+- Flag: `-wi` or `--within`
+
+Determines value within weight.
+
+##### State
+
+- Datatype: String
+- Required: False
+- Default: `both`
+- Flag: `-s` or `--state`
+
+State of the Issue: open, closed, or all.
+
+##### Web
+
+- Datatype: String
+- Required: False
+- Default: False
+- Flag: `-w` or `--web`
+
+Determines if the detailed results of the tool's calculations will be shown in
+the web interface, based on the user's input.
+
+##### Metric
+
+- Datatype: String
+- Required: False
+- Default: `both`
+- Flag: `-m` or `--metric`
+
+Invokes calculation of team or individual metrics. If not specified, both are run.
 
 ### 4. PyDriller
 
