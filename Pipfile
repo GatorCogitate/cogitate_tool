@@ -16,6 +16,7 @@ devml = "*"
 gstats = "*"
 Pillow = "*"
 progress = "*"
+validators = "*"
 
 [dev-packages]
 black = "*"
