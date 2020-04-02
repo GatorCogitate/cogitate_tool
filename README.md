@@ -61,7 +61,8 @@ execution. The required arguments for the tool are as follows:
 
 - `-t, --token`: Input a Github user token to allow `Pygithub` access to information
   such as the Issue Tracker.
-- `-r, --repo`: Input the GitHub Repository name that the User will be assessing (`username/repo_name`).
+- `-r, --repo`: Input the GitHub Repository name that the User will be assessing 
+(`username/repo_name`).
 
 Run the command `pipenv run python src/cogitate.py -t [GitHub Token] -r [Path]`
 in the root directory.
