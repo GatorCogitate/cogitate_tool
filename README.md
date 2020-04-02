@@ -63,7 +63,7 @@ execution. The required arguments for the tool are as follows:
   such as the Issue Tracker.
 - `-r, --repo`: Input the Repository path that the User will be assessing.
 
-Run the command `pipenv python run src/cogitate.py -t [GitHub Token] -r [Path]`
+Run the command `pipenv run python src/cogitate.py -t [GitHub Token] -r [Path]`
 in the root directory.
 Check out `cogitate.py` to see additional arguments that can be used..
 
